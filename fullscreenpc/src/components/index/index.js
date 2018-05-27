@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
 import Alarm from '../alarm';
-
+import CellTemperature from '../cellTemperature';
 
 
 
@@ -17,8 +17,10 @@ class AppRoot extends React.Component {
     }
     render() {
       return (
-              <Alarm />
-
+              <div>
+                <Alarm />
+                <CellTemperature />
+              </div>
       );
   }
 }

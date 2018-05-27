@@ -28,13 +28,13 @@ class Page extends React.Component {
                   lodashmap(listData,(obj,index)=>{
                     let td;
                     if(obj.type === '一级'){
-                      td = <td>{obj.type} <span><img src="alarm/error02.png"></img></span></td>
+                      td = <td>{obj.type} <span><img src="alarm/error02.png" alt=""></img></span></td>
                     }
                     else if(obj.type === '二级'){
-                      td = <td>{obj.type} <span><img src="alarm/warning.png"></img></span></td>
+                      td = <td>{obj.type} <span><img src="alarm/warning.png" alt=""></img></span></td>
                     }
                     else{
-                      td = <td>{obj.type} <span><img src="alarm/warning5.png"></img></span></td>
+                      td = <td>{obj.type} <span><img src="alarm/warning5.png" alt=""></img></span></td>
                     }
                     return (<tr key={index}>
                     <td>{obj.RBD}</td>

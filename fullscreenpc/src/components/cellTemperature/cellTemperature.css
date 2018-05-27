@@ -1,0 +1,17 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.singleBarChart {
+  width: 95%;
+  height: 95%;
+  overflow: hidden;
+  background: rgba(10, 108, 163, 0.3);
+}
