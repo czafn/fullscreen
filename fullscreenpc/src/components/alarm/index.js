@@ -12,26 +12,35 @@ class Page extends React.Component {
     }
 
     render() {
-        const listData = this.props;
+        const {listData} = this.props;
         return (
           <div>
-            <table cellspacing="0" cellpadding="0">
+            <table cellSpacing="0" cellPadding="0">
               <thead>
-                <th>RBD</th>
-                <th>报警时间</th>
-                <th>报警等级</th>
-
+                <tr>
+                  <th>RBD</th>
+                  <th>报警时间</th>
+                  <th>报警等级</th>
+                </tr>
               </thead>
               <tbody>
                 {
                   lodashmap(listData,(obj,index)=>{
-                    <tr key={index}>
+                    let td;
+                    if(obj.type === '一级'){
+                      td = <td>{obj.type} <span><img src="alarm/error02.png"></img></span></td>
+                    }
+                    else if(obj.type === '二级'){
+                      td = <td>{obj.type} <span><img src="alarm/warning.png"></img></span></td>
+                    }
+                    else{
+                      td = <td>{obj.type} <span><img src="alarm/warning5.png"></img></span></td>
+                    }
+                    return (<tr key={index}>
                     <td>{obj.RBD}</td>
                     <td>{obj.update_time}</td>
-                    <td v-if="obj.type === '一级'">{obj.type} <span><img src="alarm/error02.png"></img></span></td>
-                    <td v-else-if="obj.type === '二级'"><span>{obj.type}</span> <span><img src="alarm/warning.png"></img></span></td>
-                    <td v-else><span>{obj.type}</span> <span><img src="alarm/warning5.png"></img></span></td>
-                  </tr>
+                    {td}
+                  </tr>);
                   })
                 }
               </tbody>
