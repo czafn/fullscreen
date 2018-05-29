@@ -4,13 +4,15 @@ import { Route,Switch } from 'react-router-dom';
 import Alarm from '../alarm';
 import Warning from '../warning';
 import Cycle from '../cycle';
+import CycleCount from '../cycleCount';
+import DxTemperature from '../dxTemperature';
 import CellTemperature from '../cellTemperature';
-import DxTemperature  from '../alarm';
-import CycleCount  from '../alarm';
-import MapProvince  from '../alarm';
-import Item  from '../alarm';
-import BusYear  from '../alarm';
-import CarYear  from '../alarm';
+
+import Item from '../item';
+import CarYear from '../carYear';
+import BusYear from '../busYear';
+import MapProvince from '../mapProvince';
+
 import './index.css';
 
 
@@ -81,7 +83,7 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                           <div className="left-top-right">
-                              <div className="cbody-left-top-title">
+                              <div className="cbody-left-top-title left-right">
                                   充电次数分析
                               </div>
                               <div className="cbody-left-top-box">
@@ -145,7 +147,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-center">
                       <div className="cbody-center-top">
-                          <iframe src="http://localhost:3000/#/index" frameBorder="0" style={{width: "100%", height: "100%"}}></iframe>
+                          <iframe src="http://localhost:3000/#/index" frameborder="0" style={{width: "100%", height: "100%"}}></iframe>
                       </div>
 
                   </div>
