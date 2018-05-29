@@ -8,6 +8,8 @@ import './cellTemperature.css';
 import ReactEcharts from 'echarts-for-react';
 
 require('echarts/map/js/china.js');
+const _ =require('underscore');
+
 
 class Page extends React.Component {
   constructor(props) {

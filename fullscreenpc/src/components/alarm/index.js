@@ -1,10 +1,46 @@
 /**
- * Created by jiaowenhui on 2017/3/15.
+ * Created by zhangzp on 2018-05-29
  */
 import React from 'react';
 import { connect } from 'react-redux';
 import lodashmap from 'lodash.map';
-import './alarm.css';
+import styled from 'styled-components';
+
+const Table = styled.table`
+  width: 100%;
+  padding: 0;
+  th{
+    width: 30%;
+    font-weight: 300;
+    font-size: 13px;
+    text-align: left;
+    padding: 0 15px;
+  }
+  td{
+    width: 30%;
+    font-weight: 300;
+    font-size: 13px;
+    text-align: left;
+    padding: 0 15px;
+  }
+  tbody{
+    tr:nth-child(odd){background:rgba(14, 63, 93, 0.69);}
+  }
+  tr{
+    height: 23px;
+    img{
+        width: 16px;
+        height: 16px;
+        vertical-align: bottom;
+        margin-left: 5px;
+    }
+  }
+  th:nth-child(2),td:nth-child(2){
+    width: 40%;
+  }
+  
+`;
+
 
 class Page extends React.Component {
     constructor(props) {
@@ -14,8 +50,8 @@ class Page extends React.Component {
     render() {
         const {listData} = this.props;
         return (
-          <div>
-            <table cellSpacing="0" cellPadding="0">
+          <div >
+            <Table cellSpacing="0" cellPadding="0" >
               <thead>
                 <tr>
                   <th>RBD</th>
@@ -44,7 +80,7 @@ class Page extends React.Component {
                   })
                 }
               </tbody>
-            </table>
+            </Table>
           </div>
         );
     }
