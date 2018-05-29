@@ -5,6 +5,12 @@ import Alarm from '../alarm';
 import Warning from '../warning';
 import Cycle from '../cycle';
 import CellTemperature from '../cellTemperature';
+import DxTemperature  from '../alarm';
+import CycleCount  from '../alarm';
+import MapProvince  from '../alarm';
+import Item  from '../alarm';
+import BusYear  from '../alarm';
+import CarYear  from '../alarm';
 import './index.css';
 
 
@@ -61,7 +67,7 @@ class AppRoot extends React.Component {
                                   等效温度分布
                               </div>
                               <div className="cbody-left-top-box left-right">
-                                  <dxTemperature></dxTemperature>
+                                  <DxTemperature></DxTemperature>
                               </div>
                           </div>
                       </div>
@@ -79,7 +85,7 @@ class AppRoot extends React.Component {
                                   充电次数分析
                               </div>
                               <div className="cbody-left-top-box">
-                                  <cycleCount></cycleCount>
+                                  <CycleCount></CycleCount>
                               </div>
                           </div>
                       </div>
@@ -139,7 +145,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-center">
                       <div className="cbody-center-top">
-                          <iframe src="http://localhost:3000/#/index" frameborder="0" style={{width: "100%", height: "100%"}}></iframe>
+                          <iframe src="http://localhost:3000/#/index" frameBorder="0" style={{width: "100%", height: "100%"}}></iframe>
                       </div>
 
                   </div>
@@ -181,7 +187,7 @@ class AppRoot extends React.Component {
                                       CAR-车辆使用年限
                                   </div>
                                   <div className="cbody-right-box year">
-                                      <carYear></carYear>
+                                      <CarYear></CarYear>
                                   </div>
                               </div>
                               <div style={{height: "50%"}}>
@@ -189,7 +195,7 @@ class AppRoot extends React.Component {
                                       BUS-车辆使用年限
                                   </div>
                                   <div className="cbody-right-box">
-                                      <busYear></busYear>
+                                      <BusYear></BusYear>
                                   </div>
                               </div>
 
@@ -199,7 +205,7 @@ class AppRoot extends React.Component {
                                   BUS-省份车辆分布
                               </div>
                               <div className="cbody-right-box busProvince">
-                                  <mapProvince></mapProvince>
+                                  <MapProvince></MapProvince>
                               </div>
                           </div>
                       </div>
@@ -209,7 +215,7 @@ class AppRoot extends React.Component {
                                   各项目车辆分布TOP20
                               </div>
                               <div className="cbody-right-box">
-                                  <item></item>
+                                  <Item></Item>
                               </div>
                           </div>
                       </div>
