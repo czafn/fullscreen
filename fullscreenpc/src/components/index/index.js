@@ -12,7 +12,7 @@ import Item  from '../alarm';
 import BusYear  from '../alarm';
 import CarYear  from '../alarm';
 import './index.css';
-
+import MapIframe from "./map";
 
 
 class AppRoot extends React.Component {
@@ -145,7 +145,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-center">
                       <div className="cbody-center-top">
-                          <iframe src="http://localhost:3000/#/index" frameBorder="0" style={{width: "100%", height: "100%"}}></iframe>
+                          <MapIframe style={{width: "100%", height: "100%"}}></MapIframe>
                       </div>
 
                   </div>
