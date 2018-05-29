@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
 import Alarm from '../alarm';
 import CellTemperature from '../cellTemperature';
-
+import './index.css';
 
 
 
