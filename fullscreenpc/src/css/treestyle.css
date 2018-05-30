@@ -1,0 +1,15 @@
+div.seled{
+    display: block;
+    position: relative;
+}
+div.seled:after{
+    content: " ";
+    display: block;
+    width: 1000px;
+    right: -500px;
+    position: absolute;
+    height: 30px;
+    top: 0;
+    background: #EEE;
+    z-index: 0;
+}

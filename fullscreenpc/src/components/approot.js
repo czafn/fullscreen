@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
 import Index from './index';
+import Login from './login/login.js';
 import {map_setmapinited} from '../actions';
+import {requireAuthentication} from './requireauthentication';
 
 class AppRoot extends React.Component {
   componentWillMount() {
@@ -30,7 +32,8 @@ class AppRoot extends React.Component {
       return (
               <div className="container">
                 <Switch>
-                  <Route exact path="/" component={Index} />
+                  <Route exact path="/" component={requireAuthentication(Index)} />
+                  <Route path="/login" component={Login} />
                 </Switch>
               </div>
 

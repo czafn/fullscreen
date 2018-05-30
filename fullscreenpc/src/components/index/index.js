@@ -14,7 +14,7 @@ import BusYear from '../busYear';
 import MapProvince from '../mapProvince';
 
 import './index.css';
-import MapIframe from "./map";
+import MapIframe from "./mapiframe";
 
 
 class AppRoot extends React.Component {
