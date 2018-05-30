@@ -1,24 +1,15 @@
-table{
-  width: 95%;
-  padding: 0;
+.ant-carousel .slick-slide {
+  text-align: center;
+
+  line-height: 5px;
+  background: rgba(0,0,0,0);
+  overflow: hidden;
 }
-th,td{
-  width: 30%;
-  font-weight: 300;
-  font-size: 13px;
-  text-align: left;
-  padding: 0 15px;
+
+.ant-carousel .slick-slider .slick-dots {
+  /*position: static;*/
+  bottom: -5px
 }
-th:nth-child(2),td:nth-child(2){
-  width: 40%;
+.ant-carousel .slick-slide h3 {
+  color: #fff;
 }
-table tr{
-  height: 23px;
-}
-table tr img{
-  width: 16px;
-  height: 16px;
-  vertical-align: bottom;
-  margin-left: 5px;
-}
-table tr:nth-child(odd){background:rgba(14, 63, 93, 0.69);}
