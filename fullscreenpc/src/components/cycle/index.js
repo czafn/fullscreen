@@ -4,6 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
+import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 const _ = require('underscore');
 const Chart = styled.div`
@@ -11,7 +12,7 @@ const Chart = styled.div`
     width: 95%;
     height: 95%;
     overflow: hidden;
-    background: rgba(10, 108, 163, 0.3);
+    ;
   }
 `;
 
@@ -21,6 +22,7 @@ class Page extends React.Component {
         super(props);
         const getOption = () => {
             return {
+                backgroundColor:'rgba(10, 108, 163, 0.3)',
                 xAxis: [{
                     show: true,
                     data: [],
@@ -83,17 +85,17 @@ class Page extends React.Component {
                         normal: {
                             opacity: 1,
                             barBorderRadius: 5,
-                            // color: new ReactEcharts.graphic.LinearGradient(
-                            //     0, 0, 0, 1, [{
-                            //         offset: 0,
-                            //         color: 'rgba(0,168,255,1)'
-                            //     },
-                            //         {
-                            //             offset: 1,
-                            //             color: 'rgba(0,168,255,1)'
-                            //         }
-                            //     ]
-                            // ),
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(0,168,255,1)'
+                                },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(0,168,255,1)'
+                                    }
+                                ]
+                            ),
                         }
                     }
                 }, {
@@ -163,7 +165,7 @@ class Page extends React.Component {
               <ReactEcharts
                   option={option}
                   // lazyUpdate={false}
-                  // style={{height: '500px', width: '100%'}}
+                  // style={{height: '500px', width: '100%',background: '#ffffff'}}
                   className='singleBarChart' />
             </Chart>
         );

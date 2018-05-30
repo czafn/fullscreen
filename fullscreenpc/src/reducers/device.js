@@ -15,7 +15,7 @@ import{
   ui_settreefilter,
   ui_searchbattery_result,
   login_result,
-
+  collectdevice_result,
   set_treesearchlist,
   logout_result
 } from '../actions';
@@ -112,7 +112,10 @@ const device = createReducer({
     }
     return {...state,carcollections};
   },
-
+  [collectdevice_result]:(state,payload)=>{
+    let carcollections = [...payload.devicecollections];
+    return {...state,carcollections};
+  },
   [ui_searchbattery_result]:(state,payload)=>{
     const {devicelist,g_devicesdb} = payload;
     let datatreesearchresult={

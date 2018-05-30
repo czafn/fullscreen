@@ -12,6 +12,9 @@ export const querydeviceinfo_result = createAction('querydeviceinfo_result');
 export const querydeviceinfo_list_request = createAction('querydeviceinfo_list_request');
 export const querydeviceinfo_list_result = createAction('querydeviceinfo_list_result');
 
+//查询历史轨迹数据
+export const queryhistorytrack_request  = createAction('queryhistorytrack_request');
+export const queryhistorytrack_result  = createAction('queryhistorytrack_result');
 //查询今天所有报警信息列表
 export const getcurallalarm_request= createAction('getcurallalarm_request');
 export const getcurallalarm_result = createAction('getcurallalarm_result');
@@ -30,5 +33,17 @@ export const devicelistgeochange_geotreemenu = createAction('devicelistgeochange
 export const devicelistgeochange_geotreemenu_refreshtree = createAction('devicelistgeochange_geotreemenu_refreshtree');
 
 
-export const set_treesearchlist = createAction('set_treesearchlist');
 export const serverpush_device =  createAction('serverpush_device');
+
+//设置报警信息已读
+export const setalarmreaded_request= createAction('setalarmreaded_request');
+export const setalarmreaded_result= createAction('setalarmreaded_result');
+
+//收藏设备/取消收藏
+export const collectdevice_request = createAction('collectdevice_request');
+export const collectdevice_result = createAction('collectdevice_result');
+
+export const set_treesearchlist = createAction('set_treesearchlist');
+
+export const deviceinfoquerychart_request = createAction('deviceinfoquerychart_request');
+export const deviceinfoquerychart_result = createAction('deviceinfoquerychart_result');

@@ -1,5 +1,5 @@
 let islocalhost = false;
-const serverurl = islocalhost?'http://localhost:5011':'http://bmscatl.i2u.top:81';
+const serverurl = islocalhost?'http://localhost:5011':'http://bmstest.i2u.top:81';
 const serverurlrestful = islocalhost?`${serverurl}/api`:`${serverurl}/apisrv/api`;
 const wspath = islocalhost?'/socket.io':'/apisrv/socket.io';
 // const organizationid = '599af5dc5f943819f10509e6';
@@ -9,12 +9,11 @@ let config = {
     serverurl:`${serverurl}`,
     wspath:`${wspath}`,
     requesttimeout:5000,
-    appversion:'1.5.0(build0516)',
+    appversion:'1.5.0(build0528)',
     sendlocationinterval:20000,
-    softmode:'app',
-    sysinnerheight : window.innerHeight,
+    softmode:'pc',
     wendu_max: 80,
-	  wendu_min: 0
+    wendu_min: 0
 };
 
 
