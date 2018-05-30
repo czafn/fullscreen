@@ -1,216 +1,340 @@
 /**
- * Created by jiaowenhui on 2017/3/15.
+ * Created by zhangzp on 2018-05-29
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import lodashmap from 'lodash.map';
-import './cellTemperature.css';
 import ReactEcharts from 'echarts-for-react';
-
-require('echarts/map/js/china.js');
-const _ =require('underscore');
+import echarts from 'echarts/dist/echarts.common';
+import styled from 'styled-components';
+const _ = require('underscore');
+const Chart = styled.div`
+  .singleBarChart {
+    width: 95%;
+	height: 95%;
+	overflow: hidden;
+  }
+`;
 
 
 class Page extends React.Component {
-  constructor(props) {
-   super(props);
-   this.state = this.getInitialState();
- }
- timeTicket = null;
- getInitialState = () => ({option: this.getOption()});
+    constructor(props) {
+        super(props);
+        const getOption = () => {
+            return {
+                backgroundColor:'rgba(10, 108, 163, 0.3)',
+                xAxis: [{
+                    show: true,
+                    data: [],
+                    axisTick: {
+                        show: true,
+                    },
+                    axisLine: {
+                        show: true
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            fontSize: 12,
+                            color: 'rgba(255,255,255,1.0)',
 
- componentDidMount() {
-   if (this.timeTicket) {
-     clearInterval(this.timeTicket);
-   }
-   this.timeTicket = setInterval(() => {
-     const option = this.state.option;
-     const r = new Date().getSeconds();
-     option.title.text = 'iphone销量' + r;
-     option.series[0].name = 'iphone销量' + r;
-     option.legend.data[0] = 'iphone销量' + r;
-     this.setState({ option: option });
-   }, 1000);
- };
- componentWillUnmount() {
-   if (this.timeTicket) {
-     clearInterval(this.timeTicket);
-   }
- };
- randomData() {
-   return Math.round(Math.random()*1000);
- };
- getOption = () => {
-   return {
-     title: {
-       text: 'iphone销量',
-       subtext: '纯属虚构',
-       left: 'center'
-     },
-     tooltip: {
-       trigger: 'item'
-     },
-     legend: {
-       orient: 'vertical',
-       left: 'left',
-       data:['iphone3','iphone4','iphone5']
-     },
-     visualMap: {
-       min: 0,
-       max: 2500,
-       left: 'left',
-       top: 'bottom',
-       text: ['高','低'],       // 文本，默认为数值文本
-       calculable: true
-     },
-     toolbox: {
-       show: true,
-       orient: 'vertical',
-       left: 'right',
-       top: 'center',
-       feature: {
-         dataView: {readOnly: false},
-         restore: {},
-         saveAsImage: {}
-       }
-     },
-     series: [
-       {
-         name: 'iphone3',
-         type: 'map',
-         mapType: 'china',
-         roam: false,
-         label: {
-           normal: {
-             show: true
-           },
-           emphasis: {
-             show: true
-           }
-         },
-         data:[
-           {name: '北京',value: this.randomData() },
-           {name: '天津',value: this.randomData() },
-           {name: '上海',value: this.randomData() },
-           {name: '重庆',value: this.randomData() },
-           {name: '河北',value: this.randomData() },
-           {name: '河南',value: this.randomData() },
-           {name: '云南',value: this.randomData() },
-           {name: '辽宁',value: this.randomData() },
-           {name: '黑龙江',value: this.randomData() },
-           {name: '湖南',value: this.randomData() },
-           {name: '安徽',value: this.randomData() },
-           {name: '山东',value: this.randomData() },
-           {name: '新疆',value: this.randomData() },
-           {name: '江苏',value: this.randomData() },
-           {name: '浙江',value: this.randomData() },
-           {name: '江西',value: this.randomData() },
-           {name: '湖北',value: this.randomData() },
-           {name: '广西',value: this.randomData() },
-           {name: '甘肃',value: this.randomData() },
-           {name: '山西',value: this.randomData() },
-           {name: '内蒙古',value: this.randomData() },
-           {name: '陕西',value: this.randomData() },
-           {name: '吉林',value: this.randomData() },
-           {name: '福建',value: this.randomData() },
-           {name: '贵州',value: this.randomData() },
-           {name: '广东',value: this.randomData() },
-           {name: '青海',value: this.randomData() },
-           {name: '西藏',value: this.randomData() },
-           {name: '四川',value: this.randomData() },
-           {name: '宁夏',value: this.randomData() },
-           {name: '海南',value: this.randomData() },
-           {name: '台湾',value: this.randomData() },
-           {name: '香港',value: this.randomData() },
-           {name: '澳门',value: this.randomData() }
-         ]
-       },
-       {
-         name: 'iphone4',
-         type: 'map',
-         mapType: 'china',
-         label: {
-           normal: {
-             show: true
-           },
-           emphasis: {
-             show: true
-           }
-         },
-         data:[
-           {name: '北京',value: this.randomData() },
-           {name: '天津',value: this.randomData() },
-           {name: '上海',value: this.randomData() },
-           {name: '重庆',value: this.randomData() },
-           {name: '河北',value: this.randomData() },
-           {name: '安徽',value: this.randomData() },
-           {name: '新疆',value: this.randomData() },
-           {name: '浙江',value: this.randomData() },
-           {name: '江西',value: this.randomData() },
-           {name: '山西',value: this.randomData() },
-           {name: '内蒙古',value: this.randomData() },
-           {name: '吉林',value: this.randomData() },
-           {name: '福建',value: this.randomData() },
-           {name: '广东',value: this.randomData() },
-           {name: '西藏',value: this.randomData() },
-           {name: '四川',value: this.randomData() },
-           {name: '宁夏',value: this.randomData() },
-           {name: '香港',value: this.randomData() },
-           {name: '澳门',value: this.randomData() }
-         ]
-       },
-       {
-         name: 'iphone5',
-         type: 'map',
-         mapType: 'china',
-         label: {
-           normal: {
-             show: true
-           },
-           emphasis: {
-             show: true
-           }
-         },
-         data:[
-           {name: '北京',value: this.randomData() },
-           {name: '天津',value: this.randomData() },
-           {name: '上海',value: this.randomData() },
-           {name: '广东',value: this.randomData() },
-           {name: '台湾',value: this.randomData() },
-           {name: '香港',value: this.randomData() },
-           {name: '澳门',value: this.randomData() }
-         ]
-       }
-     ]
-   };
- };
- render() {
-   return (
-     <div className='examples'>
-       <div className='parent'>
-         <label> render a china map. <strong>MAP charts</strong>: </label>
-         <ReactEcharts
-           option={this.state.option}
-           style={{height: '500px', width: '100%'}}
-           className='react_for_echarts' />
-       </div>
-     </div>
-   );
- };
+                        }
+                    },
+                }],
+                grid:{
+                    bottom: 40,
+                    top: 20,
+                    right:20,
+                },
+                visualMap: {
+                    show: false,
+                    max:99,
+                    dimension: 0,
+                    inRange: {
+                        color: ['rgba(248, 99, 2, 1)', 'rgba(36, 164, 56, 1)', 'rgba(248, 99, 2, 1)']
+                    }
+                },
+                yAxis: {
+                    axisLine: {
+                        show: false,
+                        lineStyle: {
+                            color: '#aaa'
+                        }
+                    },
+                    // max: 200,
+                    axisTick: {
+                        show: true,
+                        lineStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    splitLine: {
+                        show: false,
+                        lineStyle: {
+                            width: 2,
+                            color: '#07111f',
+                        }
+                    },
+                    z: 10
+                },
+                series: [ {
+                    name: 'Simulate Shadow',
+                    type: 'line',
+                    data: [],
+                    z: 0,
+                    showSymbol: false,
+                    animationDelay: 0,
+                    animationEasing: 'linear',
+                    animationDuration: 1200,
+                    lineStyle: {
+                        normal: {
+                            color: 'transparent'
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: '#08263a',
+                            shadowBlur: 50,
+                            shadowColor: '#000'
+                        }
+                    }
+                },{
+                    name: 'back',
+                    type: 'bar',
+                    data: [],
+                    z: 0,
+                    itemStyle: {
+                        lable:{
+                            show:false,
+                        },
+                        normal: {
+                            opacity: 1,
+                            barBorderRadius: 5,
+                            // shadowBlur: 3,
+                            // color: 'rgba(0,168,255,0.2)',
+                            // color: 'rgba(0,168,255,1.0) ',
+                            color: new echarts.graphic.LinearGradient(
+                                0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(0,168,255,1)'
+                                },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(0,168,255,1)'
+                                    }
+                                ]
+                            ),
+                            // shadowColor: '#111'
+                        }
+                    },
+                    markLine: {
+                        label: {
+                            normal: {
+                                position:'end',
+                                formatter: function(params) {
+                                    return params.name
+                                }
+                            }
+                        },
+                        symbol:['',''],
+                        lineStyle: {
+                            normal: {
+                                color: "rgb(255, 179, 1)",
+                                type: 'solid',
+                                width: 3,
+                            },
+                            emphasis: {
+                                color: "#d9def7"
+                            }
+                        },
+                        data: [{
+                            xAxis: 0,
+                            name: '中位线',
+                            itemStyle: {
+                                normal: {
+                                    color: "#b84a58",
+                                }
+                            }
+                        }]
+                    },
+                    markArea: {
+                        silent: true,
+                        itemStyle: {
+                            normal: {
+                                color: 'rgba(248, 99, 2, 0.1)',
+                                borderColor: 'rgb(248, 99, 2)',
+                                borderWidth: 2,
+                                // borderType: 'dashed'
+                            }
+                        },
+                        label:{
+                            normal:{
+                                position: ['0%', '-15'],
+                                // fontSize:18,
+                                color: "rgb(248, 99, 2)"
+                            }
+
+                        },
+                        data: []
+                    },
+                }],
+                animationEasing: 'elasticOut',
+                animationEasingUpdate: 'elasticOut',
+                animationDelay: function (idx) {
+                    return idx * 5;
+                },
+                animationDelayUpdate: function (idx) {
+                    return idx * 5;
+                }
+            };
+        };
+        this.option = getOption();
+    }
+    // timeTicket = null;
+    // getInitialState = () => ({option: this.getOption()});
+    //
+    // componentDidMount() {
+    //
+    //     // this.timeTicket = setInterval(() => {
+    //
+    //
+    //         this.setState({ option: option });
+    //
+    //     // }, 1000);
+    //
+    // };
+    // componentWillUnmount() {
+    //     if (this.timeTicket) {
+    //         clearInterval(this.timeTicket);
+    //     }
+    // };
+
+
+    render() {
+        let {data} = this.props;
+        const option = this.option;
+        data = _.sortBy(data,(i) => i.name-0);
+        option.xAxis[0].data = data.map(value => value['name']);
+        option.series[0].data = data.map(value => value['value']-0);
+        option.series[1].markLine.data[0].xAxis = data.length / 2;
+        option.series[1].markArea.data[0] = [{
+                                                name: '90%区间',
+                                                xAxis: 25,
+                                                yAxis: 'min'
+                                            }, {
+                                                xAxis: 70,
+                                                yAxis: 'max'
+                                            }]
+        option.series[1].data = data.map(value => value['value']-0);
+
+        return (
+            <Chart >
+              <ReactEcharts option={option} className='singleBarChart' />
+            </Chart>
+        );
+    };
 }
 
 const mapStateToProps = ({}) => {
-    const listData =
-    [
-      {"update_time":"2017/11/18 04:26:00","RBD":"1727204012","type":"二级"},
-      {"update_time":"2017/11/17 22:20:00","RBD":"1719100098","type":"二级"},
-      {"update_time":"2017/11/17 22:04:00","RBD":"1627100777","type":"二级"},
-      {"update_time":"2017/11/18 10:01:00","RBD":"1702101873","type":"二级"},
-      {"update_time":"2017/11/18 09:44:00","RBD":"1727210879","type":"二级"},
-      {"update_time":"2017/11/18 09:50:00","RBD":"1719103955","type":"二级"},
-      {"update_time":"2017/11/18 10:03:00","RBD":"1724101290","type":"二级"},
-      {"update_time":"2017/11/18 04:55:00","RBD":"1627100478","type":"二级"}
-    ]
-    return {listData};
+    let data = [
+        {"name":"0.6","value":"2"},
+        {"name":"0.7","value":"2"},
+        {"name":"0.9","value":"2"},
+        {"name":"1","value":"31"},
+        {"name":"1.1","value":"14"},
+        {"name":"1.2","value":"7"},
+        {"name":"1.3","value":"15"},
+        {"name":"1.4","value":"28"},
+        {"name":"1.5","value":"28"},
+        {"name":"1.6","value":"16"},
+        {"name":"1.7","value":"26"},
+        {"name":"1.8","value":"15"},
+        {"name":"1.9","value":"39"},
+        {"name":"2","value":"63"},
+        {"name":"2.1","value":"27"},
+        {"name":"2.2","value":"34"},
+        {"name":"2.3","value":"37"},
+        {"name":"2.4","value":"40"},
+        {"name":"2.5","value":"54"},
+        {"name":"2.6","value":"39"},
+        {"name":"2.7","value":"34"},
+        {"name":"2.8","value":"50"},
+        {"name":"2.9","value":"67"},
+        {"name":"3","value":"66"},
+        {"name":"3.1","value":"61"},
+        {"name":"3.2","value":"73"},
+        {"name":"3.3","value":"113"},
+        {"name":"3.4","value":"107"},
+        {"name":"3.5","value":"136"},
+        {"name":"3.6","value":"158"},
+        {"name":"3.7","value":"184"},
+        {"name":"3.8","value":"213"},
+        {"name":"3.9","value":"255"},
+        {"name":"4","value":"287"},
+        {"name":"4.1","value":"313"},
+        {"name":"4.2","value":"315"},
+        {"name":"4.3","value":"376"},
+        {"name":"4.4","value":"393"},
+        {"name":"4.5","value":"415"},
+        {"name":"4.6","value":"409"},
+        {"name":"4.7","value":"459"},
+        {"name":"4.8","value":"430"},
+        {"name":"4.9","value":"426"},
+        {"name":"5","value":"440"},
+        {"name":"5.1","value":"363"},
+        {"name":"5.2","value":"392"},
+        {"name":"5.3","value":"383"},
+        {"name":"5.4","value":"350"},
+        {"name":"5.5","value":"384"},
+        {"name":"5.6","value":"366"},
+        {"name":"5.7","value":"363"},
+        {"name":"5.8","value":"388"},
+        {"name":"5.9","value":"383"},
+        {"name":"6","value":"376"},
+        {"name":"6.1","value":"379"},
+        {"name":"6.2","value":"367"},
+        {"name":"6.3","value":"379"},
+        {"name":"6.4","value":"386"},
+        {"name":"6.5","value":"360"},
+        {"name":"6.6","value":"345"},
+        {"name":"6.7","value":"328"},
+        {"name":"6.8","value":"278"},
+        {"name":"6.9","value":"291"},
+        {"name":"7","value":"232"},
+        {"name":"7.1","value":"215"},
+        {"name":"7.2","value":"171"},
+        {"name":"7.3","value":"158"},
+        {"name":"7.4","value":"124"},
+        {"name":"7.5","value":"115"},
+        {"name":"7.6","value":"89"},
+        {"name":"7.7","value":"86"},
+        {"name":"7.8","value":"69"},
+        {"name":"7.9","value":"77"},
+        {"name":"8","value":"60"},
+        {"name":"8.1","value":"70"},
+        {"name":"8.2","value":"43"},
+        {"name":"8.3","value":"38"},
+        {"name":"8.4","value":"24"},
+        {"name":"8.5","value":"23"},
+        {"name":"8.6","value":"13"},
+        {"name":"8.7","value":"12"},
+        {"name":"8.8","value":"12"},
+        {"name":"8.9","value":"7"},
+        {"name":"9","value":"6"},
+        {"name":"9.1","value":"3"},
+        {"name":"9.2","value":"4"},
+        {"name":"9.3","value":"7"},
+        {"name":"9.5","value":"8"},
+        {"name":"9.6","value":"1"},
+        {"name":"9.7","value":"1"},
+        {"name":"9.8","value":"3"},
+        {"name":"9.9","value":"3"},
+        {"name":"10","value":"1"},
+        {"name":"10.1","value":"2"},
+        {"name":"10.2","value":"1"},
+        {"name":"10.3","value":"1"},
+        {"name":"10.4","value":"2"},
+        {"name":"10.6","value":"1"},
+        {"name":"11","value":"1"}
+    ];
+    return {data};
 }
 export default connect(mapStateToProps)(Page);

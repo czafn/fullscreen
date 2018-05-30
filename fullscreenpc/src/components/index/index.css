@@ -11,7 +11,7 @@
     line-height: 15px;
     text-align: left;
     margin-bottom: 10px;
-    /*background: url('./index/underline_right_400.png');*/
+    /*background: url('img/underline_right_400.png');*/
     background: url('img/underline_left_450.png');
     /*background-repeat: round;*/
     /*background-position-y: 100%;*/
@@ -281,7 +281,7 @@ div {
 
 .title {
     /*position: absolute;*/
-    /*background: url('./index/title_bg.png');*/
+    /*background: url('img/title_bg.png');*/
     background-repeat: no-repeat;
     top: 20px;
     left: 0px;

@@ -147,7 +147,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-center">
                       <div className="cbody-center-top">
-                          <iframe src="http://localhost:3000/#/index" frameborder="0" style={{width: "100%", height: "100%"}}></iframe>
+                          <iframe src="http://localhost:3000/#/index" frameBorder="0" style={{width: "100%", height: "100%"}}></iframe>
                       </div>
 
                   </div>
