@@ -1393,7 +1393,7 @@
 .juhe_pop_info,
 .Window_pop_info{
     background-color: #FFF;
-    border: 2px solid #5cbdaa;
+    border: 2px solid #01a8ff;
     margin-left: -210px;
     margin-bottom: 15px;
     position: relative;
@@ -1424,7 +1424,7 @@
     font-size: 20px;
     color: #FFF;
     font-weight: bold;
-    background-color: #5cbdaa;
+    background-color: #2184b5;
 }
 .juhe_pop_info .info-top > div >span.p{
     display: inline-block;
@@ -1485,7 +1485,7 @@
     padding: 15px;
 }
 .juhe_pop_info .info-middle li{
-    background-color: #f1f0f5;
+    background-color: #033447;
     border-radius: 8px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1553,7 +1553,7 @@
     padding-left: 20px;
     height: 4x0px;
     line-height: 40px;
-    background: #5cbdaa;
+    background: #2184b5;
     color: #FFF;
     text-align: center;
 }
@@ -1632,7 +1632,7 @@
     margin:  0;
 }
 .Window_pop_info .pop_info_btn .lnk{
-    background: #EEE;
+    background: #2284b5;
 }
 .Window_pop_info .pop_info_btn .lnk span{
     font-weight: bold;
@@ -1676,7 +1676,7 @@
     position: relative;
     padding: 0 30px;
     font-size: 18px;
-    color: #5cbdaa;
+    color: #f9f9f9;
 }
 .Window_pop_info .pop_info_btn .lnk span:after{
 

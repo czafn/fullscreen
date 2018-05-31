@@ -223,13 +223,14 @@ div {
 }
 
 .title-right-top {
-    font-size: 28px;
+    font-size: 24px;
     font-family: DIN1451;
 }
 
 .title-right-buttom {
-    font-size: 24px;
+    font-size: 20px;
     font-family: DIN1451;
+    text-align: center;
 }
 
 .title-right {
@@ -365,6 +366,9 @@ div {
 }
 .year{
     height: 88%;
+}
+.titleTime{
+    font-size: 15px;
 }
 
 

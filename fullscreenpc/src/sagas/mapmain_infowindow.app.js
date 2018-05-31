@@ -55,7 +55,7 @@ const createInfoWindow_popinfo =(data)=> {
     // 定义中部内容
     var middle = document.createElement("div");
     middle.className = "info-middle";
-    middle.style.backgroundColor = 'white';
+    middle.style.backgroundColor = '#133f58';
     middle.innerHTML = content;
     info.appendChild(middle);
 
@@ -127,7 +127,7 @@ const createInfoWindow_poplistinfo =(data)=> {
     // 定义中部内容
     var middle = document.createElement("div");
     middle.className = "info-middle";
-    middle.style.backgroundColor = 'white';
+    middle.style.backgroundColor = '#133f58';
     middle.innerHTML = content;
     info.appendChild(middle);
 

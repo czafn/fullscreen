@@ -16,17 +16,42 @@ import MapProvince from '../mapProvince';
 import './index.css';
 import MapIframe from "./mapiframe";
 
+import moment from "moment";
+
 
 class AppRoot extends React.Component {
-  componentWillMount() {
 
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            nowday : new Date()
+        }
+    }
 
-    componentWillUnmount() {
+    componentWillMount() {
 
     }
+    timeTicket = null;
+
+    componentDidMount() {
+
+        this.timeTicket = setInterval(() => {
+
+
+            this.setState({ nowday : new Date() });
+
+        }, 1000);
+
+    };
+    componentWillUnmount() {
+        if (this.timeTicket) {
+            clearInterval(this.timeTicket);
+        }
+    };
+
+
     render() {
-      const {nowday, nowtime} = this.props;
+      const {centerIndex, rightIndex} = this.props;
       return (
           <div className="back">
 
@@ -101,7 +126,7 @@ class AppRoot extends React.Component {
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>市场保有量</div>
                               <div className="title-center-content-border">
                                   <div className="title-center-content">
-                                      <span className="title-center-content-num">63753</span>
+                                      <span className="title-center-content-num">{centerIndex.count_online+centerIndex.count_offline}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
@@ -110,7 +135,7 @@ class AppRoot extends React.Component {
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>已联网</div>
                               <div className="title-center-content-border">
                                   <div className="title-center-content">
-                                      <span className="title-center-content-num">33753</span>
+                                      <span className="title-center-content-num">{centerIndex.count_online}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
@@ -119,7 +144,7 @@ class AppRoot extends React.Component {
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>未联网</div>
                               <div className="title-center-content-border">
                                   <div className="title-center-content">
-                                      <span className="title-center-content-num">23753</span>
+                                      <span className="title-center-content-num">{centerIndex.count_offline}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
@@ -128,7 +153,7 @@ class AppRoot extends React.Component {
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>故障车辆</div>
                               <div className="title-center-content-border">
                                   <div className="title-center-content">
-                                      <span className="title-center-content-num">8753</span>
+                                      <span className="title-center-content-num">{centerIndex.count_all}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
@@ -137,7 +162,7 @@ class AppRoot extends React.Component {
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>今日新增</div>
                               <div className="title-center-content-border" style={{width: "190px"}}>
                                   <div className="title-center-content" style={{width: "180px"}}>
-                                      <span className="title-center-content-num">53</span>
+                                      <span className="title-center-content-num">{centerIndex.today_new}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
@@ -159,7 +184,7 @@ class AppRoot extends React.Component {
                           <div className="title-center-title"><img src="index/top.png" alt=""></img>BUS车辆</div>
                           <div className="title-center-content-border">
                               <div className="title-center-content">
-                                  <span className="title-center-content-num">8753</span>
+                                  <span className="title-center-content-num">{rightIndex.bus}</span>
                                   <span className="title-center-content-day">辆</span>
                               </div>
                           </div>
@@ -168,14 +193,14 @@ class AppRoot extends React.Component {
                           <div className="title-center-title"><img src="index/top.png" alt=""></img>CAR车辆</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
-                                  <span className="title-center-content-num">1153</span>
+                                  <span className="title-center-content-num">{rightIndex.car}</span>
                                   <span className="title-center-content-day">辆</span>
                               </div>
                           </div>
                       </div>
-                      <div className="titleNumCol titleNumCol-right">
-                          <div className="title-right-top">{nowday}</div>
-                          <div className="title-right-buttom">{nowtime}</div>
+                      <div className="titleNumCol titleNumCol-right titleTime">
+                          <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-D') }</div>
+                          <div className="title-right-buttom">{moment(this.state.nowday).format('hh:mm:ss') }</div>
                       </div>
 
                   </div>
@@ -229,8 +254,16 @@ class AppRoot extends React.Component {
   }
 }
 const mapStateToProps = ({}) => {
-    const nowday = new Date();
-    const nowtime = new Date();
-    return {nowday, nowtime};
+    const centerIndex = {
+        count_online:33753,
+        count_offline:23753,
+        count_all:8753,
+        today_new:56
+    };
+    const rightIndex = {
+        bus:1889,
+        car:4834
+    };
+    return {centerIndex, rightIndex};
 }
-export default connect()(AppRoot);
+export default connect(mapStateToProps)(AppRoot);
