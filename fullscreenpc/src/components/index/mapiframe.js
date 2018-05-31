@@ -68,21 +68,23 @@ class Page extends React.Component {
         const {showmenu} = this.props;
         const treestyle = this.getdrawstyle("350px");
         return (
-            <div className="AppPage" id="AppPage" style={{height : `${this.state.innerHeight}px`}}>
+            <div className="AppPage" id="AppPage" style={{height : `918px`}}>
                 <div className="content">
 
-                    <div className="bodycontainer" style={{height: `${this.state.innerHeight-64}px`}}>
-
+                    <div className="bodycontainer" style={{height: `918px`}}>
                         <Drawer
                             open={showmenu==="addressbox" || true}
                             containerStyle={{
                                 top: "64px",
+                                float: 'left',
                                 zIndex: 1000,
+                                backgroundColor: '#133f58',
                                 position: "inherit",
                                 overflow: "visible"
                             }}
                             width={350}
-                            style={showmenu==="addressbox"?treestyle.drawopenstyle:treestyle.drawclosestyle}
+                            // style={showmenu==="addressbox"?treestyle.drawopenstyle:treestyle.drawclosestyle}
+                            height={980}
                             >
                             <Tree />
                             {

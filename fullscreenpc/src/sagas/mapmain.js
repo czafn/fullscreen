@@ -252,9 +252,12 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                try{
                  let container, title, body;
                  const nodeClassNames = {
-              				title: 'amap-ui-district-cluster-marker-title',
-              				body: 'amap-ui-district-cluster-marker-body',
-              				container: 'amap-ui-district-cluster-marker'
+              				// title: 'amap-ui-district-cluster-marker-title',
+              				// body: 'amap-ui-district-cluster-marker-body',
+              				// container: 'amap-ui-district-cluster-marker'
+                             title: 'amap-ui-district-cluster-marker-title1',
+                             body: 'marker-body-customer-body',
+                             container: 'amap-ui-district-cluster-marker1'
               			};
               			if (recycledMarker) {
               				container = recycledMarker.getContent();
@@ -341,18 +344,18 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                  },
                  renderOptions:{
                    featureStyleByLevel:{
-                      country: {
-                        fillStyle: 'rgba(169, 217, 85, 0.8)'
-                      },
-                      province: {
-                        fillStyle: 'rgba(116, 196, 118, 0.7)'
-                      },
-                      city: {
-                        fillStyle: 'rgba(161, 217, 155, 0.6)'
-                      },
-                      district: {
-                        fillStyle: 'rgba(199, 233, 192, 0.5)'
-                      }
+                       country: {
+                           fillStyle: 'rgba(3, 52, 71, 1)'
+                       },
+                       province: {
+                           fillStyle: 'rgba(3, 52, 71, 1)'
+                       },
+                       city: {
+                           fillStyle: 'rgba(3, 52, 71, 1)'
+                       },
+                       district: {
+                           fillStyle: 'rgba(3, 52, 71, 1)'
+                       }
                   },
                    featureClickToShowSub:true,
                    clusterMarkerRecycleLimit:100000,
@@ -384,7 +387,7 @@ let CreateMap =({mapcenterlocation,zoomlevel})=> {
             dragEnable:true,
             zoomEnable:true,
             touchZoom:true,
-            // mapStyle: 'amap://styles/macaron'//样式URL
+            mapStyle: 'amap://styles/blue'//样式URL
         });
         // http://lbs.amap.com/api/javascript-api/example/personalized-map/set-theme-style
         // http://lbs.amap.com/api/javascript-api/guide/create-map/mapstye/

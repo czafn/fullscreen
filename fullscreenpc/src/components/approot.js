@@ -6,6 +6,8 @@ import Login from './login/login.js';
 import {map_setmapinited} from '../actions';
 import {requireAuthentication} from './requireauthentication';
 
+import "../css/common.css";
+
 class AppRoot extends React.Component {
   componentWillMount() {
     const script = document.createElement("script");

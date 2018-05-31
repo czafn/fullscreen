@@ -2,10 +2,10 @@ exports.default = {
     tree: {
         base: {
             listStyle: 'none',
-            backgroundColor: '#FFF',
+            color: '#FFF',
             margin: 0,
             padding: "20px",
-            color: '#000',
+            backgroundColor: 'rgb(19, 63, 88)',
             fontFamily: 'lucida grande ,tahoma,verdana,arial,sans-serif',
             fontSize: '16px',
         },
@@ -42,7 +42,7 @@ exports.default = {
                 height: 10,
                 width: 10,
                 arrow: {
-                    fill: '#000',
+                    fill: '#fff',
                     strokeWidth: 0
                 }
             },
@@ -50,7 +50,7 @@ exports.default = {
                 base: {
                     display: 'inline-block',
                     verticalAlign: 'top',
-                    color: '#000'
+                    color: '#fff'
                 },
                 connector: {
                     width: '2px',

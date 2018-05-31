@@ -10,6 +10,6 @@ div.seled:after{
     position: absolute;
     height: 30px;
     top: 0;
-    background: #EEE;
+    background: #183f56;
     z-index: 0;
 }
