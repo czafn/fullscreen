@@ -23,7 +23,7 @@ class TreeExample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            height : window.innerHeight-109
+            height : window.innerHeight+290
         };
     }
 
@@ -52,7 +52,7 @@ class TreeExample extends React.Component {
         window.clearTimeout(resizetimetree);
         resizetimetree = window.setTimeout(()=>{
             this.setState({
-                height: window.innerHeight-109
+                height: window.innerHeight+290
             });
 
         }, 10)
@@ -62,7 +62,7 @@ class TreeExample extends React.Component {
         const {modeview} = this.props;
 
         return (
-            <div className="treePage">
+            <div className="treePage" >
                 <div className="treehead">
                     地理位置
                 </div>
@@ -71,7 +71,7 @@ class TreeExample extends React.Component {
                     modeview === 'device' &&
                     <Tabs
                         defaultActiveKey="1"
-                        style={{ height: `${this.state.height}px`}}
+                        style={{ height: `870px`}}
                         tabBarStyle={{width : "350px"}}
                         className="treetabs"
                         >
@@ -89,7 +89,10 @@ class TreeExample extends React.Component {
                 }
                 {
                     modeview !== 'device' &&
+                    <div style={{    height: '870px',overflowY: 'auto'}}>
                         <TreeByloc />
+                    </div>
+
                 }
             </div>
         );

@@ -18,7 +18,7 @@ let Root = (props)=>
 
         <MuiThemeProvider>
             <Provider store={store}>
-                <div>
+                <div style={{height:'100%'}}>
                     <ConnectedRouter history={history}>
                         <Route path="/" component={AppRoot}/>
                     </ConnectedRouter>

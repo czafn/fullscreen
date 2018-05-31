@@ -8,6 +8,7 @@ exports.default = {
             backgroundColor: 'rgb(19, 63, 88)',
             fontFamily: 'lucida grande ,tahoma,verdana,arial,sans-serif',
             fontSize: '16px',
+            height:'100%'
         },
         node: {
             base: {

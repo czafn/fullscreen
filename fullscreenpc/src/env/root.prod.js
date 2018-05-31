@@ -18,7 +18,7 @@ import AppRoot from '../components/approot.js';
 let Root = (props)=>
     (<MuiThemeProvider>
         <Provider store={store}>
-            <div>
+            <div style={{height:'100%'}}>
                 <ConnectedRouter history={history}>
                     <Route path="/" component={AppRoot}/>
                 </ConnectedRouter>
@@ -26,6 +26,5 @@ let Root = (props)=>
         </Provider>
         </MuiThemeProvider>
     );
-
 
 export default Root;
