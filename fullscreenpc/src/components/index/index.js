@@ -230,7 +230,7 @@ class AppRoot extends React.Component {
                           </div>
                           <div className="right-bottom-right">
                               <div className="cbody-right-title-top">
-                                  省份车辆分布
+                                  各省份车辆分布
                               </div>
                               <div className="cbody-right-box busProvince">
                                   <MapProvince></MapProvince>
