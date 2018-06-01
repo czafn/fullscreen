@@ -51,6 +51,7 @@
     "velocity-react": "^1.4.1"
   },
   "scripts": {
+    "buildcp": "node scripts/build.js && cp -r build/. /root/app/bms/deploy/dist/fullpc && rm -R build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

@@ -251,6 +251,7 @@ const device = createReducer({
       g_devicesdb:{...g_devicesdb},
       gmap_acode_devices:{...gmap_acode_devices},gmap_acode_treecount:{...gmap_acode_treecount}};
   },
+  //----注:注释的这段代码专为大屏设计===
   // [mapmain_areamountdevices_result]:(state,payload)=>{
   //   const {adcode,g_devicesdb,gmap_acode_devices,gmap_acode_treecount,SettingOfflineMinutes} = payload;
   //   let datatreeloc = state.datatreeloc;
@@ -311,6 +312,7 @@ const device = createReducer({
   //   }
   //   return {...state,g_devicesdb,datatreeloc,gmap_acode_devices,gmap_acode_treecount};
   // },
+  //----注:这段代码专为大屏设计===
   [mapmain_init_device]:(state,payload)=>{
      const {g_devicesdb,gmap_acode_devices,gmap_acode_treecount} = payload;
      const {datatree,gmap_acode_node} = get_initgeotree();

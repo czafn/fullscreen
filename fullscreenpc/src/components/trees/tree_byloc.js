@@ -36,6 +36,12 @@ class Tree extends React.Component {
               node.toggled = true;
             }
 
+            //----注:这段代码专为大屏设计===
+            if(node.children.length === 0){
+              node.toggled = false;
+            }
+            //----注:这段代码专为大屏设计===
+
             let id = node.adcode;
             if(typeof id === 'string'){
               id = parseInt(id,10);
