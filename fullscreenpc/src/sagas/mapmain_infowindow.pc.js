@@ -44,14 +44,6 @@ const createInfoWindow_popinfo =(data)=> {
     contenthtml =
         `
         ${contenthtml}
-        <div class='pop_info_btn'>
-            <div class='lnk'>
-                <span onclick="clickfn_historydevice(${data.DeviceId})">历史数据</span>
-                <span onclick="clickfn_historyplay(${data.DeviceId})">历史轨迹回放</span>
-                <span onclick="clickfn_device(${data.DeviceId})">查看详情</span>
-                <span onclick="clickfn_showhistory(${data.DeviceId})">历史报警信息</span>
-            </div>
-        </div>
         `;
 
     let content = [];

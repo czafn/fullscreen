@@ -83,7 +83,7 @@ class Page extends React.Component {
                                 overflow: "visible"
                             }}
                             width={350}
-                            // style={showmenu==="addressbox"?treestyle.drawopenstyle:treestyle.drawclosestyle}
+                            style={showmenu==="addressbox"?treestyle.drawopenstyle:treestyle.drawclosestyle}
                             height={980}
                             >
                             <Tree />

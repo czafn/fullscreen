@@ -251,66 +251,66 @@ const device = createReducer({
       g_devicesdb:{...g_devicesdb},
       gmap_acode_devices:{...gmap_acode_devices},gmap_acode_treecount:{...gmap_acode_treecount}};
   },
-  [mapmain_areamountdevices_result]:(state,payload)=>{
-    const {adcode,g_devicesdb,gmap_acode_devices,gmap_acode_treecount,SettingOfflineMinutes} = payload;
-    let datatreeloc = state.datatreeloc;
-    if(adcode !== 2){
-      const findandsettreenodedevice = (node)=>{
-         let retnode = node;
-         if(node.adcode === adcode){
-           return retnode;
-         }
-         if(!!node.children){
-           for(let i = 0; i<node.children.length ;i++){
-             const subnode = node.children[i];
-             let tmpnode = findandsettreenodedevice(subnode);
-             if(!!tmpnode){
-               //<---
-               let children = [];
-               const deviceresullist = getsorteddevicelist(gmap_acode_devices[tmpnode.adcode],state.g_devicesdb,SettingOfflineMinutes);
-               map(deviceresullist,(deviceid)=>{
-                 children.push({
-                   type:'device',
-                   loading:false,
-                   name:deviceid,
-                   device:g_devicesdb[deviceid]
-                 });
-               });
-               tmpnode.children = [...children];
-
-             }
-           }
-         }
-         return null;
-       }
-       findandsettreenodedevice(datatreeloc);
-      //  const gmap_acode_node = state.gmap_acode_node;
-      //  if(gmap_acode_node[])
-      //  findandsettreenodedevice(gmap_acode_node[adcode]);
-    }
-    else{
-      let children1 = datatreeloc.children[1];
-      let children = [];
-      let nodevicelocdevicelist = [];
-      map(g_devicesdb,(deviceitem)=>{
-        if(!deviceitem.locz){
-          nodevicelocdevicelist.push(deviceitem.DeviceId);
-        }
-      });
-      const deviceresullist = getsorteddevicelist(nodevicelocdevicelist,state.g_devicesdb);
-      map(deviceresullist,(deviceid)=>{
-        children.push({
-          type:'device',
-          loading:false,
-          name:g_devicesdb[deviceid].DeviceId,
-          device:g_devicesdb[deviceid]
-        });
-      });
-      children1.children = children;
-      datatreeloc.children[1] = {...children1};
-    }
-    return {...state,g_devicesdb,datatreeloc,gmap_acode_devices,gmap_acode_treecount};
-  },
+  // [mapmain_areamountdevices_result]:(state,payload)=>{
+  //   const {adcode,g_devicesdb,gmap_acode_devices,gmap_acode_treecount,SettingOfflineMinutes} = payload;
+  //   let datatreeloc = state.datatreeloc;
+  //   if(adcode !== 2){
+  //     const findandsettreenodedevice = (node)=>{
+  //        let retnode = node;
+  //        if(node.adcode === adcode){
+  //          return retnode;
+  //        }
+  //        if(!!node.children){
+  //          for(let i = 0; i<node.children.length ;i++){
+  //            const subnode = node.children[i];
+  //            let tmpnode = findandsettreenodedevice(subnode);
+  //            if(!!tmpnode){
+  //              //<---
+  //              let children = [];
+  //              const deviceresullist = getsorteddevicelist(gmap_acode_devices[tmpnode.adcode],state.g_devicesdb,SettingOfflineMinutes);
+  //              map(deviceresullist,(deviceid)=>{
+  //                children.push({
+  //                  type:'device',
+  //                  loading:false,
+  //                  name:deviceid,
+  //                  device:g_devicesdb[deviceid]
+  //                });
+  //              });
+  //              tmpnode.children = [...children];
+  //
+  //            }
+  //          }
+  //        }
+  //        return null;
+  //      }
+  //      findandsettreenodedevice(datatreeloc);
+  //     //  const gmap_acode_node = state.gmap_acode_node;
+  //     //  if(gmap_acode_node[])
+  //     //  findandsettreenodedevice(gmap_acode_node[adcode]);
+  //   }
+  //   else{
+  //     let children1 = datatreeloc.children[1];
+  //     let children = [];
+  //     let nodevicelocdevicelist = [];
+  //     map(g_devicesdb,(deviceitem)=>{
+  //       if(!deviceitem.locz){
+  //         nodevicelocdevicelist.push(deviceitem.DeviceId);
+  //       }
+  //     });
+  //     const deviceresullist = getsorteddevicelist(nodevicelocdevicelist,state.g_devicesdb);
+  //     map(deviceresullist,(deviceid)=>{
+  //       children.push({
+  //         type:'device',
+  //         loading:false,
+  //         name:g_devicesdb[deviceid].DeviceId,
+  //         device:g_devicesdb[deviceid]
+  //       });
+  //     });
+  //     children1.children = children;
+  //     datatreeloc.children[1] = {...children1};
+  //   }
+  //   return {...state,g_devicesdb,datatreeloc,gmap_acode_devices,gmap_acode_treecount};
+  // },
   [mapmain_init_device]:(state,payload)=>{
      const {g_devicesdb,gmap_acode_devices,gmap_acode_treecount} = payload;
      const {datatree,gmap_acode_node} = get_initgeotree();
