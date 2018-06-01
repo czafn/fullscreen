@@ -134,7 +134,7 @@
 }
 
 .cbody-left-top-title {
-    background: url('img/underline_left_450.png');
+    background: url('img/underline_left_450_1.png');
     background-repeat: no-repeat;
     background-position-y: 100%;
     margin-bottom: 10px;
@@ -354,6 +354,16 @@ div {
     line-height: 60px;
     float: left;
 }
+.titleNumCol-center{
+    margin-left: 80px;
+    line-height: 60px;
+    float: left;
+}
+.titleNumCol-center:nth-child(1){
+    margin-left: 150px;
+    line-height: 60px;
+    float: left;
+}
 .titleNumCol-right:nth-child(1){
     margin-left: 40px;
 }
@@ -369,6 +379,34 @@ div {
 }
 .titleTime{
     font-size: 15px;
+}
+.red{
+    /*background: rgb(210, 29, 36);*/
+    color: rgb(210, 29, 36);
+    background: rgba(0, 168, 255, 0);
+
+}
+.orange{
+    /*background: rgb(237, 148, 47);*/
+    color: rgb(237, 148, 47);
+    background: rgba(0, 168, 255, 0);
+}
+.yellow{
+    /*background: rgb(246, 208, 107);*/
+    color: rgb(246, 208, 107);
+    background: rgba(0, 168, 255, 0);
+}
+
+.red-border{
+    /*background: rgb(210, 29, 36);*/
+    border: 2px solid rgb(210, 29, 36);
+
+}
+.orange-border{
+    border: 2px solid rgb(237, 148, 47);
+}
+.yellow-border{
+    border: 2px solid rgb(246, 208, 107);
 }
 
 

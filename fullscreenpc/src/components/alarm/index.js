@@ -16,8 +16,9 @@ const Table = styled.table`
   padding: 0;
   th{
     width: 30%;
-    font-weight: 300;
+    background: #0c6da4;
     font-size: 13px;
+    font-weight: 400;
     text-align: left;
     padding: 0 15px;
   }
@@ -33,7 +34,7 @@ const Table = styled.table`
     float: left;
   }
   tbody{
-    tr:nth-child(odd){background:rgba(14, 63, 93, 0.69);}
+    tr:nth-child(even){background:rgba(14, 63, 93, 0.69);}
   }
   tr{
     height: 23px;

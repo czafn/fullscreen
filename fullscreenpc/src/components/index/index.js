@@ -123,35 +123,8 @@ class AppRoot extends React.Component {
               <div className="center">
                   <div className="title-center">
                       <div className="title-center-box">
-                          <div className="titleNumCol">
-                              <div className="title-center-title"><img src="index/top.png" alt=""></img>市场保有量</div>
-                              <div className="title-center-content-border">
-                                  <div className="title-center-content">
-                                      <span className="title-center-content-num">{centerIndex.count_online+centerIndex.count_offline}</span>
-                                      <span className="title-center-content-day">辆</span>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="titleNumCol">
-                              <div className="title-center-title"><img src="index/top.png" alt=""></img>已联网</div>
-                              <div className="title-center-content-border">
-                                  <div className="title-center-content">
-                                      <span className="title-center-content-num">{centerIndex.count_online}</span>
-                                      <span className="title-center-content-day">辆</span>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="titleNumCol">
-                              <div className="title-center-title"><img src="index/top.png" alt=""></img>未联网</div>
-                              <div className="title-center-content-border">
-                                  <div className="title-center-content">
-                                      <span className="title-center-content-num">{centerIndex.count_offline}</span>
-                                      <span className="title-center-content-day">辆</span>
-                                  </div>
-                              </div>
-                          </div>
-                          <div className="titleNumCol">
-                              <div className="title-center-title"><img src="index/top.png" alt=""></img>故障车辆</div>
+                          <div className="titleNumCol-center">
+                              <div className="title-center-title"><img src="index/top.png" alt=""></img>总数量</div>
                               <div className="title-center-content-border">
                                   <div className="title-center-content">
                                       <span className="title-center-content-num">{centerIndex.count_all}</span>
@@ -159,15 +132,42 @@ class AppRoot extends React.Component {
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol">
-                              <div className="title-center-title"><img src="index/top.png" alt=""></img>今日新增</div>
-                              <div className="title-center-content-border" style={{width: "190px"}}>
-                                  <div className="title-center-content" style={{width: "180px"}}>
-                                      <span className="title-center-content-num">{centerIndex.today_new}</span>
+                          <div className="titleNumCol-center ">
+                              <div className="title-center-title red"><img src="index/top.png" alt=""></img>一级</div>
+                              <div className="title-center-content-border red-border">
+                                  <div className="title-center-content red">
+                                      <span className="title-center-content-num">{centerIndex.count_red}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
                           </div>
+                          <div className="titleNumCol-center ">
+                              <div className="title-center-title orange"><img src="index/top.png" alt=""></img>二级</div>
+                              <div className="title-center-content-border orange-border">
+                                  <div className="title-center-content orange">
+                                      <span className="title-center-content-num">{centerIndex.count_orange}</span>
+                                      <span className="title-center-content-day">辆</span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div className="titleNumCol-center ">
+                              <div className="title-center-title yellow"><img src="index/top.png" alt=""></img>三级</div>
+                              <div className="title-center-content-border yellow-border">
+                                  <div className="title-center-content yellow">
+                                      <span className="title-center-content-num">{centerIndex.count_yellow}</span>
+                                      <span className="title-center-content-day">辆</span>
+                                  </div>
+                              </div>
+                          </div>
+                          {/*<div className="titleNumCol">*/}
+                              {/*<div className="title-center-title"><img src="index/top.png" alt=""></img>今日新增</div>*/}
+                              {/*<div className="title-center-content-border" style={{width: "190px"}}>*/}
+                                  {/*<div className="title-center-content" style={{width: "180px"}}>*/}
+                                      {/*<span className="title-center-content-num">{centerIndex.today_new}</span>*/}
+                                      {/*<span className="title-center-content-day">辆</span>*/}
+                                  {/*</div>*/}
+                              {/*</div>*/}
+                          {/*</div>*/}
 
                       </div>
                   </div>
@@ -289,13 +289,16 @@ const mapStateToProps = ({app,searchresult:{curallalarm,alarms},device:{g_device
    count_all = count_red + count_orange + count_yellow;
 
     if(count_all>99){
-        count_all = "99+";
+        // count_all = "99+";
     }
 
     const centerIndex = {
         count_online:count_online,
         count_offline:count_offline,
         count_all:count_all,
+        count_red:count_red,
+        count_yellow:count_yellow,
+        count_orange:count_orange,
         today_new:56
     };
     const rightIndex = {
