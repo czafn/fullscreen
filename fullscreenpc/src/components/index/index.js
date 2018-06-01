@@ -295,7 +295,7 @@ const mapStateToProps = ({app,searchresult:{curallalarm,alarms},device:{g_device
     const centerIndex = {
         count_online:count_online,
         count_offline:count_offline,
-        count_all:count_all,
+        count_all:count_online+count_offline,
         count_red:count_red,
         count_yellow:count_yellow,
         count_orange:count_orange,
