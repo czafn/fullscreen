@@ -230,7 +230,7 @@ class AppRoot extends React.Component {
                           </div>
                           <div className="right-bottom-right">
                               <div className="cbody-right-title-top">
-                                  各省份车辆分布
+                                  省份车辆分布
                               </div>
                               <div className="cbody-right-box busProvince">
                                   <MapProvince></MapProvince>
@@ -295,7 +295,7 @@ const mapStateToProps = ({app,searchresult:{curallalarm,alarms},device:{g_device
     const centerIndex = {
         count_online:count_online,
         count_offline:count_offline,
-        count_all:count_all,
+        count_all:count_online+count_offline,
         count_red:count_red,
         count_yellow:count_yellow,
         count_orange:count_orange,
