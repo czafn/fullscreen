@@ -41,7 +41,8 @@ class Page extends React.Component {
                     type: 'continuous',
                     text: ['', ''],
                     showLabel: true,
-                    seriesIndex: [0],
+                    // calculable:true,
+                    seriesIndex: [0,1],
                     min: 0,
                     max: 0,
                     inRange: {
@@ -190,7 +191,7 @@ class Page extends React.Component {
                         z: -12,
                         data: []
                     }, {
-                        // name: 'dotted',
+                        name: 'CAR',
                         type: 'pictorialBar',
                         symbol: 'rect',
                         itemStyle: {
@@ -223,9 +224,9 @@ class Page extends React.Component {
                         z: -12,
                         data: []
                     }, {
-                        // name: 'dotted',
+                        name: 'BUS',
                         type: 'pictorialBar',
-                        barGap: '-25%',
+                        barGap: '-20%',
                         symbol: 'rect',
                         itemStyle: {
                             normal: {
@@ -262,9 +263,44 @@ class Page extends React.Component {
     //     }
     // };
 
+    onChartLegendselectchanged = (param, echart) => {
+        console.log(param, echart);
+        let o = echart.getOption();
+        if(param.selected.BUS === true && param.selected.CAR === true){
+            let carObj = o.series[0].data;
+            let busObj = o.series[1].data;
+            let totVal = [];
+            for (let i = 0; i < carObj.length; i++) {
+                let temp = _.find(busObj,(t)=>t.name === carObj[i].name);
+
+                if(temp !== undefined){
+                    console.log(carObj[i],'---',temp)
+                    totVal.push(carObj[i].value + temp.value);
+                } else {
+                    totVal.push(0);
+                }
+
+            }
+            o.visualMap.min = _.min(totVal,t=>t.value).value;
+            o.visualMap.max = _.max(totVal,t=>t.value).value;
+        } else if(param.selected.BUS === true && param.selected.CAR === false){
+            o.visualMap.min = _.min(o.series[1].data,t=>t.value).value;
+            o.visualMap.max = _.max(o.series[1].data,t=>t.value).value;
+
+        } else if(param.selected.BUS === false && param.selected.CAR === true){
+            o.visualMap.min = _.min(o.series[0].data,t=>t.value).value;
+            o.visualMap.max = _.max(o.series[0].data,t=>t.value).value;
+        }
+        this.option = o;
+        echart.setOption(o);
+    };
     render() {
         let {data} = this.props;
         const option = this.option;
+
+        let onEvents = {
+            'legendselectchanged': this.onChartLegendselectchanged
+        }
 
         data = _.sortBy(data,(i)=>-i.value-0);
         let group = _.groupBy(data,'type');
@@ -281,9 +317,8 @@ class Page extends React.Component {
             busObj.push(b ? {name: b.name, value: b.value-0} : {name:_info.name, value: 0});
             totVal.push(carObj[i].value + busObj[i].value);
         }
-        option.visualMap.min = _.min(totVal,t=>t);
+        option.visualMap.min = 0;
         option.visualMap.max = _.max(totVal,t=>t);
-
         car.push(
             {
                 name: '南海诸岛',
@@ -311,7 +346,7 @@ class Page extends React.Component {
 
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height: "590px"}} className='singleBarChart' />
+              <ReactEcharts option={option} style={{height: "590px"}} className='singleBarChart'  />
             </Chart>
         );
     };
