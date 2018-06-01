@@ -7,7 +7,8 @@ import Cycle from '../cycle';
 import CycleCount from '../cycleCount';
 import DxTemperature from '../dxTemperature';
 import CellTemperature from '../cellTemperature';
-
+import {getdevicestatus_isonline,getdevicestatus_alaramlevel} from '../../util/getdeviceitemstatus';
+import lodashmap from 'lodash.map';
 import Item from '../item';
 import CarYear from '../carYear';
 import BusYear from '../busYear';
@@ -253,11 +254,48 @@ class AppRoot extends React.Component {
       );
   }
 }
-const mapStateToProps = ({}) => {
+
+const mapStateToProps = ({app,searchresult:{curallalarm,alarms},device:{g_devicesdb},app:{SettingOfflineMinutes}}) => {
+  const {modeview} = app;
+
+   let count_online = 0;
+   let count_offline = 0;
+
+   let count_all = 0;
+   let count_yellow = 0;
+   let count_red = 0;
+   let count_orange = 0;
+
+   lodashmap(g_devicesdb,(deviceitem)=>{
+     const isonline = getdevicestatus_isonline(deviceitem,SettingOfflineMinutes);
+     const warninglevel = getdevicestatus_alaramlevel(deviceitem);
+     if(isonline){
+       count_online++;
+     }
+     else{
+       count_offline++;
+     }
+     if(warninglevel === '高'){
+       count_red++;
+     }
+     else if(warninglevel === '中'){
+       count_orange++;
+     }
+     else if(warninglevel === '低'){
+       count_yellow++;
+     }
+   });
+
+   count_all = count_red + count_orange + count_yellow;
+
+    if(count_all>99){
+        count_all = "99+";
+    }
+
     const centerIndex = {
-        count_online:33753,
-        count_offline:23753,
-        count_all:8753,
+        count_online:count_online,
+        count_offline:count_offline,
+        count_all:count_all,
         today_new:56
     };
     const rightIndex = {
@@ -265,5 +303,19 @@ const mapStateToProps = ({}) => {
         car:4834
     };
     return {centerIndex, rightIndex};
-}
+  //  return {count_online,count_offline,count_all,count_yellow,count_red,count_orange,modeview};
+ }
+// const mapStateToProps = ({}) => {
+//     const centerIndex = {
+//         count_online:33753,
+//         count_offline:23753,
+//         count_all:8753,
+//         today_new:56
+//     };
+//     const rightIndex = {
+//         bus:1889,
+//         car:4834
+//     };
+//     return {centerIndex, rightIndex};
+// }
 export default connect(mapStateToProps)(AppRoot);
