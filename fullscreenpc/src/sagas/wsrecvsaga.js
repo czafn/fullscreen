@@ -1,4 +1,4 @@
-import { put,call,takeLatest,take,} from 'redux-saga/effects';
+import { put,call,takeLatest,take,fork,cancel} from 'redux-saga/effects';
 // import {delay} from 'redux-saga';
 import {
   common_err,
@@ -24,19 +24,19 @@ import {
 
   savealarmsettings_result,
 
-  catl_working_request,
-  catl_cycle_request,
-  catl_celltemperature_request,
-  catl_cyclecount_request,
-  catl_dxtemperature_request,
-  catl_warningf_request,
-
-  getcountcar_request,
-  getcountbus_request,
-  getusedyearcar_request,
-  getusedyearbus_request,
-  getstatprovince_request,
-  getstatcatlproject_request,
+  // catl_working_request,
+  // catl_cycle_request,
+  // catl_celltemperature_request,
+  // catl_cyclecount_request,
+  // catl_dxtemperature_request,
+  // catl_warningf_request,
+  //
+  // getcountcar_request,
+  // getcountbus_request,
+  // getusedyearcar_request,
+  // getusedyearbus_request,
+  // getstatprovince_request,
+  // getstatcatlproject_request,
 
 } from '../actions';
 import { goBack } from 'react-router-redux';//https://github.com/reactjs/react-router-redux
@@ -45,9 +45,12 @@ import coordtransform from 'coordtransform';
 import {getgeodata} from '../sagas/mapmain_getgeodata';
 import {g_devicesdb} from './mapmain';
 import config from '../env/config.js';
+
+import {querycatldata} from '../sagas/catlfull';
 // import  {
 //   getrandom
 // } from '../test/bmsdata.js';
+let task_querycatldata;
 
 export function* wsrecvsagaflow() {
   yield takeLatest(`${savealarmsettings_result}`, function*(action) {
@@ -92,19 +95,11 @@ export function* wsrecvsagaflow() {
               yield put(querydevicegroup_request({}));
 
               if(config.softmode === 'fullpc'){
-                yield put(catl_working_request({}));
-                yield put(catl_cycle_request({}));
-                yield put(catl_celltemperature_request({}));
-                yield put(catl_cyclecount_request({}));
-                yield put(catl_dxtemperature_request({}));
-                yield put(catl_warningf_request({}));
-                yield put(getcountcar_request({}));
-                yield put(getcountbus_request({}));
-                yield put(getusedyearcar_request({}));
-                yield put(getusedyearbus_request({}));
-                yield put(getstatprovince_request({}));
-                yield put(getstatcatlproject_request({}));
-            }
+                if(!!task_querycatldata){
+                  yield cancel(task_querycatldata);
+                }
+                task_querycatldata = yield fork(querycatldata);
+              }
 
             }
         }
