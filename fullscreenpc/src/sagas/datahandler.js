@@ -58,7 +58,20 @@ import {
     catl_cyclecount_request,
     catl_cyclecount_result,
     catl_dxtemperature_request,
-    catl_dxtemperature_result
+    catl_dxtemperature_result,
+
+    getcountcar_request,
+    getcountbus_request,
+    getusedyearcar_request,
+    getusedyearbus_request,
+    getstatprovince_request,
+    getstatcatlproject_request,
+    getcountcar_result,
+    getcountbus_result,
+    getusedyearcar_result,
+    getusedyearbus_result,
+    getstatprovince_result,
+    getstatcatlproject_result,
   } from '../actions';
 import {
   uireport_searchdevice_request,
@@ -77,6 +90,14 @@ import {
 
 //接收的对应关系
 let recvmessagetoresultpair = {
+  'getcountcar_result':getcountcar_result,
+  'getcountbus_result':getcountbus_result,
+  'getusedyearcar_result':getusedyearcar_result,
+  'getusedyearbus_result':getusedyearbus_result,
+  'getstatprovince_result':getstatprovince_result,
+  'getstatcatlproject_result':getstatcatlproject_result,
+
+
   'catl_working_result':catl_working_result,
   'catl_cycle_result':catl_cycle_result,
   'catl_celltemperature_result':catl_celltemperature_result,
@@ -128,6 +149,14 @@ let sendmessagefnsz = {
 
 //验证发送接口
 let sendmessageauthfnsz = {
+  'getcountcar':`${getcountcar_request}`,
+  'getcountbus':`${getcountbus_request}`,
+  'getusedyearcar':`${getusedyearcar_request}`,
+  'getusedyearbus':`${getusedyearbus_request}`,
+  'getstatprovince':`${getstatprovince_request}`,
+  'getstatcatlproject':`${getstatcatlproject_request}`,
+
+
   'catl_working':`${catl_working_request}`,
   'catl_cycle':`${catl_cycle_request}`,
   'catl_celltemperature':`${catl_celltemperature_request}`,

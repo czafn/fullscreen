@@ -14,7 +14,7 @@ const Chart = styled.div`
   .singleBarChart {
     width: 100%;
 	overflow: hidden;
-	
+
     background: rgba(10, 108, 163, 0.3);
   }
 `;
@@ -296,6 +296,9 @@ class Page extends React.Component {
     };
     render() {
         let {data} = this.props;
+        if(data.length === 0){
+          return <div>loading</div>
+        }
         const option = this.option;
 
         let onEvents = {
@@ -352,79 +355,80 @@ class Page extends React.Component {
     };
 }
 
-const mapStateToProps = ({}) => {
-    let data = [
-        {"name":"北京","value":9669,"type":"CAR"},
-        {"name":"天津","value":8063,"type":"CAR"},
-        {"name":"上海","value":13349,"type":"CAR"},
-        {"name":"重庆","value":11475,"type":"CAR"},
-        {"name":"河北","value":10824,"type":"CAR"},
-        {"name":"山西","value":9148,"type":"CAR"},
-        {"name":"辽宁","value":7931,"type":"CAR"},
-        {"name":"吉林","value":7018,"type":"CAR"},
-        {"name":"黑龙江","value":5658,"type":"CAR"},
-        {"name":"江苏","value":5619,"type":"CAR"},
-        {"name":"浙江","value":5456,"type":"CAR"},
-        {"name":"安徽","value":5231,"type":"CAR"},
-        {"name":"福建","value":3261,"type":"CAR"},
-        {"name":"江西","value":3836,"type":"CAR"},
-        {"name":"山东","value":2824,"type":"CAR"},
-        {"name":"河南","value":2486,"type":"CAR"},
-        {"name":"湖北","value":2231,"type":"CAR"},
-        {"name":"湖南","value":1758,"type":"CAR"},
-        {"name":"广东","value":1209,"type":"CAR"},
-        {"name":"海南","value":1153,"type":"CAR"},
-        {"name":"四川","value":1049,"type":"CAR"},
-        {"name":"贵州","value":908,"type":"CAR"},
-        {"name":"云南","value":815,"type":"CAR"},
-        {"name":"陕西","value":492,"type":"CAR"},
-        {"name":"甘肃","value":252,"type":"CAR"},
-        {"name":"青海","value":183,"type":"CAR"},
-        {"name":"台湾","value":118,"type":"CAR"},
-        {"name":"内蒙古","value":107,"type":"CAR"},
-        {"name":"广西","value":87,"type":"CAR"},
-        {"name":"西藏","value":24,"type":"CAR"},
-        {"name":"宁夏","value":22,"type":"CAR"},
-        {"name":"新疆","value":18,"type":"CAR"},
-        {"name":"香港","value":14,"type":"CAR"},
-        {"name":"澳门","value":6,"type":"CAR"},
-
-
-        {"name":"北京","value":2669,"type":"BUS"},
-        {"name":"天津","value":1806,"type":"BUS"},
-        {"name":"上海","value":2349,"type":"BUS"},
-        {"name":"重庆","value":1745,"type":"BUS"},
-        {"name":"河北","value":1382,"type":"BUS"},
-        {"name":"山西","value":914,"type":"BUS"},
-        {"name":"辽宁","value":793,"type":"BUS"},
-        {"name":"吉林","value":701,"type":"BUS"},
-        {"name":"黑龙江","value":565,"type":"BUS"},
-        {"name":"江苏","value":561,"type":"BUS"},
-        {"name":"浙江","value":545,"type":"BUS"},
-        {"name":"安徽","value":523,"type":"BUS"},
-        {"name":"福建","value":326,"type":"BUS"},
-        {"name":"江西","value":383,"type":"BUS"},
-        {"name":"山东","value":282,"type":"BUS"},
-        {"name":"河南","value":248,"type":"BUS"},
-        {"name":"湖北","value":223,"type":"BUS"},
-        {"name":"湖南","value":175,"type":"BUS"},
-        {"name":"广东","value":120,"type":"BUS"},
-        {"name":"海南","value":115,"type":"BUS"},
-        {"name":"四川","value":104,"type":"BUS"},
-        {"name":"贵州","value":90,"type":"BUS"},
-        {"name":"云南","value":81,"type":"BUS"},
-        {"name":"陕西","value":49,"type":"BUS"},
-        {"name":"甘肃","value":25,"type":"BUS"},
-        {"name":"青海","value":18,"type":"BUS"},
-        {"name":"台湾","value":11,"type":"BUS"},
-        {"name":"内蒙古","value":10,"type":"BUS"},
-        {"name":"广西","value":8,"type":"BUS"},
-        {"name":"西藏","value":7,"type":"BUS"},
-        {"name":"宁夏","value":6,"type":"BUS"},
-        {"name":"新疆","value":3,"type":"BUS"},
-        {"name":"香港","value":2,"type":"BUS"},
-        {"name":"澳门","value":1,"type":"BUS"}
-    ];
+const mapStateToProps = ({deviceext}) => {
+    let data = deviceext.statprovince;
+    // let data = [
+    //     {"name":"北京","value":9669,"type":"CAR"},
+    //     {"name":"天津","value":8063,"type":"CAR"},
+    //     {"name":"上海","value":13349,"type":"CAR"},
+    //     {"name":"重庆","value":11475,"type":"CAR"},
+    //     {"name":"河北","value":10824,"type":"CAR"},
+    //     {"name":"山西","value":9148,"type":"CAR"},
+    //     {"name":"辽宁","value":7931,"type":"CAR"},
+    //     {"name":"吉林","value":7018,"type":"CAR"},
+    //     {"name":"黑龙江","value":5658,"type":"CAR"},
+    //     {"name":"江苏","value":5619,"type":"CAR"},
+    //     {"name":"浙江","value":5456,"type":"CAR"},
+    //     {"name":"安徽","value":5231,"type":"CAR"},
+    //     {"name":"福建","value":3261,"type":"CAR"},
+    //     {"name":"江西","value":3836,"type":"CAR"},
+    //     {"name":"山东","value":2824,"type":"CAR"},
+    //     {"name":"河南","value":2486,"type":"CAR"},
+    //     {"name":"湖北","value":2231,"type":"CAR"},
+    //     {"name":"湖南","value":1758,"type":"CAR"},
+    //     {"name":"广东","value":1209,"type":"CAR"},
+    //     {"name":"海南","value":1153,"type":"CAR"},
+    //     {"name":"四川","value":1049,"type":"CAR"},
+    //     {"name":"贵州","value":908,"type":"CAR"},
+    //     {"name":"云南","value":815,"type":"CAR"},
+    //     {"name":"陕西","value":492,"type":"CAR"},
+    //     {"name":"甘肃","value":252,"type":"CAR"},
+    //     {"name":"青海","value":183,"type":"CAR"},
+    //     {"name":"台湾","value":118,"type":"CAR"},
+    //     {"name":"内蒙古","value":107,"type":"CAR"},
+    //     {"name":"广西","value":87,"type":"CAR"},
+    //     {"name":"西藏","value":24,"type":"CAR"},
+    //     {"name":"宁夏","value":22,"type":"CAR"},
+    //     {"name":"新疆","value":18,"type":"CAR"},
+    //     {"name":"香港","value":14,"type":"CAR"},
+    //     {"name":"澳门","value":6,"type":"CAR"},
+    //
+    //
+    //     {"name":"北京","value":2669,"type":"BUS"},
+    //     {"name":"天津","value":1806,"type":"BUS"},
+    //     {"name":"上海","value":2349,"type":"BUS"},
+    //     {"name":"重庆","value":1745,"type":"BUS"},
+    //     {"name":"河北","value":1382,"type":"BUS"},
+    //     {"name":"山西","value":914,"type":"BUS"},
+    //     {"name":"辽宁","value":793,"type":"BUS"},
+    //     {"name":"吉林","value":701,"type":"BUS"},
+    //     {"name":"黑龙江","value":565,"type":"BUS"},
+    //     {"name":"江苏","value":561,"type":"BUS"},
+    //     {"name":"浙江","value":545,"type":"BUS"},
+    //     {"name":"安徽","value":523,"type":"BUS"},
+    //     {"name":"福建","value":326,"type":"BUS"},
+    //     {"name":"江西","value":383,"type":"BUS"},
+    //     {"name":"山东","value":282,"type":"BUS"},
+    //     {"name":"河南","value":248,"type":"BUS"},
+    //     {"name":"湖北","value":223,"type":"BUS"},
+    //     {"name":"湖南","value":175,"type":"BUS"},
+    //     {"name":"广东","value":120,"type":"BUS"},
+    //     {"name":"海南","value":115,"type":"BUS"},
+    //     {"name":"四川","value":104,"type":"BUS"},
+    //     {"name":"贵州","value":90,"type":"BUS"},
+    //     {"name":"云南","value":81,"type":"BUS"},
+    //     {"name":"陕西","value":49,"type":"BUS"},
+    //     {"name":"甘肃","value":25,"type":"BUS"},
+    //     {"name":"青海","value":18,"type":"BUS"},
+    //     {"name":"台湾","value":11,"type":"BUS"},
+    //     {"name":"内蒙古","value":10,"type":"BUS"},
+    //     {"name":"广西","value":8,"type":"BUS"},
+    //     {"name":"西藏","value":7,"type":"BUS"},
+    //     {"name":"宁夏","value":6,"type":"BUS"},
+    //     {"name":"新疆","value":3,"type":"BUS"},
+    //     {"name":"香港","value":2,"type":"BUS"},
+    //     {"name":"澳门","value":1,"type":"BUS"}
+    // ];
     return {data};
 }
 export default connect(mapStateToProps)(Page);

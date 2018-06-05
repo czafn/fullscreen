@@ -9,6 +9,8 @@ const startviews = (app)=>{
     })
   });
 
+
+
 };
 
 module.exports= startviews;
