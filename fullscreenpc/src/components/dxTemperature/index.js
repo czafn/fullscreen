@@ -197,7 +197,7 @@ class Page extends React.Component {
         if(data.length === 0){
           return (<div>loading</div>)
         }
-        
+
         const option = this.option;
         data = _.sortBy(data,(i) => i.name-0);
         option.xAxis[0].data = data.map(value => value['name']);
@@ -222,7 +222,7 @@ const mapStateToProps = ({catlworking}) => {
       value:`${lodashget(v,'value',0)}`,
     });
   });
-  console.log(data);
+  // console.log(data);
 
     // let data = [
     //     {"name":"0","value":"1"},

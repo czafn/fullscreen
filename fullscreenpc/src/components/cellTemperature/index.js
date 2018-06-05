@@ -248,7 +248,7 @@ const mapStateToProps = ({catlworking}) => {
       value:`${lodashget(v,'value',0)}`,
     });
   });
-  console.log(data);
+  // console.log(data);
     // let data = [
     //     {"name":"0.6","value":"2"},
     //     {"name":"0.7","value":"2"},

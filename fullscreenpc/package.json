@@ -12,6 +12,7 @@
     "lodash.chunk": "^4.2.0",
     "lodash.clone": "^4.5.0",
     "lodash.countby": "^4.6.0",
+    "lodash.dropright": "^4.1.1",
     "lodash.endswith": "^4.2.1",
     "lodash.filter": "^4.6.0",
     "lodash.find": "^4.6.0",
