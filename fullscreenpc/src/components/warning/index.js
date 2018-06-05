@@ -55,7 +55,7 @@ class Page extends React.Component {
             <Table cellSpacing="0" cellPadding="0" >
               <thead>
                 <tr>
-                  <th>RBD</th>
+                  <th>编号</th>
                   <th>预警类型</th>
                   <th>更新时间</th>
                 </tr>

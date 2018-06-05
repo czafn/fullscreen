@@ -58,16 +58,37 @@ class Page extends React.Component {
         super(props);
     }
 
+    timeTicket = null;
+
+    componentDidMount() {
+
+        this.timeTicket = setInterval(() => {
+            this.nextAlarm()
+        }, 10000);
+
+    };
+    componentWillUnmount() {
+        if (this.timeTicket) {
+            clearInterval(this.timeTicket);
+        }
+    };
+
+    nextAlarm(){
+        // debugger
+        // this.refs.ddd
+        this.refs.ddd.next();
+    }
+
     render() {
         const {level1_ListData, level2_ListData, level3_ListData} = this.props;
         return (
           <div >
-              <Carousel autoplay autoplaySpeed={10000}>
+              <Carousel ref='ddd' >
                   <div>
                       <Table cellSpacing="0" cellPadding="0" >
                           <thead>
                           <tr>
-                              <th>RBD</th>
+                              <th>编号</th>
                               <th>报警时间</th>
                               <th>报警等级</th>
                           </tr>
@@ -77,13 +98,13 @@ class Page extends React.Component {
                               lodashmap(level1_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span>{obj.type}</span> <span><img src="alarm/error02.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
-                                      td = <td><span>{obj.type} </span> <span><img src="alarm/warning.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span>{obj.type} </span> <span><img src="alarm/warning5.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.RBD}</td>
@@ -110,13 +131,13 @@ class Page extends React.Component {
                               lodashmap(level2_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span>{obj.type}</span> <span> <img src="alarm/error02.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
-                                      td = <td><span>{obj.type}</span> <span> <img src="alarm/warning.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span>{obj.type}</span> <span> <img src="alarm/warning5.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.RBD}</td>
@@ -142,13 +163,13 @@ class Page extends React.Component {
                               lodashmap(level3_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span>{obj.type}</span> <span><img src="alarm/error02.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
-                                      td = <td><span>{obj.type}</span> <span><img src="alarm/warning.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span>{obj.type}</span> <span><img src="alarm/warning5.png" alt=""></img></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.RBD}</td>

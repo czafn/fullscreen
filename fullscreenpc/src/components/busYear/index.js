@@ -24,7 +24,7 @@ class Page extends React.Component {
             return {
                 tooltip: {
                     trigger: 'item',
-                    formatter: "{b} <br/> {a} <br/> {c}元",
+                    formatter: "{b}：{c}辆",
                     // borderWidth: 1,
                     // borderColor: 'rgba(0,168,255,1)',
                     // backgroundColor: 'rgba(0,168,255,.3)',

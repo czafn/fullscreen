@@ -89,8 +89,16 @@ class Page extends React.Component {
                         textStyle: {
                             color: "#fff"
                         },
-                        interval:1,
-                        // rotate:20,
+                        // interval:1,
+                        interval:0,
+                        formatter: function (value, index) {
+                            if(index %2 ==0)
+                                // return value.substring(0,5)+'\n'+value.substring(5,value.length);
+                                return value;
+                            else
+                                return value;
+                        },
+                        rotate:20,
                     },
                     axisLine: {
                         show: false

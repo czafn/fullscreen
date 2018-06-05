@@ -110,7 +110,7 @@ class AppRoot extends React.Component {
                           </div>
                           <div className="left-top-right">
                               <div className="cbody-left-top-title left-right">
-                                  充电次数分析
+                                  充电次数
                               </div>
                               <div className="cbody-left-top-box">
                                   <CycleCount></CycleCount>
@@ -182,16 +182,16 @@ class AppRoot extends React.Component {
               <div className="right">
                   <div className="title-right">
                       <div className="titleNumCol titleNumCol-right">
-                          <div className="title-center-title"><img src="index/top.png" alt=""></img>BUS车辆</div>
-                          <div className="title-center-content-border">
-                              <div className="title-center-content">
+                          <div className="title-center-title"><img src="index/top.png" alt=""></img>E-BUS车辆</div>
+                          <div className="title-center-content-border" style={{width: "190px"}}>
+                              <div className="title-center-content" style={{width: "180px"}}>
                                   <span className="title-center-content-num">{rightIndex.bus}</span>
                                   <span className="title-center-content-day">辆</span>
                               </div>
                           </div>
                       </div>
                       <div className="titleNumCol">
-                          <div className="title-center-title"><img src="index/top.png" alt=""></img>CAR车辆</div>
+                          <div className="title-center-title"><img src="index/top.png" alt=""></img>E-CAR车辆</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
                                   <span className="title-center-content-num">{rightIndex.car}</span>
