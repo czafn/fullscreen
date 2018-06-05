@@ -39,7 +39,7 @@ const Table = styled.table`
   th:nth-child(3),td:nth-child(3){
     width: 40%;
   }
-  
+
 `;
 
 
@@ -77,18 +77,18 @@ class Page extends React.Component {
     }
 }
 
-const mapStateToProps = ({}) => {
-    const listData =
-    [
-        {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"过压"},
-        {"update_time":"2017/11/17 22:20:00","DeviceId":"1719100098","type":"过温"},
-        {"update_time":"2017/11/17 22:04:00","DeviceId":"1627100777","type":"欠压"},
-        {"update_time":"2017/11/18 10:03:00","DeviceId":"1724101290","type":"SOC不一致"},
-        {"update_time":"2017/11/18 04:55:00","DeviceId":"1627100478","type":"SOC不一致"},
-        {"update_time":"2017/11/20 09:56:00","DeviceId":"1724101531","type":"温度跳变"},
-        {"update_time":"2017/11/20 10:06:00","DeviceId":"1724106076","type":"温度跳变"},
-        {"update_time":"2017/11/20 01:37:00","DeviceId":"1719103339","type":"过压"}
-    ]
+const mapStateToProps = ({catlworking}) => {
+    const listData = catlworking.warningf;
+    // [
+    //     {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"过压"},
+    //     {"update_time":"2017/11/17 22:20:00","DeviceId":"1719100098","type":"过温"},
+    //     {"update_time":"2017/11/17 22:04:00","DeviceId":"1627100777","type":"欠压"},
+    //     {"update_time":"2017/11/18 10:03:00","DeviceId":"1724101290","type":"SOC不一致"},
+    //     {"update_time":"2017/11/18 04:55:00","DeviceId":"1627100478","type":"SOC不一致"},
+    //     {"update_time":"2017/11/20 09:56:00","DeviceId":"1724101531","type":"温度跳变"},
+    //     {"update_time":"2017/11/20 10:06:00","DeviceId":"1724106076","type":"温度跳变"},
+    //     {"update_time":"2017/11/20 01:37:00","DeviceId":"1719103339","type":"过压"}
+    // ]
     return {listData};
 }
 export default connect(mapStateToProps)(Page);

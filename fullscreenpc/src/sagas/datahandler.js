@@ -59,6 +59,8 @@ import {
     catl_cyclecount_result,
     catl_dxtemperature_request,
     catl_dxtemperature_result,
+    catl_warningf_request,
+    catl_warningf_result,
 
     getcountcar_request,
     getcountbus_request,
@@ -97,7 +99,7 @@ let recvmessagetoresultpair = {
   'getstatprovince_result':getstatprovince_result,
   'getstatcatlproject_result':getstatcatlproject_result,
 
-
+  'catl_warningf_result':catl_warningf_result,
   'catl_working_result':catl_working_result,
   'catl_cycle_result':catl_cycle_result,
   'catl_celltemperature_result':catl_celltemperature_result,
@@ -156,7 +158,7 @@ let sendmessageauthfnsz = {
   'getstatprovince':`${getstatprovince_request}`,
   'getstatcatlproject':`${getstatcatlproject_request}`,
 
-
+  'catl_warningf':`${catl_warningf_request}`,
   'catl_working':`${catl_working_request}`,
   'catl_cycle':`${catl_cycle_request}`,
   'catl_celltemperature':`${catl_celltemperature_request}`,

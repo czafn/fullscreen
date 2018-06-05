@@ -14,3 +14,6 @@ export const catl_cyclecount_result = createAction('catl_cyclecount_result');
 
 export const catl_dxtemperature_request = createAction('catl_dxtemperature_request');
 export const catl_dxtemperature_result = createAction('catl_dxtemperature_result');
+
+export const catl_warningf_request = createAction('catl_warningf_request');
+export const catl_warningf_result = createAction('catl_warningf_result');

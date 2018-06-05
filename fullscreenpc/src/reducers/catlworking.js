@@ -4,11 +4,14 @@ import{
   catl_cycle_result,
   catl_celltemperature_result,
   catl_cyclecount_result,
-  catl_dxtemperature_result
+  catl_dxtemperature_result,
+
+  catl_warningf_result
 } from '../actions';
 
 const initial = {
   catlworking: {
+      warningf:[],
       working:[],
       cycle:[],
       celltemperature:[],
@@ -18,6 +21,10 @@ const initial = {
 };
 
 const catlworking = createReducer({
+  [catl_warningf_result]:(state,payload)=>{
+      let warningf = [...payload];
+      return  {...state,warningf};
+  },
   [catl_working_result]:(state,payload)=>{
       let working = [...payload];
       return  {...state,working};

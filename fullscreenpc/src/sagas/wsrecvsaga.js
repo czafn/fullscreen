@@ -29,6 +29,7 @@ import {
   catl_celltemperature_request,
   catl_cyclecount_request,
   catl_dxtemperature_request,
+  catl_warningf_request,
 
   getcountcar_request,
   getcountbus_request,
@@ -36,6 +37,7 @@ import {
   getusedyearbus_request,
   getstatprovince_request,
   getstatcatlproject_request,
+
 } from '../actions';
 import { goBack } from 'react-router-redux';//https://github.com/reactjs/react-router-redux
 import map from 'lodash.map';
@@ -95,7 +97,7 @@ export function* wsrecvsagaflow() {
                 yield put(catl_celltemperature_request({}));
                 yield put(catl_cyclecount_request({}));
                 yield put(catl_dxtemperature_request({}));
-
+                yield put(catl_warningf_request({}));
                 yield put(getcountcar_request({}));
                 yield put(getcountbus_request({}));
                 yield put(getusedyearcar_request({}));
