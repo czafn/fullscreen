@@ -255,7 +255,12 @@ class AppRoot extends React.Component {
   }
 }
 
-const mapStateToProps = ({app,searchresult:{curallalarm,alarms},device:{g_devicesdb},app:{SettingOfflineMinutes}}) => {
+const mapStateToProps = ({app,
+  searchresult:{curallalarm,alarms},
+  device:{g_devicesdb},
+  app:{SettingOfflineMinutes},
+  deviceext:{countcar,countbus}
+}) => {
   const {modeview} = app;
 
    let count_online = 0;
@@ -299,11 +304,11 @@ const mapStateToProps = ({app,searchresult:{curallalarm,alarms},device:{g_device
         count_red:count_red,
         count_yellow:count_yellow,
         count_orange:count_orange,
-        today_new:56
+        // today_new:56
     };
     const rightIndex = {
-        bus:1889,
-        car:4834
+        bus:countbus,
+        car:countcar
     };
     return {centerIndex, rightIndex};
   //  return {count_online,count_offline,count_all,count_yellow,count_red,count_orange,modeview};
