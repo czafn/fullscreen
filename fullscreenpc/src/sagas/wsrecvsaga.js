@@ -22,7 +22,13 @@ import {
 
   changepwd_result,
 
-  savealarmsettings_result
+  savealarmsettings_result,
+
+  catl_working_request,
+  catl_cycle_request,
+  catl_celltemperature_request,
+  catl_cyclecount_request,
+  catl_dxtemperature_request,
 } from '../actions';
 import { goBack } from 'react-router-redux';//https://github.com/reactjs/react-router-redux
 import map from 'lodash.map';
@@ -76,9 +82,15 @@ export function* wsrecvsagaflow() {
               localStorage.setItem(`bms_${config.softmode}_token`,result.token);
               yield put(querydevicegroup_request({}));
 
-              if(result.username === 'pc'){
-                yield put(ui_changemodeview('ui4full'));
+              if(config.softmode === 'fullpc'){
+                yield put(catl_working_request({}));
+                yield put(catl_cycle_request({}));
+                yield put(catl_celltemperature_request({}));
+                yield put(catl_cyclecount_request({}));
+                yield put(catl_dxtemperature_request({}));
               }
+
+
             }
         }
 

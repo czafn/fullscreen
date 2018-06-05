@@ -8,3 +8,4 @@ export * from './notifymessage';
 export * from './device';
 export * from './workorder';
 export * from './pic';
+export * from './catlworking';

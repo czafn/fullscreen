@@ -10,6 +10,7 @@ import userlogin from './userlogin';
 import carmap from './carmap';
 import searchresult from './searchresult';
 import workorder from './workorder';
+import catlworking from './catlworking';
 import pic from './pic';
 import deviceinfoquerychart from './deviceinfoquerychart';
 
@@ -24,6 +25,7 @@ export default combineReducers({
   workorder,
   weui,
   deviceinfoquerychart,
+  catlworking,
   form: formReducer,
   router: routerReducer,
   polyglot: polyglotReducer,

@@ -11,7 +11,7 @@ let config = {
     requesttimeout:5000,
     appversion:'1.5.0(build0528)',
     sendlocationinterval:20000,
-    softmode:'pc',
+    softmode:'fullpc',
     wendu_max: 80,
     wendu_min: 0
 };

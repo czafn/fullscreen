@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
+import lodashget from 'lodash.get';
+import lodashmap from 'lodash.map';
+
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
@@ -157,6 +160,9 @@ class Page extends React.Component {
 
     render() {
         let {data} = this.props;
+        if(data.length === 0){
+          return (<div>loading</div>)
+        }
         const option = this.option;
         data = _.sortBy(data,(i) => i.name-0);
         option.xAxis[0].data = data.map(value => value['name']);
@@ -171,22 +177,31 @@ class Page extends React.Component {
     };
 }
 
-const mapStateToProps = ({}) => {
-    let data = [
-        {"name":"0","value":"5445"},
-        {"name":"1","value":"1991"},
-        {"name":"2","value":"1952"},
-        {"name":"3","value":"1703"},
-        {"name":"4","value":"1395"},
-        {"name":"5","value":"997"},
-        {"name":"6","value":"653"},
-        {"name":"7","value":"373"},
-        {"name":"8","value":"195"},
-        {"name":"9","value":"96"},
-        {"name":"10","value":"31"},
-        {"name":"11","value":"7"},
-        {"name":"12","value":"5"}
-    ];
+const mapStateToProps = ({catlworking}) => {
+  const data = [];
+  const cycle = lodashget(catlworking,'cyclecount',[]);
+  lodashmap(cycle,(v)=>{
+    data.push({
+      name:`${lodashget(v,'name',0)}`,
+      value:`${lodashget(v,'value',0)}`,
+    });
+  });
+  console.log(data);
+    // let data = [
+    //     {"name":"0","value":"5445"},
+    //     {"name":"1","value":"1991"},
+    //     {"name":"2","value":"1952"},
+    //     {"name":"3","value":"1703"},
+    //     {"name":"4","value":"1395"},
+    //     {"name":"5","value":"997"},
+    //     {"name":"6","value":"653"},
+    //     {"name":"7","value":"373"},
+    //     {"name":"8","value":"195"},
+    //     {"name":"9","value":"96"},
+    //     {"name":"10","value":"31"},
+    //     {"name":"11","value":"7"},
+    //     {"name":"12","value":"5"}
+    // ];
     return {data};
 }
 export default connect(mapStateToProps)(Page);

@@ -46,7 +46,19 @@ import {
     savealarmsettings_request,
     savealarmsettings_result,
 
-    serverpush_device
+    serverpush_device,
+
+
+    catl_working_request,
+    catl_working_result,
+    catl_cycle_request,
+    catl_cycle_result,
+    catl_celltemperature_request,
+    catl_celltemperature_result,
+    catl_cyclecount_request,
+    catl_cyclecount_result,
+    catl_dxtemperature_request,
+    catl_dxtemperature_result
   } from '../actions';
 import {
   uireport_searchdevice_request,
@@ -65,6 +77,12 @@ import {
 
 //接收的对应关系
 let recvmessagetoresultpair = {
+  'catl_working_result':catl_working_result,
+  'catl_cycle_result':catl_cycle_result,
+  'catl_celltemperature_result':catl_celltemperature_result,
+  'catl_cyclecount_result':catl_cyclecount_result,
+  'catl_dxtemperature_result':catl_dxtemperature_result,
+
   'deviceinfoquerychart_result':deviceinfoquerychart_result,
   'savealarmsettings_result':savealarmsettings_result,
   'serverpush_device':serverpush_device,
@@ -110,6 +128,12 @@ let sendmessagefnsz = {
 
 //验证发送接口
 let sendmessageauthfnsz = {
+  'catl_working':`${catl_working_request}`,
+  'catl_cycle':`${catl_cycle_request}`,
+  'catl_celltemperature':`${catl_celltemperature_request}`,
+  'catl_cyclecount':`${catl_cyclecount_request}`,
+  'catl_dxtemperature':`${catl_dxtemperature_request}`,
+
   'savealarmsettings':`${savealarmsettings_request}`,
   'changepwd':`${changepwd_request}`,
   'collectdevice':`${collectdevice_request}`,
