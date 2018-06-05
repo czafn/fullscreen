@@ -12,7 +12,7 @@ import './alarm.css';
 
 const Table = styled.table`
   width: 100%;
-  
+
   padding: 0;
   th{
     width: 30%;
@@ -30,7 +30,7 @@ const Table = styled.table`
     padding: 0 15px;
   }
   td span{
-    line-height:16px;  
+    line-height:16px;
     float: left;
   }
   tbody{
@@ -49,7 +49,7 @@ const Table = styled.table`
   th:nth-child(2),td:nth-child(2){
     width: 40%;
   }
-  
+
 `;
 
 
@@ -107,7 +107,7 @@ class Page extends React.Component {
                                       td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
-                                      <td>{obj.RBD}</td>
+                                      <td>{obj.DeviceId}</td>
                                       <td>{obj.update_time}</td>
                                       {td}
                                   </tr>);
@@ -121,7 +121,7 @@ class Page extends React.Component {
                       <Table cellSpacing="0" cellPadding="0" >
                           <thead>
                           <tr>
-                              <th>RBD</th>
+                              <th>编号</th>
                               <th>报警时间</th>
                               <th>报警等级</th>
                           </tr>
@@ -140,7 +140,7 @@ class Page extends React.Component {
                                       td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
-                                      <td>{obj.RBD}</td>
+                                      <td>{obj.DeviceId}</td>
                                       <td>{obj.update_time}</td>
                                       {td}
                                   </tr>);
@@ -153,7 +153,7 @@ class Page extends React.Component {
                       <Table cellSpacing="0" cellPadding="0" >
                           <thead>
                           <tr>
-                              <th>RBD</th>
+                              <th>编号</th>
                               <th>报警时间</th>
                               <th>报警等级</th>
                           </tr>
@@ -172,7 +172,7 @@ class Page extends React.Component {
                                       td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
-                                      <td>{obj.RBD}</td>
+                                      <td>{obj.DeviceId}</td>
                                       <td>{obj.update_time}</td>
                                       {td}
                                   </tr>);
@@ -190,36 +190,36 @@ class Page extends React.Component {
 const mapStateToProps = ({}) => {
     const level1_ListData =
         [
-          {"update_time":"2017/11/18 04:26:00","RBD":"1727204012","type":"一级"},
-          {"update_time":"2017/11/17 22:20:00","RBD":"1719100098","type":"一级"},
-          {"update_time":"2017/11/17 22:04:00","RBD":"1627100777","type":"一级"},
-          {"update_time":"2017/11/18 10:01:00","RBD":"1702101873","type":"一级"},
-          {"update_time":"2017/11/18 09:44:00","RBD":"1727210879","type":"一级"},
-          {"update_time":"2017/11/18 09:50:00","RBD":"1719103955","type":"一级"},
-          {"update_time":"2017/11/18 10:03:00","RBD":"1724101290","type":"一级"},
-          {"update_time":"2017/11/18 04:55:00","RBD":"1627100478","type":"一级"}
+          {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"一级"},
+          {"update_time":"2017/11/17 22:20:00","DeviceId":"1719100098","type":"一级"},
+          {"update_time":"2017/11/17 22:04:00","DeviceId":"1627100777","type":"一级"},
+          {"update_time":"2017/11/18 10:01:00","DeviceId":"1702101873","type":"一级"},
+          {"update_time":"2017/11/18 09:44:00","DeviceId":"1727210879","type":"一级"},
+          {"update_time":"2017/11/18 09:50:00","DeviceId":"1719103955","type":"一级"},
+          {"update_time":"2017/11/18 10:03:00","DeviceId":"1724101290","type":"一级"},
+          {"update_time":"2017/11/18 04:55:00","DeviceId":"1627100478","type":"一级"}
         ]
     const level2_ListData =
         [
-            {"update_time":"2017/11/18 04:26:00","RBD":"1727204012","type":"二级"},
-            {"update_time":"2017/11/17 22:20:00","RBD":"1719100098","type":"二级"},
-            {"update_time":"2017/11/17 22:04:00","RBD":"1627100777","type":"二级"},
-            {"update_time":"2017/11/18 10:01:00","RBD":"1702101873","type":"二级"},
-            {"update_time":"2017/11/18 09:44:00","RBD":"1727210879","type":"二级"},
-            {"update_time":"2017/11/18 09:50:00","RBD":"1719103955","type":"二级"},
-            {"update_time":"2017/11/18 10:03:00","RBD":"1724101290","type":"二级"},
-            {"update_time":"2017/11/18 04:55:00","RBD":"1627100478","type":"二级"}
+            {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"二级"},
+            {"update_time":"2017/11/17 22:20:00","DeviceId":"1719100098","type":"二级"},
+            {"update_time":"2017/11/17 22:04:00","DeviceId":"1627100777","type":"二级"},
+            {"update_time":"2017/11/18 10:01:00","DeviceId":"1702101873","type":"二级"},
+            {"update_time":"2017/11/18 09:44:00","DeviceId":"1727210879","type":"二级"},
+            {"update_time":"2017/11/18 09:50:00","DeviceId":"1719103955","type":"二级"},
+            {"update_time":"2017/11/18 10:03:00","DeviceId":"1724101290","type":"二级"},
+            {"update_time":"2017/11/18 04:55:00","DeviceId":"1627100478","type":"二级"}
         ]
     const level3_ListData =
         [
-            {"update_time":"2017/11/18 04:26:00","RBD":"1727204012","type":"三级"},
-            {"update_time":"2017/11/17 22:20:00","RBD":"1719100098","type":"三级"},
-            {"update_time":"2017/11/17 22:04:00","RBD":"1627100777","type":"三级"},
-            {"update_time":"2017/11/18 10:01:00","RBD":"1702101873","type":"三级"},
-            {"update_time":"2017/11/18 09:44:00","RBD":"1727210879","type":"三级"},
-            {"update_time":"2017/11/18 09:50:00","RBD":"1719103955","type":"三级"},
-            {"update_time":"2017/11/18 10:03:00","RBD":"1724101290","type":"三级"},
-            {"update_time":"2017/11/18 04:55:00","RBD":"1627100478","type":"三级"}
+            {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"三级"},
+            {"update_time":"2017/11/17 22:20:00","DeviceId":"1719100098","type":"三级"},
+            {"update_time":"2017/11/17 22:04:00","DeviceId":"1627100777","type":"三级"},
+            {"update_time":"2017/11/18 10:01:00","DeviceId":"1702101873","type":"三级"},
+            {"update_time":"2017/11/18 09:44:00","DeviceId":"1727210879","type":"三级"},
+            {"update_time":"2017/11/18 09:50:00","DeviceId":"1719103955","type":"三级"},
+            {"update_time":"2017/11/18 10:03:00","DeviceId":"1724101290","type":"三级"},
+            {"update_time":"2017/11/18 04:55:00","DeviceId":"1627100478","type":"三级"}
         ]
     return {level1_ListData, level2_ListData, level3_ListData};
 }
