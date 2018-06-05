@@ -201,51 +201,51 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = ({deviceext}) => {
-    let data = deviceext.statcatlproject;
-    // let data = [
-    //     {"type":"CAR","name":"AAA-123","value":"1123"},
-    //     {"type":"CAR","name":"ZZZ-123","value":"1083"},
-    //     {"type":"CAR","name":"TTT-133","value":"943"},
-    //     {"type":"CAR","name":"ZZZ-122","value":"893"},
-    //     {"type":"CAR","name":"XNY-113KWH","value":"843"},
-    //     {"type":"CAR","name":"NDX-88KWH","value":"793"},
-    //     {"type":"CAR","name":"BJX-213KWH","value":"743"},
-    //     {"type":"CAR","name":"XNY-118KWH","value":"693"},
-    //     {"type":"CAR","name":"XNY-117KWH","value":"643"},
-    //     {"type":"CAR","name":"XNY-116KWH","value":"593"},
-    //     {"type":"CAR","name":"XNY-115KWH","value":"543"},
-    //     {"type":"CAR","name":"XNY-114KWH","value":"493"},
-    //     {"type":"CAR","name":"ZZZ-112","value":"443"},
-    //     {"type":"CAR","name":"ZZZ-133","value":"393"},
-    //     {"type":"CAR","name":"TTT-111","value":"343"},
-    //     {"type":"CAR","name":"XXA-123","value":"293"},
-    //     {"type":"CAR","name":"HZA-234","value":"243"},
-    //     {"type":"CAR","name":"AAA-122","value":"193"},
-    //     {"type":"CAR","name":"TTT-112","value":"143"},
-    //     {"type":"CAR","name":"XAN-223","value":"93"},
-    //
-    //
-    //     {"type":"BUS","name":"AAA-123","value":"782"},
-    //     {"type":"BUS","name":"ZZZ-123","value":"669"},
-    //     {"type":"BUS","name":"TTT-133","value":"666"},
-    //     {"type":"BUS","name":"ZZZ-122","value":"574"},
-    //     {"type":"BUS","name":"XNY-113KWH","value":"550"},
-    //     {"type":"BUS","name":"NDX-88KWH","value":"501"},
-    //     {"type":"BUS","name":"BJX-213KWH","value":"423"},
-    //     {"type":"BUS","name":"XNY-118KWH","value":"402"},
-    //     {"type":"BUS","name":"XNY-117KWH","value":"381"},
-    //     {"type":"BUS","name":"XNY-116KWH","value":"360"},
-    //     {"type":"BUS","name":"XNY-115KWH","value":"339"},
-    //     {"type":"BUS","name":"XNY-114KWH","value":"318"},
-    //     {"type":"BUS","name":"ZZZ-112","value":"297"},
-    //     {"type":"BUS","name":"ZZZ-133","value":"276"},
-    //     {"type":"BUS","name":"TTT-111","value":"255"},
-    //     {"type":"BUS","name":"XXA-123","value":"234"},
-    //     {"type":"BUS","name":"HZA-234","value":"213"},
-    //     {"type":"BUS","name":"AAA-122","value":"192"},
-    //     {"type":"BUS","name":"TTT-112","value":"171"},
-    //     {"type":"BUS","name":"XAN-223","value":"150"}
-    // ];
+    // let data = deviceext.statcatlproject;
+    let data = [
+        {"type":"CAR","name":"AAA-123","value":"1123"},
+        {"type":"CAR","name":"ZZZ-123","value":"1083"},
+        {"type":"CAR","name":"TTT-133","value":"943"},
+        {"type":"CAR","name":"ZZZ-122","value":"893"},
+        {"type":"CAR","name":"XNY-113KWH","value":"843"},
+        {"type":"CAR","name":"NDX-88KWH","value":"793"},
+        {"type":"CAR","name":"BJX-213KWH","value":"743"},
+        {"type":"CAR","name":"XNY-118KWH","value":"693"},
+        {"type":"CAR","name":"XNY-117KWH","value":"643"},
+        {"type":"CAR","name":"XNY-116KWH","value":"593"},
+        {"type":"CAR","name":"XNY-115KWH","value":"543"},
+        {"type":"CAR","name":"XNY-114KWH","value":"493"},
+        {"type":"CAR","name":"ZZZ-112","value":"443"},
+        {"type":"CAR","name":"ZZZ-133","value":"393"},
+        {"type":"CAR","name":"TTT-111","value":"343"},
+        {"type":"CAR","name":"XXA-123","value":"293"},
+        {"type":"CAR","name":"HZA-234","value":"243"},
+        {"type":"CAR","name":"AAA-122","value":"193"},
+        {"type":"CAR","name":"TTT-112","value":"143"},
+        {"type":"CAR","name":"XAN-223","value":"93"},
+
+
+        {"type":"BUS","name":"AAA-123","value":"782"},
+        {"type":"BUS","name":"ZZZ-123","value":"669"},
+        {"type":"BUS","name":"TTT-133","value":"666"},
+        {"type":"BUS","name":"ZZZ-122","value":"574"},
+        {"type":"BUS","name":"XNY-113KWH","value":"550"},
+        {"type":"BUS","name":"NDX-88KWH","value":"501"},
+        {"type":"BUS","name":"BJX-213KWH","value":"423"},
+        {"type":"BUS","name":"XNY-118KWH","value":"402"},
+        {"type":"BUS","name":"XNY-117KWH","value":"381"},
+        {"type":"BUS","name":"XNY-116KWH","value":"360"},
+        {"type":"BUS","name":"XNY-115KWH","value":"339"},
+        {"type":"BUS","name":"XNY-114KWH","value":"318"},
+        {"type":"BUS","name":"ZZZ-112","value":"297"},
+        {"type":"BUS","name":"ZZZ-133","value":"276"},
+        {"type":"BUS","name":"TTT-111","value":"255"},
+        {"type":"BUS","name":"XXA-123","value":"234"},
+        {"type":"BUS","name":"HZA-234","value":"213"},
+        {"type":"BUS","name":"AAA-122","value":"192"},
+        {"type":"BUS","name":"TTT-112","value":"171"},
+        {"type":"BUS","name":"XAN-223","value":"150"}
+    ];
     return {data};
 }
 export default connect(mapStateToProps)(Page);
