@@ -180,25 +180,19 @@ class Page extends React.Component {
         const option = this.option;
         data = _.sortBy(data,(i) => -i.value);
         let group = _.groupBy(data,'type');
-        let name = [];
         let carNum = [];
         let busNum = [];
-        let bus = group['BUS'], car = group['CAR'];
-        for (let i = 0; i < car.length; i++) {
-            let _info = data[i];
-            if (i%2==0) {
-                name.push(_info.name);
-            } else {
-                name.push(_info.name);
-            }
-
-            carNum.push(_info.value-0);
-            let b = _.find(bus, b => b.name === _info.name)
+        let bus = group['BUS']||[], car = group['CAR']||[];
+        let names = _.uniq(_.pluck(data,'name'));
+        for (let i = 0; i < names.length; i++) {
+            let a = _.find(car, b => b.name === names[i])
+            carNum.push(a ? a.value-0 : 0);
+            let b = _.find(bus, b => b.name === names[i])
             busNum.push(b ? b.value-0 : 0);
         }
-        option.xAxis.data = name;
-        option.series["0"].data = car;
-        option.series["1"].data = bus;
+        option.xAxis.data = names;
+        option.series["0"].data = carNum;
+        option.series["1"].data = busNum;
 
         return (
             <Chart >
@@ -209,8 +203,8 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = ({deviceext}) => {
-    // let data = deviceext.statcatlproject;
-    let data = [
+    let data = deviceext.statcatlproject;
+    let data1 = [
         {"type":"CAR","name":"AAA-123","value":"1123"},
         {"type":"CAR","name":"ZZZ-123","value":"1083"},
         {"type":"CAR","name":"TTT-133","value":"943"},

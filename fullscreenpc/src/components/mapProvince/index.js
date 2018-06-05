@@ -35,7 +35,6 @@ class Page extends React.Component {
                 tooltip: {
                     show: true,
                     trigger: 'item',
-
                 },
                 visualMap: {
                     type: 'continuous',
@@ -308,21 +307,26 @@ class Page extends React.Component {
         data = _.sortBy(data,(i)=>-i.value-0);
         let group = _.groupBy(data,'type');
         let name = [];
-        let carObj = [];
-        let busObj = [];
-        let bus = group['BUS'], car = group['CAR'];
+        let carObj = [],mapCarObj = [];
+        let busObj = [],mapBusObj = [];
+        let bus = group['BUS']||[], car = group['CAR']||[];
         let totVal = [];
-        for (let i = 0; i < car.length; i++) {
-            let _info = car[i];
-            name.push(_info.name);
-            carObj.push({name: _info.name, value: _info.value-0});
-            let b = _.find(bus, b => b.name === _info.name)
-            busObj.push(b ? {name: b.name, value: b.value-0} : {name:_info.name, value: 0});
+        let names = _.uniq(_.pluck(data,'name'));
+        for (let i = 0; i < names.length; i++) {
+            // let _info = car[i];
+            // name.push(_info.name);
+
+            let a = _.find(car, b => b.name === names[i])
+            carObj.push(a ? {name: a.name, value: a.value-0} : {name:names[i], value: 0});
+            mapCarObj.push(carObj[i]);
+            let b = _.find(bus, b => b.name === names[i])
+            busObj.push(b ? {name: b.name, value: b.value-0} : {name:names[i], value: 0});
+            mapBusObj.push(busObj[i]);
             totVal.push(carObj[i].value + busObj[i].value);
         }
         option.visualMap.min = 0;
         option.visualMap.max = _.max(totVal,t=>t);
-        car.push(
+        mapCarObj.push(
             {
                 name: '南海诸岛',
                 //value: 0,
@@ -335,12 +339,12 @@ class Page extends React.Component {
 
             }
         )
-        option.series[0].data = car;
-        option.series[1].data = bus;
-        name.length = 15;
+        option.series[0].data = mapCarObj;
+        option.series[1].data = mapBusObj;
+        names.length = 15;
         carObj.length = 15;
         busObj.length = 15;
-        option.xAxis.data = name;
+        option.xAxis.data = names;
         option.yAxis.max = option.visualMap.max
         option.series[2].data = carObj;
         option.series[3].data = carObj;
@@ -356,8 +360,18 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = ({deviceext}) => {
-    // let data = deviceext.statprovince;
-    let data = [
+    let data = deviceext.statprovince;
+
+    data.forEach(d=>{
+        if(d.name == "黑龙江省" || d.name == "内蒙古自治区"){
+            d.name = d.name.substring(0,3);
+        }else{
+            d.name = d.name.substring(0,2);
+        }
+
+    })
+
+    let data1 = [
         {"name":"北京","value":9669,"type":"CAR"},
         {"name":"天津","value":8063,"type":"CAR"},
         {"name":"上海","value":13349,"type":"CAR"},
@@ -379,9 +393,9 @@ const mapStateToProps = ({deviceext}) => {
         {"name":"广东","value":1209,"type":"CAR"},
         {"name":"海南","value":1153,"type":"CAR"},
         {"name":"四川","value":1049,"type":"CAR"},
-        {"name":"贵州","value":908,"type":"CAR"},
-        {"name":"云南","value":815,"type":"CAR"},
-        {"name":"陕西","value":492,"type":"CAR"},
+        // {"name":"贵州","value":908,"type":"CAR"},
+        // {"name":"云南","value":815,"type":"CAR"},
+        // {"name":"陕西","value":492,"type":"CAR"},
         {"name":"甘肃","value":252,"type":"CAR"},
         {"name":"青海","value":183,"type":"CAR"},
         {"name":"台湾","value":118,"type":"CAR"},
@@ -396,14 +410,14 @@ const mapStateToProps = ({deviceext}) => {
 
         {"name":"北京","value":2669,"type":"BUS"},
         {"name":"天津","value":1806,"type":"BUS"},
-        {"name":"上海","value":2349,"type":"BUS"},
-        {"name":"重庆","value":1745,"type":"BUS"},
-        {"name":"河北","value":1382,"type":"BUS"},
-        {"name":"山西","value":914,"type":"BUS"},
-        {"name":"辽宁","value":793,"type":"BUS"},
-        {"name":"吉林","value":701,"type":"BUS"},
-        {"name":"黑龙江","value":565,"type":"BUS"},
-        {"name":"江苏","value":561,"type":"BUS"},
+        // {"name":"上海","value":2349,"type":"BUS"},
+        // {"name":"重庆","value":1745,"type":"BUS"},
+        // {"name":"河北","value":1382,"type":"BUS"},
+        // {"name":"山西","value":914,"type":"BUS"},
+        // {"name":"辽宁","value":793,"type":"BUS"},
+        // {"name":"吉林","value":701,"type":"BUS"},
+        // {"name":"黑龙江","value":565,"type":"BUS"},
+        // {"name":"江苏","value":561,"type":"BUS"},
         {"name":"浙江","value":545,"type":"BUS"},
         {"name":"安徽","value":523,"type":"BUS"},
         {"name":"福建","value":326,"type":"BUS"},
