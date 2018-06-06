@@ -50,6 +50,7 @@ class Page extends React.Component {
                 visualMap: {
                     show: false,
                     max:99,
+                    seriesIndex: [1],
                     dimension: 0,
                     inRange: {
                         color: ['rgba(248, 99, 2, 1)', 'rgba(36, 164, 56, 1)', 'rgba(248, 99, 2, 1)']
@@ -178,6 +179,23 @@ class Page extends React.Component {
                         },
                         data: []
                     },
+                },{
+                    type:'line',
+                    color:"red",//折线图颜色
+                    z:100,
+                    label:{
+                        normal: {
+                            show: false,
+                            position: 'bottom',
+                            color:"#3497cb"
+                        }
+                    },
+                    lineStyle:{
+                        width:4
+                    },
+                    symbolSize:0,
+                    smooth:true,//是否平滑处理值0-1,true相当于0.5
+                    data:[]
                 }],
                 animationEasing: 'elasticOut',
                 animationEasingUpdate: 'elasticOut',
@@ -212,7 +230,7 @@ class Page extends React.Component {
 
 
     render() {
-        let {data} = this.props;
+        let {data, areaParam} = this.props;
         if(data.length === 0){
           return (<div>loading</div>)
         }
@@ -223,13 +241,14 @@ class Page extends React.Component {
         option.series[1].markLine.data[0].xAxis = data.length / 2;
         option.series[1].markArea.data[0] = [{
                                                 name: '90%区间',
-                                                xAxis: 25,
+                                                xAxis: areaParam.start,
                                                 yAxis: 'min'
                                             }, {
-                                                xAxis: 70,
+                                                xAxis: areaParam.end,
                                                 yAxis: 'max'
                                             }]
         option.series[1].data = data.map(value => value['value']-0);
+        option.series[2].data = data.map(value => value['curve']-0);
 
         return (
             <Chart >
@@ -246,110 +265,115 @@ const mapStateToProps = ({catlworking}) => {
     data.push({
       name:`${lodashget(v,'name',0)}`,
       value:`${lodashget(v,'value',0)}`,
+      curve:`${lodashget(v,'value',0)}`,
     });
   });
+  const areaParam = {
+      start: '10',
+      end: '25'
+  }
   // console.log(data);
-    // let data = [
-    //     {"name":"0.6","value":"2"},
-    //     {"name":"0.7","value":"2"},
-    //     {"name":"0.9","value":"2"},
-    //     {"name":"1","value":"31"},
-    //     {"name":"1.1","value":"14"},
-    //     {"name":"1.2","value":"7"},
-    //     {"name":"1.3","value":"15"},
-    //     {"name":"1.4","value":"28"},
-    //     {"name":"1.5","value":"28"},
-    //     {"name":"1.6","value":"16"},
-    //     {"name":"1.7","value":"26"},
-    //     {"name":"1.8","value":"15"},
-    //     {"name":"1.9","value":"39"},
-    //     {"name":"2","value":"63"},
-    //     {"name":"2.1","value":"27"},
-    //     {"name":"2.2","value":"34"},
-    //     {"name":"2.3","value":"37"},
-    //     {"name":"2.4","value":"40"},
-    //     {"name":"2.5","value":"54"},
-    //     {"name":"2.6","value":"39"},
-    //     {"name":"2.7","value":"34"},
-    //     {"name":"2.8","value":"50"},
-    //     {"name":"2.9","value":"67"},
-    //     {"name":"3","value":"66"},
-    //     {"name":"3.1","value":"61"},
-    //     {"name":"3.2","value":"73"},
-    //     {"name":"3.3","value":"113"},
-    //     {"name":"3.4","value":"107"},
-    //     {"name":"3.5","value":"136"},
-    //     {"name":"3.6","value":"158"},
-    //     {"name":"3.7","value":"184"},
-    //     {"name":"3.8","value":"213"},
-    //     {"name":"3.9","value":"255"},
-    //     {"name":"4","value":"287"},
-    //     {"name":"4.1","value":"313"},
-    //     {"name":"4.2","value":"315"},
-    //     {"name":"4.3","value":"376"},
-    //     {"name":"4.4","value":"393"},
-    //     {"name":"4.5","value":"415"},
-    //     {"name":"4.6","value":"409"},
-    //     {"name":"4.7","value":"459"},
-    //     {"name":"4.8","value":"430"},
-    //     {"name":"4.9","value":"426"},
-    //     {"name":"5","value":"440"},
-    //     {"name":"5.1","value":"363"},
-    //     {"name":"5.2","value":"392"},
-    //     {"name":"5.3","value":"383"},
-    //     {"name":"5.4","value":"350"},
-    //     {"name":"5.5","value":"384"},
-    //     {"name":"5.6","value":"366"},
-    //     {"name":"5.7","value":"363"},
-    //     {"name":"5.8","value":"388"},
-    //     {"name":"5.9","value":"383"},
-    //     {"name":"6","value":"376"},
-    //     {"name":"6.1","value":"379"},
-    //     {"name":"6.2","value":"367"},
-    //     {"name":"6.3","value":"379"},
-    //     {"name":"6.4","value":"386"},
-    //     {"name":"6.5","value":"360"},
-    //     {"name":"6.6","value":"345"},
-    //     {"name":"6.7","value":"328"},
-    //     {"name":"6.8","value":"278"},
-    //     {"name":"6.9","value":"291"},
-    //     {"name":"7","value":"232"},
-    //     {"name":"7.1","value":"215"},
-    //     {"name":"7.2","value":"171"},
-    //     {"name":"7.3","value":"158"},
-    //     {"name":"7.4","value":"124"},
-    //     {"name":"7.5","value":"115"},
-    //     {"name":"7.6","value":"89"},
-    //     {"name":"7.7","value":"86"},
-    //     {"name":"7.8","value":"69"},
-    //     {"name":"7.9","value":"77"},
-    //     {"name":"8","value":"60"},
-    //     {"name":"8.1","value":"70"},
-    //     {"name":"8.2","value":"43"},
-    //     {"name":"8.3","value":"38"},
-    //     {"name":"8.4","value":"24"},
-    //     {"name":"8.5","value":"23"},
-    //     {"name":"8.6","value":"13"},
-    //     {"name":"8.7","value":"12"},
-    //     {"name":"8.8","value":"12"},
-    //     {"name":"8.9","value":"7"},
-    //     {"name":"9","value":"6"},
-    //     {"name":"9.1","value":"3"},
-    //     {"name":"9.2","value":"4"},
-    //     {"name":"9.3","value":"7"},
-    //     {"name":"9.5","value":"8"},
-    //     {"name":"9.6","value":"1"},
-    //     {"name":"9.7","value":"1"},
-    //     {"name":"9.8","value":"3"},
-    //     {"name":"9.9","value":"3"},
-    //     {"name":"10","value":"1"},
-    //     {"name":"10.1","value":"2"},
-    //     {"name":"10.2","value":"1"},
-    //     {"name":"10.3","value":"1"},
-    //     {"name":"10.4","value":"2"},
-    //     {"name":"10.6","value":"1"},
-    //     {"name":"11","value":"1"}
-    // ];
-    return {data};
+  //   let data = [
+  //       {"name":"0.6","value":"2"},
+  //       {"name":"0.7","value":"2"},
+  //       {"name":"0.9","value":"2"},
+  //       {"name":"1","value":"31"},
+  //       {"name":"1.1","value":"14"},
+  //       {"name":"1.2","value":"7"},
+  //       {"name":"1.3","value":"15"},
+  //       {"name":"1.4","value":"28"},
+  //       {"name":"1.5","value":"28"},
+  //       {"name":"1.6","value":"16"},
+  //       {"name":"1.7","value":"26"},
+  //       {"name":"1.8","value":"15"},
+  //       {"name":"1.9","value":"39"},
+  //       {"name":"2","value":"63"},
+  //       {"name":"2.1","value":"27"},
+  //       {"name":"2.2","value":"34"},
+  //       {"name":"2.3","value":"37"},
+  //       {"name":"2.4","value":"40"},
+  //       {"name":"2.5","value":"54"},
+  //       {"name":"2.6","value":"39"},
+  //       {"name":"2.7","value":"34"},
+  //       {"name":"2.8","value":"50"},
+  //       {"name":"2.9","value":"67"},
+  //       {"name":"3","value":"66"},
+  //       {"name":"3.1","value":"61"},
+  //       {"name":"3.2","value":"73"},
+  //       {"name":"3.3","value":"113"},
+  //       {"name":"3.4","value":"107"},
+  //       {"name":"3.5","value":"136"},
+  //       {"name":"3.6","value":"158"},
+  //       {"name":"3.7","value":"184"},
+  //       {"name":"3.8","value":"213"},
+  //       {"name":"3.9","value":"255"},
+  //       {"name":"4","value":"287"},
+  //       {"name":"4.1","value":"313"},
+  //       {"name":"4.2","value":"315"},
+  //       {"name":"4.3","value":"376"},
+  //       {"name":"4.4","value":"393"},
+  //       {"name":"4.5","value":"415"},
+  //       {"name":"4.6","value":"409"},
+  //       {"name":"4.7","value":"459"},
+  //       {"name":"4.8","value":"430"},
+  //       {"name":"4.9","value":"426"},
+  //       {"name":"5","value":"440"},
+  //       {"name":"5.1","value":"363"},
+  //       {"name":"5.2","value":"392"},
+  //       {"name":"5.3","value":"383"},
+  //       {"name":"5.4","value":"350"},
+  //       {"name":"5.5","value":"384"},
+  //       {"name":"5.6","value":"366"},
+  //       {"name":"5.7","value":"363"},
+  //       {"name":"5.8","value":"388"},
+  //       {"name":"5.9","value":"383"},
+  //       {"name":"6","value":"376"},
+  //       {"name":"6.1","value":"379"},
+  //       {"name":"6.2","value":"367"},
+  //       {"name":"6.3","value":"379"},
+  //       {"name":"6.4","value":"386"},
+  //       {"name":"6.5","value":"360"},
+  //       {"name":"6.6","value":"345"},
+  //       {"name":"6.7","value":"328"},
+  //       {"name":"6.8","value":"278"},
+  //       {"name":"6.9","value":"291"},
+  //       {"name":"7","value":"232"},
+  //       {"name":"7.1","value":"215"},
+  //       {"name":"7.2","value":"171"},
+  //       {"name":"7.3","value":"158"},
+  //       {"name":"7.4","value":"124"},
+  //       {"name":"7.5","value":"115"},
+  //       {"name":"7.6","value":"89"},
+  //       {"name":"7.7","value":"86"},
+  //       {"name":"7.8","value":"69"},
+  //       {"name":"7.9","value":"77"},
+  //       {"name":"8","value":"60"},
+  //       {"name":"8.1","value":"70"},
+  //       {"name":"8.2","value":"43"},
+  //       {"name":"8.3","value":"38"},
+  //       {"name":"8.4","value":"24"},
+  //       {"name":"8.5","value":"23"},
+  //       {"name":"8.6","value":"13"},
+  //       {"name":"8.7","value":"12"},
+  //       {"name":"8.8","value":"12"},
+  //       {"name":"8.9","value":"7"},
+  //       {"name":"9","value":"6"},
+  //       {"name":"9.1","value":"3"},
+  //       {"name":"9.2","value":"4"},
+  //       {"name":"9.3","value":"7"},
+  //       {"name":"9.5","value":"8"},
+  //       {"name":"9.6","value":"1"},
+  //       {"name":"9.7","value":"1"},
+  //       {"name":"9.8","value":"3"},
+  //       {"name":"9.9","value":"3"},
+  //       {"name":"10","value":"1"},
+  //       {"name":"10.1","value":"2"},
+  //       {"name":"10.2","value":"1"},
+  //       {"name":"10.3","value":"1"},
+  //       {"name":"10.4","value":"2"},
+  //       {"name":"10.6","value":"1"},
+  //       {"name":"11","value":"1"}
+  //   ];
+    return {data, areaParam};
 }
 export default connect(mapStateToProps)(Page);
