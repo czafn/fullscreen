@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
+import ecStat from 'echarts-stat';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
@@ -77,7 +78,8 @@ class Page extends React.Component {
                             color: '#07111f',
                         }
                     },
-                    z: 10
+                    z: 10,
+                    min:0
                 },
                 series: [ {
                     name: 'Simulate Shadow',
@@ -99,7 +101,7 @@ class Page extends React.Component {
                             shadowBlur: 50,
                             shadowColor: '#000'
                         }
-                    }
+                    },
                 },{
                     name: 'back',
                     type: 'bar',
@@ -261,11 +263,16 @@ class Page extends React.Component {
 const mapStateToProps = ({catlworking}) => {
   const data = [];
   const cycle = lodashget(catlworking,'celltemperature',[]);
+  const curveTemp = []
   lodashmap(cycle,(v)=>{
+      curveTemp.push([lodashget(v,'name',0)-0,lodashget(v,'value',0)-0])
+  });
+  const  curve = ecStat.regression('polynomial', curveTemp,3)
+  lodashmap(cycle,(v,i)=>{
     data.push({
       name:`${lodashget(v,'name',0)}`,
       value:`${lodashget(v,'value',0)}`,
-      curve:`${lodashget(v,'value',0)}`,
+      curve:curve.points[i][1],
     });
   });
   const areaParam = {
