@@ -12,6 +12,7 @@ import {createmaptrackhistoryplaybackflow} from './mapplayback';
 import {socketflow} from './socketflow';
 import {uiflow} from './ui';
 import {downloadexcel} from './downloadexcel';
+import {catldata} from './catlfull';
 import config from '../config.js';
 
 export default function* rootSaga() {
@@ -29,6 +30,7 @@ export default function* rootSaga() {
     yield fork(wsrecvsagaflow);
     yield fork(createsagacallbackflow);
     yield fork(apiflow);
+    yield fork(catldata);
   }
   catch(e){
 
