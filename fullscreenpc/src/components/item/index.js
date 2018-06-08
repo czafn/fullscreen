@@ -171,13 +171,36 @@ class Page extends React.Component {
     //     }
     // };
 
+    onChartClick(param, echart){ //地图点击事件，点击后
+      debugger
+      if(param.name !== undefined){
+        //应该首先清理 item变量的值
+        param.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
+      }
+    }
+
+
+    onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
+      console.log(param, echart);
+      debugger
+      param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
+
+    };
 
     render() {
-        let {data} = this.props;
+        let {data,legend} = this.props;
         if(data.length === 0){
           return (<div>loading</div>)
         }
         const option = this.option;
+        let onEvents = {
+          'legendselectchanged': this.onChartLegendselectchanged,
+          'click': this.onChartClick
+        }
+
+        if(legend){
+          option.legend.selected = legend
+        }
         data = _.sortBy(data,(i) => -i.value);
         let group = _.groupBy(data,'type');
         let carNum = [];
@@ -196,7 +219,7 @@ class Page extends React.Component {
 
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height:'270px'}} className='singleBarChart' />
+              <ReactEcharts option={option} style={{height:'270px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );
     };
@@ -248,6 +271,7 @@ const mapStateToProps = ({deviceext}) => {
         {"type":"BUS","name":"TTT-112","value":"171"},
         {"type":"BUS","name":"XAN-223","value":"150"}
     ];
-    return {data};
+    const legend =  {CAR: true, BUS: true}; //该对象 默认{CAR: true, BUS: true} 需要在map中点击legend时 同步更新map中的值
+    return {data, legend};
 }
 export default connect(mapStateToProps)(Page);

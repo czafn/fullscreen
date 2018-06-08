@@ -262,47 +262,36 @@ class Page extends React.Component {
     //     }
     // };
 
-    onChartLegendselectchanged = (param, echart) => {
+    onChartClick(param, echart){ //地图点击事件，点击后
+      debugger
+      if(param.data !== undefined){
+        //应该首先清理 item变量的值
+        param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
+      }
+    }
+
+
+    onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
         console.log(param, echart);
-        let o = echart.getOption();
-        if(param.selected.BUS === true && param.selected.CAR === true){
-            let carObj = o.series[0].data;
-            let busObj = o.series[1].data;
-            let totVal = [];
-            for (let i = 0; i < carObj.length; i++) {
-                let temp = _.find(busObj,(t)=>t.name === carObj[i].name);
+        param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
 
-                if(temp !== undefined){
-                    console.log(carObj[i],'---',temp)
-                    totVal.push(carObj[i].value + temp.value);
-                } else {
-                    totVal.push(0);
-                }
-
-            }
-            o.visualMap.min = _.min(totVal,t=>t.value).value;
-            o.visualMap.max = _.max(totVal,t=>t.value).value;
-        } else if(param.selected.BUS === true && param.selected.CAR === false){
-            o.visualMap.min = _.min(o.series[1].data,t=>t.value).value;
-            o.visualMap.max = _.max(o.series[1].data,t=>t.value).value;
-
-        } else if(param.selected.BUS === false && param.selected.CAR === true){
-            o.visualMap.min = _.min(o.series[0].data,t=>t.value).value;
-            o.visualMap.max = _.max(o.series[0].data,t=>t.value).value;
-        }
-        this.option = o;
-        echart.setOption(o);
     };
     render() {
-        let {data} = this.props;
+        let {data, legend} = this.props;
         if(data.length === 0){
           return <div>loading</div>
         }
         const option = this.option;
 
         let onEvents = {
-            'legendselectchanged': this.onChartLegendselectchanged
+            'legendselectchanged': this.onChartLegendselectchanged,
+            'click': this.onChartClick
         }
+
+        if(legend){
+          option.legend.selected = legend
+        }
+
 
         data = _.sortBy(data,(i)=>-i.value-0);
         let group = _.groupBy(data,'type');
@@ -353,7 +342,7 @@ class Page extends React.Component {
 
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height: "590px"}} className='singleBarChart'  />
+              <ReactEcharts option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
     };
@@ -443,6 +432,8 @@ const mapStateToProps = ({deviceext}) => {
         {"name":"香港","value":2,"type":"BUS"},
         {"name":"澳门","value":1,"type":"BUS"}
     ];
-    return {data};
+
+    const legend =  {CAR: true, BUS: true}; //该对象 默认{CAR: true, BUS: true} 需要再item点击legend时 同步更新map中的值
+    return {data, legend};
 }
 export default connect(mapStateToProps)(Page);
