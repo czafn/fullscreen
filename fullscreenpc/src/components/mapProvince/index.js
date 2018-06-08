@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
-import {setquery_deviceext_request} from '../../actions';
+import {setquery_deviceext_request,settype_deviceext} from '../../actions';
 const _ = require('underscore');
 
 require('echarts/map/js/china.js');
@@ -279,6 +279,7 @@ class Page extends React.Component {
         console.log(param, echart);
         param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
         console.log(param.selected );
+        this.props.dispatch(settype_deviceext(param.selected));
         // let query = this.props.query;
         // query['provice'] = param.data.name;
         // this.props.dispatch(setquery_deviceext_request(query));
@@ -291,7 +292,7 @@ class Page extends React.Component {
         const option = this.option;
 
         let onEvents = {
-            'legendselectchanged': this.onChartLegendselectchanged,
+            'legendselectchanged': this.onChartLegendselectchanged.bind(this),
             'click': this.onChartClick.bind(this)
         }
 
@@ -358,7 +359,7 @@ class Page extends React.Component {
 const mapStateToProps = ({deviceext}) => {
     const query = deviceext.query;
     let data = deviceext.statprovince;
-
+    const type = deviceext.type;//为''表示所有,否则是'CAR'或者'BUS'
     data.forEach(d=>{
         if(d.name == "黑龙江省" || d.name == "内蒙古自治区"){
             d.name = d.name.substring(0,3);

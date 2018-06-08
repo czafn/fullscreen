@@ -20,3 +20,6 @@ export const getstatcatlproject_result = createAction('getstatcatlproject_result
 
 export const setquery_deviceext_request = createAction('setquery_deviceext_request');
 export const setquery_deviceext_result = createAction('setquery_deviceext_result');
+
+
+export const settype_deviceext = createAction('settype_deviceext');
