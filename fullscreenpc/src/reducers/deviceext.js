@@ -6,8 +6,13 @@ import{
   getusedyearbus_result,
   getstatprovince_result,
   getstatcatlproject_result,
+  setquery_deviceext_result
 } from '../actions';
 
+// catlprojectname:'',//项目名
+// provice:''//省份
+// provice:'江苏省',
+// catlprojectname:'TTT-133'
 const initial = {
   deviceext: {
       countcar:0,
@@ -16,10 +21,17 @@ const initial = {
       usedyearbus:[],
       statprovince:[],
       statcatlproject:[],
+      query:{//所有条件不满足
+
+      }
   },
 };
 
 const deviceext = createReducer({
+  [setquery_deviceext_result]:(state,payload)=>{
+      const query = {...payload};
+      return  {...state,query};
+  },
   [getcountcar_result]:(state,payload)=>{
       let countcar = payload;
       return  {...state,countcar};

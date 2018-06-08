@@ -17,3 +17,6 @@ export const getstatprovince_result = createAction('getstatprovince_result');
 
 export const getstatcatlproject_request = createAction('getstatcatlproject_request');
 export const getstatcatlproject_result = createAction('getstatcatlproject_result');
+
+export const setquery_deviceext_request = createAction('setquery_deviceext_request');
+export const setquery_deviceext_result = createAction('setquery_deviceext_result');
