@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
+import {setquery_deviceext_request} from '../../actions';
 import styled from 'styled-components';
 const _ = require('underscore');
 const Chart = styled.div`
@@ -172,10 +173,13 @@ class Page extends React.Component {
     // };
 
     onChartClick(param, echart){ //地图点击事件，点击后
-      debugger
+      // debugger
       if(param.name !== undefined){
         //应该首先清理 item变量的值
-        param.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
+        // param.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
+        let query = this.props.query;
+        query['catlprojectname'] = param.name;
+        this.props.dispatch(setquery_deviceext_request(query));
       }
     }
 
@@ -195,7 +199,7 @@ class Page extends React.Component {
         const option = this.option;
         let onEvents = {
           'legendselectchanged': this.onChartLegendselectchanged,
-          'click': this.onChartClick
+          'click': this.onChartClick.bind(this)
         }
 
         if(legend){
@@ -227,6 +231,7 @@ class Page extends React.Component {
 
 const mapStateToProps = ({deviceext}) => {
     let data = deviceext.statcatlproject;
+    const query = deviceext.query;
     let data1 = [
         {"type":"CAR","name":"AAA-123","value":"1123"},
         {"type":"CAR","name":"ZZZ-123","value":"1083"},
@@ -272,6 +277,6 @@ const mapStateToProps = ({deviceext}) => {
         {"type":"BUS","name":"XAN-223","value":"150"}
     ];
     const legend =  {CAR: true, BUS: true}; //该对象 默认{CAR: true, BUS: true} 需要在map中点击legend时 同步更新map中的值
-    return {data, legend};
+    return {data, legend,query};
 }
 export default connect(mapStateToProps)(Page);

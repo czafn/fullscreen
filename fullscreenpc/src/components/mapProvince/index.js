@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
+import {setquery_deviceext_request} from '../../actions';
 const _ = require('underscore');
 
 require('echarts/map/js/china.js');
@@ -263,10 +264,13 @@ class Page extends React.Component {
     // };
 
     onChartClick(param, echart){ //地图点击事件，点击后
-      debugger
+      // debugger
       if(param.data !== undefined){
         //应该首先清理 item变量的值
         param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
+        let query = this.props.query;
+        query['provice'] = param.data.name;
+        this.props.dispatch(setquery_deviceext_request(query));
       }
     }
 
@@ -274,7 +278,10 @@ class Page extends React.Component {
     onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
         console.log(param, echart);
         param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
-
+        console.log(param.selected );
+        // let query = this.props.query;
+        // query['provice'] = param.data.name;
+        // this.props.dispatch(setquery_deviceext_request(query));
     };
     render() {
         let {data, legend} = this.props;
@@ -285,7 +292,7 @@ class Page extends React.Component {
 
         let onEvents = {
             'legendselectchanged': this.onChartLegendselectchanged,
-            'click': this.onChartClick
+            'click': this.onChartClick.bind(this)
         }
 
         if(legend){
@@ -349,6 +356,7 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = ({deviceext}) => {
+    const query = deviceext.query;
     let data = deviceext.statprovince;
 
     data.forEach(d=>{
@@ -434,6 +442,6 @@ const mapStateToProps = ({deviceext}) => {
     ];
 
     const legend =  {CAR: true, BUS: true}; //该对象 默认{CAR: true, BUS: true} 需要再item点击legend时 同步更新map中的值
-    return {data, legend};
+    return {data, legend,query};
 }
 export default connect(mapStateToProps)(Page);

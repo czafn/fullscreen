@@ -24,8 +24,40 @@ import {
 
 export function* catldata(){
   yield takeLatest(`${setquery_deviceext_request}`, function*(action) {
-    const {payload} = action;
-    yield put(setquery_deviceext_result(payload));
+    try{
+      const {payload} = action;
+      console.log(`payload--->${JSON.stringify(payload)}`);
+      const query = payload;
+      // yield call(delay, 3000);
+      yield put(getcountcar_request({query}));//获取CAR个数
+      // yield call(delay, 3000);
+      yield put(getcountbus_request({query}));//获取BUS个数
+      // yield call(delay, 3000);
+      yield put(getusedyearcar_request({query}));//获取CAR使用年限
+      // yield call(delay, 3000);
+      yield put(getusedyearbus_request({query}));//获取BUS使用年限
+      // yield call(delay, 3000);
+      // catlprojectname:'',//项目名
+      // provice:''//省份
+      const {catlprojectname,provice} = query;
+      if(!!catlprojectname){
+          yield put(getstatprovince_request({query:{catlprojectname}}));
+      }
+      else{
+        yield put(getstatprovince_request({}));//获取省份统计
+      }
+      if(!!provice){
+        yield put(getstatcatlproject_request({query:{provice}}));//获取项目统计
+      }
+      else{
+        yield put(getstatcatlproject_request({}));//获取项目统计
+      }
+      yield put(setquery_deviceext_result(query));
+    }
+    catch(e){
+      console.log(e);
+    }
+
   });
 
 }
