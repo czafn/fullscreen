@@ -6,7 +6,8 @@ import{
   getusedyearbus_result,
   getstatprovince_result,
   getstatcatlproject_result,
-  setquery_deviceext_result
+  setquery_deviceext_result,
+  settype_deviceext
 } from '../actions';
 
 // catlprojectname:'',//项目名
@@ -21,6 +22,10 @@ const initial = {
       usedyearbus:[],
       statprovince:[],
       statcatlproject:[],
+      type:{
+        BUS:true,
+        CAR:true
+      },
       query:{//所有条件不满足
 
       }
@@ -28,6 +33,10 @@ const initial = {
 };
 
 const deviceext = createReducer({
+  [settype_deviceext]:(state,payload)=>{
+    const type = {...payload};
+    return  {...state,type};
+  },
   [setquery_deviceext_result]:(state,payload)=>{
       const query = {...payload};
       return  {...state,query};

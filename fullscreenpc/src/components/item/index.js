@@ -5,7 +5,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
-import {setquery_deviceext_request} from '../../actions';
+import {setquery_deviceext_request,settype_deviceext} from '../../actions';
+
 import styled from 'styled-components';
 const _ = require('underscore');
 const Chart = styled.div`
@@ -193,7 +194,7 @@ class Page extends React.Component {
       console.log(param, echart);
       debugger
       param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
-
+      this.props.dispatch(settype_deviceext(param.selected));
     };
 
     render() {
@@ -203,7 +204,7 @@ class Page extends React.Component {
         }
         const option = this.option;
         let onEvents = {
-          'legendselectchanged': this.onChartLegendselectchanged,
+          'legendselectchanged': this.onChartLegendselectchanged.bind(this),
           'click': this.onChartClick.bind(this)
         }
 
@@ -237,6 +238,7 @@ class Page extends React.Component {
 const mapStateToProps = ({deviceext}) => {
     let data = deviceext.statcatlproject;
     const query = deviceext.query;
+    const type = deviceext.type;//为''表示所有,否则是'CAR'或者'BUS'
     let data1 = [
         {"type":"CAR","name":"AAA-123","value":"1123"},
         {"type":"CAR","name":"ZZZ-123","value":"1083"},
