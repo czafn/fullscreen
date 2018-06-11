@@ -174,10 +174,15 @@ class Page extends React.Component {
 
     onChartClick(param, echart){ //地图点击事件，点击后
       // debugger
-      if(param.name !== undefined){
+      if(param === undefined){
+        let query = this.props.query;
+        delete query.catlprojectname;
+        this.props.dispatch(setquery_deviceext_request(query));
+      } else if(param.name !== undefined){
         //应该首先清理 item变量的值
         // param.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
         let query = this.props.query;
+        delete query.provice
         query['catlprojectname'] = param.name;
         this.props.dispatch(setquery_deviceext_request(query));
       }
@@ -222,7 +227,7 @@ class Page extends React.Component {
         option.series["1"].data = busNum;
 
         return (
-            <Chart >
+            <Chart onClick={() => this.onChartClick()}>
               <ReactEcharts option={option} style={{height:'270px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );

@@ -52,7 +52,7 @@ class AppRoot extends React.Component {
 
 
     render() {
-      const {centerIndex, rightIndex} = this.props;
+      const {centerIndex, rightIndex, query} = this.props;
       return (
           <div className="back">
 
@@ -84,7 +84,7 @@ class AppRoot extends React.Component {
                       <div className="cbody-left-center">
                           <div className="left-top-left">
                               <div className="cbody-left-top-title">
-                                  Cycle数分布
+                                  Cycle数
                               </div>
                               <div className="cbody-left-top-box">
                                   <Cycle></Cycle>
@@ -92,7 +92,7 @@ class AppRoot extends React.Component {
                           </div>
                           <div className="left-top-right">
                               <div className="cbody-left-top-title left-right">
-                                  等效温度分布
+                                  等效温度
                               </div>
                               <div className="cbody-left-top-box left-right">
                                   <DxTemperature></DxTemperature>
@@ -173,7 +173,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-center">
                       <div className="cbody-center-top">
-                          <MapIframe style={{width: "100%", height: "100%"}}></MapIframe>
+                          {/*<MapIframe style={{width: "100%", height: "100%"}}></MapIframe>*/}
                       </div>
 
                   </div>
@@ -212,7 +212,9 @@ class AppRoot extends React.Component {
                           <div className="right-bottom-center">
                               <div style={{height: "50%"}}>
                                   <div className="cbody-right-title-top">
-                                      CAR-车辆使用年限
+                                    {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
+                                    {query['provice'] !== undefined ? query.provice+'-' : ''}
+                                    CAR-车辆使用年限
                                   </div>
                                   <div className="cbody-right-box year">
                                       <CarYear></CarYear>
@@ -220,6 +222,8 @@ class AppRoot extends React.Component {
                               </div>
                               <div style={{height: "50%"}}>
                                   <div className="cbody-right-title">
+                                    {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
+                                    {query['provice'] !== undefined ? query.provice+'-' : ''}
                                       BUS-车辆使用年限
                                   </div>
                                   <div className="cbody-right-box">
@@ -230,7 +234,7 @@ class AppRoot extends React.Component {
                           </div>
                           <div className="right-bottom-right">
                               <div className="cbody-right-title-top">
-                                  各省份车辆分布
+                                {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}各省份车辆分布
                               </div>
                               <div className="cbody-right-box busProvince">
                                   <MapProvince></MapProvince>
@@ -240,6 +244,7 @@ class AppRoot extends React.Component {
                       <div className="cbody-right-top">
                           <div className="right-top-left">
                               <div className="cbody-right-title">
+                                {query['provice'] !== undefined ? query.provice+'-' : ''}
                                   各项目车辆分布TOP20
                               </div>
                               <div className="cbody-right-box">
@@ -259,7 +264,7 @@ const mapStateToProps = ({app,
   searchresult:{curallalarm,alarms},
   device:{g_devicesdb},
   app:{SettingOfflineMinutes},
-  deviceext:{countcar,countbus}
+  deviceext:{countcar,countbus,query}
 }) => {
   const {modeview} = app;
 
@@ -310,7 +315,8 @@ const mapStateToProps = ({app,
         bus:countbus,
         car:countcar
     };
-    return {centerIndex, rightIndex};
+
+    return {centerIndex, rightIndex, query};
   //  return {count_online,count_offline,count_all,count_yellow,count_red,count_orange,modeview};
  }
 // const mapStateToProps = ({}) => {

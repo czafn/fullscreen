@@ -42,6 +42,14 @@ class Page extends React.Component {
 
                         }
                     },
+                    name:'℃',
+                    nameLocation:'end',
+                    nameGap:5,
+                    nameTextStyle:{
+                      fontSize: 12,
+                      padding:[30, 0, 0, 0],
+                      color: 'rgba(255,255,255,1.0)',
+                    }
                 }],
                 grid:{
                     bottom: 40,

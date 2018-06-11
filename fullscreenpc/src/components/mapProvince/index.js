@@ -265,13 +265,25 @@ class Page extends React.Component {
 
     onChartClick(param, echart){ //地图点击事件，点击后
       // debugger
-      if(param.data !== undefined){
+      if(param === undefined){
+        let query = this.props.query;
+        delete query.provice;
+        this.props.dispatch(setquery_deviceext_request(query));
+      } else if(param.data !== undefined){
         //应该首先清理 item变量的值
         param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
         let query = this.props.query;
-        query['provice'] = param.data.name;
+        delete query.catlprojectname
+        let proviceName;
+        if(['北京','天津','重庆','上海'].indexOf(param.data.name)>=0){
+          proviceName = param.data.name+'市'
+        } else {
+          proviceName = param.data.name+'省'
+        }
+        query['provice'] = proviceName;
         this.props.dispatch(setquery_deviceext_request(query));
       }
+
     }
 
 
@@ -298,7 +310,6 @@ class Page extends React.Component {
         if(legend){
           option.legend.selected = legend
         }
-
 
         data = _.sortBy(data,(i)=>-i.value-0);
         let group = _.groupBy(data,'type');
@@ -337,8 +348,11 @@ class Page extends React.Component {
         )
         option.series[0].data = mapCarObj;
         option.series[1].data = mapBusObj;
-        names.length = 15;
-        carObj.length = 15;
+        if(names.length > 15)
+          names.length = 15;
+        if(carObj.length > 15)
+          carObj.length = 15;
+        if(busObj.length > 15)
         busObj.length = 15;
         option.xAxis.data = names;
         option.yAxis.max = option.visualMap.max
@@ -348,8 +362,8 @@ class Page extends React.Component {
         option.series[5].data = busObj;
 
         return (
-            <Chart >
-              <ReactEcharts option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
+            <Chart onClick={() => this.onChartClick()}>
+              <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
     };
