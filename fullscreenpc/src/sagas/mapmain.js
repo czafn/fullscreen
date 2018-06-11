@@ -188,29 +188,31 @@ const getMarkCluster_createMarks = (SettingOfflineMinutes)=>{
 }
 
 const getMarkCluster_updateMarks = (deviceupdated,SettingOfflineMinutes)=>{
-    if(!!markCluster.getMap()){
-        //如果有地图对象,才能重新新建
-        const allmarks = markCluster.getMarkers();
-        lodashmap(allmarks,(mark)=>{
-          const deviceitem = g_devicesdb[mark.getExtData()];
-          const deviceitemnew = deviceupdated[deviceitem.DeviceId];
-          if(!!deviceitemnew){
-            if(!!deviceitemnew.locz){
-              const pos = new window.AMap.LngLat(deviceitemnew.locz[0],deviceitemnew.locz[1]);
-              const newIcon = new window.AMap.Icon({
-                  size: new window.AMap.Size(34, 34),  //图标大小
-                  image: getimageicon(deviceitemnew,SettingOfflineMinutes),
-                  imageOffset: new window.AMap.Pixel(0, 0)
-              });
-              mark.setIcon(newIcon);
-              mark.setPosition(pos);
-              console.log(`mark${deviceitem.DeviceId}-->setPosition-->${JSON.stringify(deviceitemnew.locz)}`)
+    if(!!markCluster){
+      if(!!markCluster.getMap()){
+          //如果有地图对象,才能重新新建
+          const allmarks = markCluster.getMarkers();
+          lodashmap(allmarks,(mark)=>{
+            const deviceitem = g_devicesdb[mark.getExtData()];
+            const deviceitemnew = deviceupdated[deviceitem.DeviceId];
+            if(!!deviceitemnew){
+              if(!!deviceitemnew.locz){
+                const pos = new window.AMap.LngLat(deviceitemnew.locz[0],deviceitemnew.locz[1]);
+                const newIcon = new window.AMap.Icon({
+                    size: new window.AMap.Size(34, 34),  //图标大小
+                    image: getimageicon(deviceitemnew,SettingOfflineMinutes),
+                    imageOffset: new window.AMap.Pixel(0, 0)
+                });
+                mark.setIcon(newIcon);
+                mark.setPosition(pos);
+                console.log(`mark${deviceitem.DeviceId}-->setPosition-->${JSON.stringify(deviceitemnew.locz)}`)
+              }
+              else{
+                markCluster.removeMarker(mark);
+              }
             }
-            else{
-              markCluster.removeMarker(mark);
-            }
-          }
-        });
+          });
+      }
     }
 }
 
