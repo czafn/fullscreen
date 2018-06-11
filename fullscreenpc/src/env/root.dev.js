@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Provider } from 'react-redux';
-// import DevTools from './devtools';
+import DevTools from './devtools';
 import store from './store';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
@@ -22,7 +22,7 @@ let Root = (props)=>
                     <ConnectedRouter history={history}>
                         <Route path="/" component={AppRoot}/>
                     </ConnectedRouter>
-                    {/* <DevTools /> */}
+                    <DevTools />
                 </div>
             </Provider>
         </MuiThemeProvider>

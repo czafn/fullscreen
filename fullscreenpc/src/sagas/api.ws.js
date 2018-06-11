@@ -63,6 +63,7 @@ function* write(socket,fun,cmd) {
         let { payload } = yield take(fun);
 
         if(issocketconnected){
+          console.log(`向服务器发送命令:${cmd}-->${JSON.stringify(payload)}`)
           socket.emit(`${config.softmode}`,{cmd:cmd,data:payload});
         }
         else{

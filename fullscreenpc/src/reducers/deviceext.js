@@ -35,6 +35,7 @@ const initial = {
 const deviceext = createReducer({
   [settype_deviceext]:(state,payload)=>{
     const type = {...payload};
+    console.log(`deviceext->${JSON.stringify(type)}`)
     return  {...state,type};
   },
   [setquery_deviceext_result]:(state,payload)=>{
@@ -43,26 +44,32 @@ const deviceext = createReducer({
   },
   [getcountcar_result]:(state,payload)=>{
       let countcar = payload;
+      console.log(`countcar->${countcar}`)
       return  {...state,countcar};
   },
   [getcountbus_result]:(state,payload)=>{
       let countbus = payload;
+      console.log(`countbus->${countbus}`)
       return  {...state,countbus};
   },
   [getusedyearcar_result]:(state,payload)=>{
       let usedyearcar = [...payload];
+      console.log(`usedyearcar->${usedyearcar.length}`)
       return  {...state,usedyearcar};
   },
   [getusedyearbus_result]:(state,payload)=>{
       let usedyearbus = [...payload];
+      console.log(`usedyearbus->${usedyearbus.length}`)
       return  {...state,usedyearbus};
   },
   [getstatprovince_result]:(state,payload)=>{
       let statprovince =[...payload];
+      console.log(`statprovince->${statprovince.length}`)
       return  {...state,statprovince};
   },
   [getstatcatlproject_result]:(state,payload)=>{
       let statcatlproject =[...payload];
+      console.log(`statcatlproject->${statcatlproject.length}`)
       return  {...state,statcatlproject};
   },
 }, initial.deviceext);
