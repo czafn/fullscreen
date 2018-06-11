@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
@@ -33,8 +34,18 @@ class Page extends React.Component {
     };
 }
 
-const mapStateToProps = ({deviceext}) => {
-  let data = deviceext.usedyearbus;
+const deviceextSelector = state => state.deviceext;
+
+const usedyearbusSelector = createSelector(
+  deviceextSelector,
+  (deviceext) => {
+    const {usedyearbus} = deviceext;
+    return usedyearbus;
+  }
+);
+
+const mapStateToProps = (state) => {
+  let data = usedyearbusSelector(state);
 
   const getOption = () => {
       return {
