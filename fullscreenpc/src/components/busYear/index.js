@@ -210,36 +210,7 @@ const getOptionSelector = createSelector(
 );
 
 const mapStateToProps = (state) => {
-  let option = getOptionSelector(state);
-
-
-
-    // let data = [
-    //     {"type":"CAR","name":"2018","value":"1241"},
-    //     {"type":"CAR","name":"2017","value":"1141"},
-    //     {"type":"CAR","name":"2016","value":"1842"},
-    //     {"type":"CAR","name":"2015","value":"2242"},
-    //     {"type":"CAR","name":"2014","value":"1842"},
-    //     {"type":"CAR","name":"2013","value":"1443"},
-    //     {"type":"CAR","name":"2012","value":"1143"},
-    //     {"type":"CAR","name":"2011","value":"943"},
-    //     {"type":"CAR","name":"2010","value":"893"},
-    //     {"type":"CAR","name":"2009","value":"773"},
-    //     {"type":"CAR","name":"2008之前","value":"1743"},
-    //
-    //     {"type":"BUS","name":"2018","value":"525"},
-    //     {"type":"BUS","name":"2017","value":"526"},
-    //     {"type":"BUS","name":"2016","value":"625"},
-    //     {"type":"BUS","name":"2015","value":"425"},
-    //     {"type":"BUS","name":"2014","value":"425"},
-    //     {"type":"BUS","name":"2013","value":"428"},
-    //     {"type":"BUS","name":"2012","value":"328"},
-    //     {"type":"BUS","name":"2011","value":"228"},
-    //     {"type":"BUS","name":"2010","value":"128"},
-    //     {"type":"BUS","name":"2009","value":"98"},
-    //     {"type":"BUS","name":"2008之前","value":"178"}
-    //
-    // ];
-    return {option};
+  const option = getOptionSelector(state);
+  return {option};
 }
 export default connect(mapStateToProps)(Page);
