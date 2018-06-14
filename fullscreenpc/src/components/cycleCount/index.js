@@ -25,6 +25,9 @@ class Page extends React.Component {
         const getOption = () => {
             return {
                 backgroundColor:'rgba(10, 108, 163, 0.3)',
+                tooltip:{
+                  show:true
+                },
                 xAxis: [{
                     show: true,
                     data: [],
@@ -79,7 +82,7 @@ class Page extends React.Component {
                     z: 10
                 },
                 series: [{
-                    name: 'back',
+                    // name: 'back',
                     type: 'bar',
                     data: [],
                     z: 10,
