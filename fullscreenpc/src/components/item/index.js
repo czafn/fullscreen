@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import {setquery_deviceext_request,settype_deviceext} from '../../actions';
@@ -66,10 +67,10 @@ class Page extends React.Component {
     };
 
     render() {
-        let {data,option} = this.props;
-        if(data.length === 0){
-          return (<div>loading</div>)
-        }
+        let {option} = this.props;
+        // if(data.length === 0){
+        //   return (<div>loading</div>)
+        // }
         let onEvents = {
           'legendselectchanged': this.onChartLegendselectchanged.bind(this),
           'click': this.onChartClick.bind(this)
@@ -82,207 +83,235 @@ class Page extends React.Component {
     };
 }
 
-const mapStateToProps = ({deviceext}) => {
-    let data = deviceext.statcatlproject;
-    const query = deviceext.query;
-    const type = deviceext.type;//为''表示所有,否则是'CAR'或者'BUS'
-  const legend =  deviceext.type;//该对象 默认{CAR: true, BUS: true} 需要在map中点击legend时 同步更新map中的值
+const deviceextSelector = state => state.deviceext;
+const typeSelector = createSelector(
+  deviceextSelector,
+  (deviceext) => {
+    const {type} = deviceext;
+    return type;
+  }
+);
 
-  const getOption = () => {
-    return {
-      backgroundColor:'rgba(10, 108, 163, 0.3)',
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'shadow'
-        }
-      },
-      grid: {
-        left: 15,
-        top: 20,
-        right: 15,
-        bottom: 5,
-        containLabel: true,
-      },
-      legend: {//图例组件，颜色和名字
-        // right:'60%',
-        top:5,
-        itemGap: 16,
-        itemWidth: 18,
-        itemHeight: 10,
-        data:['CAR', 'BUS'],
-        textStyle: {
-          color: '#a8aab0',
-          fontStyle: 'normal',
-          fontFamily: '微软雅黑',
-          fontSize: 12,
-        }
-      },
-      yAxis: {
-        type: 'value',
-        offset: 5,
-        axisLabel: {
+const statcatlprojectSelector = createSelector(
+  [deviceextSelector,typeSelector],
+  (deviceext,type) => {
+    const {statcatlproject} = deviceext;
+    let data = statcatlproject;
+    const getOption = () => {
+      return {
+        backgroundColor:'rgba(10, 108, 163, 0.3)',
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          left: 15,
+          top: 20,
+          right: 15,
+          bottom: 5,
+          containLabel: true,
+        },
+        legend: {//图例组件，颜色和名字
+          // right:'60%',
+          top:5,
+          itemGap: 16,
+          itemWidth: 18,
+          itemHeight: 10,
+          data:['CAR', 'BUS'],
           textStyle: {
-            color: 'rgba(255,255,255,0.8)'
-          },
-          // formatter: '{value}h'
-          formatter: function(value, index) {
-            if (index === 0) {
-              return value;
-            } else {
-              return value;
+            color: '#a8aab0',
+            fontStyle: 'normal',
+            fontFamily: '微软雅黑',
+            fontSize: 12,
+          }
+        },
+        yAxis: {
+          type: 'value',
+          offset: 5,
+          axisLabel: {
+            textStyle: {
+              color: 'rgba(255,255,255,0.8)'
+            },
+            // formatter: '{value}h'
+            formatter: function(value, index) {
+              if (index === 0) {
+                return value;
+              } else {
+                return value;
+              }
             }
-          }
-        },
-        axisLine: {
-          show: false
-        },
-        axisTick: {
-          lineStyle: {
-            color: '#fff'
-          }
-        },
-        splitLine: {
-          show: false,
-          lineStyle: {
-            width: 1,
-            color: '#020617',
-          }
-        },
-        boundaryGap: [0, 0.1],
-        z: 10
-      },
-      xAxis: {
-        type: 'category',
-        axisLabel: {
-          textStyle: {
-            color: "#fff"
           },
-          // interval:1,
-          interval:0,
-          formatter: function (value, index) {
-            if(index %2 ==0)
-            // return value.substring(0,5)+'\n'+value.substring(5,value.length);
-              return value;
-            else
-              return value;
+          axisLine: {
+            show: false
           },
-          rotate:20,
-        },
-        axisLine: {
-          show: false
-        },
-        axisTick: {
-          show: false
-        },
-        data: []
-      },
-      series: [
-        {
-          name: 'CAR',
-          type: 'bar',
-          barWidth: '25%',
-          itemStyle: {
-            normal: {
-              barBorderRadius: 3,
-              // 左上右下
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(0,168,255,1)'
-              }, {
-                offset: 1.0,
-                color: 'rgba(0,168,255,0.2) '
-              }], false),
+          axisTick: {
+            lineStyle: {
+              color: '#fff'
             }
+          },
+          splitLine: {
+            show: false,
+            lineStyle: {
+              width: 1,
+              color: '#020617',
+            }
+          },
+          boundaryGap: [0, 0.1],
+          z: 10
+        },
+        xAxis: {
+          type: 'category',
+          axisLabel: {
+            textStyle: {
+              color: "#fff"
+            },
+            // interval:1,
+            interval:0,
+            formatter: function (value, index) {
+              if(index %2 ==0)
+              // return value.substring(0,5)+'\n'+value.substring(5,value.length);
+                return value;
+              else
+                return value;
+            },
+            rotate:20,
+          },
+          axisLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
           },
           data: []
         },
-        {
-          name: 'BUS',
-          type: 'bar',
-          barWidth: '25%',
-          itemStyle: {
-            normal: {
-              // 左上右下
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(255, 179, 1, 1)'
-              }, {
-                offset: 1.0,
-                color: 'rgba(255, 179, 1, 0.4)'
-              }], false),
-            }
+        series: [
+          {
+            name: 'CAR',
+            type: 'bar',
+            barWidth: '25%',
+            itemStyle: {
+              normal: {
+                barBorderRadius: 3,
+                // 左上右下
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(0,168,255,1)'
+                }, {
+                  offset: 1.0,
+                  color: 'rgba(0,168,255,0.2) '
+                }], false),
+              }
+            },
+            data: []
           },
-          data: []
-        }
-      ]
+          {
+            name: 'BUS',
+            type: 'bar',
+            barWidth: '25%',
+            itemStyle: {
+              normal: {
+                // 左上右下
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(255, 179, 1, 1)'
+                }, {
+                  offset: 1.0,
+                  color: 'rgba(255, 179, 1, 0.4)'
+                }], false),
+              }
+            },
+            data: []
+          }
+        ]
+      }
+    };
+    let option = getOption();
+
+    if(!!data){
+      option.legend.selected = type
     }
-  };
-  let option = getOption();
-
-  if(legend){
-    option.legend.selected = legend
+    data = _.sortBy(data,(i) => -i.value);
+    let group = _.groupBy(data,'type');
+    let carNum = [];
+    let busNum = [];
+    let bus = group['BUS']||[], car = group['CAR']||[];
+    let names = _.uniq(_.pluck(data,'name'));
+    for (let i = 0; i < names.length; i++) {
+      let a = _.find(car, b => b.name === names[i])
+      carNum.push(a ? a.value-0 : 0);
+      let b = _.find(bus, b => b.name === names[i])
+      busNum.push(b ? b.value-0 : 0);
+    }
+    option.xAxis.data = names;
+    option.series["0"].data = carNum;
+    option.series["1"].data = busNum;
+    return option;
   }
-  data = _.sortBy(data,(i) => -i.value);
-  let group = _.groupBy(data,'type');
-  let carNum = [];
-  let busNum = [];
-  let bus = group['BUS']||[], car = group['CAR']||[];
-  let names = _.uniq(_.pluck(data,'name'));
-  for (let i = 0; i < names.length; i++) {
-    let a = _.find(car, b => b.name === names[i])
-    carNum.push(a ? a.value-0 : 0);
-    let b = _.find(bus, b => b.name === names[i])
-    busNum.push(b ? b.value-0 : 0);
+);
+
+const querySelector = createSelector(
+  deviceextSelector,
+  (deviceext) => {
+    const {query} = deviceext;
+    return query;
   }
-  option.xAxis.data = names;
-  option.series["0"].data = carNum;
-  option.series["1"].data = busNum;
-    let data1 = [
-        {"type":"CAR","name":"AAA-123","value":"1123"},
-        {"type":"CAR","name":"ZZZ-123","value":"1083"},
-        {"type":"CAR","name":"TTT-133","value":"943"},
-        {"type":"CAR","name":"ZZZ-122","value":"893"},
-        {"type":"CAR","name":"XNY-113KWH","value":"843"},
-        {"type":"CAR","name":"NDX-88KWH","value":"793"},
-        {"type":"CAR","name":"BJX-213KWH","value":"743"},
-        {"type":"CAR","name":"XNY-118KWH","value":"693"},
-        {"type":"CAR","name":"XNY-117KWH","value":"643"},
-        {"type":"CAR","name":"XNY-116KWH","value":"593"},
-        {"type":"CAR","name":"XNY-115KWH","value":"543"},
-        {"type":"CAR","name":"XNY-114KWH","value":"493"},
-        {"type":"CAR","name":"ZZZ-112","value":"443"},
-        {"type":"CAR","name":"ZZZ-133","value":"393"},
-        {"type":"CAR","name":"TTT-111","value":"343"},
-        {"type":"CAR","name":"XXA-123","value":"293"},
-        {"type":"CAR","name":"HZA-234","value":"243"},
-        {"type":"CAR","name":"AAA-122","value":"193"},
-        {"type":"CAR","name":"TTT-112","value":"143"},
-        {"type":"CAR","name":"XAN-223","value":"93"},
+);
 
 
-        {"type":"BUS","name":"AAA-123","value":"782"},
-        {"type":"BUS","name":"ZZZ-123","value":"669"},
-        {"type":"BUS","name":"TTT-133","value":"666"},
-        {"type":"BUS","name":"ZZZ-122","value":"574"},
-        {"type":"BUS","name":"XNY-113KWH","value":"550"},
-        {"type":"BUS","name":"NDX-88KWH","value":"501"},
-        {"type":"BUS","name":"BJX-213KWH","value":"423"},
-        {"type":"BUS","name":"XNY-118KWH","value":"402"},
-        {"type":"BUS","name":"XNY-117KWH","value":"381"},
-        {"type":"BUS","name":"XNY-116KWH","value":"360"},
-        {"type":"BUS","name":"XNY-115KWH","value":"339"},
-        {"type":"BUS","name":"XNY-114KWH","value":"318"},
-        {"type":"BUS","name":"ZZZ-112","value":"297"},
-        {"type":"BUS","name":"ZZZ-133","value":"276"},
-        {"type":"BUS","name":"TTT-111","value":"255"},
-        {"type":"BUS","name":"XXA-123","value":"234"},
-        {"type":"BUS","name":"HZA-234","value":"213"},
-        {"type":"BUS","name":"AAA-122","value":"192"},
-        {"type":"BUS","name":"TTT-112","value":"171"},
-        {"type":"BUS","name":"XAN-223","value":"150"}
-    ];
 
-    return {data, legend,query,option};
+const mapStateToProps = (state) => {
+  const option = statcatlprojectSelector(state);
+  const query = querySelector(state);
+  const legend = typeSelector(state);
+
+
+    // let data1 = [
+    //     {"type":"CAR","name":"AAA-123","value":"1123"},
+    //     {"type":"CAR","name":"ZZZ-123","value":"1083"},
+    //     {"type":"CAR","name":"TTT-133","value":"943"},
+    //     {"type":"CAR","name":"ZZZ-122","value":"893"},
+    //     {"type":"CAR","name":"XNY-113KWH","value":"843"},
+    //     {"type":"CAR","name":"NDX-88KWH","value":"793"},
+    //     {"type":"CAR","name":"BJX-213KWH","value":"743"},
+    //     {"type":"CAR","name":"XNY-118KWH","value":"693"},
+    //     {"type":"CAR","name":"XNY-117KWH","value":"643"},
+    //     {"type":"CAR","name":"XNY-116KWH","value":"593"},
+    //     {"type":"CAR","name":"XNY-115KWH","value":"543"},
+    //     {"type":"CAR","name":"XNY-114KWH","value":"493"},
+    //     {"type":"CAR","name":"ZZZ-112","value":"443"},
+    //     {"type":"CAR","name":"ZZZ-133","value":"393"},
+    //     {"type":"CAR","name":"TTT-111","value":"343"},
+    //     {"type":"CAR","name":"XXA-123","value":"293"},
+    //     {"type":"CAR","name":"HZA-234","value":"243"},
+    //     {"type":"CAR","name":"AAA-122","value":"193"},
+    //     {"type":"CAR","name":"TTT-112","value":"143"},
+    //     {"type":"CAR","name":"XAN-223","value":"93"},
+    //
+    //
+    //     {"type":"BUS","name":"AAA-123","value":"782"},
+    //     {"type":"BUS","name":"ZZZ-123","value":"669"},
+    //     {"type":"BUS","name":"TTT-133","value":"666"},
+    //     {"type":"BUS","name":"ZZZ-122","value":"574"},
+    //     {"type":"BUS","name":"XNY-113KWH","value":"550"},
+    //     {"type":"BUS","name":"NDX-88KWH","value":"501"},
+    //     {"type":"BUS","name":"BJX-213KWH","value":"423"},
+    //     {"type":"BUS","name":"XNY-118KWH","value":"402"},
+    //     {"type":"BUS","name":"XNY-117KWH","value":"381"},
+    //     {"type":"BUS","name":"XNY-116KWH","value":"360"},
+    //     {"type":"BUS","name":"XNY-115KWH","value":"339"},
+    //     {"type":"BUS","name":"XNY-114KWH","value":"318"},
+    //     {"type":"BUS","name":"ZZZ-112","value":"297"},
+    //     {"type":"BUS","name":"ZZZ-133","value":"276"},
+    //     {"type":"BUS","name":"TTT-111","value":"255"},
+    //     {"type":"BUS","name":"XXA-123","value":"234"},
+    //     {"type":"BUS","name":"HZA-234","value":"213"},
+    //     {"type":"BUS","name":"AAA-122","value":"192"},
+    //     {"type":"BUS","name":"TTT-112","value":"171"},
+    //     {"type":"BUS","name":"XAN-223","value":"150"}
+    // ];
+
+    return { legend,query,option};
 }
 export default connect(mapStateToProps)(Page);
