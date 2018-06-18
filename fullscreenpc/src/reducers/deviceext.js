@@ -11,8 +11,8 @@ import{
 } from '../actions';
 
 // catlprojectname:'',//项目名
-// provice:''//省份
-// provice:'江苏省',
+// province:''//省份
+// province:'江苏省',
 // catlprojectname:'TTT-133'
 const initial = {
   deviceext: {

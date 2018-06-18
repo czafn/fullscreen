@@ -35,17 +35,17 @@ export function get_initgeotree(){
   };
 
   map(jsondataprovinces,(province)=>{
-    let provicecode = parseInt(province.code,10);
-    let provicenode = {
-      adcode:provicecode,
+    let provincecode = parseInt(province.code,10);
+    let provincenode = {
+      adcode:provincecode,
       name:province.name,
       loading: false,
-      type:'group_provice',
+      type:'group_province',
       children:[]
     };
-    gmap_acode_node[provicecode] = provicenode;
-    gmap_acode_treename[provicecode] = province.name;
-    gmap_acode_treecount[provicecode] = {
+    gmap_acode_node[provincecode] = provincenode;
+    gmap_acode_treename[provincecode] = province.name;
+    gmap_acode_treecount[provincecode] = {
       count_total:0,
       count_online:0,
       count_offline:0,
@@ -54,7 +54,7 @@ export function get_initgeotree(){
     map(jsondatacities,(city)=>{
       let citycode = parseInt(city.code,10);
       let parent_code = parseInt(city.parent_code,10);
-      if(parent_code === provicecode){
+      if(parent_code === provincecode){
         let citynode = {
           adcode:citycode,
           name:city.name,
@@ -93,16 +93,16 @@ export function get_initgeotree(){
             }
             else{
 
-              provicenode.children.push(areanode);
+              provincenode.children.push(areanode);
             }
           }
         });
         if(gmap_acode_treename[citycode] !== "市辖区"){
-          provicenode.children.push(citynode);
+          provincenode.children.push(citynode);
         }
       }
     });
-    datatree.children.push(provicenode);
+    datatree.children.push(provincenode);
   });
 
   const node2 = {

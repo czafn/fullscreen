@@ -38,16 +38,16 @@ export function* catldata(){
       yield put(getusedyearbus_request({query}));//获取BUS使用年限
       // yield call(delay, 3000);
       // catlprojectname:'',//项目名
-      // provice:''//省份
-      const {catlprojectname,provice} = query;
+      // province:''//省份
+      const {catlprojectname,province} = query;
       if(!!catlprojectname){
           yield put(getstatprovince_request({query:{catlprojectname}}));
       }
       else{
         yield put(getstatprovince_request({}));//获取省份统计
       }
-      if(!!provice){
-        yield put(getstatcatlproject_request({query:{provice}}));//获取项目统计
+      if(!!province){
+        yield put(getstatcatlproject_request({query:{province}}));//获取项目统计
       }
       else{
         yield put(getstatcatlproject_request({}));//获取项目统计
@@ -106,8 +106,8 @@ export function* querycatldata(){//仅执行一次
       yield put(getusedyearbus_request({query}));//获取BUS使用年限
       // yield call(delay, 3000);
       // catlprojectname:'',//项目名
-      // provice:''//省份
-      const {catlprojectname,provice} = query;
+      // province:''//省份
+      const {catlprojectname,province} = query;
       if(!!catlprojectname){
           yield put(getstatprovince_request({query:{catlprojectname}}));
       }
@@ -115,8 +115,8 @@ export function* querycatldata(){//仅执行一次
         yield put(getstatprovince_request({}));//获取省份统计
       }
 
-      if(!!provice){
-        yield put(getstatcatlproject_request({query:{provice}}));//获取项目统计
+      if(!!province){
+        yield put(getstatcatlproject_request({query:{province}}));//获取项目统计
       }
       else{
         yield put(getstatcatlproject_request({}));//获取项目统计

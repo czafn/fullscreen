@@ -54,7 +54,7 @@ class Page extends React.Component {
         //应该首先清理 item变量的值
         // param.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
         let query = this.props.query;
-        delete query.provice
+        delete query.province
         query['catlprojectname'] = param.name;
         this.props.dispatch(setquery_deviceext_request(query));
       }

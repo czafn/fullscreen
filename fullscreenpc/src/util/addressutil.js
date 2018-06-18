@@ -34,7 +34,7 @@ export const getadcodeinfo = (adcodei)=>{
   resultobj = find(jsondataprovinces,(o)=>{return o.code === adcode;});
   if(!!resultobj){
     return {
-      level:'provice',
+      level:'province',
       parent_code:parseInt(resultobj.parent_code,10)
     };
   }

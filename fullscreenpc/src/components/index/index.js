@@ -213,7 +213,7 @@ class AppRoot extends React.Component {
                               <div style={{height: "50%"}}>
                                   <div className="cbody-right-title-top">
                                     {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
-                                    {query['provice'] !== undefined ? query.provice+'-' : ''}
+                                    {query['province'] !== undefined ? query.province+'-' : ''}
                                     CAR-车辆使用年限
                                   </div>
                                   <div className="cbody-right-box year">
@@ -223,7 +223,7 @@ class AppRoot extends React.Component {
                               <div style={{height: "50%"}}>
                                   <div className="cbody-right-title">
                                     {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
-                                    {query['provice'] !== undefined ? query.provice+'-' : ''}
+                                    {query['province'] !== undefined ? query.province+'-' : ''}
                                       BUS-车辆使用年限
                                   </div>
                                   <div className="cbody-right-box">
@@ -244,7 +244,7 @@ class AppRoot extends React.Component {
                       <div className="cbody-right-top">
                           <div className="right-top-left">
                               <div className="cbody-right-title">
-                                {query['provice'] !== undefined ? query.provice+'-' : ''}
+                                {query['province'] !== undefined ? query.province+'-' : ''}
                                   各项目车辆分布TOP20
                               </div>
                               <div className="cbody-right-box">

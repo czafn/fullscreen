@@ -47,20 +47,20 @@ class Page extends React.Component {
       // debugger
       if(param === undefined){
         let query = this.props.query;
-        delete query.provice;
+        delete query.province;
         this.props.dispatch(setquery_deviceext_request(query));
       } else if(param.data !== undefined){
         //应该首先清理 item变量的值
         param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
         let query = this.props.query;
         delete query.catlprojectname
-        let proviceName = param.data.name;
+        let provinceName = param.data.name;
         // if(['北京','天津','重庆','上海'].indexOf(param.data.name)>=0){
-        //   proviceName = param.data.name+'市'
+        //   provinceName = param.data.name+'市'
         // } else {
-        //   proviceName = param.data.name+'省'
+        //   provinceName = param.data.name+'省'
         // }
-        query['provice'] = proviceName;
+        query['province'] = provinceName;
         this.props.dispatch(setquery_deviceext_request(query));
       }
 
@@ -73,7 +73,7 @@ class Page extends React.Component {
         console.log(param.selected );
         this.props.dispatch(settype_deviceext(param.selected));
         // let query = this.props.query;
-        // query['provice'] = param.data.name;
+        // query['province'] = param.data.name;
         // this.props.dispatch(setquery_deviceext_request(query));
     };
     render() {

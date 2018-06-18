@@ -1495,7 +1495,7 @@ export function* createmapmainflow(){
           const findexpandnode = (node)=>{
             let retnode;
             if(node.toggled){
-              if(node.type === 'group_provice' || node.type === 'group_city' || node.type === 'group_area'){
+              if(node.type === 'group_province' || node.type === 'group_city' || node.type === 'group_area'){
                 if(node.type === 'group_area'){
                   curareaid = node.adcode;
                 }
