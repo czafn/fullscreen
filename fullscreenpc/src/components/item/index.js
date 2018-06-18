@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import ReactEcharts from 'echarts-for-react';
+import lodashget from 'lodash.get';
 import echarts from 'echarts/dist/echarts.common';
 import {setquery_deviceext_request,settype_deviceext} from '../../actions';
 
@@ -24,25 +25,31 @@ class Page extends React.Component {
         super(props);
 
     }
-    // timeTicket = null;
-    // getInitialState = () => ({option: this.getOption()});
-    //
-    // componentDidMount() {
-    //
-    //     // this.timeTicket = setInterval(() => {
-    //
-    //
-    //
-    //         this.setState({ option: option });
-    //
-    //     // }, 1000);
-    //
-    // };
-    // componentWillUnmount() {
-    //     if (this.timeTicket) {
-    //         clearInterval(this.timeTicket);
-    //     }
-    // };
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+      const nextcarNum = lodashget(nextProps,'option.series["0"].data',[]);
+      const nextbusNum = lodashget(nextProps,'option.series["1"].data',[]);
+      const nextnames = lodashget(nextProps,'option.xAxis.data',[]);
+
+      const curcarNum = lodashget(this.props,'option.series["0"].data',[]);
+      const curbusNum = lodashget(this.props,'option.series["1"].data',[]);
+      const curnames = lodashget(this.props,'option.xAxis.data',[]);
+
+      if( nextcarNum.length === curcarNum.length
+        && nextbusNum.length === curbusNum.length
+        && nextnames.length === curnames.length
+      ){
+        if(JSON.stringify(nextcarNum) === JSON.stringify(curcarNum)){
+          if(JSON.stringify(nextbusNum) === JSON.stringify(curbusNum)){
+            if(JSON.stringify(nextnames) === JSON.stringify(curnames)){
+              return false;
+            }
+          }
+        }
+      }
+      return true;//render
+    }
 
     onChartClick(param, echart){ //地图点击事件，点击后
       // debugger
@@ -264,8 +271,6 @@ const querySelector = createSelector(
 const mapStateToProps = (state) => {
   const option = statcatlprojectSelector(state);
   const query = querySelector(state);
-  const legend = typeSelector(state);
-
 
     // let data1 = [
     //     {"type":"CAR","name":"AAA-123","value":"1123"},
@@ -312,6 +317,6 @@ const mapStateToProps = (state) => {
     //     {"type":"BUS","name":"XAN-223","value":"150"}
     // ];
 
-    return { legend,query,option};
+    return { query,option};
 }
 export default connect(mapStateToProps)(Page);

@@ -12,7 +12,7 @@ const getmedian  = (data,fpercent=0.9)=>{
     });
     totalfv += fv;
   });
-  console.log(`totalfv--->${totalfv}`);
+  // console.log(`totalfv--->${totalfv}`);
 
   let start = 0;
   let end = convertdata.length-1;
@@ -22,7 +22,7 @@ const getmedian  = (data,fpercent=0.9)=>{
     let vstart = convertdata[i].value;
     let vend = convertdata[j].value;
     tmptotal += vstart;
-    console.log(`tmptotal--->${tmptotal},i->${i},j->${j},boundmax->${boundmax}`);
+    // console.log(`tmptotal--->${tmptotal},i->${i},j->${j},boundmax->${boundmax}`);
     if(tmptotal >= boundmax){
       start = i;
       end = j;
@@ -43,7 +43,7 @@ const getmedian  = (data,fpercent=0.9)=>{
   }
   const median = convertdata.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
-  console.log(`start--->${start},end--->${end}`);
+  // console.log(`start--->${start},end--->${end}`);
   return {areaParam,median};
 }
 

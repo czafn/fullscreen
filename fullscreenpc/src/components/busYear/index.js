@@ -7,6 +7,7 @@ import { createSelector } from 'reselect';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
+import lodashget from 'lodash.get';
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
@@ -19,13 +20,18 @@ const Chart = styled.div`
 
 
 class Page extends React.Component {
-
+    shouldComponentUpdate(nextProps, nextState) {
+      const nextData = lodashget(nextProps,'option.series[1].data',[]);
+      const curData = lodashget(this.props,'option.series[1].data',[]);
+      if( nextData.length === curData.length ){
+        if(JSON.stringify(nextData) === JSON.stringify(curData)){
+          return false;
+        }
+      }
+      return true;//render
+    }
     render() {
         let {option} = this.props;
-        // console.log(`render bus year===>${JSON.stringify(data.length)}`)
-        // if(data.length === 0){
-        //   return (<div>loading</div>)
-        // }
         return (
             <Chart >
               <ReactEcharts option={option} style={{height: "270px"}} className='singleBarChart' />

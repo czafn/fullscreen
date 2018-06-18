@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
+import lodashget from 'lodash.get';
 import styled from 'styled-components';
 import {setquery_deviceext_request,settype_deviceext} from '../../actions';
 const _ = require('underscore');
@@ -14,8 +15,7 @@ require('echarts/map/js/china.js');
 const Chart = styled.div`
   .singleBarChart {
     width: 100%;
-	overflow: hidden;
-
+	  overflow: hidden;
     background: rgba(10, 108, 163, 0.3);
   }
 `;
@@ -25,33 +25,46 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
     }
-    // timeTicket = null;
-    // getInitialState = () => ({option: this.getOption()});
-    //
-    // componentDidMount() {
-    //
-    //     // this.timeTicket = setInterval(() => {
-    //
-    //
-    //         this.setState({ option: option });
-    //
-    //     // }, 1000);
-    //
-    // };
-    // componentWillUnmount() {
-    //     if (this.timeTicket) {
-    //         clearInterval(this.timeTicket);
-    //     }
-    // };
+    shouldComponentUpdate(nextProps, nextState) {
+      // option.series[2].data = carObj;
+      // option.series[3].data = carObj;
+      // option.series[4].data = busObj;
+      // option.series[5].data = busObj;
+      const nextQuery = lodashget(nextProps,'query',{});
+
+      const nextcarObj = lodashget(nextProps,'option.series[2].data',[]);
+      const nextbusObj = lodashget(nextProps,'option.series[4].data',[]);
+
+      const curQuery = lodashget(this.props,'query',{});
+
+      const curcarObj = lodashget(this.props,'option.series[2].data',[]);
+      const curbusObj = lodashget(this.props,'option.series[4].data',[]);
+
+      if( nextcarObj.length === curcarObj.length
+        && nextbusObj.length === curbusObj.length
+      ){
+        if(JSON.stringify(nextcarObj) === JSON.stringify(curcarObj)){
+          if(JSON.stringify(nextbusObj) === JSON.stringify(curbusObj)){
+            if(JSON.stringify(nextQuery) === JSON.stringify(curQuery)){
+              return false;
+            }
+          }
+        }
+      }
+      return true;//render
+    }
+
     onChartClick(param, echart){ //地图点击事件，点击后
       // debugger
       if(param === undefined){
         let query = this.props.query;
         delete query.province;
+        console.log(`onChartClick------>undefined`)
         this.props.dispatch(setquery_deviceext_request(query));
       } else if(param.data !== undefined){
+        console.log(`onChartClick------>${param.data.name}`)
         //应该首先清理 item变量的值
-        param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
+        // param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
         let query = this.props.query;
         delete query.catlprojectname
         let provinceName = param.data.name;
@@ -68,27 +81,27 @@ class Page extends React.Component {
 
 
     onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
-        console.log(param, echart);
-        param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
-        console.log(param.selected );
+        // console.log(param, echart);
+        // param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
+        console.log(`click---->${param.selected}` );
         this.props.dispatch(settype_deviceext(param.selected));
         // let query = this.props.query;
         // query['province'] = param.data.name;
         // this.props.dispatch(setquery_deviceext_request(query));
     };
     render() {
-        let {data, option} = this.props;
-        if(data.length === 0){
+        const {option} = this.props;
+        const curcarObj = lodashget(this.props,'option.series[2].data',[]);
+        if(curcarObj.length === 0){
           return <div>loading</div>
         }
-
         let onEvents = {
           'legendselectchanged': this.onChartLegendselectchanged.bind(this),
           'click': this.onChartClick.bind(this)
         }
 
         return (
-            <Chart onClick={() => this.onChartClick()}>
+            <Chart>
               <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
@@ -100,14 +113,14 @@ const mapStateToProps = ({deviceext}) => {
   let data = deviceext.statprovince;
   const type = deviceext.type;//为''表示所有,否则是'CAR'或者'BUS'
   const legend =  deviceext.type; //该对象 默认{CAR: true, BUS: true} 需要再item点击legend时 同步更新map中的值
-  data.forEach(d=>{
-    if(d.name == "黑龙江省" || d.name == "内蒙古自治区"){
-      d.name = d.name.substring(0,3);
-    }else{
-      d.name = d.name.substring(0,2);
-    }
-
-  })
+  // data.forEach(d=>{
+  //   if(d.name == "黑龙江省" || d.name == "内蒙古自治区"){
+  //     d.name = d.name.substring(0,3);
+  //   }else{
+  //     d.name = d.name.substring(0,2);
+  //   }
+  //
+  // })
 
   const getOption = () => {
     return {
@@ -458,6 +471,6 @@ const mapStateToProps = ({deviceext}) => {
     // ];
 
 
-    return {data, legend,query,option};
+    return {query,option};
 }
 export default connect(mapStateToProps)(Page);
