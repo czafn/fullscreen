@@ -173,7 +173,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-center">
                       <div className="cbody-center-top">
-                          {/*<MapIframe style={{width: "100%", height: "100%"}}></MapIframe>*/}
+                          <MapIframe style={{width: "100%", height: "100%"}}></MapIframe>
                       </div>
 
                   </div>

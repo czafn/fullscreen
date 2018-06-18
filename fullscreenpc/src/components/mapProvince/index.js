@@ -34,20 +34,23 @@ class Page extends React.Component {
 
       const nextcarObj = lodashget(nextProps,'option.series[2].data',[]);
       const nextbusObj = lodashget(nextProps,'option.series[4].data',[]);
+      const nextlegend = lodashget(nextProps,'option.legend.selected',{});
 
       // const curQuery = lodashget(this.props,'query',{});
 
       const curcarObj = lodashget(this.props,'option.series[2].data',[]);
       const curbusObj = lodashget(this.props,'option.series[4].data',[]);
+      const curlegend = lodashget(this.props,'option.legend.selected',{});
 
       if( nextcarObj.length === curcarObj.length
         && nextbusObj.length === curbusObj.length
+        && nextlegend.length === curlegend.length
       ){
         if(JSON.stringify(nextcarObj) === JSON.stringify(curcarObj)){
           if(JSON.stringify(nextbusObj) === JSON.stringify(curbusObj)){
-            // if(JSON.stringify(nextQuery) === JSON.stringify(curQuery)){
+            if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
               return false;
-            // }
+            }
           }
         }
       }
@@ -85,7 +88,10 @@ class Page extends React.Component {
         // console.log(param, echart);
         // param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
         console.log(`click---->${param.selected}` );
+        debugger
+        window.event.stopImmediatePropagation()
         this.props.dispatch(settype_deviceext(param.selected));
+
         // let query = this.props.query;
         // query['province'] = param.data.name;
         // this.props.dispatch(setquery_deviceext_request(query));

@@ -488,7 +488,7 @@ const getOptionSelector = createSelector(
 
 
     const {areaParam,median} = getmedian(data);
-    debugger
+
     const getOption = () => {
       return {
         backgroundColor:'rgba(10, 108, 163, 0.3)',

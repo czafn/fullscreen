@@ -31,19 +31,24 @@ class Page extends React.Component {
       const nextcarNum = lodashget(nextProps,'option.series["0"].data',[]);
       const nextbusNum = lodashget(nextProps,'option.series["1"].data',[]);
       const nextnames = lodashget(nextProps,'option.xAxis.data',[]);
+      const nextlegend = lodashget(nextProps,'option.legend.selected',{});
 
       const curcarNum = lodashget(this.props,'option.series["0"].data',[]);
       const curbusNum = lodashget(this.props,'option.series["1"].data',[]);
       const curnames = lodashget(this.props,'option.xAxis.data',[]);
+      const curlegend = lodashget(this.props,'option.legend.selected',{});
 
       if( nextcarNum.length === curcarNum.length
         && nextbusNum.length === curbusNum.length
         && nextnames.length === curnames.length
+        && curlegend.length === curlegend.length
       ){
         if(JSON.stringify(nextcarNum) === JSON.stringify(curcarNum)){
           if(JSON.stringify(nextbusNum) === JSON.stringify(curbusNum)){
             if(JSON.stringify(nextnames) === JSON.stringify(curnames)){
-              return false;
+              if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
+                return false;
+              }
             }
           }
         }
