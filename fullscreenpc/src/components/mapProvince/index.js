@@ -24,8 +24,6 @@ const Chart = styled.div`
 class Page extends React.Component {
     constructor(props) {
         super(props);
-
-
     }
     // timeTicket = null;
     // getInitialState = () => ({option: this.getOption()});
@@ -45,7 +43,6 @@ class Page extends React.Component {
     //         clearInterval(this.timeTicket);
     //     }
     // };
-
     onChartClick(param, echart){ //地图点击事件，点击后
       // debugger
       if(param === undefined){
@@ -57,12 +54,12 @@ class Page extends React.Component {
         param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
         let query = this.props.query;
         delete query.catlprojectname
-        let proviceName;
-        if(['北京','天津','重庆','上海'].indexOf(param.data.name)>=0){
-          proviceName = param.data.name+'市'
-        } else {
-          proviceName = param.data.name+'省'
-        }
+        let proviceName = param.data.name;
+        // if(['北京','天津','重庆','上海'].indexOf(param.data.name)>=0){
+        //   proviceName = param.data.name+'市'
+        // } else {
+        //   proviceName = param.data.name+'省'
+        // }
         query['provice'] = proviceName;
         this.props.dispatch(setquery_deviceext_request(query));
       }
