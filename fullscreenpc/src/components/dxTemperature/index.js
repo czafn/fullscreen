@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
@@ -24,25 +25,17 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
     }
-    // timeTicket = null;
-    // getInitialState = () => ({option: this.getOption()});
-    //
-    // componentDidMount() {
-    //
-    //     this.timeTicket = setInterval(() => {
-    //
-    //
-    //         this.setState({ option: option });
-    //
-    //     }, 1000);
-    //
-    // };
-    // componentWillUnmount() {
-    //     if (this.timeTicket) {
-    //         clearInterval(this.timeTicket);
-    //     }
-    // };
-
+    shouldComponentUpdate(nextProps, nextState) {
+      const nextData = lodashget(nextProps,'option.series[1].data',[]);
+      const curData = lodashget(this.props,'option.series[1].data',[]);
+      if( nextData.length === curData.length ){
+        if(JSON.stringify(nextData) === JSON.stringify(curData)){
+          return false;
+        }
+      }
+      return true;//render
+    }
+    /*
     getOption(){
       let {data, m5data} = this.props;
       const option = {
@@ -222,40 +215,22 @@ class Page extends React.Component {
       option.series[1].data = data.map(value => value['value']-0);
       return option;
     }
+    */
     render() {
-        // let {data, m5data} = this.props;
-        // if(m5data.length === 0){
-        //   return (<div>loading</div>)
-        // }
-        //
-        // const option = this.option;
-        // data = _.sortBy(m5data,(i) => i.name-0);
-        //
-        // option.xAxis[0].data = data.map(value => value['name']);
-        // option.series[0].data = data.map(value => value['value']-0);
-        // option.series[0].markLine.data[0].xAxis = data.length / 2;
-        // option.series[1].data = data.map(value => value['value']-0);
-        // console.log('dxTemp---',m5data, option)
+        let {option} = this.props;
         return (
             <Chart >
-              <ReactEcharts option={this.getOption()} className='singleBarChart' />
+              <ReactEcharts option={option} className='singleBarChart' />
             </Chart>
         );
     };
 }
 
+/*
 const mapStateToProps = ({catlworking}) => {
   const data = [];
   const dxtemperature = _.sortBy(lodashget(catlworking,'dxtemperature',[]), (l)=> l.name-0)
 
-
-
-  // lodashmap(dxtemperature,(v)=>{
-  //   data.push({
-  //     name:`${lodashget(v,'name',0)}`,
-  //     value:`${lodashget(v,'value',0)}`
-  //   });
-  // });
 
   const m5data = [];
   for(let i=0; i<=150; i+=5){
@@ -698,5 +673,223 @@ const mapStateToProps = ({catlworking}) => {
     //     {"name":"58.3","value":"1"}
     // ];
     return {data, m5data, median};
+}*/
+
+
+const catlworkingSelector = state => state.catlworking;
+const dxtemperatureSelector = createSelector(
+  catlworkingSelector,
+  (catlworking) => {
+    const {dxtemperature} = catlworking;
+    return dxtemperature;
+  }
+);
+
+const getOptionSelector = createSelector(
+  dxtemperatureSelector,
+  (dxtemperature) => {
+    let data = [];
+    dxtemperature = _.sortBy(dxtemperature, (l)=> l.name-0)
+    const m5data = [];
+    for(let i=0; i<=150; i+=5){
+      const fs = _.filter(dxtemperature, (d) =>
+        d.name-0 >= i && d.name-0 < i+5
+      );
+      const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
+      m5data.push({
+        name: `${i}`,
+        value: `${tempNum}`
+        // value:100
+      })
+    }
+
+    const median = m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
+
+
+    const getOption = () => {
+      return {
+        backgroundColor:'rgba(10, 108, 163, 0.3)',
+        tooltip:{
+          show:true,
+          formatter: function (v) {
+            if(v.name === '中位线'){
+              return v.name;
+            } else {
+              return v.name+': '+v.value;
+            }
+          }
+        },
+        xAxis: [{
+          show: true,
+          data: [],
+          axisTick: {
+            show: true,
+          },
+          axisLine: {
+            show: true
+          },
+          axisLabel: {
+            textStyle: {
+              fontSize: 12,
+              color: 'rgba(255,255,255,1.0)',
+
+            }
+          },
+          name:'℃',
+          nameLocation:'end',
+          nameGap:5,
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(255,255,255,1.0)',
+          }
+        }],
+        grid:{
+          bottom: 40,
+          top: 20,
+          right:20,
+        },
+        visualMap: {
+          show: false,
+          max:350,
+          dimension: 0,
+          inRange: {
+            color: ['rgba(248, 99, 2, 1)', 'rgba(36, 164, 56, 1)', 'rgba(248, 99, 2, 1)']
+          }
+        },
+        yAxis: {
+          axisLine: {
+            show: false,
+            lineStyle: {
+              color: '#aaa'
+            }
+          },
+          // max: 200,
+          axisTick: {
+            show: true,
+            lineStyle: {
+              color: '#fff'
+            }
+          },
+          splitLine: {
+            show: false,
+            lineStyle: {
+              width: 2,
+              color: '#07111f',
+            }
+          },
+          z: 10
+        },
+        series: [{
+          // name: 'back',
+          type: 'bar',
+          data: [],
+          z: 10,
+          itemStyle: {
+            lable:{
+              show:false,
+            },
+            normal: {
+              opacity: 1,
+              barBorderRadius: 5,
+              // shadowBlur: 3,
+              // color: 'rgba(0,168,255,0.2)',
+              // color: 'rgba(0,168,255,1.0) ',
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(0,168,255,1)'
+                },
+                  {
+                    offset: 1,
+                    color: 'rgba(0,168,255,1)'
+                  }
+                ]
+              ),
+              // shadowColor: '#111'
+            }
+          },
+          markLine: {
+            label: {
+              normal: {
+                position:'end',
+                formatter: function(params) {
+                  return params.name
+                }
+              }
+            },
+            symbol:['',''],
+            lineStyle: {
+              normal: {
+                color: "#f95c00",
+                type: 'solid',
+                width: 3,
+              },
+              emphasis: {
+                color: "#d9def7"
+              }
+            },
+            data: [{
+              xAxis: 0,
+              name: '中位线',
+              itemStyle: {
+                normal: {
+                  color: "#b84a58",
+                }
+              }
+            }]
+          },
+        }, {
+          name: 'Simulate Shadow',
+          type: 'line',
+          data: [],
+          z: 2,
+          showSymbol: false,
+          animationDelay: 0,
+          animationEasing: 'linear',
+          animationDuration: 1200,
+          lineStyle: {
+            normal: {
+              color: 'transparent'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: '#08263a',
+              shadowBlur: 50,
+              shadowColor: '#000'
+            }
+          }
+        }],
+        animationEasing: 'elasticOut',
+        animationEasingUpdate: 'elasticOut',
+        animationDelay: function (idx) {
+          return idx * 5;
+        },
+        animationDelayUpdate: function (idx) {
+          return idx * 5;
+        }
+      };
+    };
+    let option = getOption();
+
+    if(m5data.length === 0){
+      return (<div>loading</div>)
+    }
+
+    // const option = this.option;
+    data = _.sortBy(m5data,(i) => i.name-0);
+
+    option.xAxis[0].data = data.map(value => value['name']);
+    option.series[0].data = data.map(value => value['value']-0);
+    option.series[0].markLine.data[0].xAxis = median;
+    option.series[1].data = data.map(value => value['value']-0);
+    return option;
+  }
+);
+
+const mapStateToProps = (state) => {
+  const option = getOptionSelector(state);
+  return {option};
 }
 export default connect(mapStateToProps)(Page);

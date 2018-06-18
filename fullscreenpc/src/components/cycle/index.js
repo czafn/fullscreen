@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
 import ReactEcharts from 'echarts-for-react';
@@ -22,152 +23,21 @@ const Chart = styled.div`
 class Page extends React.Component {
     constructor(props) {
         super(props);
-        const getOption = () => {
-            return {
-                backgroundColor:'rgba(10, 108, 163, 0.3)',
-                tooltip:{
-                  show:true,
-                  // trigger: 'axis'
-                },
-                xAxis: [{
-                    show: true,
-                    data: [],
-                    axisTick: {
-                        show: true,
-                    },
-                    axisLine: {
-                        show: true
-                    },
-                    axisLabel: {
-                        textStyle: {
-                            fontSize: 12,
-                            color: 'rgba(255,255,255,1.0)',
-
-                        }
-                    },
-                }],
-                grid:{
-                    bottom: 40,
-                    top: 20,
-                    right:20,
-                },
-                visualMap: {
-                    show: false,
-                    max:100,
-                    dimension: 0,
-                    inRange: {
-                        color: ['#37b7fb', '#37b7fb']
-                    }
-                },
-                yAxis: {
-                    axisLine: {
-                        show: false,
-                        lineStyle: {
-                            color: '#aaa'
-                        }
-                    },
-                    // max: 200,
-                    axisTick: {
-                        show: true,
-                        lineStyle: {
-                            color: '#fff'
-                        }
-                    },
-                    splitLine: {
-                        show: false,
-                        lineStyle: {
-                            width: 2,
-                            color: '#07111f',
-                        }
-                    },
-                    z: 10
-                },
-                series: [{
-                    // name: 'back',
-                    type: 'bar',
-                    data: [],
-                    z: 10,
-                    itemStyle: {
-                        normal: {
-                            opacity: 1,
-                            barBorderRadius: 5,
-                            color: new echarts.graphic.LinearGradient(
-                                0, 0, 0, 1, [{
-                                    offset: 0,
-                                    color: 'rgba(0,168,255,1)'
-                                },
-                                    {
-                                        offset: 1,
-                                        color: 'rgba(0,168,255,1)'
-                                    }
-                                ]
-                            ),
-                        }
-                    }
-                }, {
-                    name: 'Simulate Shadow',
-                    type: 'line',
-                    data: [],
-                    z: 2,
-                    showSymbol: false,
-                    animationDelay: 0,
-                    animationEasing: 'linear',
-                    animationDuration: 1200,
-                    lineStyle: {
-                        normal: {
-                            color: 'transparent'
-                        }
-                    },
-                    areaStyle: {
-                        normal: {
-                            color: '#08263a',
-                            shadowBlur: 50,
-                            shadowColor: '#000'
-                        }
-                    }
-                }],
-                animationEasing: 'elasticOut',
-                animationEasingUpdate: 'elasticOut',
-                animationDelay: function (idx) {
-                    return idx * 10;
-                },
-                animationDelayUpdate: function (idx) {
-                    return idx * 10;
-                }
-            };
-        };
-        this.option = getOption();
         // this.timeTicket = null;
     }
-
-
-    //
-    // componentDidMount() {
-    //
-    //     // this.timeTicket = setInterval(() => {
-    //
-    //     // }, 1000);
-    //
-    // };
-    // componentWillUnmount() {
-    //     if (this.timeTicket) {
-    //         clearInterval(this.timeTicket);
-    //     }
-    // };
-    // randomData() {
-    //     return Math.round(Math.random()*1000);
-    // };
+    shouldComponentUpdate(nextProps, nextState) {
+      const nextData = lodashget(nextProps,'option.series[1].data',[]);
+      const curData = lodashget(this.props,'option.series[1].data',[]);
+      if( nextData.length === curData.length ){
+        if(JSON.stringify(nextData) === JSON.stringify(curData)){
+          return false;
+        }
+      }
+      return true;//render
+    }
 
     render() {
-        let {data} = this.props;
-        if(data.length === 0){
-          return (<div>loading</div>)
-        }
-        const option = this.option;
-        data = _.sortBy(data,(i) => i.name-0);
-        option.xAxis[0].data = data.map(value => value['name']);
-        option.series[0].data = data.map(value => value['value']-0);
-        option.series[1].data = data.map(value => value['value']-0);
+        let {option} = this.props;
 
         return (
             <Chart >
@@ -180,7 +50,7 @@ class Page extends React.Component {
         );
     };
 }
-
+/*
 const mapStateToProps = ({catlworking}) => {
   const data = [];
   const cycle = lodashget(catlworking,'cycle',[]);
@@ -436,5 +306,158 @@ const mapStateToProps = ({catlworking}) => {
   //     {"name":"3.4","value":"2"}
   // ];
   return {data};
+}*/
+
+const catlworkingSelector = state => state.catlworking;
+const cycleSelector = createSelector(
+  catlworkingSelector,
+  (catlworking) => {
+    const {cycle} = catlworking;
+    return cycle;
+  }
+);
+
+const getOptionSelector = createSelector(
+  cycleSelector,
+  (cycle) => {
+    let data = [];
+    lodashmap(cycle,(v)=>{
+      data.push({
+        name:`${lodashget(v,'name',0)}`,
+        value:`${lodashget(v,'value',0)}`,
+      });
+    });
+
+    const getOption = () => {
+      return {
+        backgroundColor:'rgba(10, 108, 163, 0.3)',
+        tooltip:{
+          show:true,
+          // trigger: 'axis'
+        },
+        xAxis: [{
+          show: true,
+          data: [],
+          axisTick: {
+            show: true,
+          },
+          axisLine: {
+            show: true
+          },
+          axisLabel: {
+            textStyle: {
+              fontSize: 12,
+              color: 'rgba(255,255,255,1.0)',
+
+            }
+          },
+        }],
+        grid:{
+          bottom: 40,
+          top: 20,
+          right:20,
+        },
+        visualMap: {
+          show: false,
+          max:100,
+          dimension: 0,
+          inRange: {
+            color: ['#37b7fb', '#37b7fb']
+          }
+        },
+        yAxis: {
+          axisLine: {
+            show: false,
+            lineStyle: {
+              color: '#aaa'
+            }
+          },
+          // max: 200,
+          axisTick: {
+            show: true,
+            lineStyle: {
+              color: '#fff'
+            }
+          },
+          splitLine: {
+            show: false,
+            lineStyle: {
+              width: 2,
+              color: '#07111f',
+            }
+          },
+          z: 10
+        },
+        series: [{
+          // name: 'back',
+          type: 'bar',
+          data: [],
+          z: 10,
+          itemStyle: {
+            normal: {
+              opacity: 1,
+              barBorderRadius: 5,
+              color: new echarts.graphic.LinearGradient(
+                0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(0,168,255,1)'
+                },
+                  {
+                    offset: 1,
+                    color: 'rgba(0,168,255,1)'
+                  }
+                ]
+              ),
+            }
+          }
+        }, {
+          name: 'Simulate Shadow',
+          type: 'line',
+          data: [],
+          z: 2,
+          showSymbol: false,
+          animationDelay: 0,
+          animationEasing: 'linear',
+          animationDuration: 1200,
+          lineStyle: {
+            normal: {
+              color: 'transparent'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: '#08263a',
+              shadowBlur: 50,
+              shadowColor: '#000'
+            }
+          }
+        }],
+        animationEasing: 'elasticOut',
+        animationEasingUpdate: 'elasticOut',
+        animationDelay: function (idx) {
+          return idx * 10;
+        },
+        animationDelayUpdate: function (idx) {
+          return idx * 10;
+        }
+      };
+    };
+    let option = getOption();
+
+    if(data.length === 0){
+      return (<div>loading</div>)
+    }
+    data = _.sortBy(data,(i) => i.name-0);
+    option.xAxis[0].data = data.map(value => value['name']);
+    option.series[0].data = data.map(value => value['value']-0);
+    option.series[1].data = data.map(value => value['value']-0);
+
+    return option;
+  }
+);
+
+const mapStateToProps = (state) => {
+  const option = getOptionSelector(state);
+  return {option};
 }
 export default connect(mapStateToProps)(Page);

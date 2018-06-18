@@ -54,14 +54,15 @@ class Page extends React.Component {
       return true;//render
     }
 
-    onChartClick(param, echart){ //地图点击事件，点击后
-      // debugger
+    onChartClick(param, echart ){ //地图点击事件，点击后
+      debugger
       if(param === undefined){
         let query = this.props.query;
         delete query.province;
         console.log(`onChartClick------>undefined`)
         this.props.dispatch(setquery_deviceext_request(query));
       } else if(param.data !== undefined){
+        param.event.event.stopImmediatePropagation()
         console.log(`onChartClick------>${param.data.name}`)
         //应该首先清理 item变量的值
         // param.data.name; //获取省份名字； 省份名字 简称 山东、山西、黑龙江、内蒙古、上海等。
@@ -97,11 +98,11 @@ class Page extends React.Component {
         }
         let onEvents = {
           'legendselectchanged': this.onChartLegendselectchanged.bind(this),
-          'click': this.onChartClick.bind(this)
+          'click': this.onChartClick.bind(this),
         }
 
         return (
-            <Chart>
+            <Chart onClick={() => this.onChartClick()}>
               <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
