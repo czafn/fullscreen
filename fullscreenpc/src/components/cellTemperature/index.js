@@ -9,6 +9,7 @@ import ecStat from 'echarts-stat';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
+import {getmedian} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -330,12 +331,16 @@ const mapStateToProps = ({catlworking}) => {
       curve:curve.points[i][1],
     });
   });
-  const areaParam = {
-      start: '10',
-      end: '25'
-  }
-  const median = m1data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
+
+  const {areaParam,median} = getmedian(data);
+
+  // const areaParam = {
+  //     start: '10',
+  //     end: '25'
+  // }
+  // const median = m1data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
+  //
 
 
   // console.log(data);
