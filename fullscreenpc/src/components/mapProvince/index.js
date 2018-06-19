@@ -58,7 +58,7 @@ class Page extends React.Component {
     }
 
     onChartClick(param, echart ){ //地图点击事件，点击后
-      debugger
+      // debugger
       if(param === undefined){
         let query = this.props.query;
         delete query.province;
@@ -88,7 +88,7 @@ class Page extends React.Component {
         // console.log(param, echart);
         // param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
         console.log(`click---->${param.selected}` );
-        debugger
+        // debugger
         window.event.stopImmediatePropagation()
         this.props.dispatch(settype_deviceext(param.selected));
 
