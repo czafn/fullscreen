@@ -13,6 +13,7 @@ import {socketflow} from './socketflow';
 import {uiflow} from './ui';
 import {downloadexcel} from './downloadexcel';
 import {catldata} from './catlfull';
+import {catldatarestful} from './catlfull_restful';
 import config from '../config.js';
 
 export default function* rootSaga() {
@@ -30,7 +31,10 @@ export default function* rootSaga() {
     yield fork(wsrecvsagaflow);
     yield fork(createsagacallbackflow);
     yield fork(apiflow);
-    yield fork(catldata);
+    if(config.softmode === 'fullpc'){
+      yield fork(catldata);
+      yield fork(catldatarestful);
+    }
   }
   catch(e){
 

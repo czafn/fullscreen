@@ -7,6 +7,7 @@ import{
   getstatprovince_result,
   getstatcatlproject_result,
   setquery_deviceext_result,
+  deviceext_result,
   settype_deviceext
 } from '../actions';
 
@@ -33,6 +34,22 @@ const initial = {
 };
 
 const deviceext = createReducer({
+  [deviceext_result]:(state,payload)=>{
+    const {getcountcar,getcountbus,getusedyearcar,getusedyearbus,getstatprovince,getstatcatlproject} = payload;
+    const countcar = getcountcar;
+    const countbus = getcountbus;
+    const usedyearcar = [...getusedyearcar];
+    const usedyearbus = [...getusedyearbus];
+    const statprovince = [...getstatprovince];
+    const statcatlproject = [...getstatcatlproject];
+    console.log(`usedyearcar->${JSON.stringify(usedyearcar)}`)
+    console.log(`usedyearbus->${JSON.stringify(usedyearbus)}`)
+    console.log(`statprovince->${JSON.stringify(statprovince)}`)
+    console.log(`statcatlproject->${JSON.stringify(statcatlproject)}`)
+    console.log(`countcar->${countcar}`)
+    console.log(`countcar->${countbus}`)
+    return  {...state,countcar,countbus,usedyearcar,usedyearbus,statprovince,statcatlproject};
+  },
   [settype_deviceext]:(state,payload)=>{
     const type = {...payload};
     console.log(`deviceext->${JSON.stringify(type)}`)
