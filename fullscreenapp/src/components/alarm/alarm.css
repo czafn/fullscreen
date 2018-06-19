@@ -1,0 +1,15 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+
+  line-height: 5px;
+  background: rgba(0,0,0,0);
+  overflow: hidden;
+}
+
+.ant-carousel .slick-slider .slick-dots {
+  /*position: static;*/
+  bottom: -5px
+}
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}

@@ -1,0 +1,38 @@
+div.seled{
+    display: block;
+    position: relative;
+}
+div.seled:after{
+    content: " ";
+    display: block;
+    width: 1000px;
+    right: -500px;
+    position: absolute;
+    height: 30px;
+    top: 0;
+    background: #183f56;
+    z-index: 0;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+div::-webkit-scrollbar
+{
+    width: 8px;  /*滚动条宽度*/
+    height: 8px;  /*滚动条高度*/
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+div::-webkit-scrollbar-track
+{
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+    border-radius: 0px;  /*滚动条的背景区域的圆角*/
+    background-color: #133f58;/*滚动条的背景颜色*/
+}
+
+/*定义滑块 内阴影+圆角*/
+div::-webkit-scrollbar-thumb
+{
+    border-radius: 4px;  /*滚动条的圆角*/
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+    background-color: rgba(25, 152, 206, 0.55);  /*滚动条的背景颜色*/
+}
