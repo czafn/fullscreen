@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
-import Index from './index';
+import Index from './index/home.js';
 import Login from './login/login.js';
 import {map_setmapinited} from '../actions';
 import {requireAuthentication} from './requireauthentication';
