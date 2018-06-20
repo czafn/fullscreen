@@ -12,8 +12,8 @@ import styled from 'styled-components';
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     ;
   }
@@ -41,6 +41,7 @@ class Page extends React.Component {
 
         return (
             <Chart >
+              <div class="crumbsTitle">Cycle数</div>
               <ReactEcharts
                   option={option}
                   // lazyUpdate={false}
@@ -330,7 +331,7 @@ const getOptionSelector = createSelector(
 
     const getOption = () => {
       return {
-        backgroundColor:'rgba(10, 108, 163, 0.3)',
+        // backgroundColor:'rgba(10, 108, 163, 0.3)',
         tooltip:{
           show:true,
           // trigger: 'axis'
@@ -340,6 +341,9 @@ const getOptionSelector = createSelector(
           data: [],
           axisTick: {
             show: true,
+            lineStyle: {
+              color: '#000'
+            }
           },
           axisLine: {
             show: true
@@ -347,7 +351,7 @@ const getOptionSelector = createSelector(
           axisLabel: {
             textStyle: {
               fontSize: 12,
-              color: 'rgba(255,255,255,1.0)',
+              color: 'rgba(18,28,38,1.0)',
 
             }
           },
@@ -372,11 +376,18 @@ const getOptionSelector = createSelector(
               color: '#aaa'
             }
           },
+          axisLabel: {
+            textStyle: {
+              fontSize: 12,
+              color: 'rgba(18,28,38,1.0)',
+
+            }
+          },
           // max: 200,
           axisTick: {
             show: true,
             lineStyle: {
-              color: '#fff'
+              color: '#000'
             }
           },
           splitLine: {
@@ -397,6 +408,9 @@ const getOptionSelector = createSelector(
             normal: {
               opacity: 1,
               barBorderRadius: 5,
+              // shadowBlur: 5,
+              // shadowColor: '#000',
+
               color: new echarts.graphic.LinearGradient(
                 0, 0, 0, 1, [{
                   offset: 0,
@@ -426,7 +440,7 @@ const getOptionSelector = createSelector(
           },
           areaStyle: {
             normal: {
-              color: '#08263a',
+              color: 'rgba(8, 38, 58, 0)',
               shadowBlur: 50,
               shadowColor: '#000'
             }

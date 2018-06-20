@@ -21,10 +21,16 @@ import './index.css';
 class App extends React.Component {
   state = {
     docked: false,
-    selindex:0
+    selindex:0,
+    open: false,
   }
   onClickItem = (index)=>{
+    this.onOpenChange()
     this.setState({selindex:index})
+  }
+  onOpenChange = (...args) => {
+    console.log(args);
+    this.setState({ open: !this.state.open });
   }
   onDock = (d) => {
     this.setState({
@@ -39,7 +45,7 @@ class App extends React.Component {
       },
       {
         title:'报警信息',
-        Co:<Warning />
+        Co:<Alarm />
       },
       {
         title:'Cycle数',
@@ -47,10 +53,6 @@ class App extends React.Component {
       },
       {
         title:'等效温度',
-        Co:<Warning />
-      },
-      {
-        title:'报警信息',
         Co:<DxTemperature />
       },
       {
@@ -88,16 +90,18 @@ class App extends React.Component {
     </List>);
 
     return (<div style={{ height: '100%' }}>
-      <NavBar icon={<Icon type="ellipsis" />} onLeftClick={() => this.onDock('docked')}>
+      <NavBar icon={<Icon type="ellipsis" />} onLeftClick={this.onOpenChange}>
         新能源远程监控系统
       </NavBar>
       <Drawer
         className="my-drawer"
         style={{ minHeight: document.documentElement.clientHeight }}
-        contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
+        contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 5,paddingLeft: 0,paddingRight: 0 }}
         sidebarStyle={{ border: '1px solid #ddd' }}
         sidebar={sidebar}
-        docked={this.state.docked}
+        // docked={this.state.docked}
+        open={this.state.open}
+        onOpenChange={this.onOpenChange}
       >
         {listItems[this.state.selindex].Co}
       </Drawer>

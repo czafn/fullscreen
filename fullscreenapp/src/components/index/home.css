@@ -12,3 +12,14 @@
   width: 300px;
   padding: 0;
 }
+.crumbsTitle{
+    padding: 0px 0 0px 15px;
+    color: #000;
+    font-size: 16px;
+    line-height: 24px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    height: 28px;
+    font-weight: bolder;
+    position: relative;
+}

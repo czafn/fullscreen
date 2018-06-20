@@ -15,8 +15,8 @@ import {getmedian} from '../../util/gettmputil';
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
-    width: 95%;
-	height: 95%;
+    width: 100%;
+	height: 100%;
 	overflow: hidden;
   }
 `;
@@ -291,6 +291,7 @@ class Page extends React.Component {
         let {option} = this.props;
         return (
             <Chart >
+              <div class="crumbsTitle">电芯温差</div>
               <ReactEcharts option={option} className='singleBarChart' />
             </Chart>
         );
@@ -491,7 +492,7 @@ const getOptionSelector = createSelector(
 
     const getOption = () => {
       return {
-        backgroundColor:'rgba(10, 108, 163, 0.3)',
+        // backgroundColor:'rgba(10, 108, 163, 0.3)',
         tooltip:{
           show:true,
           formatter: function (v) {
@@ -515,7 +516,7 @@ const getOptionSelector = createSelector(
           axisLabel: {
             textStyle: {
               fontSize: 12,
-              color: 'rgba(255,255,255,1.0)',
+              color: 'rgba(0,0,0,1.0)',
             },
             interval:4,
 
@@ -554,7 +555,14 @@ const getOptionSelector = createSelector(
           axisTick: {
             show: true,
             lineStyle: {
-              color: '#fff'
+              color: '#000'
+            }
+          },
+          axisLabel: {
+            textStyle: {
+              fontSize: 12,
+              color: 'rgba(18,28,38,1.0)',
+
             }
           },
           splitLine: {
@@ -583,7 +591,7 @@ const getOptionSelector = createSelector(
           },
           areaStyle: {
             normal: {
-              color: '#08263a',
+              color: 'rgba(8, 38, 58, 0.1)',
               shadowBlur: 50,
               shadowColor: '#000'
             }
@@ -651,7 +659,7 @@ const getOptionSelector = createSelector(
             silent: true,
             itemStyle: {
               normal: {
-                color: 'rgba(248, 99, 2, 0.1)',
+                color: 'rgba(248, 99, 2, 0.01)',
                 borderColor: 'rgb(248, 99, 2)',
                 borderWidth: 2,
                 // borderType: 'dashed'

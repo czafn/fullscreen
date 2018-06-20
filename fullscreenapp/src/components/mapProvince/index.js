@@ -16,7 +16,8 @@ const Chart = styled.div`
   .singleBarChart {
     width: 100%;
 	  overflow: hidden;
-    background: rgba(10, 108, 163, 0.3);
+    background: rgba(10, 108, 163, 0.1);
+    background: rgba(98, 197, 249, 0.48);
   }
 `;
 
@@ -103,12 +104,13 @@ class Page extends React.Component {
           return <div>loading</div>
         }
         let onEvents = {
-          'legendselectchanged': this.onChartLegendselectchanged.bind(this),
+          // 'legendselectchanged': this.onChartLegendselectchanged.bind(this),
           'click': this.onChartClick.bind(this),
         }
 
         return (
             <Chart onClick={() => this.onChartClick()}>
+              <div class="crumbsTitle">各省份车辆分布</div>
               <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
@@ -169,7 +171,7 @@ const mapStateToProps = ({deviceext}) => {
       grid: {
         right: 10,
         top: '55%',
-        bottom: 30,
+        bottom: 40,
         left:60,
         // width: '90%'
       },
@@ -188,14 +190,14 @@ const mapStateToProps = ({deviceext}) => {
         axisTick: {
           show: true,
           lineStyle: {
-            color: '#fff'
+            color: '#000'
           }
         },
         axisLabel: {
           show: true,
           textStyle: {
             fontSize: 12,
-            color: 'rgba(255,255,255,0.8)'
+            color: 'rgba(18,28,38,1.0)',
           }
         },
       },
@@ -218,8 +220,9 @@ const mapStateToProps = ({deviceext}) => {
         axisLabel: {
           interval: 0,
           textStyle: {
-            color: '#999'
-          }
+            color: 'rgba(18,28,38,1.0)',
+          },
+          rotate:50,
         },
         data: []
       },
@@ -281,7 +284,7 @@ const mapStateToProps = ({deviceext}) => {
           name: 'CAR',
           type: 'bar',
           // barGap: '50%',
-          barWidth: 10,
+          barWidth: '30%',
           itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(
@@ -301,12 +304,12 @@ const mapStateToProps = ({deviceext}) => {
           symbol: 'rect',
           itemStyle: {
             normal: {
-              color: '#0f375f'
+              color: '#afdff9'
             }
           },
           symbolRepeat: true,
-          symbolSize: [10, 5],
-          symbolMargin: 3,
+          symbolSize: [10, 3],
+          symbolMargin: 2,
           z: -10,
           data: []
         },
@@ -314,7 +317,7 @@ const mapStateToProps = ({deviceext}) => {
           name: 'BUS',
           type: 'bar',
           // barGap: '50%',
-          barWidth: 10,
+          barWidth: '30%',
           itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(
@@ -331,16 +334,16 @@ const mapStateToProps = ({deviceext}) => {
         }, {
           name: 'BUS',
           type: 'pictorialBar',
-          barGap: '-20%',
+          barGap: '-0%',
           symbol: 'rect',
           itemStyle: {
             normal: {
-              color: '#0f375f'
+              color: '#afdff9'
             }
           },
           symbolRepeat: true,
-          symbolSize: [10, 5],
-          symbolMargin: 3,
+          symbolSize: [10, 3],
+          symbolMargin: 2,
           z: -10,
           data: []
         }]

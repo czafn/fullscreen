@@ -12,7 +12,7 @@ import lodashreverse from 'lodash.reverse';
 
 import styled from 'styled-components';
 
-import { Carousel } from 'antd';
+import { Carousel } from 'antd-mobile';
 import 'antd/dist/antd.css';
 import './alarm.css';
 
@@ -22,28 +22,35 @@ const Table = styled.table`
   padding: 0;
   th{
     width: 30%;
-    background: #0c6da4;
-    font-size: 13px;
+    background: #3aa2ec;
+    font-size: 14px;
     font-weight: 400;
     text-align: left;
-    padding: 0 15px;
+    padding: 10px 15px;
+    white-space: nowrap;
+    color: #ffffff;
+    font-weight: 600;
+    
   }
   td{
     width: 30%;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 14px;
     text-align: left;
-    padding: 0 15px;
+    padding: 10px 15px;
+    color: #5c6b77;
   }
   td span{
     line-height:16px;
     float: left;
+    
   }
   tbody{
-    tr:nth-child(even){background:rgba(14, 63, 93, 0.69);}
+    tr:nth-child(even){background: rgba(255, 255, 255, 0.5);}
   }
   tr{
     height: 23px;
+    border: 1px solid #e9e9e9;
     img{
         width: 16px;
         height: 16px;
@@ -53,7 +60,7 @@ const Table = styled.table`
     }
   }
   th:nth-child(2),td:nth-child(2){
-    width: 40%;
+    width: 45%;
   }
 
 `;
@@ -69,7 +76,7 @@ class Page extends React.Component {
     componentDidMount() {
 
         this.timeTicket = setInterval(() => {
-            this.nextAlarm()
+            // this.nextAlarm()
         }, 10000);
 
     };
@@ -89,7 +96,8 @@ class Page extends React.Component {
         const {level1_ListData, level2_ListData, level3_ListData} = this.props;
         return (
           <div >
-              <Carousel ref='ddd' >
+              <div class="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>
+              <Carousel ref='ddd' infinite autoplay autoplayInterval={10000} >
                   <div>
                       <Table cellSpacing="0" cellPadding="0" >
                           <thead>

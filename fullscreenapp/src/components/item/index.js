@@ -14,7 +14,7 @@ const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
     width: 100%;
-	height: 92%;
+	height: 100%;
 	overflow: hidden;
   }
 `;
@@ -85,12 +85,13 @@ class Page extends React.Component {
         //   return (<div>loading</div>)
         // }
         let onEvents = {
-          'legendselectchanged': this.onChartLegendselectchanged.bind(this),
+          // 'legendselectchanged': this.onChartLegendselectchanged.bind(this),
           'click': this.onChartClick.bind(this)
         }
         return (
             <Chart onClick={() => this.onChartClick()}>
-              <ReactEcharts option={option} style={{height:'270px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
+              <div class="crumbsTitle">各项目车辆分布TOP20</div>
+              <ReactEcharts option={option} style={{height:'370px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );
     };
@@ -112,7 +113,7 @@ const statcatlprojectSelector = createSelector(
     let data = statcatlproject;
     const getOption = () => {
       return {
-        backgroundColor:'rgba(10, 108, 163, 0.3)',
+        // backgroundColor:'rgba(10, 108, 163, 0.3)',
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -145,7 +146,7 @@ const statcatlprojectSelector = createSelector(
           offset: 5,
           axisLabel: {
             textStyle: {
-              color: 'rgba(255,255,255,0.8)'
+              color: 'rgba(18,28,38,1.0)',
             },
             // formatter: '{value}h'
             formatter: function(value, index) {
@@ -161,7 +162,7 @@ const statcatlprojectSelector = createSelector(
           },
           axisTick: {
             lineStyle: {
-              color: '#fff'
+              color: '#000'
             }
           },
           splitLine: {
@@ -178,7 +179,7 @@ const statcatlprojectSelector = createSelector(
           type: 'category',
           axisLabel: {
             textStyle: {
-              color: "#fff"
+              color: 'rgba(18,28,38,1.0)',
             },
             // interval:1,
             interval:0,
@@ -189,7 +190,7 @@ const statcatlprojectSelector = createSelector(
               else
                 return value;
             },
-            rotate:20,
+            rotate:50,
           },
           axisLine: {
             show: false

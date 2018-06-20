@@ -12,7 +12,7 @@ const Chart = styled.div`
   .singleBarChart {
      width: 100%;
 	   overflow: hidden;
-     background: rgba(10, 108, 163, 0.3);
+     // background: rgba(10, 108, 163, 0.3);
   }
 `;
 
@@ -23,7 +23,8 @@ class Page extends React.Component {
         const {option} = this.props;
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height: "270px",width: "100%",overflow: "hidden",background: "rgba(10, 108, 163, 0.3)"}} className='echarts-for-react'/>
+              <div class="crumbsTitle">CAR-车辆使用年限</div>
+              <ReactEcharts option={option} style={{height: "370px",width: "100%",overflow: "hidden"}} className='echarts-for-react'/>
             </Chart>
         );
     };
@@ -66,13 +67,13 @@ const getOptionSelector = createSelector(
           axisLine: {
             show: true,
             lineStyle: {
-              color: 'rgba(255,255,255,.6)',
+              color: 'rgba(0,0,0,.6)',
               width: 0
             }
           },
           axisLabel: {
             textStyle: {
-              color: 'rgba(255,255,255,.8)',
+              color: 'rgba(0,0,0,.8)',
             }
           },
           axisTick: {
@@ -82,7 +83,7 @@ const getOptionSelector = createSelector(
           splitLine: {
             lineStyle: {
               type: 'dashed',
-              color: 'rgba(255,255,255,.2)'
+              color: 'rgba(0,0,0,.2)'
             }
           },
           z: 10
@@ -96,7 +97,7 @@ const getOptionSelector = createSelector(
             lineStyle: {
               width: 1,
               type: 'dashed',
-              color: 'rgba(255,255,255,.3)'
+              color: 'rgba(0,0,0,.3)'
             },
           },
           axisTick: {
@@ -107,12 +108,12 @@ const getOptionSelector = createSelector(
             margin: 15,
             interval:0,
             textStyle: {
-              color: 'rgba(255,255,255,.8)'
+              color: 'rgba(0,0,0,.8)'
             }
           },
           axisLine: {
             lineStyle: {
-              color: 'rgba(255,255,255,.4)',
+              color: 'rgba(0,0,0,.4)',
               type: 'solid'
             }
           },
@@ -132,7 +133,7 @@ const getOptionSelector = createSelector(
           axisLine: {
             lineStyle: {
               width: 22,
-              color: [[1, 'rgba(255,255,255,.05)']]
+              color: [[1, 'rgba(0,0,0,.05)']]
             },
           },
           splitLine: {

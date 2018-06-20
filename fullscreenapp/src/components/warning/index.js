@@ -7,28 +7,33 @@ import lodashmap from 'lodash.map';
 import styled from 'styled-components';
 
 const Table = styled.table`
-  width: 95%;
+  width: 100%;
   padding: 0;
   th{
     width: 27%;
-    background: #0c6da4;
+    background: #3aa2ec;
+    font-size: 14px;
     font-weight: 400;
-    font-size: 13px;
     text-align: left;
-    padding: 0 15px;
+    padding: 10px 15px;
+    white-space: nowrap;
+    color: #ffffff;
+    font-weight: 600;
   }
   td{
     width: 27%;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 14px;
     text-align: left;
-    padding: 0 15px;
+    padding: 10px 15px;
+    color: #5c6b77;
   }
   tbody{
-    tr:nth-child(even){background:rgba(14, 63, 93, 0.69);}
+    tr:nth-child(even){background: rgba(255, 255, 255, 0.5);}
   }
   tr{
     height: 23px;
+    border-bottom: 1px solid #e9e9e9;
     img{
         width: 16px;
         height: 16px;
@@ -37,7 +42,7 @@ const Table = styled.table`
     }
   }
   th:nth-child(3),td:nth-child(3){
-    width: 40%;
+    width: 45%;
   }
 
 `;
@@ -52,6 +57,7 @@ class Page extends React.Component {
         const {listData} = this.props;
         return (
           <div >
+            <div class="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>预警信息</div>
             <Table cellSpacing="0" cellPadding="0" >
               <thead>
                 <tr>
