@@ -94,7 +94,7 @@ export function* wsrecvsagaflow() {
               localStorage.setItem(`bms_${config.softmode}_token`,result.token);
               yield put(querydevicegroup_request({}));
 
-              if(config.softmode === 'fullpc'){
+              if(config.softmode === 'fullpc' || config.softmode === 'fullapp'){
                 if(!!task_querycatldata){
                   yield cancel(task_querycatldata);
                 }
