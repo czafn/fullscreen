@@ -8,6 +8,7 @@ import CycleCount from '../cycleCount';
 import DxTemperature from '../dxTemperature';
 import CellTemperature from '../cellTemperature';
 import {getdevicestatus_isonline,getdevicestatus_alaramlevel} from '../../util/getdeviceitemstatus';
+import {ui_menuclick_logout}  from '../../actions';
 import lodashmap from 'lodash.map';
 import Item from '../item';
 import CarYear from '../carYear';
@@ -18,6 +19,55 @@ import 'antd-mobile/dist/antd-mobile.css';
 import './home.css';
 import './index.css';
 
+const listItems = [
+  {
+    title:'预警信息',
+    Co:<Warning />
+  },
+  {
+    title:'报警信息',
+    Co:<Alarm />
+  },
+  {
+    title:'Cycle数',
+    Co:<Cycle />
+  },
+  {
+    title:'等效温度',
+    Co:<DxTemperature />
+  },
+  {
+    title:'电芯温差',
+    Co:<CellTemperature />
+  },
+  {
+    title:'充电次数',
+    Co:<CycleCount />
+  },
+  {
+    title:'CAR-车辆使用年限',
+    Co:<CarYear />
+  },
+  {
+    title:'BUS-车辆使用年限',
+    Co:<BusYear />
+  },
+  {
+    title:'各省份车辆分布',
+    Co:<MapProvince />
+  },
+  {
+    title:'各项目车辆分布TOP20',
+    Co:<Item />
+  },
+  {
+    title:'修改密码',
+  },
+  {
+    title:'注销',
+  },
+];
+
 class App extends React.Component {
   state = {
     docked: false,
@@ -25,8 +75,18 @@ class App extends React.Component {
     open: false,
   }
   onClickItem = (index)=>{
-    this.onOpenChange()
-    this.setState({selindex:index})
+    if(index === listItems.length -1){
+      //最后一个
+      this.props.dispatch(ui_menuclick_logout());
+    }
+    else if(index === listItems.length - 2){
+      //changepwd
+      this.props.history.push('/changepwd');
+    }
+    else{
+      this.onOpenChange()
+      this.setState({selindex:index})
+    }
   }
   onOpenChange = (...args) => {
     console.log(args);
@@ -38,49 +98,6 @@ class App extends React.Component {
     });
   }
   render() {
-    let listItems = [
-      {
-        title:'预警信息',
-        Co:<Warning />
-      },
-      {
-        title:'报警信息',
-        Co:<Alarm />
-      },
-      {
-        title:'Cycle数',
-        Co:<Cycle />
-      },
-      {
-        title:'等效温度',
-        Co:<DxTemperature />
-      },
-      {
-        title:'电芯温差',
-        Co:<CellTemperature />
-      },
-      {
-        title:'充电次数',
-        Co:<CycleCount />
-      },
-      {
-        title:'CAR-车辆使用年限',
-        Co:<CarYear />
-      },
-      {
-        title:'BUS-车辆使用年限',
-        Co:<BusYear />
-      },
-      {
-        title:'各省份车辆分布',
-        Co:<MapProvince />
-      },
-      {
-        title:'各项目车辆分布TOP20',
-        Co:<Item />
-      },
-  ];
-
     let ListItems = [];
     for(let i = 0;i <listItems.length; i++){
       ListItems.push(<List.Item key={i} onClick={()=>{this.onClickItem(i)}}>{listItems[i].title}</List.Item>);
@@ -109,4 +126,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+// const mapStateToProps = ({userlogin}) => {
+//    const {username,role,avatar} = userlogin;
+//    return {username,role,avatar};
+// }
+export default connect()(App);

@@ -220,7 +220,7 @@ class Page extends React.Component {
         let {option} = this.props;
         return (
             <Chart >
-              <div class="crumbsTitle">等效温度</div>
+              <div className="crumbsTitle">等效温度</div>
               <ReactEcharts option={option} className='singleBarChart' />
             </Chart>
         );

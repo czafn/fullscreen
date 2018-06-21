@@ -102,7 +102,7 @@ const getpop_device =({deviceitem,kvlist})=>{
       unit,
       systemflag
     });
-    // contentxt += `<p class='l'><span class='t'>${v.showname}</span><span class='color_warning'>${fieldvalue}${unit}</span></p>`;
+    // contentxt += `<p className='l'><span className='t'>${v.showname}</span><span className='color_warning'>${fieldvalue}${unit}</span></p>`;
   });
   return createInfoWindow_popinfo({
     DeviceId,
@@ -113,10 +113,10 @@ const getpop_device =({deviceitem,kvlist})=>{
   //       size:new window.AMap.Size(500,500),
   //       content:createInfoWindow(`<p>车辆编号:${DeviceId}</p>`,`
   //       ${contentxt}
-  //       <button onclick="clickfn_device(${DeviceId})" class='clickfn_device'>查看详情</button>
-  //       <button onclick="clickfn_historyplay(${DeviceId})" class='clickfn_historyplay'>历史轨迹回放</button>
-  //       <button onclick="clickfn_showhistory(${DeviceId})" class='clickfn_showhistory'>历史位置信息</button>
-  //       <button onclick="clickfn_showmessage(${DeviceId})" class='clickfn_showmessage'>历史报警信息</button>`)
+  //       <button onclick="clickfn_device(${DeviceId})" className='clickfn_device'>查看详情</button>
+  //       <button onclick="clickfn_historyplay(${DeviceId})" className='clickfn_historyplay'>历史轨迹回放</button>
+  //       <button onclick="clickfn_showhistory(${DeviceId})" className='clickfn_showhistory'>历史位置信息</button>
+  //       <button onclick="clickfn_showmessage(${DeviceId})" className='clickfn_showmessage'>历史报警信息</button>`)
   //   };
 }
 
@@ -129,7 +129,7 @@ export const getpopinfowindowstyle = (deviceitem)=>{
 
 
 export const getlistpopinfowindowstyle = (deviceitemlist,SettingOfflineMinutes)=>{
-    // let info = '<div class="getmapstylepage">';
+    // let info = '<div className="getmapstylepage">';
     const result = bridge_deviceinfo_popcluster(deviceitemlist);
     const {kvlist} = result;
 
@@ -160,7 +160,7 @@ export const getlistpopinfowindowstyle = (deviceitemlist,SettingOfflineMinutes)=
           fields
         });
         // info +=  `<p onclick="clickfn_device(${deviceitem.DeviceId})">
-        // <i class="t">车辆ID:${DeviceId}</i>
+        // <i className="t">车辆ID:${DeviceId}</i>
         // <i>${contentxt}</i></p>`;
     });
     // info += '</div>'

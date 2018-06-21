@@ -17,15 +17,15 @@ const createInfoWindow_popinfo =(data)=> {
       if(unit !== ''){
         showvalue = `${showvalue}${unit}`;
       }
-      return contenthtml = `${contenthtml}<li key=${i} class='show_${v.systemflag}'><span class='t'>${v.showname}</span><span>${showvalue}</span></li>`;
+      return contenthtml = `${contenthtml}<li key=${i} className='show_${v.systemflag}'><span className='t'>${v.showname}</span><span>${showvalue}</span></li>`;
     })
     contenthtml = `${contenthtml}</ul>`;
 
     contenthtml =
         `
         ${contenthtml}
-        <div class='pop_info_btn'>
-            <div class='lnk'>
+        <div className='pop_info_btn'>
+            <div className='lnk'>
                 <span onclick="clickfn_historyplay(${data.DeviceId})">历史轨迹回放</span>
                 <span onclick="clickfn_device(${data.DeviceId})">查看详情</span>
             </div>
@@ -82,7 +82,7 @@ const createInfoWindow_poplistinfo =(data)=> {
     // console.log(map);
 
     //iscollection
-    let title = "<span class='p'></span><span>聚合点车辆</span>";
+    let title = "<span className='p'></span><span>聚合点车辆</span>";
     // let Car_img = Car_online || Car_outline;
 
     let contenthtml = "<ul>";
@@ -95,9 +95,9 @@ const createInfoWindow_poplistinfo =(data)=> {
 
         return contenthtml = `${contenthtml}
             <li key=${i} onclick="clickfn_device_fromlist(${v.DeviceId})">
-                <div class='l'><img src=${iconname} /></div>
-                <div class='r'>
-                    <p class="t"><span>车辆ID:</span>${deviceIdHtml}</p>
+                <div className='l'><img src=${iconname} /></div>
+                <div className='r'>
+                    <p className="t"><span>车辆ID:</span>${deviceIdHtml}</p>
                     <p><span>${dinfo}</span></p>
                 </div>
                 <img src="${Point_list_img}" />

@@ -1,24 +1,11 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, Form, formValueSelector  } from 'redux-form';
+import { Field, reduxForm, Form,   } from 'redux-form';
 import { connect } from 'react-redux';
-import {login_request} from '../../actions';
+import {changepwd_request} from '../../actions';
 // import NavBar from '../tools/nav.js';
 import { withRouter } from 'react-router-dom';
 import { set_weui } from '../../actions';
 import './login.css';
-// import {
-//     required,
-//     // phone,
-//     InputValidation,
-//     // length4
-// } from "../tools/formvalidation-material-ui"
-
-
-import Loginlogo from "./loginlogo.png";
-import Login1 from "./login1.png";
-import Login2 from "./login2.png";
-import Login3 from "./login3.png";
-
 
 const required = value => value ? undefined : '必填项';
 //input表单验证
@@ -48,39 +35,64 @@ const InputValidation = (props) => {
 	  	</div>
 	);
 }
+//二次密码验证
+let password = '';
+export const passwordA = value => {password = value; return undefined};
+export const passwordB = value => value && value !== password? "两次密码输入不一致":  undefined;
+//最短输入长度
+export const minLength = min => value => value && value.length < min ? `少于最小输入长度${min}` : undefined;
+export const minLength6 = minLength(6)
+// import {
+//     required,
+//     // phone,
+//     InputValidation,
+//     // length4,
+//     passwordA,
+//     passwordB,
+//     minLength6
+// } from "../tools/formvalidation-material-ui"
+// import Loginbg from "../../img/1.png";
 
 export class PageForm extends Component {
     render(){
-        const { handleSubmit,onClickLogin,pristine,submitting } = this.props;
+        const { handleSubmit,onClickchange,pristine,submitting } = this.props;
 
         return (
             <Form
-                className="loginForm"
-                onSubmit={handleSubmit(onClickLogin)}
+                className="changepwdForm"
+                onSubmit={handleSubmit(onClickchange)}
                 >
-                <div className="logo">
-                    <span className="logoimg"><img src={Loginlogo} alt=""/></span>
-                </div>
                 <div className="li" >
-                    <img src={Login1} className="loginicon"  alt=""/>
+                    <span>当前密码</span>
                     <Field
-                        name="phonenumber"
-                        id="phonenumber"
-                        placeholder="请输入账号"
-                        type="text"
+                        name="password"
+                        id="password"
+                        placeholder="请输入原始密码"
+                        type="password"
                         component={ InputValidation }
                         validate={[ required ]}
                     />
                 </div>
                 <div className="li">
-                    <img src={Login2} className="loginicon"  alt=""/>
+                    <span>新的密码</span>
                     <Field
-                        name="password"
-                        id="password"
-                        placeholder="请输入密码"
+                        name="passwordA"
+                        id="passwordA"
+                        placeholder="请输入您的新密码"
                         type="password"
                         component={ InputValidation }
-                        validate={[ required ]}
+                        validate={[ required, passwordA, minLength6 ]}
+                    />
+                </div>
+                <div className="li">
+                    <span>确认密码</span>
+                    <Field
+                        name="passwordB"
+                        id="passwordB"
+                        placeholder="请重复输入您的新密码"
+                        type="password"
+                        component={ InputValidation }
+                        validate={[ required, passwordB, minLength6 ]}
                     />
                 </div>
 
@@ -88,12 +100,15 @@ export class PageForm extends Component {
                 <br/>
 
                 <div className="submitBtn">
-                    <img
+                    <span
                         className="btn Default"
                         disabled={pristine || submitting}
-                        onClick={handleSubmit(onClickLogin)}
-                        src={Login3}
-                         alt=""/>
+                        onClick={handleSubmit(onClickchange)}
+                        >
+                        确定
+                    </span>
+
+
                 </div>
             </Form>
         )
@@ -101,36 +116,14 @@ export class PageForm extends Component {
 }
 
 PageForm = reduxForm({
-    form: 'LoginPageForm'
+    form: 'changepwdPageForm'
 })(PageForm);
 
-const inputconnect = formValueSelector('LoginPageForm');
-PageForm = connect(
-    state => {
-        const phonenumber = inputconnect(state, 'phonenumber');
-        return {
-            phonenumber
-        }
-    }
-)(PageForm)
 PageForm = withRouter(PageForm);
 
 export class Page extends Component {
     componentWillReceiveProps (nextProps) {
-        console.log(nextProps);
-        if(nextProps.loginsuccess && !this.props.loginsuccess){
-            console.log("------->" + JSON.stringify(this.props.location));
-            //search:?next=/devicelist
-            var fdStart = this.props.location.search.indexOf("?next=");
-            if(fdStart === 0){
-                const redirectRoute = this.props.location.search.substring(6);
-                this.props.history.replace(redirectRoute);
-            }
-            else{
-                this.props.history.replace('/');
-            }
-            return;
-        }
+
     }
     onClickReturn =()=>{
         this.props.history.goBack();
@@ -144,25 +137,34 @@ export class Page extends Component {
         }));
     }
 
-    onClickLogin = (values)=>{
+    onClickchange = (values)=>{
         let payload = {
-            username:values.phonenumber,
             password:values.password,
+            passwordA:values.passwordA,
         };
 
-        this.props.dispatch(login_request(payload));
+        console.log("修改密码::::"+JSON.stringify(payload));
+
+        this.props.dispatch(changepwd_request(payload));
         // this.props.history.push("./");
+        //调用修改密码后台接口
+
+
     }
     render(){
         return (
-            <div className="loginPage AppPage"
+            <div className="changepwdPage AppPage"
                 style={{
                     backgroundSize: "100% 100%",
                     height : `${window.innerHeight}px`
                 }}>
+                <div className="navhead">
+                    <div onClick={()=>{this.props.history.goBack()}} className="back"></div>
+                    <span className="title" style={{paddingRight : "30px"}}>修改密码</span>
+                </div>
 
                 <div className="content">
-                    <PageForm onClickLogin={this.onClickLogin}/>
+                    <PageForm onClickchange={this.onClickchange}/>
                 </div>
             </div>
         )

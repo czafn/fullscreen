@@ -41,7 +41,7 @@ class Page extends React.Component {
 
         return (
             <Chart >
-              <div class="crumbsTitle">充电次数</div>
+              <div className="crumbsTitle">充电次数</div>
               <ReactEcharts option={option} className='singleBarChart' />
             </Chart>
         );

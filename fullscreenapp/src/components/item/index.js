@@ -90,7 +90,7 @@ class Page extends React.Component {
         }
         return (
             <Chart onClick={() => this.onChartClick()}>
-              <div class="crumbsTitle">各项目车辆分布TOP20</div>
+              <div className="crumbsTitle">各项目车辆分布TOP20</div>
               <ReactEcharts option={option} style={{height:'370px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );

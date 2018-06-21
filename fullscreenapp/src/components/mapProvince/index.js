@@ -110,7 +110,7 @@ class Page extends React.Component {
 
         return (
             <Chart onClick={() => this.onChartClick()}>
-              <div class="crumbsTitle">各省份车辆分布</div>
+              <div className="crumbsTitle">各省份车辆分布</div>
               <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );

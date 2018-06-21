@@ -41,7 +41,7 @@ class Page extends React.Component {
 
         return (
             <Chart >
-              <div class="crumbsTitle">Cycle数</div>
+              <div className="crumbsTitle">Cycle数</div>
               <ReactEcharts
                   option={option}
                   // lazyUpdate={false}

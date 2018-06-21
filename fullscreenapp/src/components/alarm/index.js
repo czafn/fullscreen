@@ -96,7 +96,7 @@ class Page extends React.Component {
         const {level1_ListData, level2_ListData, level3_ListData} = this.props;
         return (
           <div >
-              <div class="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>
+              <div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>
               <Carousel ref='ddd' infinite autoplay autoplayInterval={10000} >
                   <div>
                       <Table cellSpacing="0" cellPadding="0" >

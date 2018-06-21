@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
 import Index from './index/home.js';
 import Login from './login/login.js';
+import Changepwd from './login/changepwd';
 import {map_setmapinited} from '../actions';
 import {requireAuthentication} from './requireauthentication';
 
@@ -35,6 +36,7 @@ class AppRoot extends React.Component {
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={requireAuthentication(Index)} />
+                  <Route path="/changepwd" component={Changepwd} />
                   <Route path="/login" component={Login} />
                 </Switch>
               </div>

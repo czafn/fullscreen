@@ -36,7 +36,7 @@ class Page extends React.Component {
         let {option} = this.props;
         return (
             <Chart >
-              <div class="crumbsTitle">BUS-车辆使用年限</div>
+              <div className="crumbsTitle">BUS-车辆使用年限</div>
               <ReactEcharts option={option} style={{height: "370px"}} className='singleBarChart' />
             </Chart>
         );

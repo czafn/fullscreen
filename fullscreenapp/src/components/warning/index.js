@@ -57,7 +57,7 @@ class Page extends React.Component {
         const {listData} = this.props;
         return (
           <div >
-            <div class="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>预警信息</div>
+            <div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>预警信息</div>
             <Table cellSpacing="0" cellPadding="0" >
               <thead>
                 <tr>

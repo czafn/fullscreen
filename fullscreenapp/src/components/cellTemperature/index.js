@@ -291,7 +291,7 @@ class Page extends React.Component {
         let {option} = this.props;
         return (
             <Chart >
-              <div class="crumbsTitle">电芯温差</div>
+              <div className="crumbsTitle">电芯温差</div>
               <ReactEcharts option={option} className='singleBarChart' />
             </Chart>
         );
