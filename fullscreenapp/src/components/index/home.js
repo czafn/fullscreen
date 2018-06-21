@@ -60,9 +60,9 @@ const listItems = [
     title:'各项目车辆分布TOP20',
     Co:<Item />
   },
-  {
-    title:'修改密码',
-  },
+  // {
+  //   title:'修改密码',
+  // },
   {
     title:'注销',
   },
@@ -79,10 +79,10 @@ class App extends React.Component {
       //最后一个
       this.props.dispatch(ui_menuclick_logout());
     }
-    else if(index === listItems.length - 2){
-      //changepwd
-      this.props.history.push('/changepwd');
-    }
+    // else if(index === listItems.length - 2){
+    //   //changepwd
+    //   this.props.history.push('/changepwd');
+    // }
     else{
       this.onOpenChange()
       this.setState({selindex:index})
