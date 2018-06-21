@@ -64,7 +64,7 @@ class Page extends React.Component {
       const curData = lodashget(this.props,'option.series[1].data',[]);
       if( nextData.length === curData.length ){
         if(JSON.stringify(nextData) === JSON.stringify(curData)){
-          if(JSON.stringify(nextState) === JSON.stringify(this.props)){
+          if(JSON.stringify(nextState) === JSON.stringify(this.state)){
             return false;
           }
         }
