@@ -8,6 +8,9 @@ import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
+import { Picker, List ,Flex, WingBlank} from 'antd-mobile';
+import './busyear.css';
+
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
@@ -17,11 +20,33 @@ const Chart = styled.div`
     // background: rgba(10, 108, 163, 0.3);
     // background: rgba(14, 50, 74,1)
   }
+  .am-list-item{
+    min-height: 35px;
+  }
   
+  .am-list-item .am-list-line .am-list-content{
+    font-size:14px
+  }
+  .am-list-item .am-list-line .am-list-extra{
+    font-size:14px
+  }
 `;
 
-
+const seasons = [
+  {
+    label: '2013',
+    value: '2013',
+  },
+  {
+    label: '2014',
+    value: '2014',
+  },
+];
 class Page extends React.Component {
+    state = {
+      sValue: [],
+      pProvince: [],
+    };
     shouldComponentUpdate(nextProps, nextState) {
       const nextData = lodashget(nextProps,'option.series[1].data',[]);
       const curData = lodashget(this.props,'option.series[1].data',[]);
@@ -32,11 +57,44 @@ class Page extends React.Component {
       }
       return true;//render
     }
+    onChange = (value) => {
+      debugger
+      console.log(value,this.state.sValue);
+      this.setState({
+        sValue: value,
+      });
+      console.log(this.state.sValue)
+    }
     render() {
         let {option} = this.props;
         return (
             <Chart >
               <div className="crumbsTitle">BUS-车辆使用年限</div>
+              <div className="flex-container">
+                <Flex>
+                  <Flex.Item>
+                    <Picker
+                      data={seasons}
+                      value={this.state.sValue}
+                      onChange={this.onChange}
+                      onOk={v => this.setState({ sValue: v })}
+                    >
+                      <List.Item arrow="horizontal">省份</List.Item>
+                    </Picker>
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Picker
+                      data={seasons}
+                      value={this.state.sValue}
+                      onChange={this.onChange}
+                      onOk={v => this.setState({ sValue: v })}
+                    >
+                      <List.Item arrow="horizontal">项目</List.Item>
+                    </Picker>
+                  </Flex.Item>
+
+                </Flex>
+              </div>
               <ReactEcharts option={option} style={{height: "370px"}} className='singleBarChart' />
             </Chart>
         );

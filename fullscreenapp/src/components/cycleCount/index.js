@@ -215,10 +215,10 @@ const getOptionSelector = createSelector(
         animationEasing: 'elasticOut',
         animationEasingUpdate: 'elasticOut',
         animationDelay: function (idx) {
-          return idx * 5;
+          return idx * 1;
         },
         animationDelayUpdate: function (idx) {
-          return idx * 5;
+          return idx * 1;
         }
       };
     };

@@ -86,7 +86,7 @@ class Page extends React.Component {
         // }
         let onEvents = {
           // 'legendselectchanged': this.onChartLegendselectchanged.bind(this),
-          'click': this.onChartClick.bind(this)
+          // 'click': this.onChartClick.bind(this)
         }
         return (
             <Chart onClick={() => this.onChartClick()}>

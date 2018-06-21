@@ -10,22 +10,22 @@ const Table = styled.table`
   width: 100%;
   padding: 0;
   th{
-    width: 27%;
+    width: 25%;
     background: #3aa2ec;
     font-size: 14px;
     font-weight: 400;
     text-align: left;
-    padding: 10px 15px;
+    padding: 10px 10px;
     white-space: nowrap;
     color: #ffffff;
     font-weight: 600;
   }
   td{
-    width: 27%;
+    width: 25%;
     font-weight: 300;
     font-size: 14px;
     text-align: left;
-    padding: 10px 15px;
+    padding: 10px 10px;
     color: #5c6b77;
   }
   tbody{
@@ -42,7 +42,7 @@ const Table = styled.table`
     }
   }
   th:nth-child(3),td:nth-child(3){
-    width: 45%;
+    width: 48%;
   }
 
 `;

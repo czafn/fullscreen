@@ -105,7 +105,7 @@ class Page extends React.Component {
         }
         let onEvents = {
           // 'legendselectchanged': this.onChartLegendselectchanged.bind(this),
-          'click': this.onChartClick.bind(this),
+          // 'click': this.onChartClick.bind(this),
         }
 
         return (
@@ -224,7 +224,7 @@ const mapStateToProps = ({deviceext}) => {
           },
           rotate:50,
         },
-        data: []
+        data: [],
       },
       series: [
         {

@@ -104,8 +104,8 @@
 }
 
 .AppPage .logo{
-    background: #EEE;
-    height: 64px;
+    /*background: #EEE;*/
+    height: 120px;
     color: #333;
     text-align: center;
     line-height: 64px;

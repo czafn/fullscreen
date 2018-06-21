@@ -8,7 +8,7 @@
 
 .ant-carousel .slick-slider .slick-dots {
   /*position: static;*/
-  bottom: 5px
+  bottom: -25px
 }
 .ant-carousel .slick-slide h3 {
   color: #fff;

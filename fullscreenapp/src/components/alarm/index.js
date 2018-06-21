@@ -26,7 +26,7 @@ const Table = styled.table`
     font-size: 14px;
     font-weight: 400;
     text-align: left;
-    padding: 10px 15px;
+    padding: 10px 10px;
     white-space: nowrap;
     color: #ffffff;
     font-weight: 600;
@@ -37,7 +37,7 @@ const Table = styled.table`
     font-weight: 300;
     font-size: 14px;
     text-align: left;
-    padding: 10px 15px;
+    padding: 10px 10px;
     color: #5c6b77;
   }
   td span{

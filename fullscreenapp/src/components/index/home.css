@@ -12,6 +12,10 @@
   width: 300px;
   padding: 0;
 }
+.am-navbar{
+    height: 65px;
+    padding-top: 20px;
+}
 .crumbsTitle{
     padding: 0px 0 0px 15px;
     color: #000;
