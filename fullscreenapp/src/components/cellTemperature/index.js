@@ -289,6 +289,9 @@ class Page extends React.Component {
         // option.series[1].data = data.map(value => value['value']-0);
         // option.series[2].data = data.map(value => value['curve']-0);
         let {option} = this.props;
+        if(!option){
+           return (<div>loading</div>)
+        }
         return (
             <Chart >
               <div className="crumbsTitle">电芯温差</div>
@@ -489,6 +492,14 @@ const getOptionSelector = createSelector(
 
 
     const {areaParam,median} = getmedian(data);
+
+    console.log(`==data==`)
+    console.log(`${JSON.stringify(data)}`)
+    console.log(`==areaParam==`)
+    console.log(`${JSON.stringify(areaParam)}`)
+    console.log(`==median==`)
+    console.log(`${JSON.stringify(median)}`)
+    console.log(`==end==`)
 
     const getOption = () => {
       return {
@@ -707,7 +718,7 @@ const getOptionSelector = createSelector(
 
 
     if(data.length === 0){
-      return (<div>loading</div>)
+      return;
     }
     data = _.sortBy(data,(i) => i.name-0);
     option.xAxis[0].data = data.map(value => value['name']);

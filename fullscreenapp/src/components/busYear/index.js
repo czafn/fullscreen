@@ -23,7 +23,7 @@ const Chart = styled.div`
   .am-list-item{
     min-height: 35px;
   }
-  
+
   .am-list-item .am-list-line .am-list-content{
     font-size:14px
   }
@@ -32,41 +32,61 @@ const Chart = styled.div`
   }
 `;
 
-const seasons = [
+const provinces = [
   {
-    label: '2013',
-    value: '2013',
+    label: '江苏',
+    value: '江苏',
   },
   {
-    label: '2014',
-    value: '2014',
+    label: '沈阳',
+    value: '沈阳',
   },
 ];
+
+const projects = [
+  {
+    label: '项目A',
+    value: '项目A',
+  },
+  {
+    label: '项目B',
+    value: '项目B',
+  },
+];
+
 class Page extends React.Component {
     state = {
-      sValue: [],
-      pProvince: [],
+      sProject: [],
+      sProvince: [],
     };
     shouldComponentUpdate(nextProps, nextState) {
       const nextData = lodashget(nextProps,'option.series[1].data',[]);
       const curData = lodashget(this.props,'option.series[1].data',[]);
       if( nextData.length === curData.length ){
         if(JSON.stringify(nextData) === JSON.stringify(curData)){
-          return false;
+          if(JSON.stringify(nextState) === JSON.stringify(this.props)){
+            return false;
+          }
         }
       }
       return true;//render
     }
-    onChange = (value) => {
-      debugger
-      console.log(value,this.state.sValue);
+    onChangeProvince = (value) => {
       this.setState({
-        sValue: value,
+        sProvince: value,
       });
-      console.log(this.state.sValue)
+      console.log(this.state.sProvince)
+    }
+    onChangeProject = (value) => {
+      this.setState({
+        sProject: value,
+      });
+      console.log(this.state.sProject)
     }
     render() {
-        let {option} = this.props;
+      console.log(this.state.sProvince);
+      console.log(this.state.sProject);
+      let {option} = this.props;
         return (
             <Chart >
               <div className="crumbsTitle">BUS-车辆使用年限</div>
@@ -74,20 +94,23 @@ class Page extends React.Component {
                 <Flex>
                   <Flex.Item>
                     <Picker
-                      data={seasons}
-                      value={this.state.sValue}
-                      onChange={this.onChange}
-                      onOk={v => this.setState({ sValue: v })}
+                      data={provinces}
+                      value={this.state.sProvince}
+                      onChange={v=>{this.onChangeProvince(v)}}
+                      onOk={v => {
+                        console.log(v)
+                        this.setState({ sProvince: v })
+                      }}
                     >
                       <List.Item arrow="horizontal">省份</List.Item>
                     </Picker>
                   </Flex.Item>
                   <Flex.Item>
                     <Picker
-                      data={seasons}
-                      value={this.state.sValue}
-                      onChange={this.onChange}
-                      onOk={v => this.setState({ sValue: v })}
+                      data={projects}
+                      value={this.state.sProject}
+                      onChange={v=>{this.onChangeProject(v)}}
+                      onOk={v => this.setState({ sProject: v })}
                     >
                       <List.Item arrow="horizontal">项目</List.Item>
                     </Picker>

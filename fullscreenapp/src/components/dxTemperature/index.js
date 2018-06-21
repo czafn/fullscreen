@@ -218,6 +218,9 @@ class Page extends React.Component {
     */
     render() {
         let {option} = this.props;
+        if(!option){
+          return (<div>loading</div>);
+        }
         return (
             <Chart >
               <div className="crumbsTitle">等效温度</div>
@@ -882,7 +885,7 @@ const getOptionSelector = createSelector(
     let option = getOption();
 
     if(m5data.length === 0){
-      return (<div>loading</div>)
+      return;
     }
 
     // const option = this.option;
