@@ -13,12 +13,16 @@ import lodashmap from 'lodash.map';
 import Item from '../item';
 import CarYear from '../carYear';
 import BusYear from '../busYear';
+import Changepwd from "../user/pwd.js";
+import Usercenter from "../user/center.js";
 import MapProvince from '../mapProvince';
 import { Drawer, List, NavBar, Icon } from 'antd-mobile';
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
 import Tab0 from './tab0';
 import Tab1 from './tab1';
 import Tab2 from './tab2';
+import {set_uiapp} from '../../actions';
+
 import 'antd-mobile/dist/antd-mobile.css';
 import './home.css';
 import './index.css';
@@ -26,6 +30,7 @@ import './index.css';
 
 class App extends React.Component {
   render() {
+    const {ispopuserinfo,ispoppwd} = this.props;
     const tabs = [
       {
         title:'综合信息'
@@ -38,7 +43,12 @@ class App extends React.Component {
       },
     ]
     return (<div style={{ height: '100%' }}>
-      <NavBar icon={<Icon type="ellipsis" />}>
+      <NavBar icon={<Icon type="ellipsis" />} onClick={
+        ()=>
+        {
+          this.props.dispatch(set_uiapp({ispopuserinfo:true}))
+        }
+      }>
         新能源远程监控系统
       </NavBar>
 
@@ -57,12 +67,14 @@ class App extends React.Component {
         <Tab2 />
       </div>
     </Tabs>
+    {ispopuserinfo  && <Usercenter /> }
+    {ispoppwd && <Changepwd />}
     </div>);
   }
 }
 
-// const mapStateToProps = ({userlogin}) => {
-//    const {username,role,avatar} = userlogin;
-//    return {username,role,avatar};
-// }
-export default connect()(App);
+const mapStateToProps = ({app}) => {
+   const {ispopuserinfo,ispoppwd} = app;
+   return {ispopuserinfo,ispoppwd};
+}
+export default connect(mapStateToProps)(App);

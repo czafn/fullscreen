@@ -1,0 +1,488 @@
+.collectionlist {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 6px;
+    z-index: 1000;
+    top: 0;
+    padding-bottom: 10px;
+    overflow-y: hidden;
+    z-index: 100000;
+}
+
+.collectionlist .info {
+    color: #999;
+    background: #FFF;
+}
+
+.collectionlist .wamp {
+    background: rgba(0, 0, 0, .4);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.collectionlist .infocontent {
+    position: absolute;
+    z-index: 1000;
+    background: #FFF;
+    border-radius: 6px;
+    padding-top: 10px;
+    top: 15%;
+    bottom: 15%;
+    left: 10%;
+    right: 10%;
+}
+
+.collectionlist .infocontent .tit {
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+.collectionlist .infocontent img {
+    width: 100%;
+}
+
+.collectionlist .infocontent .info {
+    padding: 0 20px;
+    font-size: 12px;
+}
+
+.collectionlist .infocontent .closediv {
+    position: absolute;
+    bottom: -68px;
+    width: 100%;
+    text-align: center;
+}
+
+.collectionlist .infocontent .closediv img {
+    width: 46px;
+}
+
+.collectionlist .infocontent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.collectionlist .list {
+    padding: 10px 30px;
+    flex-grow: 1;
+    align-items: flex-start;
+    overflow-y: scroll;
+}
+
+.collectionlist .list>span {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    flex-grow: 0;
+    line-height: 30px;
+}
+
+.collectionlist .edit {
+    margin-bottom: 20px;
+    margin-top: 15px;
+    background: #0164b5;
+    color: #FFF;
+    line-height: 36px;
+    border-radius: 36px;
+    width: 100px;
+    text-align: center;
+}
+
+.editcollectionlist {
+    position: fixed;
+    width: 55%;
+    background: #FFF;
+    top: 0;
+    bottom: 0;
+    z-index: 20000;
+    right: 0;
+    box-shadow: 2px 10px 10px #666;
+    overflow-y: scroll;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -moz-box-direction: normal;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+}
+
+.editcollectionlist .point {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.editcollectionlist .point .title {
+    font-size: 18px;
+    font-weight: bold;
+    height: 44px;
+    line-height: 44px;
+}
+
+.editcollectionlist .point .close {
+    border: 2px solid #0263b2;
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    position: relative;
+}
+
+.editcollectionlist .point .close:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 2px;
+    height: 10px;
+    background: #0263b2;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    /* Firefox */
+    -webkit-transform: rotate(45deg);
+    /* Safari 和 Chrome */
+}
+
+.editcollectionlist .point .close:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 2px;
+    height: 10px;
+    background: #0263b2;
+    transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    /* Firefox */
+    -webkit-transform: rotate(-45deg);
+    /* Safari 和 Chrome */
+}
+
+.editcollectionlist .btn {
+    background: #009a44;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    width: 100px;
+    border-radius: 40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.editcollectionlist .pointlist {
+    overflow-y: scroll;
+    flex-grow: 1;
+}
+
+.editcollectionlist .pointlist .li>.t {
+    background: #f1f7f5;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+    position: relative;
+}
+
+.editcollectionlist .pointlist .li>.t:after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    border-left: 1px solid #0263b2;
+    border-bottom: 1px solid #0263b2;
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    /* Firefox */
+    -webkit-transform: rotate(-45deg);
+    /* Safari 和 Chrome */
+}
+
+.editcollectionlist .pointlist .li2 .t2 {
+    line-height: 40px;
+    font-size: 16px;
+    margin-left: 20px;
+    border-bottom: 1px solid #EEE;
+}
+
+.editcollectionlist .pointlist .li2 .p2 .p2p.t {
+    background: none;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.editcollectionlist .pointlist .li2 .p2 .p2p {
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -moz-justify-content: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-left: 30px;
+    padding: 0;
+}
+
+.editcollectionlist .pointlist .li2 .p2 .p2p img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.editcollectionlist .pointlist .li2 .p2 .p2p.issel {}
+
+.editcollectionlist .pointlist .li2 .p2 .p2p.issel span.tip {
+    background: #009a44;
+    color: #FFF;
+    height: 18px;
+    border-radius: 6px;
+    line-height: 18px;
+    padding: 0 5px;
+    margin-right: 10px;
+}
+
+.editcollectionlist .pointlist .li2 .p2 .p2p span.n {
+    flex-grow: 1;
+    display: inline-block;
+}
+
+.changepwd {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 6px;
+    z-index: 1000;
+    top: 0;
+    padding-bottom: 10px;
+    overflow-y: hidden;
+    z-index: 1500;
+}
+
+.changepwd .wamp {
+    background: rgba(0, 0, 0, .4);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.changepwd .infocontent {
+    position: absolute;
+    z-index: 1000;
+    background: #FFF;
+    border-radius: 6px;
+    padding-top: 10px;
+    top: 50%;
+    margin-top: -150px;
+    left: 10%;
+    right: 10%;
+    height: 300px;
+}
+
+.changepwd .infocontent .closediv {
+    position: absolute;
+    bottom: -68px;
+    width: 100%;
+    text-align: center;
+}
+
+.changepwd .infocontent .closediv img {
+    width: 46px;
+}
+
+.changepwd .infocontent .tit {
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+
+.changepwd .infocontent .list>div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.changepwd .infocontent .list span {
+    font-size: 16px;
+    line-height: 40px;
+    display: inline-block;
+    width: 80px;
+}
+
+.changepwd .infocontent .list input {
+    background: #F4F4F4;
+    border: 1px solid #EEE;
+    height: 30px;
+    border-radius: 6px;
+}
+
+.changepwd .infocontent .btn {
+    background: #0164b5;
+    width: 160px;
+    border-radius: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    color: #FFF;
+    margin: auto;
+}
+
+.usercenter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 6px;
+    z-index: 1000;
+    top: 0;
+    padding-bottom: 10px;
+    overflow-y: hidden;
+    z-index: 1500;
+}
+
+.usercenter .wamp {
+    background: rgba(0, 0, 0, .4);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.usercenter .infocontent {
+    position: absolute;
+    z-index: 1000;
+    background: #FFF;
+    border-radius: 6px;
+    padding-top: 10px;
+    top: 50%;
+    margin-top: -150px;
+    left: 10%;
+    right: 10%;
+    height: 300px;
+}
+
+.usercenter .infocontent .closediv {
+    position: absolute;
+    bottom: -68px;
+    width: 100%;
+    text-align: center;
+}
+
+.usercenter .infocontent .closediv img {
+    width: 46px;
+}
+
+.usercenter .infocontent .tit {
+    text-align: center;
+    font-size: 20px;
+    line-height: 68px;
+    font-weight: 600;
+}
+
+.usercenter .infocontent .list>div {
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid #EEE;
+    font-size: 18px;
+    font-weight: 500;
+    color: #666
+}
+
+.usercenter .infocontent .list>div:last-child {
+    border: none;
+}
+
+.changepwdForm {
+    padding: 0px 30px
+}
+
+.changepwdForm>div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 20px 0px
+}
+
+.changepwdForm span {
+    width: 80px;
+}
+
+.changepwdForm div input {
+    border: 1px solid #e5e5e5;
+    padding: 8px 8px
+}
+
+.changepwdForm div .formvalidation.form_input input {
+    color: #333
+}
+
+.changepwdForm .submitBtn .btn {
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    color: #FFF;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: 100%;
+    background: linear-gradient(180deg, #1396d2, #017db6);
+    border: none;
+    border-radius: 4px;
+}
