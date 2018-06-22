@@ -16,47 +16,53 @@ import BusYear from '../busYear';
 import MapProvince from '../mapProvince';
 import { Drawer, List, NavBar, Icon } from 'antd-mobile';
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
-import Tab0 from './tab0';
-import Tab1 from './tab1';
-import Tab2 from './tab2';
+import { SegmentedControl, WingBlank } from 'antd-mobile';
+import { Carousel } from 'antd-mobile';
+
 import 'antd-mobile/dist/antd-mobile.css';
 import './home.css';
 import './index.css';
 
-
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        selectedIndex : 0
+    }
+  }
+  onChange =(e)=>{
+    this.setState({
+      selectedIndex:e.nativeEvent.selectedSegmentIndex
+    })
+  }
   render() {
-    const tabs = [
-      {
-        title:'综合信息'
-      },
-      {
-        title:'客档分析'
-      },
-      {
-        title:'电池包分析'
-      },
-    ]
+    //综合信息《ppppppp
+  //   {
+  //   title:'预警信息',
+  //   Co:<Warning />
+  // },
+  // {
+  //   title:'报警信息',
+  //   Co:<Alarm />
+  // },
+    let SelCo;
+    if(this.state.selectedIndex === 0){
+      SelCo =  (
+        <div>
+          仪表板
+        </div>);//这里确认需求
+    }
+    else if(this.state.selectedIndex === 1){
+      SelCo =  (<Alarm />);
+    }
+    else if(this.state.selectedIndex === 2){
+      SelCo =  (<Warning />);
+    }
     return (<div style={{ height: '100%' }}>
-      <NavBar icon={<Icon type="ellipsis" />}>
-        新能源远程监控系统
-      </NavBar>
-
-      <Tabs tabs={tabs}
-        initialPage={1}
-        tabBarPosition="bottom"
-        renderTab={tab => <span>{tab.title}</span>}
-      >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <Tab0 />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <Tab1 />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <Tab2 />
-      </div>
-    </Tabs>
+        <SegmentedControl values={['仪表板', '报警','预警']}
+          onChange={this.onChange}
+          selectedIndex={this.state.selectedIndex}/>
+          {SelCo}
     </div>);
   }
 }

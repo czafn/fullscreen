@@ -16,47 +16,46 @@ import BusYear from '../busYear';
 import MapProvince from '../mapProvince';
 import { Drawer, List, NavBar, Icon } from 'antd-mobile';
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
-import Tab0 from './tab0';
-import Tab1 from './tab1';
-import Tab2 from './tab2';
+import { Carousel } from 'antd-mobile';
+
 import 'antd-mobile/dist/antd-mobile.css';
 import './home.css';
 import './index.css';
 
-
 class App extends React.Component {
   render() {
-    const tabs = [
-      {
-        title:'综合信息'
-      },
-      {
-        title:'客档分析'
-      },
-      {
-        title:'电池包分析'
-      },
-    ]
+    //电池包分析包含《ppppppp
+    // {
+    //   title:'Cycle数',
+    //   Co:<Cycle />
+    // },
+    // {
+    //   title:'等效温度',
+    //   Co:<DxTemperature />
+    // },
+    // {
+    //   title:'电芯温差',
+    //   Co:<CellTemperature />
+    // },
+    // {
+    //   title:'充电次数',
+    //   Co:<CycleCount />
+    // },
     return (<div style={{ height: '100%' }}>
-      <NavBar icon={<Icon type="ellipsis" />}>
-        新能源远程监控系统
-      </NavBar>
-
-      <Tabs tabs={tabs}
-        initialPage={1}
-        tabBarPosition="bottom"
-        renderTab={tab => <span>{tab.title}</span>}
-      >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <Tab0 />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <Tab1 />
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-        <Tab2 />
-      </div>
-    </Tabs>
+        <Carousel ref='ddd' infinite autoplay autoplayInterval={10000} >
+          <div>
+            <Cycle />
+          </div>
+          <div>
+            <DxTemperature />
+          </div>
+          <div>
+            <CellTemperature />
+          </div>
+          <div>
+            <CycleCount />
+          </div>
+        </Carousel>
     </div>);
   }
 }
