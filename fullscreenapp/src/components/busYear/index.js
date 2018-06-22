@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import { Picker, List ,Flex, WingBlank} from 'antd-mobile';
 import './busyear.css';
+import {setquery_deviceext_request} from "../../actions";
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -28,31 +29,10 @@ const Chart = styled.div`
     font-size:14px
   }
   .am-list-item .am-list-line .am-list-extra{
-    font-size:14px
+    font-size:14px;
+    flex-basis: 60%;
   }
 `;
-
-const provinces = [
-  {
-    label: '江苏',
-    value: '江苏',
-  },
-  {
-    label: '沈阳',
-    value: '沈阳',
-  },
-];
-
-const projects = [
-  {
-    label: '项目A',
-    value: '项目A',
-  },
-  {
-    label: '项目B',
-    value: '项目B',
-  },
-];
 
 class Page extends React.Component {
     state = {
@@ -75,52 +55,74 @@ class Page extends React.Component {
       this.setState({
         sProvince: value,
       });
-      console.log(this.state.sProvince)
+
+      let query = this.props.query;
+      delete query.catlprojectname
+      this.setState({
+        sProject: ['全部'],
+      });
+      if(value[0] === '全部'){
+        delete query.province
+      } else {
+        query['province'] = value[0];
+      }
+
+      this.props.dispatch(setquery_deviceext_request(query));
     }
     onChangeProject = (value) => {
       this.setState({
         sProject: value,
       });
-      console.log(this.state.sProject)
+
+      let query = this.props.query;
+      delete query.province
+      this.setState({
+        sProvince: ['全部'],
+      });
+      if(value[0] === '全部'){
+        delete query.catlprojectname
+      } else {
+        query['catlprojectname'] = value[0];
+      }
+
+      this.props.dispatch(setquery_deviceext_request(query));
     }
     render() {
-      console.log(this.state.sProvince);
-      console.log(this.state.sProject);
-      let {option} = this.props;
-        return (
-            <Chart >
-              <div className="crumbsTitle">BUS-车辆使用年限</div>
-              <div className="flex-container">
-                <Flex>
-                  <Flex.Item>
-                    <Picker
-                      data={provinces}
-                      value={this.state.sProvince}
-                      onChange={v=>{this.onChangeProvince(v)}}
-                      onOk={v => {
-                        console.log(v)
-                        this.setState({ sProvince: v })
-                      }}
-                    >
-                      <List.Item arrow="horizontal">省份</List.Item>
-                    </Picker>
-                  </Flex.Item>
-                  <Flex.Item>
-                    <Picker
-                      data={projects}
-                      value={this.state.sProject}
-                      onChange={v=>{this.onChangeProject(v)}}
-                      onOk={v => this.setState({ sProject: v })}
-                    >
-                      <List.Item arrow="horizontal">项目</List.Item>
-                    </Picker>
-                  </Flex.Item>
+      let {option, pickerProvice, pickerProjects} = this.props;
+      return (
+          <Chart >
+            <div className="crumbsTitle">BUS-车辆使用年限</div>
+            <div className="flex-container">
+              <Flex>
+                <Flex.Item>
+                  <Picker
+                    data={pickerProvice}
+                    value={this.state.sProvince}
+                    onChange={v=>{this.onChangeProvince(v)}}
+                    onOk={v => {
+                      console.log(v)
+                      this.setState({ sProvince: v })
+                    }}
+                  >
+                    <List.Item arrow="horizontal">省份</List.Item>
+                  </Picker>
+                </Flex.Item>
+                <Flex.Item>
+                  <Picker
+                    data={pickerProjects}
+                    value={this.state.sProject}
+                    onChange={v=>{this.onChangeProject(v)}}
+                    onOk={v => this.setState({ sProject: v })}
+                  >
+                    <List.Item arrow="horizontal">项目</List.Item>
+                  </Picker>
+                </Flex.Item>
 
-                </Flex>
-              </div>
-              <ReactEcharts option={option} style={{height: "370px"}} className='singleBarChart' />
-            </Chart>
-        );
+              </Flex>
+            </div>
+            <ReactEcharts option={option} style={{height: "370px"}} className='singleBarChart' />
+          </Chart>
+      );
     };
 }
 
@@ -301,6 +303,26 @@ const getOptionSelector = createSelector(
 
 const mapStateToProps = (state) => {
   const option = getOptionSelector(state);
-  return {option};
+
+  let province = _.uniq(_.pluck(state.deviceext.statprovince, 'name'));
+  const pickerProvice = [{label: '全部', value: '全部'}];
+  _.each(province,(p) => {
+    pickerProvice.push({
+      label: p,
+      value: p
+    })
+  });
+
+  let projects = _.uniq(_.pluck(state.deviceext.statcatlproject, 'name'));
+  const pickerProjects = [{label: '全部', value: '全部'}];
+  _.each(projects,(p) => {
+    pickerProjects.push({
+      label: p,
+      value: p
+    })
+  });
+
+  const query = state.deviceext.query;
+  return {query, option, pickerProvice, pickerProjects};
 }
 export default connect(mapStateToProps)(Page);

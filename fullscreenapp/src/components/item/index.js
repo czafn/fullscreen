@@ -7,6 +7,7 @@ import { createSelector } from 'reselect';
 import ReactEcharts from 'echarts-for-react';
 import lodashget from 'lodash.get';
 import echarts from 'echarts/dist/echarts.common';
+import { Picker, List ,Flex, WingBlank} from 'antd-mobile';
 import {setquery_deviceext_request,settype_deviceext} from '../../actions';
 
 import styled from 'styled-components';
@@ -17,6 +18,17 @@ const Chart = styled.div`
 	height: 100%;
 	overflow: hidden;
   }
+  
+  .flex-container{
+    margin: 0px 0px;
+  }
+  .am-list-item .am-list-line .am-list-content{
+    font-size:14px
+  }
+  .am-list-item .am-list-line .am-list-extra{
+    font-size:14px;
+    flex-basis: 60%;
+  }
 `;
 
 
@@ -26,6 +38,9 @@ class Page extends React.Component {
 
     }
 
+    state = {
+      sProvince: []
+    };
     shouldComponentUpdate(nextProps, nextState) {
 
       const nextcarNum = lodashget(nextProps,'option.series["0"].data',[]);
@@ -79,8 +94,26 @@ class Page extends React.Component {
       this.props.dispatch(settype_deviceext(param.selected));
     };
 
+    onChangeProvince = (value) => {
+      this.setState({
+        sProvince: value,
+      });
+
+      let query = this.props.query;
+      delete query.catlprojectname
+      this.setState({
+        sProject: ['全部'],
+      });
+      if(value[0] === '全部'){
+        delete query.province
+      } else {
+        query['province'] = value[0];
+      }
+
+      this.props.dispatch(setquery_deviceext_request(query));
+    }
     render() {
-        let {option} = this.props;
+        let {option, pickerProvice} = this.props;
         // if(data.length === 0){
         //   return (<div>loading</div>)
         // }
@@ -91,6 +124,23 @@ class Page extends React.Component {
         return (
             <Chart onClick={() => this.onChartClick()}>
               <div className="crumbsTitle">各项目车辆分布TOP20</div>
+              <div className="flex-container">
+                <Flex>
+                  <Flex.Item>
+                    <Picker
+                      data={pickerProvice}
+                      value={this.state.sProvince}
+                      onChange={v=>{this.onChangeProvince(v)}}
+                      onOk={v => {
+                        console.log(v)
+                        this.setState({ sProvince: v })
+                      }}
+                    >
+                      <List.Item arrow="horizontal">省份</List.Item>
+                    </Picker>
+                  </Flex.Item>
+                </Flex>
+              </div>
               <ReactEcharts option={option} style={{height:'370px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );
@@ -324,6 +374,16 @@ const mapStateToProps = (state) => {
     //     {"type":"BUS","name":"XAN-223","value":"150"}
     // ];
 
-    return { query,option};
+
+    let province = _.uniq(_.pluck(state.deviceext.statprovince, 'name'));
+    const pickerProvice = [{label: '全部', value: '全部'}];
+    _.each(province,(p) => {
+      pickerProvice.push({
+        label: p,
+        value: p
+      })
+    });
+
+    return { query,option, pickerProvice};
 }
 export default connect(mapStateToProps)(Page);
