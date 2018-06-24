@@ -71,19 +71,19 @@ class Page extends React.Component {
         super(props);
     }
 
-    timeTicket = null;
+    // timeTicket = null;
 
     componentDidMount() {
 
-        this.timeTicket = setInterval(() => {
-            // this.nextAlarm()
-        }, 10000);
+        // this.timeTicket = setInterval(() => {
+        //     // this.nextAlarm()
+        // }, 10000);
 
     };
     componentWillUnmount() {
-        if (this.timeTicket) {
-            clearInterval(this.timeTicket);
-        }
+        // if (this.timeTicket) {
+        //     clearInterval(this.timeTicket);
+        // }
     };
 
     render() {
@@ -104,20 +104,10 @@ class Page extends React.Component {
                           <tbody>
                           {
                               lodashmap(level3_ListData,(obj,index)=>{
-                                  let td;
-                                  if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
-                                  }
-                                  else if(obj.type === '二级'){
-                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  else{
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
-                                  }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
                                       <td>{obj.update_time}</td>
-                                      {td}
+                                      <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
                                   </tr>);
                               })
                           }
@@ -134,20 +124,10 @@ class Page extends React.Component {
                           <tbody>
                           {
                               lodashmap(level2_ListData,(obj,index)=>{
-                                  let td;
-                                  if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
-                                  }
-                                  else if(obj.type === '二级'){
-                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  else{
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
-                                  }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
                                       <td>{obj.update_time}</td>
-                                      {td}
+                                      <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   </tr>);
                               })
                           }
@@ -164,20 +144,10 @@ class Page extends React.Component {
                           <tbody>
                           {
                               lodashmap(level1_ListData,(obj,index)=>{
-                                  let td;
-                                  if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
-                                  }
-                                  else if(obj.type === '二级'){
-                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  else{
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
-                                  }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
                                       <td>{obj.update_time}</td>
-                                      {td}
+                                      <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
                                   </tr>);
                               })
                           }
