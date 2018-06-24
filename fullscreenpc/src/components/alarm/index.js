@@ -101,16 +101,16 @@ class Page extends React.Component {
                           </thead>
                           <tbody>
                           {
-                              lodashmap(level1_ListData,(obj,index)=>{
+                              lodashmap(level3_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
                                       td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
@@ -137,13 +137,13 @@ class Page extends React.Component {
                               lodashmap(level2_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
                                       td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
@@ -166,16 +166,16 @@ class Page extends React.Component {
                           </thead>
                           <tbody>
                           {
-                              lodashmap(level3_ListData,(obj,index)=>{
+                              lodashmap(level1_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
                                       td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
