@@ -83,7 +83,7 @@ class Page extends React.Component {
                         二级
                       </div>
                       <div className='content'  style={{color:'#ed932f'}}>
-                        {centerIndex.count_yellow}
+                        {centerIndex.count_orange}
                       </div>
                     </div>
                   </Flex.Item>
