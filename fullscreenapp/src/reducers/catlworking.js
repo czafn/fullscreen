@@ -23,14 +23,28 @@ const initial = {
 
       alarm3:[],
       alarm2:[],
-      alarm1:[]
+      alarm1:[],
+      countonline:0,
+      counttotal:0,
+      countalarm3:0,
+      countalarm2:0,
+      countalarm1:0
   },
 };
 
 const catlworking = createReducer({
   [querydevicealarm_result]:(state,payload)=>{
-    const {alarm1,alarm2,alarm3} = payload;
-    return  {...state,alarm1:[...alarm1],alarm2:[...alarm2],alarm3:[...alarm3]};
+    const {alarm1,alarm2,alarm3,countonline,counttotal,countalarm3,countalarm2,countalarm1} = payload;
+    return  {...state,
+      alarm1:[...alarm1],
+      alarm2:[...alarm2],
+      alarm3:[...alarm3],
+      countonline,
+      counttotal,
+      countalarm3,
+      countalarm2,
+      countalarm1
+    };
   },
   [catl_result]:(state,payload)=>{
       const {catl_warningf,catl_cycle,catl_celltemperature,catl_cyclecount,catl_dxtemperature} = payload;
