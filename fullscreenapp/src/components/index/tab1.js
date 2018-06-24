@@ -27,26 +27,26 @@ class App extends React.Component {
     super(props);
 
   }
-  onAfterChange(e){
-    let query = this.props.query;
-    debugger
-    switch(e){
-      case 0:
-        this.refs.CarYear.onChangeProvince(query.province ? query.province : ['全部'])
-        this.refs.CarYear.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
-        break;
-      case 1:
-        this.refs.BusYear.onChangeProvince(query.province ? query.province : ['全部'])
-        this.refs.BusYear.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
-        break;
-      case 2:
-        this.refs.MapProvince.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
-        break;
-      case 3:
-        this.refs.Item.onChangeProvince(query.province ? query.province : ['全部'])
-        break;
-    }
-  }
+  // onAfterChange(e){
+  //   let query = this.props.query;
+  //   debugger
+  //   switch(e){
+  //     case 0:
+  //       this.refs.CarYear.onChangeProvince(query.province ? query.province : ['全部'])
+  //       this.refs.CarYear.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
+  //       break;
+  //     case 1:
+  //       this.refs.BusYear.onChangeProvince(query.province ? query.province : ['全部'])
+  //       this.refs.BusYear.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
+  //       break;
+  //     case 2:
+  //       this.refs.MapProvince.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
+  //       break;
+  //     case 3:
+  //       this.refs.Item.onChangeProvince(query.province ? query.province : ['全部'])
+  //       break;
+  //   }
+  // }
   render() {
     //客档分析包含《ppppppp
     // {
@@ -66,7 +66,7 @@ class App extends React.Component {
     //   Co:<Item />
     // },
     return (<div style={{ height: '88%', width:'100%' }}>
-        <Carousel afterChange={v=>{this.onAfterChange(v)}}  className='my-carousel' style={{ height: '100%', width:'100%' }} infinite autoplay autoplayInterval={10000*100} >
+        <Carousel className='my-carousel' style={{ height: '100%', width:'100%' }} infinite autoplay autoplayInterval={10000*100} >
           <div>
             <CarYear ref='CarYear' />
           </div>
@@ -84,8 +84,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-   const query = state.deviceext.query;
-   return {query};
-}
-export default connect(mapStateToProps)(App);
+// const mapStateToProps = (state) => {
+//    const query = state.deviceext.query;
+//    return {query};
+// }
+export default connect()(App);

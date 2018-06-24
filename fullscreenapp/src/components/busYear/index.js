@@ -37,12 +37,20 @@ const Chart = styled.div`
 class Page extends React.Component {
     constructor(props) {
       super(props);
-
+      // let sProject = ['全部'];
+      // let sProvince = ['全部'];
+      // if(!!props.query.catlprojectname){
+      //   sProject = [props.query.catlprojectname];
+      // }
+      // if(!!props.query.province){
+      //   sProvince = [props.query.province];
+      // }
+      // this.state = {
+      //   sProject,
+      //   sProvince,
+      // };
     }
-    state = {
-      sProject: [],
-      sProvince: [],
-    };
+
     shouldComponentUpdate(nextProps, nextState) {
       const nextData = lodashget(nextProps,'option.series[1].data',[]);
       const curData = lodashget(this.props,'option.series[1].data',[]);
@@ -56,15 +64,15 @@ class Page extends React.Component {
       return true;//render
     }
     onChangeProvince = (value) => {
-      this.setState({
-        sProvince: value,
-      });
+      // this.setState({
+      //   sProvince: value,
+      // });
 
       let query = this.props.query;
       delete query.catlprojectname
-      this.setState({
-        sProject: ['全部'],
-      });
+      // this.setState({
+      //   sProject: ['全部'],
+      // });
       if(value[0] === '全部'){
         delete query.province
       } else {
@@ -102,12 +110,12 @@ class Page extends React.Component {
                 <Flex.Item>
                   <Picker
                     data={pickerProvice}
-                    value={this.state.sProvince}
+                    value={this.props.sProvince}
                     onChange={v=>{this.onChangeProvince(v)}}
-                    onOk={v => {
-                      console.log(v)
-                      this.setState({ sProvince: v })
-                    }}
+                    // onOk={v => {
+                    //   console.log(v)
+                    //   this.setState({ sProvince: v })
+                    // }}
                   >
                     <List.Item arrow="horizontal">省份</List.Item>
                   </Picker>
@@ -115,9 +123,9 @@ class Page extends React.Component {
                 <Flex.Item>
                   <Picker
                     data={pickerProjects}
-                    value={this.state.sProject}
+                    value={this.props.sProject}
                     onChange={v=>{this.onChangeProject(v)}}
-                    onOk={v => this.setState({ sProject: v })}
+                    // onOk={v => this.setState({ sProject: v })}
                   >
                     <List.Item arrow="horizontal">项目</List.Item>
                   </Picker>
@@ -329,7 +337,8 @@ const mapStateToProps = (state) => {
 
 
   const query = state.deviceext.query;
-
-  return {query, option, pickerProvice, pickerProjects};
+  const sProject = state.deviceext.sProject;
+  const sProvince = state.deviceext.sProvince;
+  return {query, option, pickerProvice, pickerProjects,sProvince,sProject};
 }
 export default connect(mapStateToProps)(Page);

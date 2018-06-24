@@ -29,7 +29,9 @@ const initial = {
       },
       query:{//所有条件不满足
 
-      }
+      },
+      sProvince:['全部'],
+      sProject:['全部'],
   },
 };
 
@@ -57,7 +59,17 @@ const deviceext = createReducer({
   },
   [setquery_deviceext_result]:(state,payload)=>{
       const query = {...payload};
-      return  {...state,query};
+      let sProject = ['全部'];
+      let sProvince = ['全部'];
+      if(!!query.catlprojectname){
+        sProject = [...[query.catlprojectname]];
+        sProvince = [...['全部']];
+      }
+      if(!!query.province){
+        sProject = [...['全部']];
+        sProvince = [...[query.province]];
+      }
+      return  {...state,query,sProject,sProvince};
   },
   [getcountcar_result]:(state,payload)=>{
       let countcar = payload;

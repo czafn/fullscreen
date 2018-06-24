@@ -18,7 +18,7 @@ const Chart = styled.div`
 	height: 100%;
 	overflow: hidden;
   }
-  
+
   .flex-container{
     margin: 0px 0px;
   }
@@ -35,12 +35,15 @@ const Chart = styled.div`
 class Page extends React.Component {
     constructor(props) {
         super(props);
-
+        let sProvince = ['全部'];
+        if(!!props.query.province){
+          sProvince = [props.query.province];
+        }
+        this.state = {
+          sProvince,
+        };
     }
 
-    state = {
-      sProvince: []
-    };
     shouldComponentUpdate(nextProps, nextState) {
 
       const nextcarNum = lodashget(nextProps,'option.series["0"].data',[]);
@@ -101,9 +104,9 @@ class Page extends React.Component {
 
       let query = this.props.query;
       delete query.catlprojectname
-      this.setState({
-        sProject: ['全部'],
-      });
+      // this.setState({
+      //   sProject: ['全部'],
+      // });
       if(value[0] === '全部'){
         delete query.province
       } else {
@@ -129,7 +132,7 @@ class Page extends React.Component {
                   <Flex.Item>
                     <Picker
                       data={pickerProvice}
-                      value={this.state.sProvince}
+                      value={this.props.sProvince}
                       onChange={v=>{this.onChangeProvince(v)}}
                       onOk={v => {
                         console.log(v)
@@ -383,7 +386,8 @@ const mapStateToProps = (state) => {
         value: p
       })
     });
-
-    return { query,option, pickerProvice};
+    const sProject = state.deviceext.sProject;
+    const sProvince = state.deviceext.sProvince;
+    return { query,option, pickerProvice,sProject,sProvince};
 }
 export default connect(mapStateToProps)(Page);

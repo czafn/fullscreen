@@ -20,7 +20,7 @@ const Chart = styled.div`
     background: rgba(10, 108, 163, 0.1);
     background: rgba(98, 197, 249, 0.48);
   }
-  
+
   .flex-container{
     margin: 0px 0px;
   }
@@ -37,10 +37,16 @@ const Chart = styled.div`
 class Page extends React.Component {
     constructor(props) {
         super(props);
+
+        // let sProject = ['全部'];
+        // if(!!props.query.catlprojectname){
+        //   sProject = [props.query.catlprojectname];
+        // }
+        // this.state = {
+        //   sProject,
+        // };
     }
-    state = {
-      sProject: []
-    };
+
     shouldComponentUpdate(nextProps, nextState) {
       // option.series[2].data = carObj;
       // option.series[3].data = carObj;
@@ -151,9 +157,9 @@ class Page extends React.Component {
                   <Flex.Item>
                     <Picker
                       data={pickerProjects}
-                      value={this.state.sProject}
+                      value={this.props.sProject}
                       onChange={v=>{this.onChangeProject(v)}}
-                      onOk={v => this.setState({ sProject: v })}
+                      // onOk={v => this.setState({ sProject: v })}
                     >
                       <List.Item arrow="horizontal">项目</List.Item>
                     </Picker>
@@ -537,7 +543,8 @@ const mapStateToProps = ({deviceext}) => {
       value: p
     })
   });
-
-  return {query,option,pickerProjects};
+  const sProject = deviceext.sProject;
+  const sProvince = deviceext.sProvince;
+  return {query,option,pickerProjects,sProject,sProvince};
 }
 export default connect(mapStateToProps)(Page);
