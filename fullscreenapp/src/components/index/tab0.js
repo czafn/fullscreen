@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
 import Alarm from '../alarm';
 import Warning from '../warning';
-import Cycle from '../cycle';
+import Dashboard from '../dashboard';
 import CycleCount from '../cycleCount';
 import DxTemperature from '../dxTemperature';
 import CellTemperature from '../cellTemperature';
@@ -47,10 +47,7 @@ class App extends React.Component {
   // },
     let SelCo;
     if(this.state.selectedIndex === 0){
-      SelCo =  (
-        <div>
-          仪表板
-        </div>);//这里确认需求
+      SelCo =  (<Dashboard />);
     }
     else if(this.state.selectedIndex === 1){
       SelCo =  (<Alarm />);

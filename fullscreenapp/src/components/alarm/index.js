@@ -12,7 +12,7 @@ import lodashreverse from 'lodash.reverse';
 
 import styled from 'styled-components';
 
-import { Carousel } from 'antd-mobile';
+import { Carousel, WhiteSpace} from 'antd-mobile';
 import 'antd/dist/antd.css';
 import './alarm.css';
 
@@ -90,74 +90,9 @@ class Page extends React.Component {
         const {level1_ListData, level2_ListData, level3_ListData} = this.props;
         return (
           <div style={{height: '100%'}}>
-              <div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>
-              <Carousel style={{height: '100%'}} infinite autoplay autoplayInterval={10000} >
-                  <div>
-                      <Table cellSpacing="0" cellPadding="0" >
-                          <thead>
-                          <tr>
-                              <th>编号</th>
-                              <th>报警时间</th>
-                              <th>报警等级</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          {
-                              lodashmap(level1_ListData,(obj,index)=>{
-                                  let td;
-                                  if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
-                                  }
-                                  else if(obj.type === '二级'){
-                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  else{
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  return (<tr key={index}>
-                                      <td>{obj.DeviceId}</td>
-                                      <td>{obj.update_time}</td>
-                                      {td}
-                                  </tr>);
-                              })
-                          }
-                          </tbody>
-                      </Table>
-
-                  </div>
-                  <div>
-                      <Table cellSpacing="0" cellPadding="0" >
-                          <thead>
-                          <tr>
-                              <th>编号</th>
-                              <th>报警时间</th>
-                              <th>报警等级</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          {
-                              lodashmap(level2_ListData,(obj,index)=>{
-                                  let td;
-                                  if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
-                                  }
-                                  else if(obj.type === '二级'){
-                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  else{
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
-                                  }
-                                  return (<tr key={index}>
-                                      <td>{obj.DeviceId}</td>
-                                      <td>{obj.update_time}</td>
-                                      {td}
-                                  </tr>);
-                              })
-                          }
-                          </tbody>
-                      </Table>
-                  </div>
-                  <div>
+              {/*<div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>*/}
+              <WhiteSpace size="lg" />
+              <Carousel style={{height: '100%',width:'100%'}} infinite autoplay autoplayInterval={10000} >
                       <Table cellSpacing="0" cellPadding="0" >
                           <thead>
                           <tr>
@@ -171,13 +106,13 @@ class Page extends React.Component {
                               lodashmap(level3_ListData,(obj,index)=>{
                                   let td;
                                   if(obj.type === '一级'){
-                                      td = <td><span style={{color:'#d31e25'}}>{obj.type}</span> <span></span></td>
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
                                   }
                                   else if(obj.type === '二级'){
                                       td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
                                   }
                                   else{
-                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type} </span> <span></span></td>
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
                                   }
                                   return (<tr key={index}>
                                       <td>{obj.DeviceId}</td>
@@ -188,7 +123,66 @@ class Page extends React.Component {
                           }
                           </tbody>
                       </Table>
-                  </div>
+                      <Table cellSpacing="0" cellPadding="0" >
+                          <thead>
+                          <tr>
+                              <th>编号</th>
+                              <th>报警时间</th>
+                              <th>报警等级</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {
+                              lodashmap(level2_ListData,(obj,index)=>{
+                                  let td;
+                                  if(obj.type === '一级'){
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
+                                  }
+                                  else if(obj.type === '二级'){
+                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
+                                  }
+                                  else{
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
+                                  }
+                                  return (<tr key={index}>
+                                      <td>{obj.DeviceId}</td>
+                                      <td>{obj.update_time}</td>
+                                      {td}
+                                  </tr>);
+                              })
+                          }
+                          </tbody>
+                      </Table>
+                      <Table cellSpacing="0" cellPadding="0" >
+                          <thead>
+                          <tr>
+                              <th>编号</th>
+                              <th>报警时间</th>
+                              <th>报警等级</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {
+                              lodashmap(level1_ListData,(obj,index)=>{
+                                  let td;
+                                  if(obj.type === '一级'){
+                                      td = <td><span style={{color:'#f6d06a'}}>{obj.type}</span> <span></span></td>
+                                  }
+                                  else if(obj.type === '二级'){
+                                      td = <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
+                                  }
+                                  else{
+                                      td = <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
+                                  }
+                                  return (<tr key={index}>
+                                      <td>{obj.DeviceId}</td>
+                                      <td>{obj.update_time}</td>
+                                      {td}
+                                  </tr>);
+                              })
+                          }
+                          </tbody>
+                      </Table>
               </Carousel>
           </div>
         );

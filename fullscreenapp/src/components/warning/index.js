@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import lodashmap from 'lodash.map';
 import styled from 'styled-components';
+import { WhiteSpace} from 'antd-mobile';
 
 const Table = styled.table`
   width: 100%;
@@ -57,7 +58,8 @@ class Page extends React.Component {
         const {listData} = this.props;
         return (
           <div >
-            <div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>预警信息</div>
+            {/*<div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>预警信息</div>*/}
+            <WhiteSpace size="lg" />
             <Table cellSpacing="0" cellPadding="0" >
               <thead>
                 <tr>
