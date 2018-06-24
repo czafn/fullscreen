@@ -30,7 +30,7 @@ const Table = styled.table`
     white-space: nowrap;
     color: #ffffff;
     font-weight: 600;
-    
+
   }
   td{
     width: 30%;
@@ -43,7 +43,7 @@ const Table = styled.table`
   td span{
     line-height:16px;
     float: left;
-    
+
   }
   tbody{
     tr:nth-child(even){background: rgba(255, 255, 255, 0.5);}
@@ -189,48 +189,72 @@ class Page extends React.Component {
     }
 }
 
-const mapStateToProps = ({device:{g_devicesdb}}) => {
-  let device_all_alarms = [];
-  lodashmap(g_devicesdb,(item)=>{
-    let warninglevel = lodashget(item,'warninglevel','');
-    if(warninglevel === '高' || warninglevel === '中' || warninglevel === '低'  ){
-      let type = '';
-      if(warninglevel === '高'){
-        type = '三级';
-      }
-      else if(warninglevel === '中'){
-        type = '二级';
-      }
-      else if(warninglevel === '低'){
-        type= '一级';
-      }
-      device_all_alarms.push({
-        update_time:lodashget(item,'LastRealtimeAlarm.DataTime',''),
-        DeviceId:lodashget(item,'DeviceId',''),
-        type,
-      })
-    }
+const mapStateToProps = ({catlworking:{alarm3,alarm2,alarm1}}) => {
+  let level1_ListData = [];
+  let level2_ListData = [];
+  let level3_ListData = [];
+  lodashmap(alarm3,(item)=>{
+    level3_ListData.push({
+      update_time:lodashget(item,'LastRealtimeAlarm.DataTime',''),
+      DeviceId:lodashget(item,'DeviceId',''),
+      type:'三级',
+    })
   });
-  device_all_alarms = lodashsortby(device_all_alarms, [(o)=> { return o.update_time; }]);
-  device_all_alarms = lodashreverse(device_all_alarms);
-  let retgroup = lodashgroupby(device_all_alarms,(o)=>{
-    return o.type;
+  lodashmap(alarm2,(item)=>{
+    level2_ListData.push({
+      update_time:lodashget(item,'LastRealtimeAlarm.DataTime',''),
+      DeviceId:lodashget(item,'DeviceId',''),
+      type:'二级',
+    })
   });
-  // console.log(retgroup);
-
-  let level1_ListData = lodashget(retgroup,'一级',[]);
-  let level2_ListData = lodashget(retgroup,'二级',[]);
-  let level3_ListData = lodashget(retgroup,'三级',[]);
-  const maxcount = 8;
-  if(level1_ListData.length > maxcount){
-    level1_ListData = lodashdropright(level1_ListData,level1_ListData.length - maxcount);
-  }
-  if(level2_ListData.length > maxcount){
-    level2_ListData = lodashdropright(level2_ListData,level2_ListData.length - maxcount);
-  }
-  if(level3_ListData.length > maxcount){
-    level3_ListData = lodashdropright(level3_ListData,level3_ListData.length - maxcount);
-  }
+  lodashmap(alarm1,(item)=>{
+    level1_ListData.push({
+      update_time:lodashget(item,'LastRealtimeAlarm.DataTime',''),
+      DeviceId:lodashget(item,'DeviceId',''),
+      type:'一级',
+    })
+  });
+  // let device_all_alarms = [];
+  // lodashmap(g_devicesdb,(item)=>{
+  //   let warninglevel = lodashget(item,'warninglevel','');
+  //   if(warninglevel === '高' || warninglevel === '中' || warninglevel === '低'  ){
+  //     let type = '';
+  //     if(warninglevel === '高'){
+  //       type = '三级';
+  //     }
+  //     else if(warninglevel === '中'){
+  //       type = '二级';
+  //     }
+  //     else if(warninglevel === '低'){
+  //       type= '一级';
+  //     }
+  //     device_all_alarms.push({
+  //       update_time:lodashget(item,'LastRealtimeAlarm.DataTime',''),
+  //       DeviceId:lodashget(item,'DeviceId',''),
+  //       type,
+  //     })
+  //   }
+  // });
+  // device_all_alarms = lodashsortby(device_all_alarms, [(o)=> { return o.update_time; }]);
+  // device_all_alarms = lodashreverse(device_all_alarms);
+  // let retgroup = lodashgroupby(device_all_alarms,(o)=>{
+  //   return o.type;
+  // });
+  // // console.log(retgroup);
+  //
+  // let level1_ListData = lodashget(retgroup,'一级',[]);
+  // let level2_ListData = lodashget(retgroup,'二级',[]);
+  // let level3_ListData = lodashget(retgroup,'三级',[]);
+  // const maxcount = 8;
+  // if(level1_ListData.length > maxcount){
+  //   level1_ListData = lodashdropright(level1_ListData,level1_ListData.length - maxcount);
+  // }
+  // if(level2_ListData.length > maxcount){
+  //   level2_ListData = lodashdropright(level2_ListData,level2_ListData.length - maxcount);
+  // }
+  // if(level3_ListData.length > maxcount){
+  //   level3_ListData = lodashdropright(level3_ListData,level3_ListData.length - maxcount);
+  // }
     // const level1_ListData =
     //     [
     //       {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"一级"},

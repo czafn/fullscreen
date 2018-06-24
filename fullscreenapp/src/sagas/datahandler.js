@@ -23,6 +23,9 @@ import {
     querydevice_request,
     querydevice_result,
 
+    querydevicealarm_request,
+    querydevicealarm_result,
+
     querydeviceinfo_request,
     md_querydeviceinfo_result,
     // querydeviceinfo_result,
@@ -135,6 +138,7 @@ let recvmessagetoresultpair = {
   'logout_result':logout_result,
   'querydevicegroup_result':querydevicegroup_result,
   'querydevice_result':querydevice_result,
+  'querydevicealarm_result':querydevicealarm_result,
   'querydeviceinfo_result':md_querydeviceinfo_result,//先预处理
   'querydeviceinfo_list_result':querydeviceinfo_list_result,
 
@@ -181,6 +185,7 @@ let sendmessageauthfnsz = {
   'querydevicegroup':`${querydevicegroup_request}`,
 
   'querydevice':`${querydevice_request}`,
+  'querydevicealarm':`${querydevicealarm_request}`,
   'deviceinfoquerychart':`${deviceinfoquerychart_request}`,
   'querydeviceinfo':`${querydeviceinfo_request}`,
   'querydeviceinfo_list':`${querydeviceinfo_list_request}`,
