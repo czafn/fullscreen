@@ -136,6 +136,7 @@ class Page extends React.Component {
                     <Picker
                       data={pickerProvice}
                       value={this.props.sProvince}
+                      cols={1}
                       onChange={v=>{this.onChangeProvince(v)}}
                       onOk={v => {
                         console.log(v)
@@ -147,7 +148,7 @@ class Page extends React.Component {
                   </Flex.Item>
                 </Flex>
               </div>
-              <ReactEcharts option={option} style={{height:'500px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
+              <ReactEcharts option={option} style={{height:'450px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );
     };

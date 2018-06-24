@@ -160,6 +160,7 @@ class Page extends React.Component {
                     <Picker
                       data={pickerProjects}
                       value={this.props.sProject}
+                      cols={1}
                       onChange={v=>{this.onChangeProject(v)}}
                       // onOk={v => this.setState({ sProject: v })}
                     >
@@ -169,7 +170,7 @@ class Page extends React.Component {
 
                 </Flex>
               </div>
-              <ReactEcharts ref='map' option={option} style={{height: "500px"}} onEvents={onEvents} className='singleBarChart'  />
+              <ReactEcharts ref='map' option={option} style={{height: "450px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
     };

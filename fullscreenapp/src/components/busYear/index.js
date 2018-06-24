@@ -104,7 +104,6 @@ class Page extends React.Component {
       this.props.dispatch(setquery_deviceext_request(query));
     }
     render() {
-
       let {option, pickerProvice, pickerProjects} = this.props;
       return (
           <Chart >
@@ -115,6 +114,7 @@ class Page extends React.Component {
                   <Picker
                     data={pickerProvice}
                     value={this.props.sProvince}
+                    cols={1}
                     onChange={v=>{this.onChangeProvince(v)}}
                     // onOk={v => {
                     //   console.log(v)
@@ -128,6 +128,7 @@ class Page extends React.Component {
                   <Picker
                     data={pickerProjects}
                     value={this.props.sProject}
+                    cols={1}
                     onChange={v=>{this.onChangeProject(v)}}
                     // onOk={v => this.setState({ sProject: v })}
                   >
@@ -137,7 +138,7 @@ class Page extends React.Component {
 
               </Flex>
             </div>
-            <ReactEcharts option={option} style={{height: "500px"}} className='singleBarChart' />
+            <ReactEcharts option={option} style={{height: "450px"}} className='singleBarChart content' />
           </Chart>
       );
     };

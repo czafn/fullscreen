@@ -313,6 +313,7 @@
     padding-top: 10px;
     top: 50%;
     margin-top: -150px;
+    font-size: 14px;
     left: 10%;
     right: 10%;
     height: 300px;
@@ -467,7 +468,8 @@
 
 .changepwdForm div input {
     border: 1px solid #e5e5e5;
-    padding: 8px 8px
+    padding: 8px 8px;
+    color:#000
 }
 
 .changepwdForm div .formvalidation.form_input input {

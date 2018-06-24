@@ -223,3 +223,12 @@ a{
     line-height: 36px;
     padding-left: 10px;
 }
+.am-tab-bar-bar{
+    position: inherit;
+}
+.am-segment{
+    display: inline-flex;
+    width: 93%;
+    margin-top: 5px;
+    min-height: 28px;
+}

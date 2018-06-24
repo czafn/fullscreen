@@ -114,6 +114,7 @@ class Page extends React.Component {
                   <Flex.Item>
                     <Picker
                       data={pickerProvice}
+                      cols={1}
                       value={this.props.sProvince}
                       onChange={v=>{this.onChangeProvince(v)}}
                       // onOk={v => {
@@ -128,6 +129,7 @@ class Page extends React.Component {
                     <Picker
                       data={pickerProjects}
                       value={this.props.sProject}
+                      cols={1}
                       onChange={v=>{this.onChangeProject(v)}}
                       // onOk={v => this.setState({ sProject: v })}
                     >
@@ -137,7 +139,7 @@ class Page extends React.Component {
 
                 </Flex>
               </div>
-              <ReactEcharts option={option} style={{height: "500px",width: "100%",overflow: "hidden"}} className='echarts-for-react'/>
+              <ReactEcharts option={option} style={{height: "450px",width: "100%",overflow: "hidden"}} className='echarts-for-react'/>
             </Chart>
         );
     };
