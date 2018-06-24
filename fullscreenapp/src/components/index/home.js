@@ -46,9 +46,16 @@ class App extends React.Component {
         }>
           新能源远程监控系统
         </NavBar>
-        {pageText === 'Synthesize' && <Tab0 />}
-        {pageText === 'Customer' && <Tab1 />}
-        {pageText === 'batteryPack' && <Tab2 />}
+        <div style={{display: (pageText === 'Synthesize')? 'inline': 'none'}}>
+          <Tab0 />
+        </div>
+        <div style={{display: (pageText === 'Customer')? 'inline': 'none'}}>
+          <Tab1 />
+        </div>
+        <div style={{display: (pageText === 'batteryPack')? 'inline': 'none'}}>
+          <Tab2 />
+        </div>
+
 
       </div>
     );
