@@ -52,12 +52,16 @@ class Page extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+      const nextQuery = lodashget(nextProps,'query',{});
+      const curQuery = lodashget(this.props,'query',{});
       const nextData = lodashget(nextProps,'option.series[1].data',[]);
       const curData = lodashget(this.props,'option.series[1].data',[]);
       if( nextData.length === curData.length ){
         if(JSON.stringify(nextData) === JSON.stringify(curData)){
           if(JSON.stringify(nextState) === JSON.stringify(this.state)){
-            return false;
+            if(JSON.stringify(nextQuery) === JSON.stringify(curQuery)){
+              return false;
+            }
           }
         }
       }

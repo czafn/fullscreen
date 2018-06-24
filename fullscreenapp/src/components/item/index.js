@@ -45,12 +45,13 @@ class Page extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-
+      const nextQuery = lodashget(nextProps,'query',{});
       const nextcarNum = lodashget(nextProps,'option.series["0"].data',[]);
       const nextbusNum = lodashget(nextProps,'option.series["1"].data',[]);
       const nextnames = lodashget(nextProps,'option.xAxis.data',[]);
       const nextlegend = lodashget(nextProps,'option.legend.selected',{});
 
+      const curQuery = lodashget(this.props,'query',{});
       const curcarNum = lodashget(this.props,'option.series["0"].data',[]);
       const curbusNum = lodashget(this.props,'option.series["1"].data',[]);
       const curnames = lodashget(this.props,'option.xAxis.data',[]);
@@ -65,7 +66,9 @@ class Page extends React.Component {
           if(JSON.stringify(nextbusNum) === JSON.stringify(curbusNum)){
             if(JSON.stringify(nextnames) === JSON.stringify(curnames)){
               if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
-                return false;
+                if(JSON.stringify(nextQuery) === JSON.stringify(curQuery)){
+                  return false;
+                }
               }
             }
           }

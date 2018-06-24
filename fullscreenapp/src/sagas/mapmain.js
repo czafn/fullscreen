@@ -1088,67 +1088,70 @@ export function* createmapmainflow(){
     yield takeLatest(`${querydevice_result}`, function*(deviceresult) {
       let {payload:{list:devicelist}} = deviceresult;
       try{
-          while( !distCluster || !markCluster){
-            console.log(`wait for discluster ${!!distCluster} or markCluster ${!!markCluster}`);
-            yield call(delay,1000);
-          }
-          const SettingOfflineMinutes = g_SettingOfflineMinutes;
-          //批量转换一次
-          g_devicesdb = {};//清空，重新初始化
-          // console.log(`clear g_devicesdb...restart g_devicesdb...`)
-          let devicelistresult = yield call(getgeodatabatch,devicelist);
+          if(config.softmode !== 'fullapp'){
 
-          const data = [];
-          const datanolocate = [];
-          const deviceidonlines_loc = [];
-          const deviceidonlines_locno = [];
-          lodashmap(devicelistresult,(deviceitem)=>{
-            if(!!deviceitem.DeviceId){
-              if(!!deviceitem.locz){
-                data.push(deviceitem);
-                if(getdevicestatus_isonline(deviceitem,SettingOfflineMinutes)){
-                  deviceidonlines_loc.push(deviceitem.DeviceId);
-                }
-              }
-              else{
-                if(getdevicestatus_isonline(deviceitem,SettingOfflineMinutes)){
-                  deviceidonlines_locno.push(deviceitem.DeviceId);
-                }
-                datanolocate.push(deviceitem.DeviceId);
-              }
-              g_devicesdb[deviceitem.DeviceId] = deviceitem;
+            while( !distCluster || !markCluster){
+              console.log(`wait for discluster ${!!distCluster} or markCluster ${!!markCluster}`);
+              yield call(delay,1000);
             }
-          });
-          // console.log(`clear g_devicesdb...restart g_devicesdb...${data.length}`)
-          distCluster.setData(data);
-          // pointSimplifierIns.setData(data);
+            const SettingOfflineMinutes = g_SettingOfflineMinutes;
+            //批量转换一次
+            g_devicesdb = {};//清空，重新初始化
+            // console.log(`clear g_devicesdb...restart g_devicesdb...`)
+            let devicelistresult = yield call(getgeodatabatch,devicelist);
 
-          //初始化清空
-          gmap_acode_devices={};
-          gmap_acode_treecount={};
+            const data = [];
+            const datanolocate = [];
+            const deviceidonlines_loc = [];
+            const deviceidonlines_locno = [];
+            lodashmap(devicelistresult,(deviceitem)=>{
+              if(!!deviceitem.DeviceId){
+                if(!!deviceitem.locz){
+                  data.push(deviceitem);
+                  if(getdevicestatus_isonline(deviceitem,SettingOfflineMinutes)){
+                    deviceidonlines_loc.push(deviceitem.DeviceId);
+                  }
+                }
+                else{
+                  if(getdevicestatus_isonline(deviceitem,SettingOfflineMinutes)){
+                    deviceidonlines_locno.push(deviceitem.DeviceId);
+                  }
+                  datanolocate.push(deviceitem.DeviceId);
+                }
+                g_devicesdb[deviceitem.DeviceId] = deviceitem;
+              }
+            });
+            // console.log(`clear g_devicesdb...restart g_devicesdb...${data.length}`)
+            distCluster.setData(data);
+            // pointSimplifierIns.setData(data);
+
+            //初始化清空
+            gmap_acode_devices={};
+            gmap_acode_treecount={};
 
 
 
-          yield call(getclustertree_root,SettingOfflineMinutes);
-          gmap_acode_treecount[1] = {//所有
-            count_total:devicelistresult.length,
-            count_online:deviceidonlines_loc.length,
-          };
+            yield call(getclustertree_root,SettingOfflineMinutes);
+            gmap_acode_treecount[1] = {//所有
+              count_total:devicelistresult.length,
+              count_online:deviceidonlines_loc.length,
+            };
 
-          gmap_acode_devices[2] = datanolocate;
-          gmap_acode_treecount[2] = {
-            count_total:datanolocate.length,
-            count_online:deviceidonlines_locno.length,
+            gmap_acode_devices[2] = datanolocate;
+            gmap_acode_treecount[2] = {
+              count_total:datanolocate.length,
+              count_online:deviceidonlines_locno.length,
+            }
+
+            yield put(mapmain_init_device({g_devicesdb,gmap_acode_devices,gmap_acode_treecount}));
+
+            getMarkCluster_recreateMarks(SettingOfflineMinutes);
+            const zoomlevel = window.amapmain.getZoom();
+            console.log(zoomlevel)
+            yield put(ui_showhugepoints(zoomlevel>=zoollevel_showhugepoints));
+            yield put(ui_showdistcluster(zoomlevel<=zoollevel_showdistcluster));
+
           }
-
-          yield put(mapmain_init_device({g_devicesdb,gmap_acode_devices,gmap_acode_treecount}));
-
-          getMarkCluster_recreateMarks(SettingOfflineMinutes);
-          const zoomlevel = window.amapmain.getZoom();
-          console.log(zoomlevel)
-          yield put(ui_showhugepoints(zoomlevel>=zoollevel_showhugepoints));
-          yield put(ui_showdistcluster(zoomlevel<=zoollevel_showdistcluster));
-
         }
         catch(e){
           console.log(e.stack);

@@ -52,13 +52,13 @@ class Page extends React.Component {
       // option.series[3].data = carObj;
       // option.series[4].data = busObj;
       // option.series[5].data = busObj;
-      // const nextQuery = lodashget(nextProps,'query',{});
+      const nextQuery = lodashget(nextProps,'query',{});
 
       const nextcarObj = lodashget(nextProps,'option.series[2].data',[]);
       const nextbusObj = lodashget(nextProps,'option.series[4].data',[]);
       const nextlegend = lodashget(nextProps,'option.legend.selected',{});
 
-      // const curQuery = lodashget(this.props,'query',{});
+      const curQuery = lodashget(this.props,'query',{});
 
       const curcarObj = lodashget(this.props,'option.series[2].data',[]);
       const curbusObj = lodashget(this.props,'option.series[4].data',[]);
@@ -71,7 +71,9 @@ class Page extends React.Component {
         if(JSON.stringify(nextcarObj) === JSON.stringify(curcarObj)){
           if(JSON.stringify(nextbusObj) === JSON.stringify(curbusObj)){
             if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
-              return false;
+              if(JSON.stringify(nextQuery) === JSON.stringify(curQuery)){
+                return false;
+              }
             }
           }
         }

@@ -9,6 +9,7 @@ import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import { Picker, List ,Flex, WingBlank} from 'antd-mobile';
 import {setquery_deviceext_request} from "../../actions";
+import lodashget from 'lodash.get';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -49,17 +50,32 @@ class Page extends React.Component {
       //   sProvince,
       // };
     }
-
+    shouldComponentUpdate(nextProps, nextState) {
+      const nextQuery = lodashget(nextProps,'query',{});
+      const curQuery = lodashget(this.props,'query',{});
+      const nextData = lodashget(nextProps,'option.series[1].data',[]);
+      const curData = lodashget(this.props,'option.series[1].data',[]);
+      if( nextData.length === curData.length ){
+        if(JSON.stringify(nextData) === JSON.stringify(curData)){
+          if(JSON.stringify(nextState) === JSON.stringify(this.state)){
+            if(JSON.stringify(nextQuery) === JSON.stringify(curQuery)){
+              return false;
+            }
+          }
+        }
+      }
+      return true;//render
+    }
     onChangeProvince = (value) => {
-      this.setState({
-        sProvince: value,
-      });
+      // this.setState({
+      //   sProvince: value,
+      // });
 
       let query = this.props.query;
       delete query.catlprojectname
-      this.setState({
-        sProject: ['全部'],
-      });
+      // this.setState({
+      //   sProject: ['全部'],
+      // });
       if(value[0] === '全部'){
         delete query.province
       } else {
@@ -69,15 +85,15 @@ class Page extends React.Component {
       this.props.dispatch(setquery_deviceext_request(query));
     }
     onChangeProject = (value) => {
-      this.setState({
-        sProject: value,
-      });
+      // this.setState({
+      //   sProject: value,
+      // });
 
       let query = this.props.query;
       delete query.province
-      this.setState({
-        sProvince: ['全部'],
-      });
+      // this.setState({
+      //   sProvince: ['全部'],
+      // });
       if(value[0] === '全部'){
         delete query.catlprojectname
       } else {
