@@ -66,10 +66,10 @@ class Page extends React.Component {
                   </Flex.Item>
                   <Flex.Item>
                     <div className='item' >
-                      <div className='title' style={{color:'#f6d06a'}}>
+                      <div className='title' style={{color:'#d31e25'}}>
                         三级
                       </div>
-                      <div className='content'  style={{color:'#f6d06a'}}>
+                      <div className='content'  style={{color:'#d31e25'}}>
                         {centerIndex.count_red}
                       </div>
                     </div>
@@ -89,10 +89,10 @@ class Page extends React.Component {
                   </Flex.Item>
                   <Flex.Item>
                     <div className='item' >
-                      <div className='title' style={{color:'#d31e25'}}>
+                      <div className='title' style={{color:'#f6d06a'}}>
                         一级
                       </div>
-                      <div className='content'  style={{color:'#d31e25'}}>
+                      <div className='content'  style={{color:'#f6d06a'}}>
                         {centerIndex.count_yellow}
                       </div>
                     </div>

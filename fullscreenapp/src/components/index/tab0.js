@@ -45,22 +45,56 @@ class App extends React.Component {
   //   title:'报警信息',
   //   Co:<Alarm />
   // },
+    let style1 = {
+      display: 'none',
+      width:'100%',
+      height:'100%'
+    }
+    let style2 = {
+      display: 'none',
+      width:'100%',
+      height:'100%'
+    }
+    let style3 = {
+      display: 'none',
+      width:'100%',
+      height:'100%'
+    }
     let SelCo;
     if(this.state.selectedIndex === 0){
-      SelCo =  (<Dashboard />);
+      style1 = {
+        display: 'inline',
+        width:'100%',
+        height:'100%'
+      }
     }
     else if(this.state.selectedIndex === 1){
-      SelCo =  (<Alarm />);
+      style2 = {
+        display: 'inline',
+        width:'100%',
+        height:'100%'
+      }
     }
     else if(this.state.selectedIndex === 2){
-      SelCo =  (<Warning />);
+      style3 = {
+        display: 'inline',
+        width:'100%',
+        height:'100%'
+      }
     }
+    debugger
     return (<div style={{width:'100%', height:'79%'}}>
         <SegmentedControl values={['仪表板', '报警','预警']}
           onChange={this.onChange}
           selectedIndex={this.state.selectedIndex}/>
-          <div style={{width:'100%', height:'100%'}}>
-            {SelCo}
+          <div style={style1}>
+            <Dashboard />
+          </div>
+          <div style={style2}>
+            <Alarm />
+          </div>
+          <div style={style3}>
+            <Warning />
           </div>
 
     </div>);
