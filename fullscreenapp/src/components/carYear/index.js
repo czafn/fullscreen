@@ -14,6 +14,7 @@ const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
      width: 100%;
+     height: 100%;
 	   overflow: hidden;
      // background: rgba(10, 108, 163, 0.3);
   }
@@ -33,6 +34,10 @@ const Chart = styled.div`
 
 
 class Page extends React.Component {
+    constructor(props) {
+      super(props);
+
+    }
     state = {
       sProject: [],
       sProvince: [],
@@ -75,6 +80,7 @@ class Page extends React.Component {
     }
 
     render() {
+
         let {option, pickerProvice, pickerProjects} = this.props;
         return (
             <Chart >
@@ -107,7 +113,7 @@ class Page extends React.Component {
 
                 </Flex>
               </div>
-              <ReactEcharts option={option} style={{height: "370px",width: "100%",overflow: "hidden"}} className='echarts-for-react'/>
+              <ReactEcharts option={option} style={{height: "500px",width: "100%",overflow: "hidden"}} className='echarts-for-react'/>
             </Chart>
         );
     };
@@ -207,7 +213,7 @@ const getOptionSelector = createSelector(
         series: [{
           name: '外围刻度',
           type: 'gauge',
-          radius: '90%',
+          radius: '80%',
           center: ['50%', '50%'],
           startAngle: 90,
           endAngle: -269.99999,
@@ -247,7 +253,7 @@ const getOptionSelector = createSelector(
           type: 'bar',
           coordinateSystem: 'polar',
           clockwise: false,
-          radius: [0, '80%'],
+          radius: [0, '70%'],
           center: ['50%', '50%'],
           roseType: 'area',
           color: 'red',

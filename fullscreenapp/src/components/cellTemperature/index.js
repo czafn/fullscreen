@@ -295,7 +295,7 @@ class Page extends React.Component {
         return (
             <Chart >
               <div className="crumbsTitle">电芯温差</div>
-              <ReactEcharts option={option} className='singleBarChart' />
+              <ReactEcharts option={option} style={{height: '400px', width: '100%',}} className='singleBarChart' />
             </Chart>
         );
     };

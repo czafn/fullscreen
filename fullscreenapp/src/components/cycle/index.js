@@ -45,7 +45,7 @@ class Page extends React.Component {
               <ReactEcharts
                   option={option}
                   // lazyUpdate={false}
-                  // style={{height: '500px', width: '100%',background: '#ffffff'}}
+                  style={{height: '400px', width: '100%',}}
                   className='singleBarChart' />
             </Chart>
         );

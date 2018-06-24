@@ -42,7 +42,7 @@ class Page extends React.Component {
         return (
             <Chart >
               <div className="crumbsTitle">充电次数</div>
-              <ReactEcharts option={option} className='singleBarChart' />
+              <ReactEcharts option={option} style={{height: '400px', width: '100%',}} className='singleBarChart' />
             </Chart>
         );
     };
@@ -212,6 +212,7 @@ const getOptionSelector = createSelector(
             }
           }
         }],
+        animation:false,
         animationEasing: 'elasticOut',
         animationEasingUpdate: 'elasticOut',
         animationDelay: function (idx) {

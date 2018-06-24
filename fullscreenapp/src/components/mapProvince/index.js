@@ -16,7 +16,7 @@ require('echarts/map/js/china.js');
 const Chart = styled.div`
   .singleBarChart {
     width: 100%;
-	  overflow: hidden;
+	  height: 100%;
     background: rgba(10, 108, 163, 0.1);
     background: rgba(98, 197, 249, 0.48);
   }
@@ -161,7 +161,7 @@ class Page extends React.Component {
 
                 </Flex>
               </div>
-              <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
+              <ReactEcharts ref='map' option={option} style={{height: "500px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
     };

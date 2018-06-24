@@ -58,11 +58,14 @@ class App extends React.Component {
     else if(this.state.selectedIndex === 2){
       SelCo =  (<Warning />);
     }
-    return (<div style={{ height: '100%' }}>
+    return (<div style={{width:'100%', height:'80%'}}>
         <SegmentedControl values={['仪表板', '报警','预警']}
           onChange={this.onChange}
           selectedIndex={this.state.selectedIndex}/>
-          {SelCo}
+          <div style={{width:'100%', height:'100%'}}>
+            {SelCo}
+          </div>
+
     </div>);
   }
 }

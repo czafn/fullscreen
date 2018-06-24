@@ -86,18 +86,12 @@ class Page extends React.Component {
         }
     };
 
-    nextAlarm(){
-        // debugger
-        // this.refs.ddd
-        this.refs.ddd.next();
-    }
-
     render() {
         const {level1_ListData, level2_ListData, level3_ListData} = this.props;
         return (
-          <div >
+          <div style={{height: '100%'}}>
               <div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>
-              <Carousel ref='ddd' infinite autoplay autoplayInterval={10000} >
+              <Carousel style={{height: '100%'}} infinite autoplay autoplayInterval={10000} >
                   <div>
                       <Table cellSpacing="0" cellPadding="0" >
                           <thead>

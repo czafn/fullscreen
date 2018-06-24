@@ -141,7 +141,7 @@ class Page extends React.Component {
                   </Flex.Item>
                 </Flex>
               </div>
-              <ReactEcharts option={option} style={{height:'370px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
+              <ReactEcharts option={option} style={{height:'500px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );
     };

@@ -35,6 +35,10 @@ const Chart = styled.div`
 `;
 
 class Page extends React.Component {
+    constructor(props) {
+      super(props);
+
+    }
     state = {
       sProject: [],
       sProvince: [],
@@ -88,6 +92,7 @@ class Page extends React.Component {
       this.props.dispatch(setquery_deviceext_request(query));
     }
     render() {
+
       let {option, pickerProvice, pickerProjects} = this.props;
       return (
           <Chart >
@@ -120,7 +125,7 @@ class Page extends React.Component {
 
               </Flex>
             </div>
-            <ReactEcharts option={option} style={{height: "370px"}} className='singleBarChart' />
+            <ReactEcharts option={option} style={{height: "500px"}} className='singleBarChart' />
           </Chart>
       );
     };
@@ -219,7 +224,7 @@ const getOptionSelector = createSelector(
             series: [{
                 name: '外围刻度',
                 type: 'gauge',
-                radius: '90%',
+                radius: '80%',
                 center: ['50%', '50%'],
                 startAngle: 90,
                 endAngle: -269.99999,
@@ -259,7 +264,7 @@ const getOptionSelector = createSelector(
                 type: 'bar',
                 coordinateSystem: 'polar',
                 clockwise: false,
-                radius: [0, '80%'],
+                radius: [0, '70%'],
                 center: ['50%', '50%'],
                 roseType: 'area',
                 color: 'red',
@@ -322,7 +327,9 @@ const mapStateToProps = (state) => {
     })
   });
 
+
   const query = state.deviceext.query;
+
   return {query, option, pickerProvice, pickerProjects};
 }
 export default connect(mapStateToProps)(Page);

@@ -41,8 +41,8 @@ class App extends React.Component {
     //   title:'充电次数',
     //   Co:<CycleCount />
     // },
-    return (<div style={{ height: '100%' }}>
-        <Carousel ref='ddd' infinite autoplay autoplayInterval={10000} >
+    return (<div style={{ height: '88%', width:'100%' }}>
+      <Carousel style={{ height: '100%', width:'100%' }} infinite autoplay autoplayInterval={10000} >
           <div>
             <Cycle />
           </div>
