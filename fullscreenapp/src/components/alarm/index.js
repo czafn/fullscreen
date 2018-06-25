@@ -102,7 +102,7 @@ class Page extends React.Component {
           <div style={{height: '100%',width:'100%'}}>
               {/*<div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>*/}
               <WhiteSpace size="lg" />
-              <Carousel style={{minHeight:'490px' ,height: '100%',width:'100%'}} infinite autoplay autoplayInterval={10000} >
+              <Carousel style={{minHeight:'490px' ,height: '100px',width:'100%'}} infinite autoplay autoplayInterval={10000} >
                   <Table cellSpacing="0" cellPadding="0" >
                       <thead>
                       <tr>
