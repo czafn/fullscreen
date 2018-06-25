@@ -1,0 +1,36 @@
+
+/* tab0 tabs Bar样式 */
+.tab0 .am-tabs-tab-bar-wrap{
+    margin: 5px 3%;
+    width: 94%;
+    border-radius: 10px;
+    border: 1px solid #0f8ee9;
+}
+.tab0 .am-tabs-default-bar-tab{
+    height: 30px;
+    line-height:30px;
+    color: #108ee9;
+    background: none;
+}
+
+.tab0 .am-tabs-default-bar-tab:nth-child(1){
+    border-radius: 9px 0 0 9px;
+    border-right: 1px solid #108ee9;
+}
+.tab0 .am-tabs-default-bar-tab:nth-child(3){
+    border-radius: 0px 9px 9px 0px;
+    border-left: 1px solid #108ee9;
+}
+.tab0 .am-tabs-default-bar{
+    border-radius: 10px;
+}
+.tab0 .am-tabs-default-bar-tab-active{
+    background: #108ee9;
+    color: #fff;
+}
+@media (-webkit-min-device-pixel-ratio: 2), not all, (min-resolution: 2dppx){
+    html:not([data-scale]) .am-tabs-default-bar-top .am-tabs-default-bar-tab::after{
+        content: '';
+        background: none;
+    }
+}

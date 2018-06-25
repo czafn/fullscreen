@@ -62,78 +62,88 @@ const Table = styled.table`
   th:nth-child(2),td:nth-child(2){
     width: 45%;
   }
-
+  .slider-frame{
+    ul{
+      height:500px    
+    }
+  }
 `;
 
 
 class Page extends React.Component {
     constructor(props) {
         super(props);
+      this.state = {
+        autoplayInterval : 10
+      }
     }
 
     // timeTicket = null;
 
     componentDidMount() {
 
-        // this.timeTicket = setInterval(() => {
-        //     // this.nextAlarm()
-        // }, 10000);
+        // this.timeTicket = setTimeout(() => {
+        //
+        // }, 100);
 
     };
     componentWillUnmount() {
         // if (this.timeTicket) {
         //     clearInterval(this.timeTicket);
         // }
-    };
 
+    };
+    handleChange() {
+
+    }
     render() {
         const {level1_ListData, level2_ListData, level3_ListData} = this.props;
         return (
-          <div style={{height: '100%'}}>
+          <div style={{height: '100%',width:'100%'}}>
               {/*<div className="crumbsTitle" style={{borderBottom: '0px solid #ccc'}}>报警信息</div>*/}
               <WhiteSpace size="lg" />
-              <Carousel style={{height: '100%',width:'100%'}} infinite autoplay autoplayInterval={10000} >
-                      <Table cellSpacing="0" cellPadding="0" >
-                          <thead>
-                          <tr>
-                              <th>编号</th>
-                              <th>报警时间</th>
-                              <th>报警等级</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          {
-                              lodashmap(level3_ListData,(obj,index)=>{
-                                  return (<tr key={index}>
-                                      <td>{obj.DeviceId}</td>
-                                      <td>{obj.update_time}</td>
-                                      <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
-                                  </tr>);
-                              })
-                          }
-                          </tbody>
-                      </Table>
-                      <Table cellSpacing="0" cellPadding="0" >
-                          <thead>
-                          <tr>
-                              <th>编号</th>
-                              <th>报警时间</th>
-                              <th>报警等级</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          {
-                              lodashmap(level2_ListData,(obj,index)=>{
-                                  return (<tr key={index}>
-                                      <td>{obj.DeviceId}</td>
-                                      <td>{obj.update_time}</td>
-                                      <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
-                                  </tr>);
-                              })
-                          }
-                          </tbody>
-                      </Table>
-                      <Table cellSpacing="0" cellPadding="0" >
+              <Carousel style={{minHeight:'490px' ,height: '100%',width:'100%'}} infinite autoplay autoplayInterval={10000} >
+                  <Table cellSpacing="0" cellPadding="0" >
+                      <thead>
+                      <tr>
+                          <th>编号</th>
+                          <th>报警时间</th>
+                          <th>报警等级</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {
+                          lodashmap(level3_ListData,(obj,index)=>{
+                              return (<tr key={index}>
+                                  <td>{obj.DeviceId}</td>
+                                  <td>{obj.update_time}</td>
+                                  <td><span style={{color:'#d31e25'}}>{obj.type} </span> <span></span></td>
+                              </tr>);
+                          })
+                      }
+                      </tbody>
+                  </Table>
+                  <Table cellSpacing="0" cellPadding="0" >
+                      <thead>
+                      <tr>
+                          <th>编号</th>
+                          <th>报警时间</th>
+                          <th>报警等级</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {
+                          lodashmap(level2_ListData,(obj,index)=>{
+                              return (<tr key={index}>
+                                  <td>{obj.DeviceId}</td>
+                                  <td>{obj.update_time}</td>
+                                  <td><span style={{color:'#ed932f'}}>{obj.type} </span> <span></span></td>
+                              </tr>);
+                          })
+                      }
+                      </tbody>
+                  </Table>
+                  <Table cellSpacing="0" cellPadding="0" >
                           <thead>
                           <tr>
                               <th>编号</th>
@@ -162,7 +172,14 @@ class Page extends React.Component {
 const mapStateToProps = ({catlworking:{alarm3,alarm2,alarm1}}) => {
   let level1_ListData = [];
   let level2_ListData = [];
-  let level3_ListData = [];
+  let level3_ListData = [
+            // {"update_time":"2017/11/18 04:26:00","DeviceId":"1727204012","type":"三级"},
+            // {"update_time":"2017/11/17 22:20:00","DeviceId":"1719100098","type":"三级"},
+            // {"update_time":"2017/11/17 22:04:00","DeviceId":"1627100777","type":"三级"},
+            // {"update_time":"2017/11/18 10:01:00","DeviceId":"1702101873","type":"三级"},
+            // {"update_time":"2017/11/18 09:44:00","DeviceId":"1727210879","type":"三级"},
+            // {"update_time":"2017/11/18 09:50:00","DeviceId":"1719103955","type":"三级"},
+    ];
   lodashmap(alarm3,(item)=>{
     level3_ListData.push({
       update_time:lodashget(item,'LastRealtimeAlarm.DataTime',''),

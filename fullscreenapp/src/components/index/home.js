@@ -30,7 +30,7 @@ import './home.css';
 
 class App extends React.Component {
   state = {
-    selectedTab: 'redTab',
+    selectedTab: 'blueTab',
     hidden: false,
     fullScreen: true,
   };

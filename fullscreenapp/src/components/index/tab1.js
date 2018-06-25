@@ -66,7 +66,7 @@ class App extends React.Component {
     //   Co:<Item />
     // },
     return (<div style={{ height: '88%', width:'100%' }}>
-        <Carousel className='my-carousel' style={{ height: '100%', width:'100%' }} infinite autoplay autoplayInterval={10000*100} >
+        <Carousel className='my-carousel' style={{ height: '100%', width:'100%' }} infinite autoplay autoplayInterval={10000} >
           <div>
             <CarYear ref='CarYear' />
           </div>
