@@ -115,7 +115,7 @@ const mapStateToProps = ({
  },
  }) => {
   let count_online = countonline;
-  let count_offline = counttotal;
+  let count_offline = counttotal-countonline;
 
   let count_yellow = countalarm1;
   let count_red = countalarm3;
