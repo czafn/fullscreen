@@ -126,5 +126,13 @@
     flex-grow: 1;
 }
 .loginForm .formvalidation.form_input.warning .warningtext{
-    margin-left: -30px;
+    /*margin-left: -30px;*/
+    margin-top: 10px;
+    color: #fff;
+    background: red;
+    width: 20px;
+    margin-right: 10px;
+    float: right;
+    padding-left: 8px;
+    border-radius: 40px;
 }
