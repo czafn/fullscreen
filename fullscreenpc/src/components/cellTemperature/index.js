@@ -37,7 +37,7 @@ class Page extends React.Component {
         tooltip:{
           show:true,
           formatter: function (v) {
-            if(v.name === '中位线'){
+            if(v.name === '中位数'){
               return v.name;
             } else {
               return v.name+': '+v.value;
@@ -181,7 +181,7 @@ class Page extends React.Component {
             },
             data: [{
               xAxis: 0,
-              name: '中位线',
+              name: '中位数',
               itemStyle: {
                 normal: {
                   color: "#b84a58",
@@ -495,7 +495,7 @@ const getOptionSelector = createSelector(
         tooltip:{
           show:true,
           formatter: function (v) {
-            if(v.name === '中位线'){
+            if(v.name === '中位数'){
               return v.name;
             } else {
               return v.name+': '+v.value;
@@ -639,7 +639,7 @@ const getOptionSelector = createSelector(
             },
             data: [{
               xAxis: 0,
-              name: '中位线',
+              name: '中位数',
               itemStyle: {
                 normal: {
                   color: "#b84a58",
