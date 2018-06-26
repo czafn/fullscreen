@@ -138,13 +138,14 @@ export class Page extends Component {
     }
 
     onClickchange = (values)=>{
+
         let payload = {
             password:values.password,
             passwordA:values.passwordA,
         };
 
         console.log("修改密码::::"+JSON.stringify(payload));
-
+        debugger
         this.props.dispatch(changepwd_request(payload));
         // this.props.history.push("./");
         //调用修改密码后台接口

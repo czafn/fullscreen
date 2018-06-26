@@ -60,6 +60,7 @@ class AppRoot extends React.Component {
                   <div className="title-left">
                       <div style={{float: "left", margin: "0 20px"}}><img src="index/catlLOGO1.png" alt="" width="200px"></img></div>
                       <div className="title-left-top">新能源远程监控系统</div>
+
                   </div>
                   <div className="cbody-left">
                       <div className="cbody-left-top">

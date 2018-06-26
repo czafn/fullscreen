@@ -1,27 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
-import Alarm from '../alarm';
-import Warning from '../warning';
-import Cycle from '../cycle';
-import CycleCount from '../cycleCount';
-import DxTemperature from '../dxTemperature';
-import CellTemperature from '../cellTemperature';
-import {getdevicestatus_isonline,getdevicestatus_alaramlevel} from '../../util/getdeviceitemstatus';
-import {ui_menuclick_logout}  from '../../actions';
-import lodashmap from 'lodash.map';
-import Item from '../item';
-import CarYear from '../carYear';
-import BusYear from '../busYear';
 import Changepwd from "../user/pwd.js";
 import Usercenter from "../user/center.js";
-import MapProvince from '../mapProvince';
 import { Drawer, List, NavBar, Icon } from 'antd-mobile';
 import { Tabs, WhiteSpace, Badge, TabBar } from 'antd-mobile';
 import Tab0 from './tab0';
 import Tab1 from './tab1';
 import Tab2 from './tab2';
 import {set_uiapp} from '../../actions';
+import Userlnk from "../../img/11.png";
 
 import 'antd-mobile/dist/antd-mobile.css';
 import './home.css';
@@ -38,12 +26,8 @@ class App extends React.Component {
   renderContent(pageText) {
     return (
       <div style={{  height: '100%', textAlign: 'center' }}>
-        <NavBar icon={<Icon type="ellipsis" />} onClick={
-          ()=>
-          {
-            this.props.dispatch(set_uiapp({ispopuserinfo:true}))
-          }
-        }>
+        <NavBar icon={<Icon type="ellipsis" />} onClick={()=>{this.props.history.push("/usercenter")}}>
+          {/*<a className="userlnk" ><img src={Userlnk} onClick={()=>{this.props.history.push("/usercenter")}} alt=""/></a>*/}
           新能源远程监控系统
         </NavBar>
         <div style={{display: (pageText === 'Synthesize')? 'inline': 'none'}}>

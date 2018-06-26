@@ -179,7 +179,7 @@
 
 div {
     box-sizing: border-box;
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .title-center-title img {
@@ -271,8 +271,8 @@ div {
 
 .back {
     width: 3840px;
-    height: 1080px;
-    background: url('img/bg.png');
+    /*height: 1080px;*/
+    /*background: url('img/bg.png');*/
     background-repeat: no-repeat;
     box-sizing: border-box;
     /*position: fixed;*/

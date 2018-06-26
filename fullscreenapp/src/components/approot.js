@@ -4,10 +4,12 @@ import { Route,Switch } from 'react-router-dom';
 import Index from './index/home.js';
 import Login from './login/login.js';
 import Changepwd from './login/changepwd';
+import Usercenter from './user';
 import {map_setmapinited} from '../actions';
 import {requireAuthentication} from './requireauthentication';
 
-import "../css/common.css";
+import "../css/commonUser.css";
+// import "../css/common.css";
 
 class AppRoot extends React.Component {
   componentWillMount() {
@@ -37,6 +39,7 @@ class AppRoot extends React.Component {
                 <Switch>
                   <Route exact path="/" component={requireAuthentication(Index)} />
                   <Route path="/changepwd" component={Changepwd} />
+                  <Route path="/usercenter" component={Usercenter} />
                   <Route path="/login" component={Login} />
                 </Switch>
               </div>

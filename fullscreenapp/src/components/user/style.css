@@ -282,18 +282,18 @@
     display: inline-block;
 }
 
-.changepwd {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    border-radius: 6px;
-    z-index: 1000;
-    top: 0;
-    padding-bottom: 10px;
-    overflow-y: hidden;
-    z-index: 1500;
-}
+/*.changepwd {*/
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*left: 0;*/
+    /*border-radius: 6px;*/
+    /*z-index: 1000;*/
+    /*top: 0;*/
+    /*padding-bottom: 10px;*/
+    /*overflow-y: hidden;*/
+    /*z-index: 1500;*/
+/*}*/
 
 .changepwd .wamp {
     background: rgba(0, 0, 0, .4);
@@ -445,7 +445,7 @@
 }
 
 .changepwdForm {
-    padding: 0px 30px
+    padding: 0px 0px
 }
 
 .changepwdForm>div {
@@ -459,15 +459,16 @@
     -moz-justify-content: center;
     -webkit-justify-content: center;
     justify-content: center;
-    margin: 20px 0px
+    /*margin: 20px 0px*/
 }
 
 .changepwdForm span {
     width: 80px;
+    font-weight: 200;
 }
 
 .changepwdForm div input {
-    border: 1px solid #e5e5e5;
+    border: 0px solid #e5e5e5;
     padding: 8px 8px;
     color:#000
 }
@@ -477,14 +478,14 @@
 }
 
 .changepwdForm .submitBtn .btn {
-    height: 50px;
-    line-height: 50px;
+    height: 44px;
+    line-height: 44px;
     font-size: 22px;
     color: #FFF;
     font-weight: bold;
     text-align: center;
     display: block;
-    width: 100%;
+    width: 90%;
     background: linear-gradient(180deg, #1396d2, #017db6);
     border: none;
     border-radius: 4px;
