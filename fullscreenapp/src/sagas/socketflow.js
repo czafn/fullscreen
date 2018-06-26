@@ -16,9 +16,7 @@ export function* socketflow(){//仅执行一次
         yield put(getsystemconfig_request({}));
         const token = localStorage.getItem(`bms_${config.softmode}_token`);
         if (!!token) {
-          if(config.softmode !== 'fullapp'){
-            yield put(loginwithtoken_request({token}));
-          }
+          yield put(loginwithtoken_request({token}));
         }
       }
     });
