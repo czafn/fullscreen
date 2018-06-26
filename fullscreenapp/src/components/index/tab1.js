@@ -8,7 +8,7 @@ import CycleCount from '../cycleCount';
 import DxTemperature from '../dxTemperature';
 import CellTemperature from '../cellTemperature';
 import {getdevicestatus_isonline,getdevicestatus_alaramlevel} from '../../util/getdeviceitemstatus';
-import {ui_menuclick_logout}  from '../../actions';
+import {setquery_deviceext_request, ui_menuclick_logout} from '../../actions';
 import lodashmap from 'lodash.map';
 import Item from '../item';
 import CarYear from '../carYear';
@@ -25,28 +25,26 @@ import './index.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
+  }
+  state = {
+    from: 0,
+    to: 0
+  };
+  onAfterChange(from,to){
+    let query = this.props.query;
+    debugger
+    console.log(from,to,this.state.from,this.state.to)
+    if(!(this.state.from === from && this.state.to === to)){
+      delete query.province;
+      delete query.catlprojectname;
+      this.props.dispatch(setquery_deviceext_request(query));
+      this.setState({
+        from: from,
+        to: to
+      });
+    }
 
   }
-  // onAfterChange(e){
-  //   let query = this.props.query;
-  //   debugger
-  //   switch(e){
-  //     case 0:
-  //       this.refs.CarYear.onChangeProvince(query.province ? query.province : ['全部'])
-  //       this.refs.CarYear.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
-  //       break;
-  //     case 1:
-  //       this.refs.BusYear.onChangeProvince(query.province ? query.province : ['全部'])
-  //       this.refs.BusYear.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
-  //       break;
-  //     case 2:
-  //       this.refs.MapProvince.onChangeProject(query.catlprojectname ? query.catlprojectname : ['全部'])
-  //       break;
-  //     case 3:
-  //       this.refs.Item.onChangeProvince(query.province ? query.province : ['全部'])
-  //       break;
-  //   }
-  // }
   render() {
     //客档分析包含《ppppppp
     // {
@@ -66,7 +64,7 @@ class App extends React.Component {
     //   Co:<Item />
     // },
     return (<div style={{ height: '88%', width:'100%' }}>
-        <Carousel className='my-carousel' style={{ height: '100%', width:'100%' }} infinite autoplay autoplayInterval={10000} >
+        <Carousel beforeChange={this.onAfterChange.bind(this)} className='my-carousel' style={{ height: '100%', width:'100%' }} infinite autoplayInterval={20000} >
           <div>
             <CarYear ref='CarYear' />
           </div>
@@ -84,8 +82,8 @@ class App extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//    const query = state.deviceext.query;
-//    return {query};
-// }
-export default connect()(App);
+const mapStateToProps = (state) => {
+   const query = state.deviceext.query;
+   return {query};
+}
+export default connect(mapStateToProps)(App);
