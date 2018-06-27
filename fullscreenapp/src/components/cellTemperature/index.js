@@ -10,7 +10,7 @@ import ecStat from 'echarts-stat';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian} from '../../util/gettmputil';
+import {getmedian2} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -491,7 +491,7 @@ const getOptionSelector = createSelector(
     });
 
 
-    const {areaParam,median} = getmedian(data);
+    const {areaParam,median} = getmedian2(data);
 
     console.log(`==data==`)
     console.log(`${JSON.stringify(data)}`)
