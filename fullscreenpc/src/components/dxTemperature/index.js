@@ -9,6 +9,7 @@ import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
+import {getmedian} from '../../util/gettmputil';
 const _ = require('underscore');
 
 
@@ -703,7 +704,7 @@ const getOptionSelector = createSelector(
       })
     }
 
-    const median = m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
+    const median = getmedian(m5data);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
 
     const getOption = () => {

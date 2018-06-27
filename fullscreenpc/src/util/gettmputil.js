@@ -1,24 +1,76 @@
 import lodashmap from 'lodash.map';
 import lodashget from 'lodash.get';
+import * as math from 'mathjs';
 
-const getmedian  = (data,fpercent=0.9)=>{
+const getmedian = (data)=>{
   let convertdata = [];
   let totalfv = 0;
   lodashmap(data,(v)=>{
     const fv = parseFloat(lodashget(v,'value','0'));
+    const nv = parseFloat(lodashget(v,'name','0'));
     convertdata.push({
       name:lodashget(v,'name',''),
-      value:fv
+      value:fv,
+      nv
     });
     totalfv += fv;
   });
-  // console.log(`totalfv--->${totalfv}`);
+  let mapindex = {};
+  // console.log(`convertdata--->${JSON.stringify(convertdata)}`);
+  let inputsz = [];
+  for(let i = 0 ;i < convertdata.length; i++){
+    const sample = convertdata[i];
+    inputsz.push(sample.nv);
+    mapindex[sample.nv] = i;
+  }
+  if(totalfv === 0){
+    return 0;
+  }
+  // console.log(`inputsz--->${JSON.stringify(inputsz)}`);
+  const median = math.median(inputsz);
+  const medianindex = mapindex[median];
+  // console.log(`medianindex--->${medianindex}`);
+  return medianindex;
+}
 
-  let start = 0;
-  let end = convertdata.length-1;
+const getmedian2  = (data,fpercent=0.9)=>{
+  let convertdata = [];
+  let totalfv = 0;
+  lodashmap(data,(v)=>{
+    const fv = parseFloat(lodashget(v,'value','0'));
+    const nv = parseFloat(lodashget(v,'name','0'));
+    convertdata.push({
+      name:lodashget(v,'name',''),
+      value:fv,
+      nv
+    });
+    totalfv += fv;
+  });
+  // console.log(`convertdata--->${JSON.stringify(convertdata)}`);
+  let inputsz = [];
+  let mapindex = {};
+  for(let i = 0 ;i < convertdata.length; i++){
+    const sample = convertdata[i];
+    inputsz.push(sample.nv);
+    mapindex[sample.nv] = i;
+  }
+  if(totalfv === 0){
+    return {
+      areaParam:{
+        start:0,
+        end:0
+      },
+      median:0
+    }
+  }
+  const median = math.median(inputsz);
+  const medianindex = mapindex[median];
+
+  let start = medianindex;
+  let end = medianindex;
   let tmptotal = 0;
-  let boundmax = totalfv*(1-fpercent);
-  for(let i=0,j=convertdata.length-1;i<j;i++,j--){
+  let boundmax = totalfv*fpercent;
+  for(let i=medianindex,j=medianindex;i>=0,j<convertdata.length;i--,j++){
     let vstart = convertdata[i].value;
     let vend = convertdata[j].value;
     tmptotal += vstart;
@@ -41,10 +93,9 @@ const getmedian  = (data,fpercent=0.9)=>{
       start: convertdata[start].name,
       end: convertdata[end].name
   }
-  const median = convertdata.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
-  // console.log(`start--->${start},end--->${end}`);
+  // console.log(`start--->${start},end--->${end},median--->${median}`);
   return {areaParam,median};
 }
 
-export {getmedian};
+export {getmedian,getmedian2};
