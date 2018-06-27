@@ -6,10 +6,23 @@ import {changepwd_request} from '../../actions';
 import { withRouter } from 'react-router-dom';
 import { set_weui } from '../../actions';
 import './login.css';
+const inputData = (state) => { return state; };
+const inputDispatchToProps = (dispatch) => {
+  	return {
+	    onError:(err)=>{
+	      	let toast = {
+			    show : true,
+			    text : err,
+			    type : "warning"
+			}
+			dispatch(set_weui({ toast }));
+	    },
+	}
+};
 
 const required = value => value ? undefined : '必填项';
 //input表单验证
-const InputValidation = (props) => {
+let InputValidation = (props) => {
 	const {onError,input, placeholder, type, meta: { touched, error, warning }} = props;
 	let err1 = (touched && error);
 	let err2 = (touched && warning);
@@ -35,6 +48,7 @@ const InputValidation = (props) => {
 	  	</div>
 	);
 }
+InputValidation = connect(inputData,inputDispatchToProps)(InputValidation);
 //二次密码验证
 let password = '';
 export const passwordA = value => {password = value; return undefined};
