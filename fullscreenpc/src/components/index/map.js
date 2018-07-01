@@ -40,7 +40,7 @@ class MapPage extends React.Component {
     render() {
         return (
             <div className="AdminContent">
-                <div id={divmapid} style={{height:`918px`}}/>
+                <div id={divmapid} style={{height:`958px`}}/>
             </div>
         );
     }

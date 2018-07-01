@@ -578,11 +578,11 @@ input,textarea {
 }
 .usercenterPage .content .changepwd{
     height: 30px;
-    border: 1px solid #5cbeaa;
+    border: 1px solid #0f8ee9;
     border-radius: 30px;
     padding:  0 15px;
     line-height: 30px;
-    color: #5cbeaa;
+    color: #0f8ee9;
     align-self: center;
 }
 .usercenterPage .content .changepwd:active{
