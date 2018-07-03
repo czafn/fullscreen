@@ -34,7 +34,7 @@ class Page extends React.Component {
         let {option} = this.props;
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height: "270px"}} className='singleBarChart' />
+              <ReactEcharts option={option} style={{height: "255px"}} className='singleBarChart' />
             </Chart>
         );
     };

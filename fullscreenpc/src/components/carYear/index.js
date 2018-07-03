@@ -23,7 +23,7 @@ class Page extends React.Component {
         const {option} = this.props;
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height: "270px",width: "100%",overflow: "hidden",background: "rgba(10, 108, 163, 0.3)"}} className='echarts-for-react'/>
+              <ReactEcharts option={option} style={{height: "255px",width: "100%",overflow: "hidden",background: "rgba(10, 108, 163, 0.3)"}} className='echarts-for-react'/>
             </Chart>
         );
     };

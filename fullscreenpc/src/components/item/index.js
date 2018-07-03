@@ -90,7 +90,7 @@ class Page extends React.Component {
         }
         return (
             <Chart onClick={() => this.onChartClick()}>
-              <ReactEcharts option={option} style={{height:'270px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
+              <ReactEcharts option={option} style={{height:'300px'}} ref={'itemChart'} onEvents={onEvents}  className='singleBarChart' />
             </Chart>
         );
     };
@@ -129,6 +129,7 @@ const statcatlprojectSelector = createSelector(
         legend: {//图例组件，颜色和名字
           // right:'60%',
           top:5,
+          left:407,
           itemGap: 16,
           itemWidth: 18,
           itemHeight: 10,

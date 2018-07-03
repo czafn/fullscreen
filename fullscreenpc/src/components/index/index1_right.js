@@ -58,8 +58,15 @@ class AppRoot extends React.Component {
 
               <div className="center">
                   <div className="title-center1">
+                    {/*<div style={{height:'50px',backgroud:'red'}}>*/}
+                      {/*<div style={{width: '480px', height: '50px', background: 'red',float: 'left'}}></div>*/}
+                      {/*<div style={{width: '480px', height: '50px', background: 'green',float: 'left'}}></div>*/}
+                      {/*<div style={{width: '480px', height: '50px', background: 'blue',float: 'left'}}></div>*/}
+                      {/*<div style={{width: '480px', height: '50px', background: 'yellow',float: 'left'}}></div>*/}
+                    {/*</div>*/}
                       <div className="title-center-box" style={{}}>
-                          <div className="titleNumCol-center" style={{marginLeft: '10px'}}>
+
+                          <div className="titleNumCol-center" style={{marginLeft: '30px'}}>
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>总数量</div>
                               <div className="title-center-content-border">
                                   <div className="title-center-content">
@@ -68,7 +75,7 @@ class AppRoot extends React.Component {
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol-center ">
+                          <div className="titleNumCol-center " style={{marginLeft: '140px'}}>
                               <div className="title-center-title red"><img src="index/top.png" alt=""></img>一级</div>
                               <div className="title-center-content-border red-border">
                                   <div className="title-center-content red">
@@ -77,7 +84,7 @@ class AppRoot extends React.Component {
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol-center ">
+                          <div className="titleNumCol-center " style={{marginLeft: '140px'}}>
                               <div className="title-center-title orange"><img src="index/top.png" alt=""></img>二级</div>
                               <div className="title-center-content-border orange-border">
                                   <div className="title-center-content orange">
@@ -86,7 +93,7 @@ class AppRoot extends React.Component {
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol-center ">
+                          <div className="titleNumCol-center " style={{marginLeft: '145px'}}>
                               <div className="title-center-title yellow"><img src="index/top.png" alt=""></img>三级</div>
                               <div className="title-center-content-border yellow-border">
                                   <div className="title-center-content yellow">
@@ -95,8 +102,8 @@ class AppRoot extends React.Component {
                                   </div>
                               </div>
                           </div>
-                        <div className="titleNumCol titleNumCol-right titleTime" style={{lineHeight:'30px',marginLeft: '200px'}}>
-                          <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-D') }</div>
+                        <div className="titleNumCol titleNumCol-right titleTime" style={{lineHeight:'30px',marginLeft: '20px'}}>
+                          <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-DD') }</div>
                           <div className="title-right-buttom">{moment(this.state.nowday).format('hh:mm:ss') }</div>
                         </div>
                           {/*<div className="titleNumCol">*/}

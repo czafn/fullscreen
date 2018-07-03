@@ -659,7 +659,7 @@ const getOptionSelector = createSelector(
             },
             label:{
               normal:{
-                position: ['0%', '-15'],
+                position: ['0%', '-25'],
                 // fontSize:18,
                 color: "rgb(248, 99, 2)"
               }
