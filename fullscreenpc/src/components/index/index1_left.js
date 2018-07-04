@@ -83,7 +83,7 @@ class AppRoot extends React.Component {
                       </div>
                       <div className="cbody-left-center">
                           <div className="left-top-left">
-                              <div className="cbody-left-top-title">
+                              <div className="cbody-left-table-title ">
                                   Cycle数
                               </div>
                               <div className="cbody-left-top-box">
@@ -91,7 +91,7 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                           <div className="left-top-right">
-                              <div className="cbody-left-top-title left-right">
+                              <div className="cbody-right-title-top left-right">
                                   等效温度
                               </div>
                               <div className="cbody-left-top-box left-right">
@@ -101,7 +101,7 @@ class AppRoot extends React.Component {
                       </div>
                       <div className="cbody-left-buttom">
                           <div className="left-top-left">
-                              <div className="cbody-left-top-title">
+                              <div className="cbody-left-table-title">
                                   电芯温差
                               </div>
                               <div className="cbody-left-top-box">
@@ -109,7 +109,7 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                           <div className="left-top-right">
-                              <div className="cbody-left-top-title left-right">
+                              <div className="cbody-right-title-top left-right">
                                   充电次数
                               </div>
                               <div className="cbody-left-top-box">
@@ -150,7 +150,7 @@ class AppRoot extends React.Component {
                   </div>
                   <div className="cbody-right" style={{paddingRight: '0px'}}>
 
-                      <div className="cbody-right-bottom">
+                      <div className="cbody-right-bottom" style={{height:'610px'}}>
 
 
                           <div className="right-bottom-right" style={{width:'63.5%'}}>
@@ -174,7 +174,7 @@ class AppRoot extends React.Component {
                               </div>
                             </div>
                             <div style={{height: "50%"}}>
-                              <div className="cbody-right-title">
+                              <div className="cbody-right-title-top">
                                 {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                 {query['province'] !== undefined ? query.province+'-' : ''}
                                 BUS-车辆使用年限
@@ -188,7 +188,7 @@ class AppRoot extends React.Component {
                       </div>
                       <div className="cbody-right-top" style={{marginLeft: '20px'}}>
                           <div className="right-top-left">
-                              <div className="cbody-right-title">
+                              <div className="cbody-right-title-top ">
                                 {query['province'] !== undefined ? query.province+'-' : ''}
                                   各项目车辆分布TOP20
                               </div>

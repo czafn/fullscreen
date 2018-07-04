@@ -109,7 +109,7 @@ class Page extends React.Component {
 
         return (
             <Chart onClick={() => this.onChartClick()}>
-              <ReactEcharts ref='map' option={option} style={{height: "590px"}} onEvents={onEvents} className='singleBarChart'  />
+              <ReactEcharts ref='map' option={option} style={{height: "560px"}} onEvents={onEvents} className='singleBarChart'  />
             </Chart>
         );
     };
