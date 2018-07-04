@@ -23,7 +23,7 @@ const createInfoWindow_popinfo =(data)=> {
           if(unit !== ''){
             showvalue = `${showvalue}${unit}`;
           }
-          return contenthtml = `${contenthtml}<li key=${i} className='show_${v.systemflag}'><span className='t'>${v.showname}</span><span>${showvalue}</span></li>`;
+          return contenthtml = `${contenthtml}<li key=${i} class='show_${v.systemflag}'><span class='t'>${v.showname}:</span><span>${showvalue}</span></li>`;
         }
     })
 
@@ -36,7 +36,7 @@ const createInfoWindow_popinfo =(data)=> {
           if(unit !== ''){
             showvalue = `${showvalue}${unit}`;
           }
-          return contenthtml = `${contenthtml}<li key=${i} className='show_${v.systemflag}'><span className='t'>${v.showname}</span><span>${showvalue}</span></li>`;
+          return contenthtml = `${contenthtml}<li key=${i} class='show_${v.systemflag}'><span class='t'>${v.showname}:</span><span>${showvalue}</span></li>`;
         }
     })
     contenthtml = `${contenthtml}</ul>`;
@@ -96,7 +96,7 @@ const createInfoWindow_poplistinfo =(data)=> {
     // console.log(map);
     console.log(data);
     //iscollection
-    let title = "<span className='p'></span><span>聚合点车辆</span>";
+    let title = "<span class='p'></span><span>聚合点车辆</span>";
     // let Car_img = Car_online || Car_outline;
 
 
@@ -111,9 +111,9 @@ const createInfoWindow_poplistinfo =(data)=> {
 
         return contenthtml = `${contenthtml}
             <li key=${i} onclick="clickfn_device_fromlist(${v.DeviceId})">
-                <div className='l'><img src=${iconname} /></div>
-                <div className='r'>
-                    <p className="t"><span>车辆ID:</span>${deviceIdHtml}</p>
+                <div class='l'><img src=${iconname} /></div>
+                <div class='r'>
+                    <p class="t"><span>车辆ID:</span>${deviceIdHtml}</p>
                     <p><span>${dinfo}</span></p>
                 </div>
                 <img src="${Point_list_img}" />
