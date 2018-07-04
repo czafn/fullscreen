@@ -28,6 +28,8 @@ import {
 // import config from '../env/config';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
+import lodashsortby from 'lodash.sortby';
+import lodashreverse from 'lodash.reverse';
 import moment from 'moment';
 const oldyears = moment().subtract(10,'years').format('YYYY');
 
@@ -90,7 +92,7 @@ const getqueryresult = (deviceextlist,query)=>{
         mapprovincebus[deviceextinfo.province] += 1;
       }
       else{
-          mapprovincebus[deviceextinfo.province] = 1;
+        mapprovincebus[deviceextinfo.province] = 1;
       }
       if(!!mapcatlprojectnamebus[deviceextinfo.catlprojectname]){
         mapcatlprojectnamebus[deviceextinfo.catlprojectname] += 1;
@@ -132,6 +134,9 @@ const getqueryresult = (deviceextlist,query)=>{
     }//matched
   }
 
+  console.log(mapprovincebus);
+  console.log(mapcatlprojectnamecar);
+
   lodashmap(mapusedyearcar,(v,k)=>{
     getusedyearcar.push({
       type:'CAR',
@@ -164,11 +169,12 @@ const getqueryresult = (deviceextlist,query)=>{
       });
     }
   });
-
+  province_keymapcount = lodashsortby(province_keymapcount, [(o)=> { return o.value; }]);
+  province_keymapcount = lodashreverse(province_keymapcount);
   //sort with count!
   let maxcount = province_keymapcount.length > 20 ? 20 : province_keymapcount.length;
   for(let i = 0;i < maxcount ;i ++){
-    const v = province_keymapcount[maxcount];
+    const v = province_keymapcount[i];
     getstatprovince.push({
       type:'CAR',
       name:v.key,
@@ -180,6 +186,7 @@ const getqueryresult = (deviceextlist,query)=>{
       value:v.countbus
     });
   }
+
 
   //for project
   let project_keymapcount = [];
@@ -194,10 +201,12 @@ const getqueryresult = (deviceextlist,query)=>{
     }
   });
 
+  project_keymapcount = lodashsortby(project_keymapcount, [(o)=> { return o.value; }]);
+  project_keymapcount = lodashreverse(project_keymapcount);
   //sort with count!
   maxcount = project_keymapcount.length > 20 ? 20 : project_keymapcount.length;
   for(let i = 0;i < maxcount ;i ++){
-    const v = project_keymapcount[maxcount];
+    const v = project_keymapcount[i];
     getstatcatlproject.push({
       type:'CAR',
       name:v.key,
@@ -218,7 +227,7 @@ const getqueryresult = (deviceextlist,query)=>{
     getstatprovince,
     getstatcatlproject,
   };
-
+  console.log(`payload--->${JSON.stringify(payload)}`)
   return payload;
 }
 
@@ -240,22 +249,32 @@ export function* catldata(){
 
   //pushdeviceext
   yield takeLatest(`${pushdeviceext}`, function*(action) {
-    const {list} = action.payload;
-    const query = yield select((state)=>{
-      return state.deviceext.query;
-    });
-    const payload = getqueryresult(list,query);
-    yield put(deviceext_result(payload));
+    try{
+      const {list} = action.payload;
+      const query = yield select((state)=>{
+        return state.deviceext.query;
+      });
+      const payload = getqueryresult(list,query);
+      yield put(deviceext_result(payload));
+    }
+    catch(e){
+      console.log(e);
+    }
   });
 
 
   yield takeLatest(`${deviceext_request}`, function*(action) {
-    const {query} = action.payload;
-    const deviceextlist = yield select((state)=>{
-      return state.deviceext.deviceextlist;
-    });
-    const payload = getqueryresult(deviceextlist,query);
-    yield put(deviceext_result(payload));
+    try{
+      const {query} = action.payload;
+      const deviceextlist = yield select((state)=>{
+        return state.deviceext.deviceextlist;
+      });
+      const payload = getqueryresult(deviceextlist,query);
+      yield put(deviceext_result(payload));
+    }
+    catch(e){
+      console.log(e);
+    }
   });
 
 }
