@@ -8,6 +8,7 @@ import{
   getstatcatlproject_result,
   setquery_deviceext_result,
   deviceext_result,
+  pushdeviceext,
   settype_deviceext
 } from '../actions';
 
@@ -17,6 +18,7 @@ import{
 // catlprojectname:'TTT-133'
 const initial = {
   deviceext: {
+      deviceextlist:[],
       countcar:0,
       countbus:0,
       usedyearcar:[],
@@ -34,6 +36,11 @@ const initial = {
 };
 
 const deviceext = createReducer({
+  [pushdeviceext]:(state,payload)=>{
+    const {list} = payload;
+    const deviceextlist = [...list];
+    return  {...state,deviceextlist};
+  },
   [deviceext_result]:(state,payload)=>{
     const {getcountcar,getcountbus,getusedyearcar,getusedyearbus,getstatprovince,getstatcatlproject} = payload;
     const countcar = getcountcar;

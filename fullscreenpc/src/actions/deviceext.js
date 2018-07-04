@@ -26,3 +26,5 @@ export const settype_deviceext = createAction('settype_deviceext');
 
 export const deviceext_request = createAction('deviceext_request');
 export const deviceext_result = createAction('deviceext_result');
+
+export const pushdeviceext = createAction('pushdeviceext');

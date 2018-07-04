@@ -101,8 +101,8 @@ export function* wsrecvsagaflow() {
                 task_querycatldata = yield fork(querycatldata);
               }
 
+              }
             }
-        }
 
       }
       catch(e){
