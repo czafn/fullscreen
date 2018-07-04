@@ -9,7 +9,7 @@ import {createInfoWindow_popinfo as createInfoWindow_popinfo_app ,createInfoWind
 import {createInfoWindow_popinfo as createInfoWindow_popinfo_pc ,createInfoWindow_poplistinfo as createInfoWindow_poplistinfo_pc} from './mapmain_infowindow.pc.js';
 
 let createInfoWindow_popinfo,createInfoWindow_poplistinfo;
-if (config.softmode === 'pc') {
+if (config.softmode === 'fullpc') {
   createInfoWindow_popinfo = createInfoWindow_popinfo_pc;
   createInfoWindow_poplistinfo = createInfoWindow_poplistinfo_pc;
 
