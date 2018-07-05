@@ -76,6 +76,12 @@ class Page extends React.Component {
 
     onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
       console.log(param, echart);
+      if(param.selected['E-CAR'] === false && param.selected['E-BUS'] === false){
+        param.selected[param.name] = true;
+        let opt = echart.getOption();
+        opt.legend[0].selected = param.selected;
+        echart.setOption(opt)
+      }
       this.props.dispatch(settype_deviceext(param.selected));
     };
 
@@ -133,7 +139,7 @@ const statcatlprojectSelector = createSelector(
           itemGap: 16,
           itemWidth: 18,
           itemHeight: 10,
-          data:['CAR', 'BUS'],
+          data:['E-BUS', 'E-CAR'],
           textStyle: {
             color: '#a8aab0',
             fontStyle: 'normal',
@@ -202,7 +208,7 @@ const statcatlprojectSelector = createSelector(
         },
         series: [
           {
-            name: 'CAR',
+            name: 'E-CAR',
             type: 'bar',
             barWidth: '25%',
             itemStyle: {
@@ -221,7 +227,7 @@ const statcatlprojectSelector = createSelector(
             data: []
           },
           {
-            name: 'BUS',
+            name: 'E-BUS',
             type: 'bar',
             barWidth: '25%',
             itemStyle: {

@@ -87,8 +87,14 @@ class Page extends React.Component {
     onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
         // console.log(param, echart);
         // param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
-        console.log(`click---->${param.selected}` );
-        // debugger
+        // console.log(`click---->${param.selected}` );
+
+        if(param.selected['E-CAR'] === false && param.selected['E-BUS'] === false){
+          param.selected[param.name] = true;
+          let opt = echart.getOption();
+          opt.legend[0].selected = param.selected;
+          echart.setOption(opt)
+        }
         window.event.stopImmediatePropagation()
         this.props.dispatch(settype_deviceext(param.selected));
 
@@ -163,7 +169,7 @@ const mapStateToProps = ({deviceext}) => {
         // orient: 'vertical',
         left: 'center',
         top:20,
-        data: [{name: 'CAR', textStyle: {color: 'rgba(0, 168, 255, 1)'}}, {name: 'BUS', textStyle: {color: 'rgba(255, 179, 1, 1)'}}],
+        data: [{name: 'E-BUS', textStyle: {color: 'rgba(0, 168, 255, 1)'}}, {name: 'E-CAR', textStyle: {color: 'rgba(255, 179, 1, 1)'}}],
 
       },
       grid: {
@@ -225,7 +231,7 @@ const mapStateToProps = ({deviceext}) => {
       },
       series: [
         {
-          name: 'CAR',
+          name: 'E-CAR',
           type: 'map',
           top:20,
           // left:20,
@@ -254,7 +260,7 @@ const mapStateToProps = ({deviceext}) => {
           ]
         },
         {
-          name: 'BUS',
+          name: 'E-BUS',
           type: 'map',
           mapType: 'china',
           itemStyle: {
@@ -278,7 +284,7 @@ const mapStateToProps = ({deviceext}) => {
           ]
         },
         {
-          name: 'CAR',
+          name: 'E-CAR',
           type: 'bar',
           // barGap: '50%',
           barWidth: 10,
@@ -296,7 +302,7 @@ const mapStateToProps = ({deviceext}) => {
           z: -12,
           data: []
         }, {
-          name: 'CAR',
+          name: 'E-CAR',
           type: 'pictorialBar',
           symbol: 'rect',
           itemStyle: {
@@ -311,7 +317,7 @@ const mapStateToProps = ({deviceext}) => {
           data: []
         },
         {
-          name: 'BUS',
+          name: 'E-BUS',
           type: 'bar',
           // barGap: '50%',
           barWidth: 10,
@@ -329,7 +335,7 @@ const mapStateToProps = ({deviceext}) => {
           z: -12,
           data: []
         }, {
-          name: 'BUS',
+          name: 'E-BUS',
           type: 'pictorialBar',
           barGap: '-20%',
           symbol: 'rect',
