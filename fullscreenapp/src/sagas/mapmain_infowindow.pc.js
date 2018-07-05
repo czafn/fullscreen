@@ -30,6 +30,7 @@ const createInfoWindow_popinfo =(data)=> {
     contenthtml = `${contenthtml}</ul>`;
     contenthtml = `${contenthtml}<ul>`;
     map(data.fields, (v,i)=>{
+      debugger
         if(v.systemflag===1){
           let showvalue = v.fieldvalue;
           let unit = lodashget(v,'unit','');

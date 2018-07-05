@@ -31,7 +31,7 @@ export default function* rootSaga() {
     yield fork(wsrecvsagaflow);
     yield fork(createsagacallbackflow);
     yield fork(apiflow);
-    if(config.softmode === 'fullpc'){
+    if(config.softmode === 'fullpc' || config.softmode === 'fullapp'){
       yield fork(catldata);
       yield fork(catldatarestful);
     }

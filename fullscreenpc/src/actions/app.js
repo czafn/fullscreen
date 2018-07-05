@@ -1,5 +1,7 @@
 import { createAction } from 'redux-act';
 
+export const set_uiapp = createAction('set_uiapp');
+
 export const notify_socket_connected = createAction('notify_socket_connected');
 
 export const common_err  = createAction('common_err');

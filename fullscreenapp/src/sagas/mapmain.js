@@ -317,10 +317,38 @@ const CreateMapUI_DistrictCluster =  (map)=>{
           	   return null;
         		}
             //重写行政区域,避免来回刷新时的闪烁
-            //  utils.extend(DistrictCluster.prototype,
-            //    {//重新设置数据时不刷新Marker
-            //        setDataWithoutClear: function(data) {
-            //           //
+             utils.extend(DistrictCluster.prototype,
+               {//重新设置数据时不刷新Marker
+                   setDataWithoutClear: function(data) {
+                      //http://webapi.amap.com/ui/1.0/ui/geo/DistrictCluster.js?v=1.0.11&mt=ui&key=788e08def03f95c670944fe2c78fa76f
+                      data || (data = []);
+
+                      //this._buildData(data);
+                      // this._clearData();
+                      this.trigger("willBuildData", data);
+                      if(!this._data){//first time
+                        this.trigger("willClearData");
+                        this._data ? this._data.list.length = 0 : this._data = {
+                            list: [],
+                            bounds: null
+                        };
+                        this._data.source = null;
+                        this._data.bounds = null;
+                        this._data.kdTree = null;
+                        this._distCounter.clearData();
+                        this.trigger("didClearData");
+                      }
+                      this._data.source = data;
+                      // this._data.bounds = BoundsItem.getBoundsItemToExpand();
+                      this._buildDataItems(data);
+                      this._buildKDTree();
+                      this._distCounter.setData(this._data.list);
+                      this.trigger("didBuildData", data);
+
+                      this.renderLater(10);
+                      data.length && this._opts.autoSetFitView && this.setFitView();
+
+
             //           data || (data = []);
             //           this.trigger("willBuildData", data);
             //           this._data.source = data;
@@ -331,8 +359,8 @@ const CreateMapUI_DistrictCluster =  (map)=>{
             //           this.trigger("didBuildData", data);
             //           this.renderLater(10);
             //           data.length && this._opts.autoSetFitView && this.setFitView();
-            //         },
-            //   });
+                    },
+              });
              distCluster = new DistrictCluster({
                  zIndex: 100,
                  map: map, //所属的地图实例
@@ -1449,7 +1477,9 @@ export function* createmapmainflow(){
                   data.push(deviceitem);
                 }
               });
-              distCluster.setData(data);//无闪烁刷新行政区域个数信息
+              // distCluster.setData(data);//无闪烁刷新行政区域个数信息
+              //刷新数据调用无刷新方法
+              distCluster.setDataWithoutClear(data);
             }
           }
           catch(e){

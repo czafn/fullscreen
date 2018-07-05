@@ -78,8 +78,9 @@ import {
     getstatprovince_result,
     getstatcatlproject_result,
 
-    deviceext_request,
-    deviceext_result,
+    // deviceext_request,
+    // deviceext_result,
+    pushdeviceext,
     catl_request,
     catl_result,
   } from '../actions';
@@ -100,7 +101,8 @@ import {
 
 //接收的对应关系
 let recvmessagetoresultpair = {
-  'deviceext_result':deviceext_result,
+  'pushdeviceext':pushdeviceext,
+  // 'deviceext_result':deviceext_result,
   'catl_result':catl_result,
   'getcountcar_result':getcountcar_result,
   'getcountbus_result':getcountbus_result,
@@ -162,7 +164,7 @@ let sendmessagefnsz = {
 
 //验证发送接口
 let sendmessageauthfnsz = {
-  'deviceext':`${deviceext_request}`,
+  // 'deviceext':`${deviceext_request}`,
   'catl':`${catl_request}`,
 
   'getcountcar':`${getcountcar_request}`,

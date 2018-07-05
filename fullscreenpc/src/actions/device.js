@@ -5,6 +5,9 @@ export const querydevicegroup_result = createAction('querydevicegroup_result');
 //查询车辆【首页上的高级搜索】
 export const querydevice_request = createAction('querydevice_request');
 export const querydevice_result = createAction('querydevice_result');
+
+export const querydevicealarm_request = createAction('querydevicealarm_request');
+export const querydevicealarm_result = createAction('querydevicealarm_result');
 //获取一个device所有信息
 export const querydeviceinfo_request = createAction('querydeviceinfo_request');
 export const querydeviceinfo_result = createAction('querydeviceinfo_result');

@@ -1,6 +1,7 @@
 import { createReducer } from 'redux-act';
 import {
     notify_socket_connected,
+    set_uiapp,
     getsystemconfig_result_result,
     ui_showmenu,
     ui_showhistoryplay,
@@ -16,6 +17,8 @@ import {
 
 const initial = {
     app: {
+        ispopuserinfo:false,
+        ispoppwd:false,
         mappopfields:[],
         mappopclusterfields:[],
         mapdict:{},
@@ -37,6 +40,9 @@ const initial = {
 };
 
 const app = createReducer({
+    [set_uiapp]:(state,payload)=>{
+      return {...state,...payload};
+    },
     [ui_sel_tabindex]:(state,payload)=>{
         let tabindex = payload;
         return {...state,tabindex};

@@ -44,8 +44,7 @@ export function* uiflow(){//仅执行一次
     if(!!toast){
       yield call(popdialog,toast);
     }
-  });
-  //app点击底部菜单
+  });  //app点击底部菜单
   // yield takeLatest(`${ui_sel_tabindex}`, function*(action) {
   //   const {payload} = action;
   //   //console.log(`点击在线`);

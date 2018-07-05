@@ -1116,11 +1116,12 @@ export function* createmapmainflow(){
     yield takeLatest(`${querydevice_result}`, function*(deviceresult) {
       let {payload:{list:devicelist}} = deviceresult;
       try{
+          if(config.softmode !== 'fullapp'){
+
           while( !distCluster || !markCluster){
             console.log(`wait for discluster ${!!distCluster} or markCluster ${!!markCluster}`);
             yield call(delay,1000);
           }
-          console.log(`============>`);
           const SettingOfflineMinutes = g_SettingOfflineMinutes;
           //批量转换一次
           g_devicesdb = {};//清空，重新初始化
@@ -1149,8 +1150,6 @@ export function* createmapmainflow(){
             }
           });
           // console.log(`clear g_devicesdb...restart g_devicesdb...${data.length}`)
-          //distCluster.setData(data);
-          //第一次调用正常的方法
           distCluster.setData(data);
           // pointSimplifierIns.setData(data);
 
@@ -1180,6 +1179,7 @@ export function* createmapmainflow(){
           yield put(ui_showhugepoints(zoomlevel>=zoollevel_showhugepoints));
           yield put(ui_showdistcluster(zoomlevel<=zoollevel_showdistcluster));
 
+        }
         }
         catch(e){
           console.log(e.stack);

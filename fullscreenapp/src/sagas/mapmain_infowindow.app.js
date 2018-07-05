@@ -17,7 +17,7 @@ const createInfoWindow_popinfo =(data)=> {
       if(unit !== ''){
         showvalue = `${showvalue}${unit}`;
       }
-      return contenthtml = `${contenthtml}<li key=${i} className='show_${v.systemflag}'><span className='t'>${v.showname}</span><span>${showvalue}</span></li>`;
+      return contenthtml = `${contenthtml}<li key=${i} class='show_${v.systemflag}'><span class='t'>${v.showname}:</span><span>${showvalue}</span></li>`;
     })
     contenthtml = `${contenthtml}</ul>`;
 

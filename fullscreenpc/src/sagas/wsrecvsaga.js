@@ -37,6 +37,7 @@ import {
   // getusedyearbus_request,
   // getstatprovince_request,
   // getstatcatlproject_request,
+  querydevicealarm_request
 
 } from '../actions';
 import { goBack } from 'react-router-redux';//https://github.com/reactjs/react-router-redux
@@ -92,9 +93,15 @@ export function* wsrecvsagaflow() {
             yield put(login_result(result));
             if(result.loginsuccess){
               localStorage.setItem(`bms_${config.softmode}_token`,result.token);
+              if(config.softmode === 'fullapp'){
+                yield put(querydevicealarm_request({}));
+              }
+              else{
               yield put(querydevicegroup_request({}));
+              }
 
-              if(config.softmode === 'fullpc'){
+
+              if(config.softmode === 'fullpc' || config.softmode === 'fullapp'){
                 if(!!task_querycatldata){
                   yield cancel(task_querycatldata);
                 }
