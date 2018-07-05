@@ -14,7 +14,7 @@ const getqueryresult = (deviceextlist,query)=>{
   let getstatprovince = [];
   let getstatcatlproject = [];
 
-  console.log(deviceextlist);
+  // console.log(deviceextlist);
   // _id:"5b273fc99eae51428496e987"
   // DeviceId:"1627100503"
   // usedyear:"2004"
@@ -107,8 +107,8 @@ const getqueryresult = (deviceextlist,query)=>{
     }//matched
   }
 
-  console.log(mapprovincebus);
-  console.log(mapprovincecar);
+  // console.log(mapprovincebus);
+  // console.log(mapprovincecar);
 
   lodashmap(mapusedyearcar,(v,k)=>{
     getusedyearcar.push({
@@ -179,7 +179,7 @@ const getqueryresult = (deviceextlist,query)=>{
       value:v.countbus
     });
   }
-  console.log(getstatprovince);
+  // console.log(getstatprovince);
 
   //for project
   let project_keymapcount = [];
@@ -238,7 +238,7 @@ const getqueryresult = (deviceextlist,query)=>{
     getstatprovince,
     getstatcatlproject,
   };
-  console.log(`payload--->${JSON.stringify(payload)}`)
+  // console.log(`payload--->${JSON.stringify(payload)}`)
   return payload;
 }
 
