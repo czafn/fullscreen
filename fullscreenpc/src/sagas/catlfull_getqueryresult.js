@@ -28,7 +28,6 @@ const getqueryresult = (deviceextlist,query)=>{
   let mapcatlprojectnamecar = {};
   let mapcatlprojectnamebus = {};
 
-
   for(let i = 0 ;i < deviceextlist.length ; i++){
     const deviceextinfo = deviceextlist[i];
     let matched = false;
@@ -54,8 +53,10 @@ const getqueryresult = (deviceextlist,query)=>{
       matched = true;
     }
 
-    if((!isclickedprovince) || (isclickedprovince&&matchedprovince)){
-      //未点击省份，或者点击了省份,并且符合省份
+    // if((!isclickedprovince) || (isclickedprovince&&matchedprovince)){
+    if((!isclickedproject) || (isclickedproject&&matchedproject)){
+
+      //未点击项目，或者点击了项目,并且符合项目
       if(lodashget(deviceextinfo,'type') === 'CAR'){
         if(!!mapprovincecar[deviceextinfo.province]){
           mapprovincecar[deviceextinfo.province] += 1;
@@ -73,9 +74,9 @@ const getqueryresult = (deviceextlist,query)=>{
         }
       }
     }
-
-    if((!isclickedproject) || (isclickedproject&&matchedproject)){
-      //未点击项目，或者点击了项目,并且符合项目
+    if((!isclickedprovince) || (isclickedprovince&&matchedprovince)){
+    // if((!isclickedproject) || (isclickedproject&&matchedproject)){
+      //未点击省份，或者点击了省份,并且符合省份
       if(lodashget(deviceextinfo,'type') === 'CAR'){
         if(!!mapcatlprojectnamecar[deviceextinfo.catlprojectname]){
           mapcatlprojectnamecar[deviceextinfo.catlprojectname] += 1;
