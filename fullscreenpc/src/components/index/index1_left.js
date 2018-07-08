@@ -168,7 +168,7 @@ class AppRoot extends React.Component {
                                 {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                 {query['province'] !== undefined ? query.province+'-' : ''}
 
-                                E-BUS-车辆使用年限
+                                E-BUS-使用年限
                               </div>
                               <div className="cbody-right-box year">
                                 <BusYear></BusYear>
@@ -179,7 +179,7 @@ class AppRoot extends React.Component {
                               <div className="cbody-right-title-top">
                                 {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                 {query['province'] !== undefined ? query.province+'-' : ''}
-                                E-CAR-车辆使用年限
+                                E-CAR-使用年限
                               </div>
                               <div className="cbody-right-box">
                                 <CarYear></CarYear>
