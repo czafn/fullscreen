@@ -32,50 +32,70 @@ const getqueryresult = (deviceextlist,query)=>{
   for(let i = 0 ;i < deviceextlist.length ; i++){
     const deviceextinfo = deviceextlist[i];
     let matched = false;
+    let isclickedproject = false;
+    let isclickedprovince = false;
+    let matchedproject = false;
+    let matchedprovince = false;
     if(!!query['catlprojectname']){
+      isclickedproject = true;
       if(deviceextinfo.catlprojectname === query['catlprojectname']){
         matched = true;
+        matchedproject = true;
       }
     }
     else if(!!query['province']){
+      isclickedprovince = true;
       if(deviceextinfo.province === query['province']){
         matched = true;
+        matchedprovince = true;
       }
     }
     else{
       matched = true;
     }
 
-    if(lodashget(deviceextinfo,'type') === 'CAR'){
-      if(!!mapprovincecar[deviceextinfo.province]){
-        mapprovincecar[deviceextinfo.province] += 1;
-      }
-      else{
+    if((!isclickedprovince) || (isclickedprovince&&matchedprovince)){
+      //未点击省份，或者点击了省份,并且符合省份
+      if(lodashget(deviceextinfo,'type') === 'CAR'){
+        if(!!mapprovincecar[deviceextinfo.province]){
+          mapprovincecar[deviceextinfo.province] += 1;
+        }
+        else{
           mapprovincecar[deviceextinfo.province] = 1;
+        }
       }
-      if(!!mapcatlprojectnamecar[deviceextinfo.catlprojectname]){
-        mapcatlprojectnamecar[deviceextinfo.catlprojectname] += 1;
-      }
-      else{
-          mapcatlprojectnamecar[deviceextinfo.catlprojectname] = 1;
-      }
-    }
-    if(lodashget(deviceextinfo,'type') === 'BUS'){
-      if(!!mapprovincebus[deviceextinfo.province]){
-        mapprovincebus[deviceextinfo.province] += 1;
-      }
-      else{
-        mapprovincebus[deviceextinfo.province] = 1;
-      }
-      if(!!mapcatlprojectnamebus[deviceextinfo.catlprojectname]){
-        mapcatlprojectnamebus[deviceextinfo.catlprojectname] += 1;
-      }
-      else{
-        mapcatlprojectnamebus[deviceextinfo.catlprojectname] = 1;
+      if(lodashget(deviceextinfo,'type') === 'BUS'){
+        if(!!mapprovincebus[deviceextinfo.province]){
+          mapprovincebus[deviceextinfo.province] += 1;
+        }
+        else{
+          mapprovincebus[deviceextinfo.province] = 1;
+        }
       }
     }
 
-    if(matched){
+    if((!isclickedproject) || (isclickedproject&&matchedproject)){
+      //未点击项目，或者点击了项目,并且符合项目
+      if(lodashget(deviceextinfo,'type') === 'CAR'){
+        if(!!mapcatlprojectnamecar[deviceextinfo.catlprojectname]){
+          mapcatlprojectnamecar[deviceextinfo.catlprojectname] += 1;
+        }
+        else{
+          mapcatlprojectnamecar[deviceextinfo.catlprojectname] = 1;
+        }
+      }
+      if(lodashget(deviceextinfo,'type') === 'BUS'){
+        if(!!mapcatlprojectnamebus[deviceextinfo.catlprojectname]){
+          mapcatlprojectnamebus[deviceextinfo.catlprojectname] += 1;
+        }
+        else{
+          mapcatlprojectnamebus[deviceextinfo.catlprojectname] = 1;
+        }
+      }
+    }
+
+
+    if(matched){//当前符合过滤条件
       let mapusedyear = mapusedyearcar;
       if(lodashget(deviceextinfo,'type') === 'BUS'){
         mapusedyear =  mapusedyearbus;
