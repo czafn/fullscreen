@@ -78,7 +78,7 @@ class AppRoot extends React.Component {
                       </div>
                       <div className="titleNumCol titleNumCol-right titleTime">
                           <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-D') }</div>
-                          <div className="title-right-buttom">{moment(this.state.nowday).format('hh:mm:ss') }</div>
+                          <div className="title-right-buttom">{moment(this.state.nowday).format('HH:mm:ss') }</div>
                       </div>
 
                   </div>
@@ -91,20 +91,22 @@ class AppRoot extends React.Component {
                                   <div className="cbody-right-title-top">
                                     {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                     {query['province'] !== undefined ? query.province+'-' : ''}
-                                    CAR-车辆使用年限
+                                    E-BUS-使用年限
                                   </div>
                                   <div className="cbody-right-box year">
-                                      <CarYear></CarYear>
+                                    <BusYear></BusYear>
                                   </div>
                               </div>
                               <div style={{height: "50%"}}>
                                   <div className="cbody-right-title">
                                     {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                     {query['province'] !== undefined ? query.province+'-' : ''}
-                                      BUS-车辆使用年限
+
+                                    E-CAR-使用年限
                                   </div>
                                   <div className="cbody-right-box">
-                                      <BusYear></BusYear>
+                                    <CarYear></CarYear>
+
                                   </div>
                               </div>
 

@@ -202,7 +202,7 @@ class AppRoot extends React.Component {
                       </div>
                       <div className="titleNumCol titleNumCol-right titleTime">
                           <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-D') }</div>
-                          <div className="title-right-buttom">{moment(this.state.nowday).format('hh:mm:ss') }</div>
+                          <div className="title-right-buttom">{moment(this.state.nowday).format('HH:mm:ss') }</div>
                       </div>
 
                   </div>

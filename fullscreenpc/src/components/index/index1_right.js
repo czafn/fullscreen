@@ -104,7 +104,7 @@ class AppRoot extends React.Component {
                           </div>
                         <div className="titleNumCol titleNumCol-right titleTime" style={{lineHeight:'30px',marginLeft: '20px'}}>
                           <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-DD') }</div>
-                          <div className="title-right-buttom">{moment(this.state.nowday).format('hh:mm:ss') }</div>
+                          <div className="title-right-buttom">{moment(this.state.nowday).format('HH:mm:ss') }</div>
                         </div>
                           {/*<div className="titleNumCol">*/}
                               {/*<div className="title-center-title"><img src="index/top.png" alt=""></img>今日新增</div>*/}
