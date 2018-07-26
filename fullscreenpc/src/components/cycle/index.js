@@ -336,6 +336,14 @@ const getOptionSelector = createSelector(
           // trigger: 'axis'
         },
         xAxis: [{
+          name:'个',
+          nameLocation:'end',
+          nameGap:3,
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(255,255,255,1.0)',
+          },
           show: true,
           data: [],
           axisTick: {
@@ -354,7 +362,7 @@ const getOptionSelector = createSelector(
         }],
         grid:{
           bottom: 40,
-          top: 20,
+          top: 30,
           right:20,
         },
         visualMap: {
@@ -366,6 +374,14 @@ const getOptionSelector = createSelector(
           }
         },
         yAxis: {
+          name:'车次         ',
+          // nameLocation:'middle',
+          nameGap:'13',
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(255,255,255,1.0)',
+          },
           axisLine: {
             show: false,
             lineStyle: {

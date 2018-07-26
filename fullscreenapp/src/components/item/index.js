@@ -190,7 +190,7 @@ const statcatlprojectSelector = createSelector(
           itemGap: 16,
           itemWidth: 18,
           itemHeight: 10,
-          data:['CAR', 'BUS'],
+          data:['乘用车', '客车'],
           textStyle: {
             color: '#a8aab0',
             fontStyle: 'normal',
@@ -259,7 +259,7 @@ const statcatlprojectSelector = createSelector(
         },
         series: [
           {
-            name: 'CAR',
+            name: '乘用车',
             type: 'bar',
             barWidth: '25%',
             itemStyle: {
@@ -278,7 +278,7 @@ const statcatlprojectSelector = createSelector(
             data: []
           },
           {
-            name: 'BUS',
+            name: '客车',
             type: 'bar',
             barWidth: '25%',
             itemStyle: {

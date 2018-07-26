@@ -224,7 +224,7 @@ const mapStateToProps = ({deviceext}) => {
         // orient: 'vertical',
         left: 'center',
         top:20,
-        data: [{name: 'CAR', textStyle: {color: 'rgba(0, 168, 255, 1)'}}, {name: 'BUS', textStyle: {color: 'rgba(255, 179, 1, 1)'}}],
+        data: [{name: '乘用车', textStyle: {color: 'rgba(0, 168, 255, 1)'}}, {name: '客车', textStyle: {color: 'rgba(255, 179, 1, 1)'}}],
 
       },
       grid: {
@@ -287,7 +287,7 @@ const mapStateToProps = ({deviceext}) => {
       },
       series: [
         {
-          name: 'CAR',
+          name: '乘用车',
           type: 'map',
           top:20,
           // left:20,
@@ -316,7 +316,7 @@ const mapStateToProps = ({deviceext}) => {
           ]
         },
         {
-          name: 'BUS',
+          name: '客车',
           type: 'map',
           mapType: 'china',
           itemStyle: {
@@ -340,7 +340,7 @@ const mapStateToProps = ({deviceext}) => {
           ]
         },
         {
-          name: 'CAR',
+          name: '乘用车',
           type: 'bar',
           // barGap: '50%',
           barWidth: '30%',
@@ -358,7 +358,7 @@ const mapStateToProps = ({deviceext}) => {
           z: -12,
           data: []
         }, {
-          name: 'CAR',
+          name: '乘用车',
           type: 'pictorialBar',
           symbol: 'rect',
           itemStyle: {
@@ -373,7 +373,7 @@ const mapStateToProps = ({deviceext}) => {
           data: []
         },
         {
-          name: 'BUS',
+          name: '客车',
           type: 'bar',
           // barGap: '50%',
           barWidth: '30%',
@@ -391,7 +391,7 @@ const mapStateToProps = ({deviceext}) => {
           z: -12,
           data: []
         }, {
-          name: 'BUS',
+          name: '客车',
           type: 'pictorialBar',
           barGap: '-0%',
           symbol: 'rect',

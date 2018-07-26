@@ -102,6 +102,14 @@ const getOptionSelector = createSelector(
           show:true
         },
         xAxis: [{
+          name:'次',
+          nameLocation:'end',
+          nameGap:8,
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(255,255,255,1.0)',
+          },
           show: true,
           data: [],
           axisTick: {
@@ -120,8 +128,8 @@ const getOptionSelector = createSelector(
         }],
         grid:{
           bottom: 40,
-          top: 10,
-          right:20,
+          top: 30,
+          right:30,
         },
         visualMap: {
           show: false,
@@ -132,6 +140,13 @@ const getOptionSelector = createSelector(
           }
         },
         yAxis: {
+          name:'车次         ',
+          nameGap:'13',
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(255,255,255,1.0)',
+          },
           axisLine: {
             show: false,
             lineStyle: {

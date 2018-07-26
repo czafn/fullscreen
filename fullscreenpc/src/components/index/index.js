@@ -84,7 +84,7 @@ class AppRoot extends React.Component {
                       <div className="cbody-left-center">
                           <div className="left-top-left">
                               <div className="cbody-left-top-title">
-                                  Cycle数
+                                  循环数
                               </div>
                               <div className="cbody-left-top-box">
                                   <Cycle></Cycle>
@@ -182,7 +182,7 @@ class AppRoot extends React.Component {
               <div className="right">
                   <div className="title-right">
                       <div className="titleNumCol titleNumCol-right">
-                          <div className="title-center-title"><img src="index/top.png" alt=""></img>E-BUS车辆</div>
+                          <div className="title-center-title"><img src="index/top.png" alt=""></img>客车</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
                                   <span className="title-center-content-num">{rightIndex.bus}</span>
@@ -191,7 +191,7 @@ class AppRoot extends React.Component {
                           </div>
                       </div>
                       <div className="titleNumCol">
-                          <div className="title-center-title"><img src="index/top.png" alt=""></img>E-CAR车辆</div>
+                          <div className="title-center-title"><img src="index/top.png" alt=""></img>乘用车</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
                                   <span className="title-center-content-num">{rightIndex.car}</span>
@@ -214,7 +214,7 @@ class AppRoot extends React.Component {
                                   <div className="cbody-right-title-top">
                                     {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                     {query['province'] !== undefined ? query.province+'-' : ''}
-                                    E-BUS-使用年限
+                                    客车-使用年限
                                   </div>
                                   <div className="cbody-right-box year">
 
@@ -225,7 +225,7 @@ class AppRoot extends React.Component {
                                   <div className="cbody-right-title">
                                     {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
                                     {query['province'] !== undefined ? query.province+'-' : ''}
-                                    E-CAR-使用年限
+                                    乘用车-使用年限
                                   </div>
                                   <div className="cbody-right-box">
                                     <CarYear></CarYear>

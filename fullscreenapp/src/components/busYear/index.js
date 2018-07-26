@@ -107,7 +107,7 @@ class Page extends React.Component {
       let {option, pickerProvice, pickerProjects} = this.props;
       return (
           <Chart >
-            <div className="crumbsTitle">BUS-车辆使用年限</div>
+            <div className="crumbsTitle">客车-车辆使用年限</div>
             <div className="flex-container">
               <Flex>
                 <Flex.Item>

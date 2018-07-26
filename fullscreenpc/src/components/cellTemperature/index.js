@@ -531,7 +531,7 @@ const getOptionSelector = createSelector(
         }],
         grid:{
           bottom: 40,
-          top: 20,
+          top: 30,
           right:20,
         },
         visualMap: {
@@ -544,6 +544,13 @@ const getOptionSelector = createSelector(
           }
         },
         yAxis: {
+          name:'车次         ',
+          nameGap:'13',
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(255,255,255,1.0)',
+          },
           axisLine: {
             show: false,
             lineStyle: {

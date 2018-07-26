@@ -752,7 +752,7 @@ const getOptionSelector = createSelector(
           nameTextStyle:{
             fontSize: 12,
             padding:[30, 0, 0, 0],
-            color: 'rgba(255,255,255,1.0)',
+            color: 'rgba(18,28,38,1.0)',
           }
         }],
         grid:{
@@ -769,6 +769,13 @@ const getOptionSelector = createSelector(
           }
         },
         yAxis: {
+          name:'车次      ',
+          nameGap:5,
+          nameTextStyle:{
+            fontSize: 12,
+            padding:[30, 0, 0, 0],
+            color: 'rgba(18,28,38,1.0)',
+          },
           axisLine: {
             show: false,
             lineStyle: {
