@@ -1,0 +1,2881 @@
+[{
+	"citycode": "1391",
+	"adcode": "419001",
+	"province": "河南省",
+	"city": "河南省",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1433",
+	"adcode": "222404",
+	"province": "吉林省",
+	"city": "延边朝鲜族自治州",
+	"BUS": 4,
+	"CAR": 6,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1558",
+	"adcode": "341221",
+	"province": "安徽省",
+	"city": "阜阳市",
+	"BUS": 161,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1728",
+	"adcode": "429006",
+	"province": "湖北省",
+	"city": "湖北省",
+	"BUS": 10,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1755",
+	"adcode": "450802",
+	"province": "广西壮族自治区",
+	"city": "贵港市",
+	"BUS": 14,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1772",
+	"adcode": "451321",
+	"province": "广西壮族自治区",
+	"city": "来宾市",
+	"BUS": 5,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1774",
+	"adcode": "451123",
+	"province": "广西壮族自治区",
+	"city": "贺州市",
+	"BUS": 28,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1832",
+	"adcode": "511002",
+	"province": "四川省",
+	"city": "内江市",
+	"BUS": 90,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1833",
+	"adcode": "511421",
+	"province": "四川省",
+	"city": "眉山市",
+	"BUS": 44,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1852",
+	"adcode": "810012",
+	"province": "香港特別行政區",
+	"city": "香港特別行政區",
+	"BUS": 4,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1853",
+	"adcode": "820001",
+	"province": "澳門特別行政區",
+	"city": "澳門特別行政區",
+	"BUS": 36,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1894",
+	"adcode": "469002",
+	"province": "海南省",
+	"city": "海南省",
+	"BUS": 6,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1897",
+	"adcode": "469001",
+	"province": "海南省",
+	"city": "海南省",
+	"BUS": 16,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1898",
+	"adcode": "469006",
+	"province": "海南省",
+	"city": "海南省",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1935",
+	"adcode": "620602",
+	"province": "甘肃省",
+	"city": "武威市",
+	"BUS": 120,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1937",
+	"adcode": "620200",
+	"province": "甘肃省",
+	"city": "嘉峪关市",
+	"BUS": 5,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "1996",
+	"adcode": "659006",
+	"province": "新疆维吾尔自治区",
+	"city": "新疆维吾尔自治区",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "2935",
+	"adcode": "621202",
+	"province": "甘肃省",
+	"city": "陇南市",
+	"BUS": 85,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0831",
+	"adcode": "511502",
+	"province": "四川省",
+	"city": "宜宾市",
+	"BUS": 2,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "021",
+	"adcode": "310151",
+	"province": "上海市",
+	"city": "上海市",
+	"BUS": 91,
+	"CAR": 96,
+	"ENERGYTRUCK": 2,
+	"CONTAINERTRUCK": 2
+}, {
+	"citycode": "0591",
+	"adcode": "350181",
+	"province": "福建省",
+	"city": "福州市",
+	"BUS": 11,
+	"CAR": 23,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0576",
+	"adcode": "331081",
+	"province": "浙江省",
+	"city": "台州市",
+	"BUS": 278,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0596",
+	"adcode": "350681",
+	"province": "福建省",
+	"city": "漳州市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0755",
+	"adcode": "440306",
+	"province": "广东省",
+	"city": "深圳市",
+	"BUS": 12,
+	"CAR": 36,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0595",
+	"adcode": "350503",
+	"province": "福建省",
+	"city": "泉州市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0816",
+	"adcode": "510703",
+	"province": "四川省",
+	"city": "绵阳市",
+	"BUS": 6,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0561",
+	"adcode": "340603",
+	"province": "安徽省",
+	"city": "淮北市",
+	"BUS": 31,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0662",
+	"adcode": "441702",
+	"province": "广东省",
+	"city": "阳江市",
+	"BUS": 158,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0411",
+	"adcode": "210213",
+	"province": "辽宁省",
+	"city": "大连市",
+	"BUS": 2,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "028",
+	"adcode": "510116",
+	"province": "四川省",
+	"city": "成都市",
+	"BUS": 26,
+	"CAR": 38,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0633",
+	"adcode": "371102",
+	"province": "山东省",
+	"city": "日照市",
+	"BUS": 135,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0571",
+	"adcode": "330106",
+	"province": "浙江省",
+	"city": "杭州市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0716",
+	"adcode": "421081",
+	"province": "湖北省",
+	"city": "荆州市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "024",
+	"adcode": "210105",
+	"province": "辽宁省",
+	"city": "沈阳市",
+	"BUS": 3,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0577",
+	"adcode": "330326",
+	"province": "浙江省",
+	"city": "温州市",
+	"BUS": 2,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0818",
+	"adcode": "511724",
+	"province": "四川省",
+	"city": "达州市",
+	"BUS": 54,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0834",
+	"adcode": "513401",
+	"province": "四川省",
+	"city": "凉山彝族自治州",
+	"BUS": 54,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0574",
+	"adcode": "330206",
+	"province": "浙江省",
+	"city": "宁波市",
+	"BUS": 146,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "027",
+	"adcode": "420114",
+	"province": "湖北省",
+	"city": "武汉市",
+	"BUS": 2,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0756",
+	"adcode": "440402",
+	"province": "广东省",
+	"city": "珠海市",
+	"BUS": 432,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0769",
+	"adcode": "441900",
+	"province": "广东省",
+	"city": "东莞市",
+	"BUS": 4,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "023",
+	"adcode": "500107",
+	"province": "重庆市",
+	"city": "重庆市",
+	"BUS": 2,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0719",
+	"adcode": "420302",
+	"province": "湖北省",
+	"city": "十堰市",
+	"BUS": 2,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0593",
+	"adcode": "350902",
+	"province": "福建省",
+	"city": "宁德市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": [],
+	"adcode": [],
+	"province": [],
+	"city": [],
+	"BUS": 14,
+	"CAR": 11,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0858",
+	"adcode": "520201",
+	"province": "贵州省",
+	"city": "六盘水市",
+	"BUS": 3,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "020",
+	"adcode": "440114",
+	"province": "广东省",
+	"city": "广州市",
+	"BUS": 14,
+	"CAR": 16,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0594",
+	"adcode": "350302",
+	"province": "福建省",
+	"city": "莆田市",
+	"BUS": 3,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "025",
+	"adcode": "320113",
+	"province": "江苏省",
+	"city": "南京市",
+	"BUS": 1238,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0759",
+	"adcode": "440803",
+	"province": "广东省",
+	"city": "湛江市",
+	"BUS": 43,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0592",
+	"adcode": "350203",
+	"province": "福建省",
+	"city": "厦门市",
+	"BUS": 2,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0454",
+	"adcode": "230804",
+	"province": "黑龙江省",
+	"city": "佳木斯市",
+	"BUS": 262,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0752",
+	"adcode": "441303",
+	"province": "广东省",
+	"city": "惠州市",
+	"BUS": 3,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0427",
+	"adcode": "211103",
+	"province": "辽宁省",
+	"city": "盘锦市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0792",
+	"adcode": "360404",
+	"province": "江西省",
+	"city": "九江市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0812",
+	"adcode": "510402",
+	"province": "四川省",
+	"city": "攀枝花市",
+	"BUS": 19,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0432",
+	"adcode": "220204",
+	"province": "吉林省",
+	"city": "吉林市",
+	"BUS": 50,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0899",
+	"adcode": "460203",
+	"province": "海南省",
+	"city": "三亚市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0518",
+	"adcode": "320707",
+	"province": "江苏省",
+	"city": "连云港市",
+	"BUS": 260,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0532",
+	"adcode": "370281",
+	"province": "山东省",
+	"city": "青岛市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0838",
+	"adcode": "510682",
+	"province": "四川省",
+	"city": "德阳市",
+	"BUS": 3,
+	"CAR": 6,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0857",
+	"adcode": "520523",
+	"province": "贵州省",
+	"city": "毕节市",
+	"BUS": 50,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0374",
+	"adcode": "411003",
+	"province": "河南省",
+	"city": "许昌市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0376",
+	"adcode": "411502",
+	"province": "河南省",
+	"city": "信阳市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0910",
+	"adcode": "610402",
+	"province": "陕西省",
+	"city": "咸阳市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0745",
+	"adcode": "431225",
+	"province": "湖南省",
+	"city": "怀化市",
+	"BUS": 177,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0573",
+	"adcode": "330482",
+	"province": "浙江省",
+	"city": "嘉兴市",
+	"BUS": 90,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "029",
+	"adcode": "610103",
+	"province": "陕西省",
+	"city": "西安市",
+	"BUS": 16,
+	"CAR": 14,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0580",
+	"adcode": "330903",
+	"province": "浙江省",
+	"city": "舟山市",
+	"BUS": 16,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0827",
+	"adcode": "511921",
+	"province": "四川省",
+	"city": "巴中市",
+	"BUS": 13,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0631",
+	"adcode": "371002",
+	"province": "山东省",
+	"city": "威海市",
+	"BUS": 56,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0566",
+	"adcode": "341721",
+	"province": "安徽省",
+	"city": "池州市",
+	"BUS": 31,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0398",
+	"adcode": "411221",
+	"province": "河南省",
+	"city": "三门峡市",
+	"BUS": 42,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0914",
+	"adcode": "611026",
+	"province": "陕西省",
+	"city": "商洛市",
+	"BUS": 16,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0931",
+	"adcode": "620111",
+	"province": "甘肃省",
+	"city": "兰州市",
+	"BUS": 279,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0712",
+	"adcode": "420902",
+	"province": "湖北省",
+	"city": "孝感市",
+	"BUS": 67,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0903",
+	"adcode": "653223",
+	"province": "新疆维吾尔自治区",
+	"city": "和田地区",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0728",
+	"adcode": "429004",
+	"province": "湖北省",
+	"city": "湖北省",
+	"BUS": 31,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0972",
+	"adcode": "630222",
+	"province": "青海省",
+	"city": "海东市",
+	"BUS": 22,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0535",
+	"adcode": "370602",
+	"province": "山东省",
+	"city": "烟台市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0909",
+	"adcode": "652701",
+	"province": "新疆维吾尔自治区",
+	"city": "博尔塔拉蒙古自治州",
+	"BUS": 59,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0395",
+	"adcode": "411102",
+	"province": "河南省",
+	"city": "漯河市",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0817",
+	"adcode": "511304",
+	"province": "四川省",
+	"city": "南充市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0760",
+	"adcode": "442000",
+	"province": "广东省",
+	"city": "中山市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0898",
+	"adcode": "460108",
+	"province": "海南省",
+	"city": "海口市",
+	"BUS": 499,
+	"CAR": 12,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0415",
+	"adcode": "210603",
+	"province": "辽宁省",
+	"city": "丹东市",
+	"BUS": 44,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0377",
+	"adcode": "411303",
+	"province": "河南省",
+	"city": "南阳市",
+	"BUS": 236,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0757",
+	"adcode": "440608",
+	"province": "广东省",
+	"city": "佛山市",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0315",
+	"adcode": "130224",
+	"province": "河北省",
+	"city": "唐山市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0510",
+	"adcode": "320211",
+	"province": "江苏省",
+	"city": "无锡市",
+	"BUS": 1,
+	"CAR": 10,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0805",
+	"adcode": "460400",
+	"province": "海南省",
+	"city": "儋州市",
+	"BUS": 50,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0393",
+	"adcode": "410902",
+	"province": "河南省",
+	"city": "濮阳市",
+	"BUS": 179,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0722",
+	"adcode": "421303",
+	"province": "湖北省",
+	"city": "随州市",
+	"BUS": 72,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0832",
+	"adcode": "512022",
+	"province": "四川省",
+	"city": "资阳市",
+	"BUS": 15,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0754",
+	"adcode": "440511",
+	"province": "广东省",
+	"city": "汕头市",
+	"BUS": 92,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0830",
+	"adcode": "510503",
+	"province": "四川省",
+	"city": "泸州市",
+	"BUS": 1,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0429",
+	"adcode": "211481",
+	"province": "辽宁省",
+	"city": "葫芦岛市",
+	"BUS": 126,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0852",
+	"adcode": "520329",
+	"province": "贵州省",
+	"city": "遵义市",
+	"BUS": 173,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0635",
+	"adcode": "371522",
+	"province": "山东省",
+	"city": "聊城市",
+	"BUS": 322,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0813",
+	"adcode": "510311",
+	"province": "四川省",
+	"city": "自贡市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0779",
+	"adcode": "450521",
+	"province": "广西壮族自治区",
+	"city": "北海市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0825",
+	"adcode": "510904",
+	"province": "四川省",
+	"city": "遂宁市",
+	"BUS": 3,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0770",
+	"adcode": "450603",
+	"province": "广西壮族自治区",
+	"city": "防城港市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0750",
+	"adcode": "440784",
+	"province": "广东省",
+	"city": "江门市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0371",
+	"adcode": "410122",
+	"province": "河南省",
+	"city": "郑州市",
+	"BUS": 7,
+	"CAR": 34,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0513",
+	"adcode": "320681",
+	"province": "江苏省",
+	"city": "南通市",
+	"BUS": 147,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "010",
+	"adcode": "110115",
+	"province": "北京市",
+	"city": "北京市",
+	"BUS": 8,
+	"CAR": 7,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0771",
+	"adcode": "450107",
+	"province": "广西壮族自治区",
+	"city": "南宁市",
+	"BUS": 15,
+	"CAR": 9,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0431",
+	"adcode": "220122",
+	"province": "吉林省",
+	"city": "长春市",
+	"BUS": 2,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0579",
+	"adcode": "330703",
+	"province": "浙江省",
+	"city": "金华市",
+	"BUS": 2,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0710",
+	"adcode": "420607",
+	"province": "湖北省",
+	"city": "襄阳市",
+	"BUS": 3,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0746",
+	"adcode": "431103",
+	"province": "湖南省",
+	"city": "永州市",
+	"BUS": 611,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0715",
+	"adcode": "421281",
+	"province": "湖北省",
+	"city": "咸宁市",
+	"BUS": 121,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0482",
+	"adcode": "152201",
+	"province": "内蒙古自治区",
+	"city": "兴安盟",
+	"BUS": 101,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0531",
+	"adcode": "370114",
+	"province": "山东省",
+	"city": "济南市",
+	"BUS": 681,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0888",
+	"adcode": "530721",
+	"province": "云南省",
+	"city": "丽江市",
+	"BUS": 71,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0555",
+	"adcode": "340504",
+	"province": "安徽省",
+	"city": "马鞍山市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0994",
+	"adcode": "652328",
+	"province": "新疆维吾尔自治区",
+	"city": "昌吉回族自治州",
+	"BUS": 41,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0536",
+	"adcode": "370784",
+	"province": "山东省",
+	"city": "潍坊市",
+	"BUS": 302,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0550",
+	"adcode": "341125",
+	"province": "安徽省",
+	"city": "滁州市",
+	"BUS": 115,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "022",
+	"adcode": "120110",
+	"province": "天津市",
+	"city": "天津市",
+	"BUS": 1,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0718",
+	"adcode": "422801",
+	"province": "湖北省",
+	"city": "恩施土家族苗族自治州",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0451",
+	"adcode": "230102",
+	"province": "黑龙江省",
+	"city": "哈尔滨市",
+	"BUS": 11,
+	"CAR": 18,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0733",
+	"adcode": "430211",
+	"province": "湖南省",
+	"city": "株洲市",
+	"BUS": 4,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0512",
+	"adcode": "320583",
+	"province": "江苏省",
+	"city": "苏州市",
+	"BUS": 390,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0511",
+	"adcode": "321102",
+	"province": "江苏省",
+	"city": "镇江市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0835",
+	"adcode": "511802",
+	"province": "四川省",
+	"city": "雅安市",
+	"BUS": 4,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0537",
+	"adcode": "370832",
+	"province": "山东省",
+	"city": "济宁市",
+	"BUS": 3,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0766",
+	"adcode": "445302",
+	"province": "广东省",
+	"city": "云浮市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0809",
+	"adcode": "469028",
+	"province": "海南省",
+	"city": "海南省",
+	"BUS": 68,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0774",
+	"adcode": "450405",
+	"province": "广西壮族自治区",
+	"city": "梧州市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0954",
+	"adcode": "640423",
+	"province": "宁夏回族自治区",
+	"city": "固原市",
+	"BUS": 53,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0794",
+	"adcode": "361003",
+	"province": "江西省",
+	"city": "抚州市",
+	"BUS": 123,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0912",
+	"adcode": "610881",
+	"province": "陕西省",
+	"city": "榆林市",
+	"BUS": 96,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0795",
+	"adcode": "360981",
+	"province": "江西省",
+	"city": "宜春市",
+	"BUS": 2,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0791",
+	"adcode": "360121",
+	"province": "江西省",
+	"city": "南昌市",
+	"BUS": 1385,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0731",
+	"adcode": "430104",
+	"province": "湖南省",
+	"city": "长沙市",
+	"BUS": 18,
+	"CAR": 27,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0796",
+	"adcode": "360802",
+	"province": "江西省",
+	"city": "吉安市",
+	"BUS": 178,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0516",
+	"adcode": "320305",
+	"province": "江苏省",
+	"city": "徐州市",
+	"BUS": 1,
+	"CAR": 7,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0871",
+	"adcode": "530129",
+	"province": "云南省",
+	"city": "昆明市",
+	"BUS": 2,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0313",
+	"adcode": "130703",
+	"province": "河北省",
+	"city": "张家口市",
+	"BUS": 25,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0456",
+	"adcode": "231182",
+	"province": "黑龙江省",
+	"city": "黑河市",
+	"BUS": 29,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0758",
+	"adcode": "441284",
+	"province": "广东省",
+	"city": "肇庆市",
+	"BUS": 202,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0886",
+	"adcode": "533301",
+	"province": "云南省",
+	"city": "怒江傈僳族自治州",
+	"BUS": 22,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0991",
+	"adcode": "650104",
+	"province": "新疆维吾尔自治区",
+	"city": "乌鲁木齐市",
+	"BUS": 8,
+	"CAR": 10,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0417",
+	"adcode": "210802",
+	"province": "辽宁省",
+	"city": "营口市",
+	"BUS": 94,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0873",
+	"adcode": "532502",
+	"province": "云南省",
+	"city": "红河哈尼族彝族自治州",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0435",
+	"adcode": "220521",
+	"province": "吉林省",
+	"city": "通化市",
+	"BUS": 132,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0833",
+	"adcode": "511123",
+	"province": "四川省",
+	"city": "乐山市",
+	"BUS": 18,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0772",
+	"adcode": "450204",
+	"province": "广西壮族自治区",
+	"city": "柳州市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0416",
+	"adcode": "210702",
+	"province": "辽宁省",
+	"city": "锦州市",
+	"BUS": 21,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0551",
+	"adcode": "340111",
+	"province": "安徽省",
+	"city": "合肥市",
+	"BUS": 75,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0318",
+	"adcode": "131125",
+	"province": "河北省",
+	"city": "衡水市",
+	"BUS": 268,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0773",
+	"adcode": "450304",
+	"province": "广西壮族自治区",
+	"city": "桂林市",
+	"BUS": 93,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0378",
+	"adcode": "410225",
+	"province": "河南省",
+	"city": "开封市",
+	"BUS": 38,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0475",
+	"adcode": "150581",
+	"province": "内蒙古自治区",
+	"city": "通辽市",
+	"BUS": 126,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0317",
+	"adcode": "130927",
+	"province": "河北省",
+	"city": "沧州市",
+	"BUS": 134,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0597",
+	"adcode": "350802",
+	"province": "福建省",
+	"city": "龙岩市",
+	"BUS": 319,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0552",
+	"adcode": "340302",
+	"province": "安徽省",
+	"city": "蚌埠市",
+	"BUS": 20,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0572",
+	"adcode": "330522",
+	"province": "浙江省",
+	"city": "湖州市",
+	"BUS": 92,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0735",
+	"adcode": "431027",
+	"province": "湖南省",
+	"city": "郴州市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0851",
+	"adcode": "520111",
+	"province": "贵州省",
+	"city": "贵阳市",
+	"BUS": 298,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0870",
+	"adcode": "530628",
+	"province": "云南省",
+	"city": "昭通市",
+	"BUS": 40,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0375",
+	"adcode": "410481",
+	"province": "河南省",
+	"city": "平顶山市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0743",
+	"adcode": "433130",
+	"province": "湖南省",
+	"city": "湘西土家族苗族自治州",
+	"BUS": 2,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0736",
+	"adcode": "430702",
+	"province": "湖南省",
+	"city": "常德市",
+	"BUS": 1,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0876",
+	"adcode": "532627",
+	"province": "云南省",
+	"city": "文山壮族苗族自治州",
+	"BUS": 43,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0562",
+	"adcode": "340706",
+	"province": "安徽省",
+	"city": "铜陵市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0434",
+	"adcode": "220322",
+	"province": "吉林省",
+	"city": "四平市",
+	"BUS": 32,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0776",
+	"adcode": "451081",
+	"province": "广西壮族自治区",
+	"city": "百色市",
+	"BUS": 2,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0734",
+	"adcode": "430482",
+	"province": "湖南省",
+	"city": "衡阳市",
+	"BUS": 121,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0310",
+	"adcode": "130425",
+	"province": "河北省",
+	"city": "邯郸市",
+	"BUS": 73,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0419",
+	"adcode": "211002",
+	"province": "辽宁省",
+	"city": "辽阳市",
+	"BUS": 98,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0312",
+	"adcode": "130682",
+	"province": "河北省",
+	"city": "保定市",
+	"BUS": 4,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0732",
+	"adcode": "430302",
+	"province": "湖南省",
+	"city": "湘潭市",
+	"BUS": 44,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0418",
+	"adcode": "210911",
+	"province": "辽宁省",
+	"city": "阜新市",
+	"BUS": 3,
+	"CAR": 6,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0394",
+	"adcode": "411626",
+	"province": "河南省",
+	"city": "周口市",
+	"BUS": 347,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0373",
+	"adcode": "410704",
+	"province": "河南省",
+	"city": "新乡市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0578",
+	"adcode": "331102",
+	"province": "浙江省",
+	"city": "丽水市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0514",
+	"adcode": "321003",
+	"province": "江苏省",
+	"city": "扬州市",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0349",
+	"adcode": "140603",
+	"province": "山西省",
+	"city": "朔州市",
+	"BUS": 162,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0476",
+	"adcode": "150402",
+	"province": "内蒙古自治区",
+	"city": "赤峰市",
+	"BUS": 1,
+	"CAR": 9,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0711",
+	"adcode": "420704",
+	"province": "湖北省",
+	"city": "鄂州市",
+	"BUS": 71,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0902",
+	"adcode": "650502",
+	"province": "新疆维吾尔自治区",
+	"city": "哈密市",
+	"BUS": 21,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0778",
+	"adcode": "451222",
+	"province": "广西壮族自治区",
+	"city": "河池市",
+	"BUS": 58,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0452",
+	"adcode": "230202",
+	"province": "黑龙江省",
+	"city": "齐齐哈尔市",
+	"BUS": 8,
+	"CAR": 12,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0311",
+	"adcode": "130181",
+	"province": "河北省",
+	"city": "石家庄市",
+	"BUS": 2,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0523",
+	"adcode": "321283",
+	"province": "江苏省",
+	"city": "泰州市",
+	"BUS": 31,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0714",
+	"adcode": "420281",
+	"province": "湖北省",
+	"city": "黄石市",
+	"BUS": 2,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0457",
+	"adcode": "232701",
+	"province": "黑龙江省",
+	"city": "大兴安岭地区",
+	"BUS": 38,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0421",
+	"adcode": "211324",
+	"province": "辽宁省",
+	"city": "朝阳市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0798",
+	"adcode": "360281",
+	"province": "江西省",
+	"city": "景德镇市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0353",
+	"adcode": "140311",
+	"province": "山西省",
+	"city": "阳泉市",
+	"BUS": 79,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0575",
+	"adcode": "330624",
+	"province": "浙江省",
+	"city": "绍兴市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0467",
+	"adcode": "230302",
+	"province": "黑龙江省",
+	"city": "鸡西市",
+	"BUS": 101,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0751",
+	"adcode": "440205",
+	"province": "广东省",
+	"city": "韶关市",
+	"BUS": 71,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0738",
+	"adcode": "431302",
+	"province": "湖南省",
+	"city": "娄底市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0464",
+	"adcode": "230921",
+	"province": "黑龙江省",
+	"city": "七台河市",
+	"BUS": 124,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0701",
+	"adcode": "360602",
+	"province": "江西省",
+	"city": "鹰潭市",
+	"BUS": 102,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0937",
+	"adcode": "620982",
+	"province": "甘肃省",
+	"city": "酒泉市",
+	"BUS": 50,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0352",
+	"adcode": "140221",
+	"province": "山西省",
+	"city": "大同市",
+	"BUS": 98,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0379",
+	"adcode": "410327",
+	"province": "河南省",
+	"city": "洛阳市",
+	"BUS": 19,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0335",
+	"adcode": "130304",
+	"province": "河北省",
+	"city": "秦皇岛市",
+	"BUS": 117,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0356",
+	"adcode": "140521",
+	"province": "山西省",
+	"city": "晋城市",
+	"BUS": 18,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0357",
+	"adcode": "141021",
+	"province": "山西省",
+	"city": "临汾市",
+	"BUS": 10,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0730",
+	"adcode": "430682",
+	"province": "湖南省",
+	"city": "岳阳市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0533",
+	"adcode": "370322",
+	"province": "山东省",
+	"city": "淄博市",
+	"BUS": 550,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0453",
+	"adcode": "231004",
+	"province": "黑龙江省",
+	"city": "牡丹江市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0370",
+	"adcode": "411403",
+	"province": "河南省",
+	"city": "商丘市",
+	"BUS": 410,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0790",
+	"adcode": "360502",
+	"province": "江西省",
+	"city": "新余市",
+	"BUS": 60,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0598",
+	"adcode": "350430",
+	"province": "福建省",
+	"city": "三明市",
+	"BUS": 5,
+	"CAR": 9,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0753",
+	"adcode": "441402",
+	"province": "广东省",
+	"city": "梅州市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0775",
+	"adcode": "450981",
+	"province": "广西壮族自治区",
+	"city": "玉林市",
+	"BUS": 11,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0953",
+	"adcode": "640323",
+	"province": "宁夏回族自治区",
+	"city": "吴忠市",
+	"BUS": 31,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0459",
+	"adcode": "230602",
+	"province": "黑龙江省",
+	"city": "大庆市",
+	"BUS": 79,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0473",
+	"adcode": "150303",
+	"province": "内蒙古自治区",
+	"city": "乌海市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0469",
+	"adcode": "230502",
+	"province": "黑龙江省",
+	"city": "双鸭山市",
+	"BUS": 134,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0632",
+	"adcode": "370403",
+	"province": "山东省",
+	"city": "枣庄市",
+	"BUS": 91,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0439",
+	"adcode": "220622",
+	"province": "吉林省",
+	"city": "白山市",
+	"BUS": 130,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0391",
+	"adcode": "410882",
+	"province": "河南省",
+	"city": "焦作市",
+	"BUS": 108,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0316",
+	"adcode": "131081",
+	"province": "河北省",
+	"city": "廊坊市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0396",
+	"adcode": "411724",
+	"province": "河南省",
+	"city": "驻马店市",
+	"BUS": 2,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0468",
+	"adcode": "230403",
+	"province": "黑龙江省",
+	"city": "鹤岗市",
+	"BUS": 57,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0932",
+	"adcode": "621122",
+	"province": "甘肃省",
+	"city": "定西市",
+	"BUS": 103,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0412",
+	"adcode": "210302",
+	"province": "辽宁省",
+	"city": "鞍山市",
+	"BUS": 73,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0768",
+	"adcode": "445102",
+	"province": "广东省",
+	"city": "潮州市",
+	"BUS": 72,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0355",
+	"adcode": "140402",
+	"province": "山西省",
+	"city": "长治市",
+	"BUS": 6,
+	"CAR": 5,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0479",
+	"adcode": "152502",
+	"province": "内蒙古自治区",
+	"city": "锡林郭勒盟",
+	"BUS": 41,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0737",
+	"adcode": "430903",
+	"province": "湖南省",
+	"city": "益阳市",
+	"BUS": 8,
+	"CAR": 10,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0906",
+	"adcode": "654301",
+	"province": "新疆维吾尔自治区",
+	"city": "阿勒泰地区",
+	"BUS": 2,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0854",
+	"adcode": "522725",
+	"province": "贵州省",
+	"city": "黔南布依族苗族自治州",
+	"BUS": 25,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0739",
+	"adcode": "430581",
+	"province": "湖南省",
+	"city": "邵阳市",
+	"BUS": 4,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0538",
+	"adcode": "370911",
+	"province": "山东省",
+	"city": "泰安市",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0971",
+	"adcode": "630122",
+	"province": "青海省",
+	"city": "西宁市",
+	"BUS": 49,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0372",
+	"adcode": "410581",
+	"province": "河南省",
+	"city": "安阳市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0599",
+	"adcode": "350781",
+	"province": "福建省",
+	"city": "南平市",
+	"BUS": 1,
+	"CAR": 4,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0519",
+	"adcode": "320481",
+	"province": "江苏省",
+	"city": "常州市",
+	"BUS": 4328,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0793",
+	"adcode": "361128",
+	"province": "江西省",
+	"city": "上饶市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0558",
+	"adcode": "341623",
+	"province": "安徽省",
+	"city": "亳州市",
+	"BUS": 52,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0351",
+	"adcode": "140105",
+	"province": "山西省",
+	"city": "太原市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0935",
+	"adcode": "620302",
+	"province": "甘肃省",
+	"city": "金昌市",
+	"BUS": 6,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0724",
+	"adcode": "420804",
+	"province": "湖北省",
+	"city": "荆门市",
+	"BUS": 1,
+	"CAR": 3,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0436",
+	"adcode": "220821",
+	"province": "吉林省",
+	"city": "白城市",
+	"BUS": 69,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0437",
+	"adcode": "220422",
+	"province": "吉林省",
+	"city": "辽源市",
+	"BUS": 8,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0744",
+	"adcode": "430802",
+	"province": "湖南省",
+	"city": "张家界市",
+	"BUS": 1,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0563",
+	"adcode": "341821",
+	"province": "安徽省",
+	"city": "宣城市",
+	"BUS": 114,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0943",
+	"adcode": "620403",
+	"province": "甘肃省",
+	"city": "白银市",
+	"BUS": 80,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0515",
+	"adcode": "320981",
+	"province": "江苏省",
+	"city": "盐城市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0913",
+	"adcode": "610523",
+	"province": "陕西省",
+	"city": "渭南市",
+	"BUS": 80,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0477",
+	"adcode": "150602",
+	"province": "内蒙古自治区",
+	"city": "鄂尔多斯市",
+	"BUS": 100,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0875",
+	"adcode": "530581",
+	"province": "云南省",
+	"city": "保山市",
+	"BUS": 60,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0872",
+	"adcode": "532901",
+	"province": "云南省",
+	"city": "大理白族自治州",
+	"BUS": 30,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0534",
+	"adcode": "371425",
+	"province": "山东省",
+	"city": "德州市",
+	"BUS": 60,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0878",
+	"adcode": "532301",
+	"province": "云南省",
+	"city": "楚雄彝族自治州",
+	"BUS": 2,
+	"CAR": 2,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0392",
+	"adcode": "410611",
+	"province": "河南省",
+	"city": "鹤壁市",
+	"BUS": 46,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0930",
+	"adcode": "622901",
+	"province": "甘肃省",
+	"city": "临夏回族自治州",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0570",
+	"adcode": "330802",
+	"province": "浙江省",
+	"city": "衢州市",
+	"BUS": 21,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0916",
+	"adcode": "610722",
+	"province": "陕西省",
+	"city": "汉中市",
+	"BUS": 6,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0559",
+	"adcode": "341021",
+	"province": "安徽省",
+	"city": "黄山市",
+	"BUS": 100,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0634",
+	"adcode": "371202",
+	"province": "山东省",
+	"city": "莱芜市",
+	"BUS": 84,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0358",
+	"adcode": "141123",
+	"province": "山西省",
+	"city": "吕梁市",
+	"BUS": 53,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0919",
+	"adcode": "610203",
+	"province": "陕西省",
+	"city": "铜川市",
+	"BUS": 33,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0856",
+	"adcode": "520621",
+	"province": "贵州省",
+	"city": "铜仁市",
+	"BUS": 49,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0713",
+	"adcode": "421123",
+	"province": "湖北省",
+	"city": "黄冈市",
+	"BUS": 68,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0763",
+	"adcode": "441821",
+	"province": "广东省",
+	"city": "清远市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0941",
+	"adcode": "623023",
+	"province": "甘肃省",
+	"city": "甘南藏族自治州",
+	"BUS": 10,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0319",
+	"adcode": "130503",
+	"province": "河北省",
+	"city": "邢台市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0874",
+	"adcode": "530324",
+	"province": "云南省",
+	"city": "曲靖市",
+	"BUS": 47,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0855",
+	"adcode": "522631",
+	"province": "贵州省",
+	"city": "黔东南苗族侗族自治州",
+	"BUS": 60,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0797",
+	"adcode": "360735",
+	"province": "江西省",
+	"city": "赣州市",
+	"BUS": 1,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0853",
+	"adcode": "520423",
+	"province": "贵州省",
+	"city": "安顺市",
+	"BUS": 15,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0934",
+	"adcode": "621002",
+	"province": "甘肃省",
+	"city": "庆阳市",
+	"BUS": 108,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0458",
+	"adcode": "230710",
+	"province": "黑龙江省",
+	"city": "伊春市",
+	"BUS": 4,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0799",
+	"adcode": "360302",
+	"province": "江西省",
+	"city": "萍乡市",
+	"BUS": 119,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0455",
+	"adcode": "231282",
+	"province": "黑龙江省",
+	"city": "绥化市",
+	"BUS": 60,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0314",
+	"adcode": "130824",
+	"province": "河北省",
+	"city": "承德市",
+	"BUS": 13,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0717",
+	"adcode": "420528",
+	"province": "湖北省",
+	"city": "宜昌市",
+	"BUS": 65,
+	"CAR": 1,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0917",
+	"adcode": "610326",
+	"province": "陕西省",
+	"city": "宝鸡市",
+	"BUS": 8,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0539",
+	"adcode": "371324",
+	"province": "山东省",
+	"city": "临沂市",
+	"BUS": 50,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0999",
+	"adcode": "654003",
+	"province": "新疆维吾尔自治区",
+	"city": "伊犁哈萨克自治州",
+	"BUS": 13,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0410",
+	"adcode": "211282",
+	"province": "辽宁省",
+	"city": "铁岭市",
+	"BUS": 21,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0974",
+	"adcode": "632521",
+	"province": "青海省",
+	"city": "海南藏族自治州",
+	"BUS": 8,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0877",
+	"adcode": "530403",
+	"province": "云南省",
+	"city": "玉溪市",
+	"BUS": 38,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0354",
+	"adcode": "140781",
+	"province": "山西省",
+	"city": "晋中市",
+	"BUS": 115,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0892",
+	"adcode": "540223",
+	"province": "西藏自治区",
+	"city": "日喀则市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0938",
+	"adcode": "620522",
+	"province": "甘肃省",
+	"city": "天水市",
+	"BUS": 49,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0350",
+	"adcode": "140922",
+	"province": "山西省",
+	"city": "忻州市",
+	"BUS": 51,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0527",
+	"adcode": "321323",
+	"province": "江苏省",
+	"city": "宿迁市",
+	"BUS": 291,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0911",
+	"adcode": "610602",
+	"province": "陕西省",
+	"city": "延安市",
+	"BUS": 24,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0995",
+	"adcode": "650422",
+	"province": "新疆维吾尔自治区",
+	"city": "吐鲁番市",
+	"BUS": 31,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0998",
+	"adcode": "653101",
+	"province": "新疆维吾尔自治区",
+	"city": "喀什地区",
+	"BUS": 51,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0668",
+	"adcode": "440902",
+	"province": "广东省",
+	"city": "茂名市",
+	"BUS": 25,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0359",
+	"adcode": "140802",
+	"province": "山西省",
+	"city": "运城市",
+	"BUS": 233,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0859",
+	"adcode": "522322",
+	"province": "贵州省",
+	"city": "黔西南布依族苗族自治州",
+	"BUS": 16,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0543",
+	"adcode": "371603",
+	"province": "山东省",
+	"city": "滨州市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0762",
+	"adcode": "441624",
+	"province": "广东省",
+	"city": "河源市",
+	"BUS": 40,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0438",
+	"adcode": "220702",
+	"province": "吉林省",
+	"city": "松原市",
+	"BUS": 20,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0777",
+	"adcode": "450722",
+	"province": "广西壮族自治区",
+	"city": "钦州市",
+	"BUS": 18,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0691",
+	"adcode": "532801",
+	"province": "云南省",
+	"city": "西双版纳傣族自治州",
+	"BUS": 8,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0663",
+	"adcode": "445222",
+	"province": "广东省",
+	"city": "揭阳市",
+	"BUS": 13,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0564",
+	"adcode": "341504",
+	"province": "安徽省",
+	"city": "六安市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0470",
+	"adcode": "150783",
+	"province": "内蒙古自治区",
+	"city": "呼伦贝尔市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0478",
+	"adcode": "150802",
+	"province": "内蒙古自治区",
+	"city": "巴彦淖尔市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0936",
+	"adcode": "620702",
+	"province": "甘肃省",
+	"city": "张掖市",
+	"BUS": 14,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0553",
+	"adcode": "340223",
+	"province": "安徽省",
+	"city": "芜湖市",
+	"BUS": 61,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0891",
+	"adcode": "540102",
+	"province": "西藏自治区",
+	"city": "拉萨市",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0887",
+	"adcode": "533423",
+	"province": "云南省",
+	"city": "迪庆藏族自治州",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0557",
+	"adcode": "341302",
+	"province": "安徽省",
+	"city": "宿州市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0839",
+	"adcode": "510821",
+	"province": "四川省",
+	"city": "广元市",
+	"BUS": 10,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0915",
+	"adcode": "610924",
+	"province": "陕西省",
+	"city": "安康市",
+	"BUS": 5,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0826",
+	"adcode": "511603",
+	"province": "四川省",
+	"city": "广安市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0879",
+	"adcode": "530802",
+	"province": "云南省",
+	"city": "普洱市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0517",
+	"adcode": "320812",
+	"province": "江苏省",
+	"city": "淮安市",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0414",
+	"adcode": "210503",
+	"province": "辽宁省",
+	"city": "本溪市",
+	"BUS": 4,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0804",
+	"adcode": "469023",
+	"province": "海南省",
+	"city": "海南省",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0483",
+	"adcode": "152921",
+	"province": "内蒙古自治区",
+	"city": "阿拉善盟",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0546",
+	"adcode": "370522",
+	"province": "山东省",
+	"city": "东营市",
+	"BUS": 40,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0807",
+	"adcode": "469007",
+	"province": "海南省",
+	"city": "海南省",
+	"BUS": 2,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0530",
+	"adcode": "371728",
+	"province": "山东省",
+	"city": "菏泽市",
+	"BUS": 38,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}, {
+	"citycode": "0977",
+	"adcode": "632823",
+	"province": "青海省",
+	"city": "海西蒙古族藏族自治州",
+	"BUS": 1,
+	"CAR": 0,
+	"ENERGYTRUCK": 0,
+	"CONTAINERTRUCK": 0
+}]

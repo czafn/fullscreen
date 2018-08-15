@@ -261,60 +261,35 @@ class AppRoot extends React.Component {
   }
 }
 
-const mapStateToProps = ({app,
-  searchresult:{curallalarm,alarms},
-  device:{g_devicesdb},
-  app:{SettingOfflineMinutes},
+const mapStateToProps = ({
+  catlworking:{
+       countonline,
+       counttotal,
+       countalarm3,
+       countalarm2,
+       countalarm1
+   },
   deviceext:{countcar,countbus,query}
 }) => {
-  const {modeview} = app;
+    let count_online = countonline;
+    let count_offline = counttotal-countonline;
 
-   let count_online = 0;
-   let count_offline = 0;
+    let count_yellow = countalarm1;
+    let count_red = countalarm3;
+    let count_orange = countalarm2;
 
-   let count_all = 0;
-   let count_yellow = 0;
-   let count_red = 0;
-   let count_orange = 0;
-
-   lodashmap(g_devicesdb,(deviceitem)=>{
-     const isonline = getdevicestatus_isonline(deviceitem,SettingOfflineMinutes);
-     const warninglevel = getdevicestatus_alaramlevel(deviceitem);
-     if(isonline){
-       count_online++;
-     }
-     else{
-       count_offline++;
-     }
-     if(warninglevel === '高'){
-       count_red++;
-     }
-     else if(warninglevel === '中'){
-       count_orange++;
-     }
-     else if(warninglevel === '低'){
-       count_yellow++;
-     }
-   });
-
-   count_all = count_red + count_orange + count_yellow;
-
-    if(count_all>99){
-        // count_all = "99+";
-    }
 
     const centerIndex = {
-        count_online:count_online,
-        count_offline:count_offline,
-        count_all:count_online+count_offline,
-        count_red:count_red,
-        count_yellow:count_yellow,
-        count_orange:count_orange,
-        // today_new:56
+      count_online:count_online,
+      count_offline:count_offline,
+      count_all:count_online+count_offline,
+      count_red:count_red,
+      count_yellow:count_yellow,
+      count_orange:count_orange,
     };
     const rightIndex = {
-        bus:countbus,
-        car:countcar
+      bus:countbus,
+      car:countcar
     };
 
     return {centerIndex, rightIndex, query};

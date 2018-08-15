@@ -26,6 +26,9 @@ import {
     querydevicealarm_request,
     querydevicealarm_result,
 
+    querymapstat_request,
+    querymapstat_result,
+
     querydeviceinfo_request,
     md_querydeviceinfo_result,
     // querydeviceinfo_result,
@@ -141,6 +144,7 @@ let recvmessagetoresultpair = {
   'querydevicegroup_result':querydevicegroup_result,
   'querydevice_result':querydevice_result,
   'querydevicealarm_result':querydevicealarm_result,
+  'querymapstat_result':querymapstat_result,
   'querydeviceinfo_result':md_querydeviceinfo_result,//先预处理
   'querydeviceinfo_list_result':querydeviceinfo_list_result,
 
@@ -166,7 +170,7 @@ let sendmessagefnsz = {
 let sendmessageauthfnsz = {
   // 'deviceext':`${deviceext_request}`,
   'catl':`${catl_request}`,
-
+  'querymapstat':`${querymapstat_request}`,
   'getcountcar':`${getcountcar_request}`,
   'getcountbus':`${getcountbus_request}`,
   'getusedyearcar':`${getusedyearcar_request}`,
