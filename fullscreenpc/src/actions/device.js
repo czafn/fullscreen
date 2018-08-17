@@ -8,6 +8,9 @@ export const querydevice_result = createAction('querydevice_result');
 
 export const querydevicealarm_request = createAction('querydevicealarm_request');
 export const querydevicealarm_result = createAction('querydevicealarm_result');
+
+export const querymapstat_request = createAction('querymapstat_request');
+export const querymapstat_result = createAction('querymapstat_result');
 //获取一个device所有信息
 export const querydeviceinfo_request = createAction('querydeviceinfo_request');
 export const querydeviceinfo_result = createAction('querydeviceinfo_result');

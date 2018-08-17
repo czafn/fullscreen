@@ -93,7 +93,7 @@ export function* wsrecvsagaflow() {
             yield put(login_result(result));
             if(result.loginsuccess){
               localStorage.setItem(`bms_${config.softmode}_token`,result.token);
-              if(config.softmode === 'fullapp'){
+              if(config.softmode === 'fullpc' || config.softmode === 'fullapp'){
                 yield put(querydevicealarm_request({}));
               }
               else{

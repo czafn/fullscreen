@@ -70,37 +70,10 @@ class Page extends React.Component {
         return (
             <div className="AppPage" id="AppPage" style={{height : `958px`}}>
                 <div className="content">
-
                     <div className="bodycontainer" style={{height: `958px`}}>
-                        <Drawer
-                            open={showmenu==="addressbox" || true}
-                            containerStyle={{
-                                top: "64px",
-                                float: 'left',
-                                zIndex: 1000,
-                                backgroundColor: '#133f58',
-                                position: "inherit",
-                                overflow: "visible"
-                            }}
-                            width={350}
-                            style={showmenu==="addressbox"?treestyle.drawopenstyle:treestyle.drawclosestyle}
-                            height={980}
-                            >
-                            <Tree />
-                            {
-                                showmenu==="addressbox" &&
-                                <span className="myclose left" onClick={this.menuevent}></span>
-                            }
-                            {
-                                showmenu!=="addressbox" &&
-                                <span className="myclose right" onClick={()=>{this.props.dispatch(ui_showmenu("addressbox"))}}></span>
-                            }
-                        </Drawer>
-
                         <div className="admincontainer">
                             <AdminContent />
                         </div>
-
                     </div>
                 </div>
             </div>
