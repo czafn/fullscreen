@@ -166,8 +166,6 @@ class AppRoot extends React.Component {
                             <div style={{height: "95%"}}>
                               <div className="cbody-right-title-top">
                                 {query['catlprojectname'] !== undefined ? query.catlprojectname+'-' : ''}
-                                {query['province'] !== undefined ? query.province+'-' : ''}
-
                                 各省份车辆分布
                               </div>
                               <div className="cbody-right-box year">

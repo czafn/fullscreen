@@ -28,8 +28,10 @@ const initial = {
       statprovince:[],
       statcatlproject:[],
       type:{
-        BUS:true,
-        CAR:true
+        客车:true,
+        乘用车:true,
+        物流车:true,
+        储能车:true
       },
       query:{//所有条件不满足
 

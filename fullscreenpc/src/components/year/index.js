@@ -8,6 +8,7 @@ import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
+import {settype_deviceext} from "../../actions";
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
@@ -21,20 +22,70 @@ const Chart = styled.div`
 
 class Page extends React.Component {
     shouldComponentUpdate(nextProps, nextState) {
-      const nextData = lodashget(nextProps,'option.series[1].data',[]);
-      const curData = lodashget(this.props,'option.series[1].data',[]);
-      if( nextData.length === curData.length ){
-        if(JSON.stringify(nextData) === JSON.stringify(curData)){
-          return false;
+      const nextDataCar = lodashget(nextProps,'option.series[1].data',[]);
+      const nextDataBus = lodashget(nextProps,'option.series[1].data',[]);
+      const nextDataEnergy = lodashget(nextProps,'option.series[1].data',[]);
+      const nextDataContainer = lodashget(nextProps,'option.series[1].data',[]);
+      const nextnames = lodashget(nextProps,'option.angleAxis.data',[]);
+      const nextlegend = lodashget(nextProps,'option.legend.selected',{});
+
+      const curDataCar = lodashget(this.props,'option.series[1].data',[]);
+      const curDataBus = lodashget(this.props,'option.series[1].data',[]);
+      const curDataEnergy = lodashget(this.props,'option.series[1].data',[]);
+      const curDataContainer = lodashget(this.props,'option.series[1].data',[]);
+      const curnames = lodashget(this.props,'option.angleAxis.data',[]);
+      const curlegend = lodashget(this.props,'option.legend.selected',{});
+      if( nextDataCar.length === curDataCar.length
+        && nextDataBus.length === curDataBus.length
+        && nextDataEnergy.length === curDataEnergy.length
+        && nextDataContainer.length === curDataContainer.length
+        && nextnames.length === curnames.length
+        && curlegend.length === curlegend.length
+      ){
+        if(JSON.stringify(nextDataCar) === JSON.stringify(curDataCar)){
+          if(JSON.stringify(nextDataBus) === JSON.stringify(curDataBus)){
+            if(JSON.stringify(nextDataEnergy) === JSON.stringify(curDataEnergy)){
+              if(JSON.stringify(nextDataContainer) === JSON.stringify(nextDataContainer)){
+                if(JSON.stringify(nextnames) === JSON.stringify(curnames)){
+                  if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
+                    return false;
+                  }
+                }
+              }
+            }
+
+          }
         }
       }
+
       return true;//render
     }
+    onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
+      // console.log(param, echart);
+      // param.selected // CAR BUS点击事件，点击后需要用该对象的值 同步更新到item
+      // console.log(`click---->${param.selected}` );
+
+      if(param.selected['乘用车'] === false && param.selected['客车'] === false && param.selected['物流车'] === false && param.selected['储能车'] === false){
+        param.selected[param.name] = true;
+        let opt = echart.getOption();
+        opt.legend[0].selected = param.selected;
+        echart.setOption(opt)
+      }
+      window.event.stopImmediatePropagation()
+      this.props.dispatch(settype_deviceext(param.selected));
+
+      // let query = this.props.query;
+      // query['province'] = param.data.name;
+      // this.props.dispatch(setquery_deviceext_request(query));
+    };
     render() {
         let {option} = this.props;
+        let onEvents = {
+          'legendselectchanged': this.onChartLegendselectchanged.bind(this)
+        }
         return (
             <Chart >
-              <ReactEcharts option={option} style={{height: "255px"}} className='singleBarChart' />
+              <ReactEcharts option={option} style={{height: "560px"}} onEvents={onEvents} className='singleBarChart' />
             </Chart>
         );
     };
@@ -45,15 +96,15 @@ const usedyearbusSelector = createSelector(
   deviceextSelector,
   (deviceext) => {
 
-    const {usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer} = deviceext;
-    return {usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer};
+    const {usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer,type} = deviceext;
+    return {usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer,type};
   }
 );
 
 const getOptionSelector = createSelector(
   usedyearbusSelector,
-  ({usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer}) => {
-
+  ({usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer,type}) => {
+    const legend =  type ; //该对象 默认{CAR: true, BUS: true} 需要再item点击legend时 同步更新map中的值
     let data = usedyearbus.concat(usedyearcar,usedyearEnergy,usedyearContainer);
     const getOption = () => {
         return {
@@ -98,6 +149,21 @@ const getOptionSelector = createSelector(
                     }
                 },
                 z: 10
+            },
+            legend: {
+              data:['客车', '乘用车','物流车', '储能车'],
+              selected:
+                { '客车' :false,
+                  '乘用车' :false,
+                  '物流车' :false,
+                  '储能车' :true,
+                }
+              ,
+              textStyle: {
+                color: 'rgb(228, 225, 225)',
+                fontStyle: 'normal',
+                fontFamily: '微软雅黑',
+              }
             },
             angleAxis: {
                 type: 'category',
@@ -171,8 +237,9 @@ const getOptionSelector = createSelector(
                 }
 
             }, {
-                name: '使用年限',
+                name: '乘用车',
                 type: 'bar',
+                stack: 'year',
                 coordinateSystem: 'polar',
                 clockwise: false,
                 radius: [0, '80%'],
@@ -189,17 +256,102 @@ const getOptionSelector = createSelector(
                 },
                 itemStyle: {
                     normal: {
-                        color: "rgba(0,168,255,.9)",
+                        color: "rgba(0,168,255,0.9)",
                     },
                     emphasis: {
                         color: 'rgba(0,168,255,1)',
                     }
                 },
                 data: [10, 20, 30, 40, 50, 60, 70, 80]
+            }, {
+              name: '客车',
+              type: 'bar',
+              stack: 'year',
+              coordinateSystem: 'polar',
+              clockwise: false,
+              radius: [0, '80%'],
+              center: ['50%', '50%'],
+              roseType: 'area',
+              color: 'red',
+              label: {
+                normal: {
+                  show: false
+                },
+                emphasis: {
+                  show: false
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: "rgba(255, 179, 1, 0.9)",
+                },
+                emphasis: {
+                  color: 'rgba(255, 179, 1, 1)',
+                }
+              },
+              data: [10, 20, 30, 40, 50, 60, 70, 80]
+            }, {
+              name: '物流车',
+              type: 'bar',
+              stack: 'year',
+              coordinateSystem: 'polar',
+              clockwise: false,
+              radius: [0, '80%'],
+              center: ['50%', '50%'],
+              roseType: 'area',
+              color: 'red',
+              label: {
+                normal: {
+                  show: false
+                },
+                emphasis: {
+                  show: false
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: "rgba(242, 100, 3, 0.9)",
+                },
+                emphasis: {
+                  color: 'rgba(242, 100, 3, 1)',
+                }
+              },
+              data: [10, 20, 30, 40, 50, 60, 70, 80]
+            }, {
+              name: '储能车',
+              type: 'bar',
+              stack: 'year',
+              coordinateSystem: 'polar',
+              clockwise: false,
+              radius: [0, '80%'],
+              center: ['50%', '50%'],
+              roseType: 'area',
+              color: 'red',
+              label: {
+                normal: {
+                  show: false
+                },
+                emphasis: {
+                  show: false
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: "rgba(35, 165, 56, 0.9)",
+                },
+                emphasis: {
+                  color: 'rgba(35, 165, 56, 1)',
+                }
+              },
+              data: [10, 20, 30, 40, 50, 60, 70, 80]
             }]
         };
     };
     let option = getOption();
+
+    if(legend){
+      option.legend.selected = legend
+    }
     // data = _.filter(data, i => i.type === 'BUS')
     data = _.values(_.groupBy(_.sortBy(data,(i)=>i.name),'name'));
     var name = [], bus = [], car = [], energy = [], container = [], sum = [], max = 0;
@@ -213,14 +365,19 @@ const getOptionSelector = createSelector(
       bus.push(b.length >0 ? b[0].value-0 : 0)
       energy.push(c.length >0 ? c[0].value-0 : 0)
       container.push(d.length >0 ? d[0].value-0 : 0)
+      // sum.push((legend['乘用车']&&car[i])+(legend['客车']&&bus[i])+(legend['物流车']&&energy[i])+(legend['储能车']&&container[i]));
       sum.push(car[i]+bus[i]+energy[i]+container[i]);
       name.push(_info[0].name);
     }
-debugger
-    option.radiusAxis.max = max;//最大值
+
+    option.radiusAxis.max = _.max(sum);//最大值
     option.series["0"].splitNumber = bus.length;//分割数字
     option.angleAxis.data = name;
-    option.series[1].data = bus;
+    option.series[1].data = car;
+    option.series[2].data = bus;
+    option.series[3].data = energy;
+    option.series[4].data = container;
+
     return option;
   }
 );

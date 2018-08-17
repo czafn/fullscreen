@@ -223,7 +223,7 @@ const mapStateToProps = ({deviceext}) => {
             }
           },
           symbolRepeat: true,
-          animationEasing: 'elasticOut',
+          // animationEasing: 'elasticOut',
           z:0
         },
         {
@@ -247,7 +247,7 @@ const mapStateToProps = ({deviceext}) => {
             }
           },
           symbolRepeat: true,
-          animationEasing: 'elasticOut',
+          // animationEasing: 'elasticOut',
           z:-1
         },
         {
@@ -271,7 +271,7 @@ const mapStateToProps = ({deviceext}) => {
             }
           },
           symbolRepeat: true,
-          animationEasing: 'elasticOut',
+          // animationEasing: 'elasticOut',
           z:-2
         },{
           name: '储能车',
@@ -294,7 +294,7 @@ const mapStateToProps = ({deviceext}) => {
             }
           },
           symbolRepeat: true,
-          animationEasing: 'elasticOut',
+          // animationEasing: 'elasticOut',
           z:-3
         }],
       animation: true
@@ -359,8 +359,6 @@ const mapStateToProps = ({deviceext}) => {
   option.series[1].data = busObj;
   option.series[2].data = containerNum;
   option.series[3].data = energyNum;
-
-
     return {query,option};
 }
 export default connect(mapStateToProps)(Page);
