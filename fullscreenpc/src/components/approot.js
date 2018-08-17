@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route,Switch } from 'react-router-dom';
 import Index from './index';
 import Index1_left from './index/index1_left';
+import Index1_left2 from './index/index1_left2';
 import Index1_right from './index/index1_right';
 import Index2_left from './index/index2_left';
 import Index2_center from './index/index2_center';
@@ -41,6 +42,7 @@ class AppRoot extends React.Component {
                 <Switch>
                   <Route exact path="/" component={requireAuthentication(Index)} />
                   <Route exact path="/index1_left" component={requireAuthentication(Index1_left)} />
+                  <Route exact path="/index1_left2" component={requireAuthentication(Index1_left2)} />
                   <Route exact path="/index1_right" component={requireAuthentication(Index1_right)} />
                   <Route exact path="/index2_left" component={requireAuthentication(Index2_left)} />
                   <Route exact path="/index2_center" component={requireAuthentication(Index2_center)} />

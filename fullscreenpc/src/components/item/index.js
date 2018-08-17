@@ -30,26 +30,37 @@ class Page extends React.Component {
 
       const nextcarNum = lodashget(nextProps,'option.series["0"].data',[]);
       const nextbusNum = lodashget(nextProps,'option.series["1"].data',[]);
+      const nextEnergyNum = lodashget(nextProps,'option.series["2"].data',[]);
+      const nextContainerNum = lodashget(nextProps,'option.series["3"].data',[]);
       const nextnames = lodashget(nextProps,'option.xAxis.data',[]);
       const nextlegend = lodashget(nextProps,'option.legend.selected',{});
 
       const curcarNum = lodashget(this.props,'option.series["0"].data',[]);
       const curbusNum = lodashget(this.props,'option.series["1"].data',[]);
+      const curEnergyNum = lodashget(this.props,'option.series["2"].data',[]);
+      const curContainerNum = lodashget(this.props,'option.series["3"].data',[]);
       const curnames = lodashget(this.props,'option.xAxis.data',[]);
       const curlegend = lodashget(this.props,'option.legend.selected',{});
 
       if( nextcarNum.length === curcarNum.length
         && nextbusNum.length === curbusNum.length
+        && nextEnergyNum.length === curbusNum.length
+        && nextContainerNum.length === curbusNum.length
         && nextnames.length === curnames.length
         && curlegend.length === curlegend.length
       ){
         if(JSON.stringify(nextcarNum) === JSON.stringify(curcarNum)){
           if(JSON.stringify(nextbusNum) === JSON.stringify(curbusNum)){
-            if(JSON.stringify(nextnames) === JSON.stringify(curnames)){
-              if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
-                return false;
+            if(JSON.stringify(nextEnergyNum) === JSON.stringify(curEnergyNum)){
+              if(JSON.stringify(nextContainerNum) === JSON.stringify(curContainerNum)){
+                if(JSON.stringify(nextnames) === JSON.stringify(curnames)){
+                  if(JSON.stringify(nextlegend) === JSON.stringify(curlegend)){
+                    return false;
+                  }
+                }
               }
             }
+
           }
         }
       }
@@ -73,10 +84,9 @@ class Page extends React.Component {
       }
     }
 
-
     onChartLegendselectchanged = (param, echart) => { // CAR BUS Legend点击事件 点击后 用来同步改变项目Echart的值
       console.log(param, echart);
-      if(param.selected['乘用车'] === false && param.selected['客车'] === false){
+      if(param.selected['乘用车'] === false && param.selected['客车'] === false && param.selected['物流车'] === false && param.selected['储能车'] === false){
         param.selected[param.name] = true;
         let opt = echart.getOption();
         opt.legend[0].selected = param.selected;
@@ -127,24 +137,24 @@ const statcatlprojectSelector = createSelector(
         },
         grid: {
           left: 15,
-          top: 20,
+          top: 30,
           right: 15,
           bottom: 5,
           containLabel: true,
         },
         legend: {//图例组件，颜色和名字
           // right:'60%',
-          top:5,
+          top:0,
           left:407,
-          itemGap: 16,
-          itemWidth: 18,
-          itemHeight: 10,
-          data:['客车', '乘用车'],
+          itemGap: 22,
+          // itemWidth: 18,
+          // itemHeight: 10,
+          data:['客车', '乘用车','物流车', '储能车'],
           textStyle: {
-            color: '#a8aab0',
+            color: 'rgb(228, 225, 225)',
             fontStyle: 'normal',
             fontFamily: '微软雅黑',
-            fontSize: 12,
+            // fontSize: 12,
           }
         },
         yAxis: {
@@ -210,10 +220,11 @@ const statcatlprojectSelector = createSelector(
           {
             name: '乘用车',
             type: 'bar',
-            barWidth: '25%',
+            barWidth: '25',
+            stack:'item',
             itemStyle: {
               normal: {
-                barBorderRadius: 3,
+                barBorderRadius: 0,
                 // 左上右下
                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0,
@@ -229,7 +240,8 @@ const statcatlprojectSelector = createSelector(
           {
             name: '客车',
             type: 'bar',
-            barWidth: '25%',
+            barWidth: '25',
+            stack:'item',
             itemStyle: {
               normal: {
                 // 左上右下
@@ -243,12 +255,49 @@ const statcatlprojectSelector = createSelector(
               }
             },
             data: []
+          },
+          {
+            name: '物流车',
+            type: 'bar',
+            barWidth: '25',
+            stack:'item',
+            itemStyle: {
+              normal: {
+                // 左上右下
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(242, 100, 3, 1)'
+                }, {
+                  offset: 1.0,
+                  color: 'rgba(242, 100, 3, 0.4)'
+                }], false),
+              }
+            },
+            data: []
+          },
+          {
+            name: '储能车',
+            type: 'bar',
+            barWidth: '25',
+            stack:'item',
+            itemStyle: {
+              normal: {
+                // 左上右下
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                  offset: 0,
+                  color: 'rgba(35, 165, 56, 1)'
+                }, {
+                  offset: 1.0,
+                  color: 'rgba(35, 165, 56, 0.4)'
+                }], false),
+              }
+            },
+            data: []
           }
         ]
       }
     };
     let option = getOption();
-
     if(!!data){
       option.legend.selected = type
     }
@@ -256,17 +305,34 @@ const statcatlprojectSelector = createSelector(
     let group = _.groupBy(data,'type');
     let carNum = [];
     let busNum = [];
-    let bus = group['BUS']||[], car = group['CAR']||[];
-    let names = _.uniq(_.pluck(data,'name'));
+    let energyNum = [];
+    let containerNum = [];
+    let bus = group['BUS']||[], car = group['CAR']||[], energy = group['ENERGYTRUCK']||[], container = group['CONTAINERTRUCK']||[];
+    // let names = _.uniq(_.pluck(data,'name'));
+    let nameSum = []
+    _.each(_.values(_.groupBy(data,function(d){return d.name})),function(g){
+      let sum = _.reduce(g, function(memo, num){ return memo + num.value; }, 0);
+      nameSum.push({
+        name: g[0].name,
+        value: sum
+      })
+    })
+    let names = _.uniq(_.pluck(nameSum,'name'));
     for (let i = 0; i < names.length; i++) {
       let a = _.find(car, b => b.name === names[i])
       carNum.push(a ? a.value-0 : 0);
       let b = _.find(bus, b => b.name === names[i])
       busNum.push(b ? b.value-0 : 0);
+      let c = _.find(energy, b => b.name === names[i])
+      energyNum.push(c ? c.value-0 : 0);
+      let d = _.find(container, b => b.name === names[i])
+      containerNum.push(d ? d.value-0 : 0);
     }
     option.xAxis.data = names;
     option.series["0"].data = carNum;
     option.series["1"].data = busNum;
+    option.series["2"].data = containerNum;
+    option.series["3"].data = energyNum;
     return option;
   }
 );
