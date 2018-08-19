@@ -41,8 +41,8 @@ class AppRoot extends React.Component {
               <div className="container">
                 <Switch>
                   <Route exact path="/" component={requireAuthentication(Index)} />
-                  <Route exact path="/index1_left" component={requireAuthentication(Index1_left)} />
-                  <Route exact path="/index1_left2" component={requireAuthentication(Index1_left2)} />
+                  <Route exact path="/index1_left" component={requireAuthentication(Index1_left2)} />
+                  <Route exact path="/index1_left2" component={requireAuthentication(Index1_left)} />
                   <Route exact path="/index1_right" component={requireAuthentication(Index1_right)} />
                   <Route exact path="/index2_left" component={requireAuthentication(Index2_left)} />
                   <Route exact path="/index2_center" component={requireAuthentication(Index2_center)} />
