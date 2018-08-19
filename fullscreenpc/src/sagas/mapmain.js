@@ -53,9 +53,9 @@ const CreateMapUI_DistrictCluster =  (map)=>{
            const defaultgetClusterMarker = (feature, dataItems, recycledMarker)=> {
                //行政区域
                try{
-                 console.log(feature);
+                //  console.log(feature);
                  const datainfo = getdata(feature.properties.adcode);
-                 console.log(datainfo);
+                //  console.log(datainfo);
                  let isshow = !!datainfo;
                  if(isshow){
                    if(datainfo['totalcount'] === 0){
@@ -113,12 +113,12 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                       }
                 			if(!!body){
                         const zoomlevel = window.amapmain.getZoom();
-                        console.log(`当前zoomlevel:${zoomlevel}`);
+                        console.log(`>------当前zoomlevel:${zoomlevel},如果是4,5则不显示图标弹框------`);
 
                          let info = `${datainfo['totalcount']}`;
 
                          if(zoomlevel !== 4 && zoomlevel !== 5){//太挤了
-                           debugger
+                          //  debugger
                            info += `<br /><div style="background: #317093;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
                            info += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
                            info += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
@@ -262,6 +262,7 @@ export function* createmapmainflow(){
         }
       });
     }
+
     //创建地图
     yield takeEvery(`${carmapshow_createmap}`, function*(action_createmap) {
       try{
@@ -305,7 +306,21 @@ export function* createmapmainflow(){
             }
           },'dragend');
 
+          let task_zoomend =  yield fork(function*(eventname){
+            while(true){
+              yield call(listenmapevent,eventname);
+              // let centerlocation = window.amapmain.getCenter();
+              // let centerlatlng = L.latLng(centerlocation.lat, centerlocation.lng);
+              // yield put(md_mapmain_setzoomlevel(window.amapmain.getZoom()));
+              const zoomlevel = window.amapmain.getZoom();
+              console.log(`>------${zoomlevel},start render-----<`)
+              if(!!distCluster){
+                distCluster.setData(null);
+                // distCluster.renderLater();
+              }
 
+            }
+          },'zoomend');
 
           yield cancel(task_dragend);
         }
