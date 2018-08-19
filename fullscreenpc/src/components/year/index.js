@@ -23,16 +23,16 @@ const Chart = styled.div`
 class Page extends React.Component {
     shouldComponentUpdate(nextProps, nextState) {
       const nextDataCar = lodashget(nextProps,'option.series[1].data',[]);
-      const nextDataBus = lodashget(nextProps,'option.series[1].data',[]);
-      const nextDataEnergy = lodashget(nextProps,'option.series[1].data',[]);
-      const nextDataContainer = lodashget(nextProps,'option.series[1].data',[]);
+      const nextDataBus = lodashget(nextProps,'option.series[2].data',[]);
+      const nextDataContainer = lodashget(nextProps,'option.series[3].data',[]);
+      const nextDataEnergy = lodashget(nextProps,'option.series[4].data',[]);
       const nextnames = lodashget(nextProps,'option.angleAxis.data',[]);
       const nextlegend = lodashget(nextProps,'option.legend.selected',{});
 
       const curDataCar = lodashget(this.props,'option.series[1].data',[]);
-      const curDataBus = lodashget(this.props,'option.series[1].data',[]);
-      const curDataEnergy = lodashget(this.props,'option.series[1].data',[]);
-      const curDataContainer = lodashget(this.props,'option.series[1].data',[]);
+      const curDataBus = lodashget(this.props,'option.series[2].data',[]);
+      const curDataContainer = lodashget(this.props,'option.series[3].data',[]);
+      const curDataEnergy = lodashget(this.props,'option.series[4].data',[]);
       const curnames = lodashget(this.props,'option.angleAxis.data',[]);
       const curlegend = lodashget(this.props,'option.legend.selected',{});
       if( nextDataCar.length === curDataCar.length
@@ -375,8 +375,8 @@ const getOptionSelector = createSelector(
     option.angleAxis.data = name;
     option.series[1].data = car;
     option.series[2].data = bus;
-    option.series[3].data = energy;
-    option.series[4].data = container;
+    option.series[3].data = container;
+    option.series[4].data = energy;
 
     return option;
   }
