@@ -25,7 +25,7 @@ import filter from 'lodash.filter';
 import config from '../config.js';
 
 
-import {getdata,setdata} from './catlfull_mapcitystat_data';
+import {getdata,setdata,setcounttotal} from './catlfull_mapcitystat_data';
 const divmapid_mapmain = 'mapmain';
 const maxzoom = 9;
 let infoWindow;
@@ -251,6 +251,8 @@ const listenmapevent = (eventname)=>{
 export function* createmapmainflow(){
     if(config.softmode === 'fullpc'){
       yield takeLatest(`${querydevicealarm_result}`, function*(action) {
+        const {payload:{counttotal}} = action;
+        setcounttotal(counttotal);
         yield put(querymapstat_request({}));
       });
 

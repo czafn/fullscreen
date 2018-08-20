@@ -4,7 +4,7 @@ import lodashget from 'lodash.get';
 
 let mapcitystatlistdata = [];
 let mapstatdata = {};
-
+let counttotal = 0;
 const getAddress = (adcode,flag)=>{//100->city,1000->provice
   let newadcode = '';
   if(flag === 1){
@@ -57,6 +57,14 @@ const setdata = (data)=>{
       });
     }
   }
+
+  let totalinfo = mapstatdata['100000'];
+  if(!!totalinfo){
+    if(counttotal > totalinfo['totalcount'])
+    totalinfo['BUS'] = totalinfo['BUS']+(counttotal - totalinfo['totalcount']);
+    totalinfo['totalcount'] = counttotal;
+  }
+  mapstatdata['100000'] = totalinfo;
   // console.log(mapstatdata);
 }
 
@@ -65,4 +73,8 @@ const getdata = (adcode)=>{
   console.log(`getdata--->${adcode}`);
   return mapstatdata[`${adcode}`];
 }
-export {setdata,getdata};
+
+const setcounttotal = (c)=>{
+  counttotal = c;
+}
+export {setdata,getdata,setcounttotal};
