@@ -76,7 +76,7 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                           <div className="titleNumCol-center " style={{marginLeft: '140px'}}>
-                              <div className="title-center-title red"><img src="index/top.png" alt=""></img>一级</div>
+                              <div className="title-center-title red"><img src="index/top.png" alt=""></img>三级</div>
                               <div className="title-center-content-border red-border">
                                   <div className="title-center-content red">
                                       <span className="title-center-content-num">{centerIndex.count_red}</span>
@@ -94,7 +94,7 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                           <div className="titleNumCol-center " style={{marginLeft: '145px'}}>
-                              <div className="title-center-title yellow"><img src="index/top.png" alt=""></img>三级</div>
+                              <div className="title-center-title yellow"><img src="index/top.png" alt=""></img>一级</div>
                               <div className="title-center-content-border yellow-border">
                                   <div className="title-center-content yellow">
                                       <span className="title-center-content-num">{centerIndex.count_yellow}</span>
