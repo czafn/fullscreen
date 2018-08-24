@@ -117,13 +117,13 @@ const CreateMapUI_DistrictCluster =  (map)=>{
 
                          let info = `${datainfo['totalcount']}`;
 
-                         if(zoomlevel !== 4 && zoomlevel !== 5){//太挤了
-                          //  debugger
-                           info += `<br /><div style="background: #317093;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
-                           info += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
-                           info += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
-                           info += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
-                         }
+                        //  if(zoomlevel !== 4 && zoomlevel !== 5){//太挤了
+                        //   //  debugger
+                        //    info += `<br /><div style="background: #317093;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
+                        //    info += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
+                        //    info += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
+                        //    info += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
+                        //  }
                          body.innerHTML = info;
                       }
 
@@ -133,6 +133,31 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                 				offset: new window.AMap.Pixel(-20, -30),
                 				content: container
                 			});
+                      if(feature.properties.adcode !== 100000){
+                        resultMarker.on('mouseover', ()=> {
+                             let text = `${datainfo['totalcount']}`;
+                             text += `<br />小车:${datainfo['CAR']}`;
+                             text += `<br />公车:${datainfo['BUS']}`;
+                             text += `<br />货车:${datainfo['CONTAINERTRUCK']}`;
+                             text += `<br />储能车:${datainfo['ENERGYTRUCK']}`;
+                             console.log(`鼠标移入${props.name}:${text}`);
+                             body.innerHTML = text;
+                             resultMarker.setContent(container)
+                        });
+                        resultMarker.on('mouseout', ()=> {
+                            let text = `${datainfo['totalcount']}`;
+                            console.log(`鼠标移出${props.name}:${text}`);
+                            body.innerHTML = text;
+                            resultMarker.setContent(container)
+                        });
+                      }
+                      else{
+                        resultMarker.off('mouseover', ()=> {
+                        });
+                        resultMarker.off('mouseout', ()=> {
+                        });
+                      }
+
                 			return resultMarker;
                     }
                }
