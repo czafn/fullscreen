@@ -2019,6 +2019,7 @@
 .marker-body-customer-body{
     background-color: #133f58;
     /*background-color: #23678ef0;*/
+    /*background-color: #4caf50;*/
     border-radius: 0 0px 0px 0;
     font-weight: bold;
     min-width: 26px;
@@ -2026,6 +2027,28 @@
     text-align: center;
 }
 .marker-body-customer-body span {
+    vertical-align: middle;
+    padding: 0 7px;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #133f58;
+    /*background-color: #23678ef0;*/
+}
+
+.marker-body-customer-body-curr{
+    /*background-color: #133f58;*/
+    /*background-color: #23678ef0;*/
+    background-color: #03a9f4;
+    border-radius: 0 0px 0px 0;
+    font-weight: bold;
+    min-width: 26px;
+    color: #fff;
+    text-align: center;
+}
+.marker-body-customer-body-curr span {
     vertical-align: middle;
     padding: 0 7px;
     display: inline-block;
@@ -2088,6 +2111,13 @@
     color: #fff;
     background-color: #133f58;
     background-color: #23678ef0;
+    border-radius: 0 0px 0px 0;
+}
+.amap-ui-district-cluster-marker-title1-curr{
+    color: #fff;
+    /*background-color: #133f58;*/
+    /*background-color: #23678ef0;*/
+    background-color: #03a9f4;
     border-radius: 0 0px 0px 0;
 }
 .marker-body-customer-container {

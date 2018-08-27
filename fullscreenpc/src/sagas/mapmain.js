@@ -69,7 +69,9 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                 				// body: 'amap-ui-district-cluster-marker-body',
                 				// container: 'amap-ui-district-cluster-marker'
                          title: 'amap-ui-district-cluster-marker-title1',
+                         title_curr: 'amap-ui-district-cluster-marker-title1-curr',
                          body: 'marker-body-customer-body',
+                         body_curr: 'marker-body-customer-body-curr',
                          container: 'amap-ui-district-cluster-marker1'
                 			};
                 			if (!!recycledMarker) {
@@ -137,21 +139,30 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                       if(feature.properties.adcode !== 100000){
                         resultMarker.on('mouseover', ()=> {
                              let text = `${datainfo['totalcount']}`;
-                             text += `<br /><div style="z-index: 999;background: #317093;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
+                             text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
                              text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
                              text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
                              text += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
                              console.log(`鼠标移入${props.name}:${text}`);
-                             body.innerHTML = text;
-                             resultMarker.setzIndex(999);
-                             resultMarker.setContent(container)
+                             try {
+                               body.innerHTML = text;
+                               resultMarker.setzIndex(999);
+                               title.className = nodeClassNames.title_curr;
+                               body.className = nodeClassNames.body_curr;
+                               resultMarker.setContent(container)
+                             } catch (e) { }
+
                         });
                         resultMarker.on('mouseout', ()=> {
                             let text = `${datainfo['totalcount']}`;
                             console.log(`鼠标移出${props.name}:${text}`);
-                            body.innerHTML = text;
-                            resultMarker.setzIndex(10);
-                            resultMarker.setContent(container)
+                            try {
+                              body.innerHTML = text;
+                              resultMarker.setzIndex(10);
+                              title.className = nodeClassNames.title;
+                              body.className = nodeClassNames.body;
+                              resultMarker.setContent(container)
+                            } catch (e) { }
                         });
                       }
                       else{
