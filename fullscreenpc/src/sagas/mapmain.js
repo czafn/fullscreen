@@ -183,7 +183,7 @@ const CreateMapUI_DistrictCluster =  (map)=>{
             distCluster = new DistrictCluster({
                  zIndex: 100,
                  map: map, //所属的地图实例
-                 autoSetFitView:false,
+                 autoSetFitView:true,
                  getPosition: (deviceitem)=> {
                      if(!!deviceitem.locz){
                        return deviceitem.locz;
@@ -206,7 +206,8 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                            fillStyle: 'rgba(3, 52, 71, 1)'
                        }
                   },
-                   featureClickToShowSub:true,
+                   clusterMarkerClickToShowSub:false,
+                   featureClickToShowSub:false,
                    clusterMarkerRecycleLimit:100000,
                    clusterMarkerKeepConsistent:true,
                    getClusterMarker : (feature, dataItems, recycledMarker)=> {
@@ -219,6 +220,11 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                  }
              });
              distCluster.setData(null);
+
+             distCluster.on('featureClick clusterMarkerClick', function(e, feature) {
+                console.log(`click....`);
+                map.zoomIn();
+             });
              resolve(distCluster);
        });
 
@@ -234,7 +240,7 @@ let CreateMap =({mapcenterlocation,zoomlevel})=> {
       window.amapmain = new window.AMap.Map(divmapid_mapmain, {
             center: center,
             zoom:zoomlevel,
-            zooms:[3,9],
+            zooms:[3,8],
             lang:"zh-cn",
             dragEnable:true,
             zoomEnable:true,
