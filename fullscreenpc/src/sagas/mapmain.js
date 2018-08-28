@@ -224,6 +224,7 @@ const CreateMapUI_DistrictCluster =  (map)=>{
              distCluster.on('featureClick clusterMarkerClick', function(e, feature) {
                 console.log(`click....`);
                 map.zoomIn();
+                distCluster.setData(null);
              });
              resolve(distCluster);
        });
