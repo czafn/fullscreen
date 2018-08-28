@@ -229,7 +229,7 @@ let CreateMap =({mapcenterlocation,zoomlevel})=> {
       window.amapmain = new window.AMap.Map(divmapid_mapmain, {
             center: center,
             zoom:zoomlevel,
-            zooms:[3,8],
+            zooms:[3,9],
             lang:"zh-cn",
             dragEnable:true,
             zoomEnable:true,
