@@ -1,4 +1,4 @@
-import { select,put,call,take,takeEvery,takeLatest,cancel,fork,join, } from 'redux-saga/effects';
+﻿import { select,put,call,take,takeEvery,takeLatest,cancel,fork,join, } from 'redux-saga/effects';
 import {delay} from 'redux-saga';
 import {
   common_err,
@@ -43,28 +43,27 @@ const resultMarker_on_mouseover =  (evt)=> {
   // debugger;
   const resultMarker = evt.target;
   const {datainfo,body,title,nodeClassNames,container} = resultMarker.getExtData();
-
-    //  const {datainfo,body,title,resultMarker,nodeClassNames,container} = this;
-    //  isinarea = true;
-     let text = `${datainfo['totalcount']}`;
-     text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
-     text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
-     text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
-     text += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
-    //  console.log(`鼠标移入${props.name}:${text}`);
-     try {
-       body.innerHTML = text;
-       resultMarker.setzIndex(999);
-       title.className = nodeClassNames.title_curr;
-       body.className = nodeClassNames.body_curr;
-       resultMarker.setContent(container)
-     } catch (e) { }
+  if(!!datainfo){
+    let text = `${datainfo['totalcount']}`;
+    text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
+    text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
+    text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
+    text += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
+   //  console.log(`鼠标移入${props.name}:${text}`);
+    try {
+      body.innerHTML = text;
+      resultMarker.setzIndex(999);
+      title.className = nodeClassNames.title_curr;
+      body.className = nodeClassNames.body_curr;
+      resultMarker.setContent(container)
+    } catch (e) { }
+  }
 };
 
 const resultMarker_on_mouseout =  (evt)=> {
   const resultMarker = evt.target;
   const {datainfo,body,title,nodeClassNames,container} = resultMarker.getExtData();
-  // if(isinarea){
+  if(!!datainfo){
     let text = `${datainfo['totalcount']}`;
     // console.log(`鼠标移出${props.name}:${text}`);
     try {
@@ -74,7 +73,7 @@ const resultMarker_on_mouseout =  (evt)=> {
       resultMarker.setContent(container)
     } catch (e) { }
   //   isinarea = false;
-  // }
+  }
   resultMarker.setzIndex(10);
 }
 
@@ -186,7 +185,7 @@ const CreateMapUI_DistrictCluster =  (map)=>{
             distCluster = new DistrictCluster({
                  zIndex: 100,
                  map: map, //所属的地图实例
-                 autoSetFitView:true,
+                 autoSetFitView:false,
                  getPosition: (deviceitem)=> {
                      if(!!deviceitem.locz){
                        return deviceitem.locz;
@@ -209,8 +208,7 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                            fillStyle: 'rgba(3, 52, 71, 1)'
                        }
                   },
-                   clusterMarkerClickToShowSub:false,
-                   featureClickToShowSub:false,
+                   featureClickToShowSub:true,
                    clusterMarkerRecycleLimit:100000,
                    clusterMarkerKeepConsistent:true,
                    getClusterMarker : (feature, dataItems, recycledMarker)=> {
@@ -224,14 +222,9 @@ const CreateMapUI_DistrictCluster =  (map)=>{
              });
              distCluster.setData(null);
 
-             distCluster.on('featureClick clusterMarkerClick', function(e, feature) {
-                console.log(`click....`);
-                map.zoomIn();
-                setTimeout(()=>{
-                  console.log(`refresh....`);
-                  distCluster.setData(null);
-                  distCluster.render();
-                },500);
+             distCluster.on('clusterMarkerClick', (e, feature)=> {
+               // debugger;
+               resultMarker_on_mouseout(e);
              });
              resolve(distCluster);
        });
