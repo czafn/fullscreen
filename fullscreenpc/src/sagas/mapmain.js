@@ -31,6 +31,10 @@ const maxzoom = 9;
 let infoWindow;
 const loczero = L.latLng(0,0);
 let distCluster;
+
+const datasample = [{
+	lnglat: [116.405285, 39.904989]
+}];
 // let groupStyleMap = {};
 let car = 'data:image/png;base64,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';
 let bus = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAACACAQAAADwz3D1AAAACXBIWXMAAAsTAAALEwEAmpwYAAADGWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjaY2BgnuDo4uTKJMDAUFBUUuQe5BgZERmlwH6egY2BmYGBgYGBITG5uMAxIMCHgYGBIS8/L5UBA3y7xsDIwMDAcFnX0cXJlYE0wJpcUFTCwMBwgIGBwSgltTiZgYHhCwMDQ3p5SUEJAwNjDAMDg0hSdkEJAwNjAQMDg0h2SJAzAwNjCwMDE09JakUJAwMDg3N+QWVRZnpGiYKhpaWlgmNKflKqQnBlcUlqbrGCZ15yflFBflFiSWoKAwMD1A4GBgYGXpf8EgX3xMw8BUNTVQYqg4jIKAX08EGIIUByaVEZhMXIwMDAIMCgxeDHUMmwiuEBozRjFOM8xqdMhkwNTJeYNZgbme+y2LDMY2VmzWa9yubEtoldhX0mhwBHJycrZzMXM1cbNzf3RB4pnqW8xryH+IL5nvFXCwgJrBZ0E3wk1CisKHxYJF2UV3SrWJw4p/hWiRRJYcmjUhXSutJPZObIhsoJyp2V71HwUeRVvKA0RTlKRUnltepWtUZ1Pw1Zjbea+7QmaqfqWOsK6b7SO6I/36DGMMrI0ljS+LfJPdPDZivM+y0qLBOtfKwtbFRtRexY7L7aP3e47XjB6ZjzXpetruvdVrov9VjkudBrgfdCn8W+y/xW+a8P2Bq4N+hY8PmQW6HPwr5EMEUKRilFG8e4xUbF5cW3JMxO3Jx0Nvl5KlOaXLpNRlRmVdas7D059/KY8tULfAqLi2YXHy55WyZR7lJRWDmv6mz131q9uvj6SQ3HGn83G7Skt85ru94h2Ond1d59uJehz76/bsK+if8nO05pnXpiOu+M4JmzZj2aozW3ZN6+BVwLwxYtXvxxqcOyCcsfrjRe1br65lrddU3rb2402NSx+cFWq21Tt3/Y6btr1R6Oven7jh9QP9h56PURv6Obj4ufqD355LT3mS3nZM+3X/h0Ke7yqasW15bdEL3ZeuvrnfS7N+/7PDjwyPTx6qeKz2a+EHzZ9Zr5Td3bn+9LP3z6VPD53de8b+9+5P/88Lv4z7d/Vf//AwAqvx2K829RWwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAB6ElEQVR42uzcu1LDMBBAUa0m///LS8FjhiGFiR5rO+dWFBGSj4RxUiSyffXzg7YUrbUWib5wAzr8svKTX2Ub0J39ypx+/PiFH7/w4xd+/MKPX/jv1+PQq2LKXMc/3Isl17p7/pxz+mdhRCn+/vljDv9+gLvO795/ri3C7/TjF378wo9f+PELP37hxy/8+IUfv/DjF378wo9f+PELP37hxy/8+IX/aXlf/nwn2ln8eROk3Dz/gd8T6cvE3PvxCz9+4ccv/PiFH7/w4xd+/MKPX/jxCz9+4ccv/PiFH7/w4xd+/MKPH7/w4xd+/MKPX/jxCz9+4cevefwBoazordmAKvzvm48NKMFvLX59m5KvVtpI/5f/eTk0Uc5Z6MuNzr90/X3x8rMUz4NncSfffs/9pdv/GBoegyckdpywM6+/Dy++tXjxH2RM+/faSuafsP5z3Hyi4O4bxePd+z35bDplZ30m6lMWkCXjZ21A4UY8rn+CyubP9affh3Hedl34+SZq+U/xeHfl0//OgMuvvd/+7J/6+PSrX8DC+Tdcd1+4kJg2/orbF7NO/2tLiKnj9wPGjoPQT/YHv+qCY/D1sWa++NdbtxycPIvw//suNZaMH+Y/toRYOH79FmxdfeTcS4gN49dtwfbVfwwAgPFFFzlSio4AAAAASUVORK5CYII=';
@@ -187,11 +191,11 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                  map: map, //所属的地图实例
                  autoSetFitView:false,
                  getPosition: (deviceitem)=> {
-                     if(!!deviceitem.locz){
-                       return deviceitem.locz;
+                     if(!!deviceitem){
+                       return deviceitem.lnglat;
                      }
                      console.log(`err----->=====>======>${JSON.stringify(deviceitem)}`);
-                     return deviceitem.locz;
+                     return deviceitem;
                  },
                  renderOptions:{
                    featureStyleByLevel:{
@@ -220,7 +224,7 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                     }
                  }
              });
-             distCluster.setData(null);
+             distCluster.setData(datasample);
 
              distCluster.on('clusterMarkerClick', (e, feature)=> {
                // debugger;
@@ -363,7 +367,7 @@ export function* createmapmainflow(){
               const zoomlevel = window.amapmain.getZoom();
               console.log(`>------${zoomlevel},start render-----<`)
               if(!!distCluster){
-                distCluster.setData(null);
+                distCluster.setData(datasample);
                 // distCluster.renderLater();
               }
 
