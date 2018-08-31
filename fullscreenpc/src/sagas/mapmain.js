@@ -31,7 +31,7 @@ const maxzoom = 9;
 let infoWindow;
 const loczero = L.latLng(0,0);
 let distCluster;
-
+let initedcluster = false;
 const datasample = [{
 	lnglat: [116.405285, 39.904989]
 }];
@@ -242,6 +242,7 @@ let CreateMap =({mapcenterlocation,zoomlevel})=> {
 
   return new Promise((resolve,reject) => {
     if(!mapcenterlocation.equals(loczero) && !window.amapmain ){
+      initedcluster = false;
       let center = new window.AMap.LngLat(mapcenterlocation.lng,mapcenterlocation.lat);
       window.amapmain = new window.AMap.Map(divmapid_mapmain, {
             center: center,
@@ -310,9 +311,11 @@ export function* createmapmainflow(){
       yield takeLatest(`${querymapstat_result}`, function*(action) {
         const {payload} = action;
         setdata(payload);
-        // if(!!distCluster){
-        //   distCluster.setData(null);
-        // }
+        console.log(`----->>querymapstat_result<<-----`)
+        if(!!distCluster && !initedcluster){
+          distCluster.setData(null);
+          initedcluster = true;
+        }
       });
     }
 
