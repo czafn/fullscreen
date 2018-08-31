@@ -169,9 +169,10 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                       resultMarker.off('mouseover',resultMarker_on_mouseover,resultMarker);
                       resultMarker.off('mouseout',resultMarker_on_mouseout,resultMarker);
                       resultMarker.setContent(container);
+                      const ctx = {datainfo,body,title,resultMarker,nodeClassNames,container};
+                      resultMarker.setExtData(ctx);
+
                       if(feature.properties.adcode !== 100000){
-                        const ctx = {datainfo,body,title,resultMarker,nodeClassNames,container};
-                        resultMarker.setExtData(ctx);
                         resultMarker.on('mouseover',resultMarker_on_mouseover,resultMarker);
                         resultMarker.on('mouseout',resultMarker_on_mouseout,resultMarker);
                       }
