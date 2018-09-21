@@ -8,7 +8,8 @@ import {
   carmapshow_destorymap,
   querydevicealarm_result,
   querymapstat_request,
-  querymapstat_result
+  querymapstat_result,
+  setcountalarm_map
 } from '../actions';
 // import async from 'async';
 import {getcurrentpos} from './getcurrentpos';
@@ -43,11 +44,12 @@ let energy = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN8AAACACAYAAACLIbwO
 //新建行政区域
 // let isinarea = false;
 const resultMarker_on_mouseover =  (evt)=> {
-  console.log(evt);
   // debugger;
   const resultMarker = evt.target;
   const {datainfo,body,title,nodeClassNames,container} = resultMarker.getExtData();
   if(!!datainfo){
+    console.log(datainfo);
+    
     let text = `${datainfo['totalcount']}`;
     text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
     text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
@@ -99,7 +101,7 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                try{
                 //  console.log(feature);
                  const datainfo = getdata(feature.properties.adcode);
-                //  console.log(datainfo);
+
                  let isshow = !!datainfo;
                  if(isshow){
                    if(datainfo['totalcount'] === 0){
@@ -310,7 +312,8 @@ export function* createmapmainflow(){
 
       yield takeLatest(`${querymapstat_result}`, function*(action) {
         const {payload} = action;
-        setdata(payload);
+        const result  = setdata(payload);
+        yield put(setcountalarm_map(result));
         console.log(`----->>querymapstat_result<<-----`)
         if(!!distCluster && !initedcluster){
           distCluster.setData(null);

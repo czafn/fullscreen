@@ -9,7 +9,9 @@ import{
 
   catl_warningf_result,
 
-  querydevicealarm_result
+  querydevicealarm_result,
+
+  setcountalarm_map
 } from '../actions';
 
 const initial = {
@@ -28,11 +30,19 @@ const initial = {
       counttotal:0,
       countalarm3:0,
       countalarm2:0,
-      countalarm1:0
+      countalarm1:0,
+
+      countalarm3_map:0,
+      countalarm2_map:0,
+      countalarm1_map:0
   },
 };
 
 const catlworking = createReducer({
+  [setcountalarm_map]:(state,payload)=>{
+    const {countalarm3_map,countalarm2_map,countalarm1_map} = payload;
+    return  {...state,countalarm3_map,countalarm2_map,countalarm1_map};
+  },
   [querydevicealarm_result]:(state,payload)=>{
     const {alarm1,alarm2,alarm3,countonline,counttotal,countalarm3,countalarm2,countalarm1} = payload;
     return  {...state,

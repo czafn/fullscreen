@@ -137,17 +137,25 @@ const mapStateToProps = ({
                              counttotal,
                              countalarm3,
                              countalarm2,
-                             countalarm1
+                             countalarm1,
+
+                             countalarm1_map,
+                             countalarm2_map,
+                             countalarm3_map,
                            },
                            deviceext:{countcar,countbus,query}
                          }) => {
   let count_online = countonline;
   let count_offline = counttotal-countonline;
 
-  let count_yellow = countalarm1;
-  let count_red = countalarm3;
-  let count_orange = countalarm2;
+  //为保持和地图的一致性
+  // let count_yellow = countalarm1;
+  // let count_red = countalarm3;
+  // let count_orange = countalarm2;
 
+  let count_yellow = countalarm1_map;
+  let count_red = countalarm3_map;
+  let count_orange = countalarm2_map;
 
   const centerIndex = {
     count_online:count_online,

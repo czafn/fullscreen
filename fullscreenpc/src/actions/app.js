@@ -39,3 +39,5 @@ export const download_excel = createAction('download_excel');
 
 export const ui_showprompt = createAction('ui_showprompt');
 export const set_promptdata = createAction('set_promptdata');
+
+export const setcountalarm_map = createAction('setcountalarm_map');
