@@ -51,10 +51,16 @@ const resultMarker_on_mouseover =  (evt)=> {
     console.log(datainfo);
     
     let text = `${datainfo['totalcount']}`;
-    text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CAR']}`;
+    text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CONTAINERTRUCK']}`;
     text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
-    text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}`;
+    text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CAR']}`;
     text += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
+    // text = `<div style="display: grid;
+    // grid-template-columns: 50px 50px 50px 50px;
+    // grid-template-rows: 30px 30px 30px 30px;">`;
+    // text += `<div>总数</div><div>一级</div>\n' +
+    //   '    <div>二级</div>\n' +
+    //   '    <div>三级</div>\`
    //  console.log(`鼠标移入${props.name}:${text}`);
     try {
       body.innerHTML = text;
