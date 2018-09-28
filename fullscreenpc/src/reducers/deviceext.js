@@ -21,6 +21,8 @@ const initial = {
       deviceextlist:[],
       countcar:0,
       countbus:0,
+      countContainer:0,
+      countEnergy:0,
       usedyearcar:[],
       usedyearbus:[],
       usedyearEnergy: [],
@@ -48,9 +50,11 @@ const deviceext = createReducer({
     return  {...state,deviceextlist};
   },
   [deviceext_result]:(state,payload)=>{
-    const {getcountcar,getcountbus,getusedyearcar,getusedyearEnergy,getusedyearContainer,getusedyearbus,getstatprovince,getstatcatlproject} = payload;
+    const {getcountcar,getcountbus,getcountContainer,getcountEnergy,getusedyearcar,getusedyearEnergy,getusedyearContainer,getusedyearbus,getstatprovince,getstatcatlproject} = payload;
     const countcar = getcountcar;
     const countbus = getcountbus;
+    const countContainer = getcountContainer;
+    const countEnergy = getcountEnergy;
     const usedyearcar = [...getusedyearcar];
     const usedyearbus = [...getusedyearbus];
     const usedyearEnergy = [...getusedyearEnergy];
@@ -63,7 +67,7 @@ const deviceext = createReducer({
     // console.log(`statcatlproject->${JSON.stringify(statcatlproject)}`)
     // console.log(`countcar->${countcar}`)
     // console.log(`countcar->${countbus}`)
-    return  {...state,countcar,countbus,usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer,statprovince,statcatlproject};
+    return  {...state,countcar,countContainer,countEnergy,countbus,usedyearcar,usedyearbus,usedyearEnergy,usedyearContainer,statprovince,statcatlproject};
   },
   [settype_deviceext]:(state,payload)=>{
     const type = {...payload};
