@@ -50,12 +50,18 @@ class AppRoot extends React.Component {
         }
     };
 
+    faultClick(level){
+      //故障点击处理
+      //点击之后 需要能够有个地方存储这个属性，然后我要在 mapmain.js 里面用这个属性 ，来判断marker的展示。
+    }
 
     render() {
       const {centerIndex, rightIndex, query} = this.props;
       return (
           <div className="back1_right" >
-
+            {/*<div style={{width:'1920px',height:'50px',display:'flex',justifyContent: 'space-between'}}>*/}
+              {/*<div style={{background:'red',width:'25%'}}>dd</div><div style={{background:'green',width:'25%'}}>dd</div><div style={{background:'blue',width:'25%'}}>dd</div><div style={{background:'yellow',width:'25%'}}>dd</div>*/}
+            {/*</div>*/}
               <div className="center">
                   <div className="title-center1">
                     {/*<div style={{height:'50px',backgroud:'red'}}>*/}
@@ -66,6 +72,15 @@ class AppRoot extends React.Component {
                     {/*</div>*/}
                       <div className="title-center-box" style={{}}>
 
+                          <div className="titleNumCol-center" style={{marginLeft: '0px'}}>
+                            <div className="title-center-title"><img src="index/top.png" alt=""></img>储能柜</div>
+                            <div className="title-center-content-border">
+                              <div className="title-center-content">
+                                <span className="title-center-content-num">{rightIndex.energy}</span>
+                                <span className="title-center-content-day">辆</span>
+                              </div>
+                            </div>
+                          </div>
                           <div className="titleNumCol-center" style={{marginLeft: '30px'}}>
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>总数量</div>
                               <div className="title-center-content-border">
@@ -75,33 +90,34 @@ class AppRoot extends React.Component {
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol-center " style={{marginLeft: '140px'}}>
+                          <div className="titleNumCol-center " style={{marginLeft: '30px'}}>
                               <div className="title-center-title red"><img src="index/top.png" alt=""></img>三级</div>
-                              <div className="title-center-content-border red-border">
+                              <div className="title-center-content-border red-border" onClick={this.faultClick.bind(this, 'count_red')}>
                                   <div className="title-center-content red">
                                       <span className="title-center-content-num">{centerIndex.count_red}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol-center " style={{marginLeft: '140px'}}>
+                          <div className="titleNumCol-center " style={{marginLeft: '30px'}}>
                               <div className="title-center-title orange"><img src="index/top.png" alt=""></img>二级</div>
-                              <div className="title-center-content-border orange-border">
+                              <div className="title-center-content-border orange-border" onClick={this.faultClick.bind(this, 'count_orange')}>
                                   <div className="title-center-content orange">
                                       <span className="title-center-content-num">{centerIndex.count_orange}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
                           </div>
-                          <div className="titleNumCol-center " style={{marginLeft: '145px'}}>
+                          <div className="titleNumCol-center " style={{marginLeft: '30px'}}>
                               <div className="title-center-title yellow"><img src="index/top.png" alt=""></img>一级</div>
-                              <div className="title-center-content-border yellow-border">
+                              <div className="title-center-content-border yellow-border" onClick={this.faultClick.bind(this, 'count_yellow')}>
                                   <div className="title-center-content yellow">
                                       <span className="title-center-content-num">{centerIndex.count_yellow}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
                               </div>
                           </div>
+
                         <div className="titleNumCol titleNumCol-right titleTime" style={{lineHeight:'30px',marginLeft: '20px'}}>
                           <div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-DD') }</div>
                           <div className="title-right-buttom">{moment(this.state.nowday).format('HH:mm:ss') }</div>
@@ -143,11 +159,10 @@ const mapStateToProps = ({
                              countalarm2_map,
                              countalarm3_map,
                            },
-                           deviceext:{countcar,countbus,query}
+                           deviceext:{countcar,countbus,countContainer,countEnergy,query}
                          }) => {
   let count_online = countonline;
   let count_offline = counttotal-countonline;
-
   //为保持和地图的一致性
   // let count_yellow = countalarm1;
   // let count_red = countalarm3;
@@ -167,7 +182,9 @@ const mapStateToProps = ({
   };
   const rightIndex = {
     bus:countbus,
-    car:countcar
+    car:countcar,
+    container:countContainer,
+    energy:countEnergy
   };
 
   return {centerIndex, rightIndex, query};
