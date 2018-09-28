@@ -13,7 +13,7 @@ import Item from '../item';
 import CarYear from '../carYear';
 import BusYear from '../busYear';
 import MapProvince from '../mapProvince';
-
+import {ui_clickwarning} from '../../actions';
 import './index.css';
 import MapIframe from "./mapiframe";
 
@@ -53,6 +53,7 @@ class AppRoot extends React.Component {
     faultClick(level){
       //故障点击处理
       //点击之后 需要能够有个地方存储这个属性，然后我要在 mapmain.js 里面用这个属性 ，来判断marker的展示。
+      this.props.dispatch(ui_clickwarning(level));
     }
 
     render() {

@@ -36,6 +36,7 @@ export const ui_viewdevicedetail = createAction('ui_viewdevicedetail');
 
 export const download_excel = createAction('download_excel');
 
+export const ui_clickwarning = createAction('ui_clickwarning');
 
 export const ui_showprompt = createAction('ui_showprompt');
 export const set_promptdata = createAction('set_promptdata');
