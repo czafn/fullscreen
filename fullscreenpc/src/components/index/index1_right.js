@@ -85,7 +85,7 @@ class AppRoot extends React.Component {
                           <div className="titleNumCol-center" style={{marginLeft: '30px'}}>
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>总数量</div>
                               <div className="title-center-content-border" onClick={this.faultClick.bind(this, 'count_all')}>
-                                  <div className="title-center-content">
+                                  <div className="title-center-content" style={{cursor: 'pointer'}}>
                                       <span className="title-center-content-num">{centerIndex.count_all}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
@@ -94,7 +94,7 @@ class AppRoot extends React.Component {
                           <div className="titleNumCol-center " style={{marginLeft: '30px'}}>
                               <div className="title-center-title red"><img src="index/top.png" alt=""></img>三级</div>
                               <div className="title-center-content-border red-border" onClick={this.faultClick.bind(this, 'count_red')}>
-                                  <div className="title-center-content red">
+                                  <div className="title-center-content red" style={{cursor: 'pointer'}}>
                                       <span className="title-center-content-num">{centerIndex.count_red}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
@@ -103,7 +103,7 @@ class AppRoot extends React.Component {
                           <div className="titleNumCol-center " style={{marginLeft: '30px'}}>
                               <div className="title-center-title orange"><img src="index/top.png" alt=""></img>二级</div>
                               <div className="title-center-content-border orange-border" onClick={this.faultClick.bind(this, 'count_orange')}>
-                                  <div className="title-center-content orange">
+                                  <div className="title-center-content orange" style={{cursor: 'pointer'}}>
                                       <span className="title-center-content-num">{centerIndex.count_orange}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
@@ -112,7 +112,7 @@ class AppRoot extends React.Component {
                           <div className="titleNumCol-center " style={{marginLeft: '30px'}}>
                               <div className="title-center-title yellow"><img src="index/top.png" alt=""></img>一级</div>
                               <div className="title-center-content-border yellow-border" onClick={this.faultClick.bind(this, 'count_yellow')}>
-                                  <div className="title-center-content yellow">
+                                  <div className="title-center-content yellow" style={{cursor: 'pointer'}}>
                                       <span className="title-center-content-num">{centerIndex.count_yellow}</span>
                                       <span className="title-center-content-day">辆</span>
                                   </div>
