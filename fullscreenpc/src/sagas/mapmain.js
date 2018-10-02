@@ -54,44 +54,87 @@ const resultMarker_on_mouseover =  (evt)=> {
   if(!!datainfo){
     console.log(datainfo);
     //cur_warninglevel <----这里判断传进来的变量，根据需要显示，疑问：如果想恢复成所有的怎么办？
+    cur_warninglevel
     debugger;
-    let text = `${datainfo['totalcount']}`;
-    text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CONTAINERTRUCK']}`;
-    text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
-    text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CAR']}`;
-    text += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
-    text = `<div style="display: grid;
-
-    grid-template-columns: 70px 45px 45px 45px;
-    opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px;
-    grid-template-rows: 30px 30px 30px 30px;">`;
+    // let text = `${datainfo['totalcount']}`;
+    // text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CONTAINERTRUCK']}`;
+    // text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
+    // text += `<br /><img width="16px" src="`+containerImg+`"> ${datainfo['CAR']}`;
+    // text += `<br /><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>`;
+    let text = "";
     let one = datainfo['BUS_Warning']['一级']+datainfo['CAR_Warning']['一级']+datainfo['CONTAINERTRUCK_Warning']['一级']+datainfo['ENERGYTRUCK_Warning']['一级'];
     let two = datainfo['BUS_Warning']['二级']+datainfo['CAR_Warning']['二级']+datainfo['CONTAINERTRUCK_Warning']['二级']+datainfo['ENERGYTRUCK_Warning']['二级'];
     let three = datainfo['BUS_Warning']['三级']+datainfo['CAR_Warning']['三级']+datainfo['CONTAINERTRUCK_Warning']['三级']+datainfo['ENERGYTRUCK_Warning']['三级'];
-    text += `<div>总数</div>
-        <div style="color:#ed942f;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">一级</div>
-        <div style="color:#f6d06b; border-right: 1px solid #8e8e8e;text-align: center;">二级</div>
-        <div style="color:#d4191a;text-align: center;">三级</div>`;
-    text += `<div>总  ${datainfo['totalcount']}</div>
-        <div style="color:#ed942f;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${one}</div>
-        <div style="color:#f6d06b; border-right: 1px solid #8e8e8e;text-align: center;">${two}</div>
-        <div style="color:#d4191a;text-align: center;">${three}</div>`;
-    text += `<div><img width="16px" src="`+car+`"> ${datainfo['CAR']}</div>
-        <div style="color:#ed942f;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CAR_Warning']['一级']}</div>
-        <div style="color:#f6d06b; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CAR_Warning']['二级']}</div>
-        <div style="color:#d4191a;text-align: center;">${datainfo['CAR_Warning']['三级']}</div>`;
-    text += `<div><img width="16px" src="`+bus+`"> ${datainfo['BUS']}</div>
-        <div style="color:#ed942f;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['BUS_Warning']['一级']}</div>
-        <div style="color:#f6d06b; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['BUS_Warning']['二级']}</div>
-        <div style="color:#d4191a;text-align: center;">${datainfo['BUS_Warning']['三级']}</div>`;
-    text += `<div><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}</div>
-        <div style="color:#ed942f;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CONTAINERTRUCK_Warning']['一级']}</div>
-        <div style="color:#f6d06b; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CONTAINERTRUCK_Warning']['二级']}</div>
-        <div style="color:#d4191a;text-align: center;">${datainfo['CONTAINERTRUCK_Warning']['三级']}</div>`;
-    text += `<div><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>
-        <div style="color:#ed942f;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['ENERGYTRUCK_Warning']['一级']}</div>
-        <div style="color:#f6d06b; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['ENERGYTRUCK_Warning']['二级']}</div>
-        <div style="color:#d4191a;text-align: center;">${datainfo['ENERGYTRUCK_Warning']['三级']}</div>`;
+    switch(cur_warninglevel){
+      case 'count_yellow':
+        text = `<div style="display: grid;
+        grid-template-columns: 50px;
+        opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px;
+        grid-template-rows: 30px 30px 30px 30px;">`;
+            text += `<div style="color:#f6d06b;">一级</div>`;
+            text += `<div style="color:#f6d06b;">总  ${one}</div>`;
+            text += `<div style="color:#f6d06b;"><img width="16px" src="`+car+`"> ${datainfo['CAR_Warning']['一级']}</div>`;
+            text += `<div style="color:#f6d06b;"><img width="16px" src="`+bus+`"> ${datainfo['BUS_Warning']['一级']}</div>`;
+            text += `<div style="color:#f6d06b;"><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK_Warning']['一级']}</div>`;
+            text += `<div style="color:#f6d06b;"><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK_Warning']['一级']}</div>`;
+        break;
+      case 'count_orange':
+        text = `<div style="display: grid;
+        grid-template-columns: 50px;
+        opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px;
+        grid-template-rows: 30px 30px 30px 30px;">`;
+        text += `<div style="color:#ed942f;">二级</div>`;
+        text += `<div style="color:#ed942f;">总  ${two}</div>`;
+        text += `<div style="color:#ed942f;"><img width="16px" src="`+car+`"> ${datainfo['CAR_Warning']['二级']}</div>`;
+        text += `<div style="color:#ed942f;"><img width="16px" src="`+bus+`"> ${datainfo['BUS_Warning']['二级']}</div>`;
+        text += `<div style="color:#ed942f;"><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK_Warning']['二级']}</div>`;
+        text += `<div style="color:#ed942f;"><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK_Warning']['二级']}</div>`;
+        break;
+      case 'count_red':
+        text = `<div style="display: grid;
+        grid-template-columns: 50px;
+        opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px;
+        grid-template-rows: 30px 30px 30px 30px;">`;
+        text += `<div style="color:#d4191a;">三级</div>`;
+        text += `<div style="color:#d4191a;">总  ${three}</div>`;
+        text += `<div style="color:#d4191a;"><img width="16px" src="`+car+`"> ${datainfo['CAR_Warning']['三级']}</div>`;
+        text += `<div style="color:#d4191a;"><img width="16px" src="`+bus+`"> ${datainfo['BUS_Warning']['三级']}</div>`;
+        text += `<div style="color:#d4191a;"><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK_Warning']['三级']}</div>`;
+        text += `<div style="color:#d4191a;"><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK_Warning']['三级']}</div>`;
+        break;
+      default:
+        text = `<div style="display: grid;
+        grid-template-columns: 70px 45px 45px 45px;
+        opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px;
+        grid-template-rows: 30px 30px 30px 30px;">`;
+
+            text += `<div>总数</div>
+            <div style="color:#f6d06b;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">一级</div>
+            <div style="color:#ed942f; border-right: 1px solid #8e8e8e;text-align: center;">二级</div>
+            <div style="color:#d4191a;text-align: center;">三级</div>`;
+            text += `<div>总  ${datainfo['totalcount']}</div>
+            <div style="color:#f6d06b;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${one}</div>
+            <div style="color:#ed942f; border-right: 1px solid #8e8e8e;text-align: center;">${two}</div>
+            <div style="color:#d4191a;text-align: center;">${three}</div>`;
+            text += `<div><img width="16px" src="`+car+`"> ${datainfo['CAR']}</div>
+            <div style="color:#f6d06b;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CAR_Warning']['一级']}</div>
+            <div style="color:#ed942f; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CAR_Warning']['二级']}</div>
+            <div style="color:#d4191a;text-align: center;">${datainfo['CAR_Warning']['三级']}</div>`;
+            text += `<div><img width="16px" src="`+bus+`"> ${datainfo['BUS']}</div>
+            <div style="color:#f6d06b;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['BUS_Warning']['一级']}</div>
+            <div style="color:#ed942f; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['BUS_Warning']['二级']}</div>
+            <div style="color:#d4191a;text-align: center;">${datainfo['BUS_Warning']['三级']}</div>`;
+            text += `<div><img width="16px" src="`+containerImg+`"> ${datainfo['CONTAINERTRUCK']}</div>
+            <div style="color:#f6d06b;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CONTAINERTRUCK_Warning']['一级']}</div>
+            <div style="color:#ed942f; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['CONTAINERTRUCK_Warning']['二级']}</div>
+            <div style="color:#d4191a;text-align: center;">${datainfo['CONTAINERTRUCK_Warning']['三级']}</div>`;
+            text += `<div><img width="16px" src="`+energy+`"> ${datainfo['ENERGYTRUCK']}</div>
+            <div style="color:#f6d06b;border-left: 1px solid #8e8e8e; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['ENERGYTRUCK_Warning']['一级']}</div>
+            <div style="color:#ed942f; border-right: 1px solid #8e8e8e;text-align: center;">${datainfo['ENERGYTRUCK_Warning']['二级']}</div>
+            <div style="color:#d4191a;text-align: center;">${datainfo['ENERGYTRUCK_Warning']['三级']}</div>`;
+        break;
+    }
+
    //  console.log(`鼠标移入${props.name}:${text}`);
     try {
       body.innerHTML = text;
@@ -106,8 +149,26 @@ const resultMarker_on_mouseover =  (evt)=> {
 const resultMarker_on_mouseout =  (evt)=> {
   const resultMarker = evt.target;
   const {datainfo,body,title,nodeClassNames,container} = resultMarker.getExtData();
+  let one = datainfo['BUS_Warning']['一级']+datainfo['CAR_Warning']['一级']+datainfo['CONTAINERTRUCK_Warning']['一级']+datainfo['ENERGYTRUCK_Warning']['一级'];
+  let two = datainfo['BUS_Warning']['二级']+datainfo['CAR_Warning']['二级']+datainfo['CONTAINERTRUCK_Warning']['二级']+datainfo['ENERGYTRUCK_Warning']['二级'];
+  let three = datainfo['BUS_Warning']['三级']+datainfo['CAR_Warning']['三级']+datainfo['CONTAINERTRUCK_Warning']['三级']+datainfo['ENERGYTRUCK_Warning']['三级'];
   if(!!datainfo){
+
     let text = `${datainfo['totalcount']}`;
+    switch(cur_warninglevel) {
+      case 'count_yellow':
+        text = `<div style="width: 35px">${one}</div>`;
+        break;
+      case 'count_orange':
+        text = `<div style="width: 35px">${two}</div>`;
+        break;
+      case 'count_red':
+        text = `<div style="width: 35px">${three}</div>`;
+        break;
+      default:
+        text = `<div style="width: 35px">${datainfo['totalcount']}</div>`;
+        break;
+    }
     // console.log(`鼠标移出${props.name}:${text}`);
     try {
       body.innerHTML = text;
@@ -138,7 +199,9 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                try{
                 //  console.log(feature);
                  const datainfo = getdata(feature.properties.adcode);
-
+                 let one = datainfo['BUS_Warning']['一级']+datainfo['CAR_Warning']['一级']+datainfo['CONTAINERTRUCK_Warning']['一级']+datainfo['ENERGYTRUCK_Warning']['一级'];
+                 let two = datainfo['BUS_Warning']['二级']+datainfo['CAR_Warning']['二级']+datainfo['CONTAINERTRUCK_Warning']['二级']+datainfo['ENERGYTRUCK_Warning']['二级'];
+                 let three = datainfo['BUS_Warning']['三级']+datainfo['CAR_Warning']['三级']+datainfo['CONTAINERTRUCK_Warning']['三级']+datainfo['ENERGYTRUCK_Warning']['三级'];
                  let isshow = !!datainfo;
                  if(isshow){
                    if(datainfo['totalcount'] === 0){
@@ -197,7 +260,21 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                         title.innerHTML = utils.escapeHtml(props.name);
                       }
                 			if(!!body){
-                         body.innerHTML = `${datainfo['totalcount']}`;
+                        switch(cur_warninglevel) {
+                          case 'count_yellow':
+                            body.innerHTML = `<div style="width: 35px">${one}</div>`;
+                            break;
+                          case 'count_orange':
+                            body.innerHTML = `<div style="width: 35px">${two}</div>`;
+                            break;
+                          case 'count_red':
+                            body.innerHTML = `<div style="width: 35px">${three}</div>`;
+                            break;
+                          default:
+                            body.innerHTML = `<div style="width: 35px">${datainfo['totalcount']}</div>`;
+                            break;
+                        }
+
                       }
 
 
@@ -345,6 +422,7 @@ export function* createmapmainflow(){
           const {payload:warninglevel} = action;
           cur_warninglevel = warninglevel;
           console.log(cur_warninglevel);
+          yield call(CreateMapUI_DistrictCluster,window.amapmain);
           debugger;
       });
       yield takeLatest(`${querydevicealarm_result}`, function*(action) {

@@ -84,7 +84,7 @@ class AppRoot extends React.Component {
                           </div>
                           <div className="titleNumCol-center" style={{marginLeft: '30px'}}>
                               <div className="title-center-title"><img src="index/top.png" alt=""></img>总数量</div>
-                              <div className="title-center-content-border">
+                              <div className="title-center-content-border" onClick={this.faultClick.bind(this, 'count_all')}>
                                   <div className="title-center-content">
                                       <span className="title-center-content-num">{centerIndex.count_all}</span>
                                       <span className="title-center-content-day">辆</span>
