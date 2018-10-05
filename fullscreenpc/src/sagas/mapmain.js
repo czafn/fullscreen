@@ -204,9 +204,21 @@ const CreateMapUI_DistrictCluster =  (map)=>{
                  let three = datainfo['BUS_Warning']['三级']+datainfo['CAR_Warning']['三级']+datainfo['CONTAINERTRUCK_Warning']['三级']+datainfo['ENERGYTRUCK_Warning']['三级'];
                  let isshow = !!datainfo;
                  if(isshow){
-                   if(datainfo['totalcount'] === 0){
-                     isshow = false;
+                   switch(cur_warninglevel) {
+                     case 'count_yellow':
+                       isshow = one > 0;
+                       break;
+                     case 'count_orange':
+                       isshow = two > 0;
+                       break;
+                     case 'count_red':
+                       isshow = three > 0;
+                       break;
+                     default:
+                       isshow = datainfo['totalcount']  > 0;
+                       break;
                    }
+
                  }
                  if(isshow){
                    let container, title, body;
