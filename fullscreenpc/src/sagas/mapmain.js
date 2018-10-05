@@ -52,10 +52,10 @@ const resultMarker_on_mouseover =  (evt)=> {
   const resultMarker = evt.target;
   const {datainfo,body,title,nodeClassNames,container} = resultMarker.getExtData();
   if(!!datainfo){
-    console.log(datainfo);
-    //cur_warninglevel <----这里判断传进来的变量，根据需要显示，疑问：如果想恢复成所有的怎么办？
-    cur_warninglevel
-    debugger;
+    // console.log(datainfo);
+    // //cur_warninglevel <----这里判断传进来的变量，根据需要显示，疑问：如果想恢复成所有的怎么办？
+    // cur_warninglevel
+    // debugger;
     // let text = `${datainfo['totalcount']}`;
     // text += `<br /><div style="opacity: 1;z-index: 999;background: #03a9f4;border: 1px solid #8e8e8e;text-align: left;padding:0 5px;margin-left: -7px;margin-right: -8px"><img width="16px" src="`+car+`"> ${datainfo['CONTAINERTRUCK']}`;
     // text += `<br /><img width="16px" src="`+bus+`"> ${datainfo['BUS']}`;
@@ -433,9 +433,10 @@ export function* createmapmainflow(){
       yield takeLatest(`${ui_clickwarning}`, function*(action) {
           const {payload:warninglevel} = action;
           cur_warninglevel = warninglevel;
-          console.log(cur_warninglevel);
-          yield call(CreateMapUI_DistrictCluster,window.amapmain);
-          debugger;
+          distCluster.setData(datasample);
+          // console.log(cur_warninglevel);
+          // yield call(CreateMapUI_DistrictCluster,window.amapmain);
+          // debugger;
       });
       yield takeLatest(`${querydevicealarm_result}`, function*(action) {
         const {payload:{counttotal}} = action;
