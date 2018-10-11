@@ -53,7 +53,9 @@ class AppRoot extends React.Component {
       const {centerIndex, rightIndex, query} = this.props;
       return (
           <div className="back" style={{width:'1920px',}}>
-
+              {/*<div style={{width:'1920px',height:'50px',display:'flex',justifyContent: 'space-between'}}>*/}
+                {/*<div style={{background:'red',width:'25%'}}>dd</div><div style={{background:'green',width:'25%'}}>dd</div><div style={{background:'blue',width:'25%'}}>dd</div><div style={{background:'yellow',width:'25%'}}>dd</div>*/}
+              {/*</div>*/}
               <div className="left">
                   <div className="title-left">
                       <div style={{float: "left", margin: "0 20px"}}><img src="index/catlLOGO1.png" alt="" width="200px"></img></div>
@@ -122,7 +124,7 @@ class AppRoot extends React.Component {
 
               <div className="right">
                   <div className="title-right">
-                      <div className="titleNumCol titleNumCol-right" style={{marginLeft:'200px'}}>
+                      <div className="titleNumCol titleNumCol-right" style={{marginLeft:'45px'}}>
                           <div className="title-center-title"><img src="index/top.png" alt=""></img>客车</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
@@ -131,7 +133,7 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                       </div>
-                      <div className="titleNumCol" style={{marginLeft:'80px'}}>
+                      <div className="titleNumCol" style={{marginLeft:'10px'}}>
                           <div className="title-center-title"><img src="index/top.png" alt=""></img>乘用车</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
@@ -139,6 +141,15 @@ class AppRoot extends React.Component {
                                   <span className="title-center-content-day">辆</span>
                               </div>
                           </div>
+                      </div>
+                      <div className="titleNumCol" style={{marginLeft:'10px'}}>
+                        <div className="title-center-title"><img src="index/top.png" alt=""></img>物流车</div>
+                        <div className="title-center-content-border" style={{width: "190px"}}>
+                          <div className="title-center-content" style={{width: "180px"}}>
+                            <span className="title-center-content-num">{rightIndex.container}</span>
+                            <span className="title-center-content-day">辆</span>
+                          </div>
+                        </div>
                       </div>
                       {/*<div className="titleNumCol titleNumCol-right titleTime">*/}
                           {/*<div className="title-right-top">{moment(this.state.nowday).format('YYYY-MM-D') }</div>*/}
@@ -200,7 +211,7 @@ const mapStateToProps = ({app,
   searchresult:{curallalarm,alarms},
   device:{g_devicesdb},
   app:{SettingOfflineMinutes},
-  deviceext:{countcar,countbus,query}
+  deviceext:{countcar,countbus,countContainer,countEnergy,query}
 }) => {
   const {modeview} = app;
 
@@ -249,9 +260,11 @@ const mapStateToProps = ({app,
     };
     const rightIndex = {
         bus:countbus,
-        car:countcar
+        car:countcar,
+        container:countContainer,
+        energy:countEnergy
     };
-
+debugger
     return {centerIndex, rightIndex, query};
   //  return {count_online,count_offline,count_all,count_yellow,count_red,count_orange,modeview};
  }
