@@ -10,7 +10,7 @@ import ecStat from 'echarts-stat';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian2} from '../../util/gettmputil';
+import {getmedian,getpercent} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -486,8 +486,8 @@ const getOptionSelector = createSelector(
       });
     });
 
-
-    const {areaParam,median} = getmedian2(celltemperature);
+    const median = getmedian(celltemperature);
+    const areaParam = getpercent(data);
 
     const getOption = () => {
       return {
