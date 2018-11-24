@@ -704,7 +704,7 @@ const getOptionSelector = createSelector(
       })
     }
 
-    const median = getmedian(m5data);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
+    const median = getmedian(dxtemperature);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
 
     const getOption = () => {

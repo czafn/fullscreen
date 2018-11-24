@@ -487,7 +487,7 @@ const getOptionSelector = createSelector(
     });
 
 
-    const {areaParam,median} = getmedian2(data);
+    const {areaParam,median} = getmedian2(celltemperature);
 
     const getOption = () => {
       return {
