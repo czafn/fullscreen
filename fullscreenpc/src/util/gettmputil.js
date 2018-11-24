@@ -1,6 +1,7 @@
 import lodashmap from 'lodash.map';
 import lodashget from 'lodash.get';
 import * as math from 'mathjs';
+const _ = require('underscore');
 
 const getmedian = (data)=>{
   // debugger;
@@ -82,4 +83,26 @@ const getpercent  = (data,fpercent=0.9)=>{
   return areaParam;
 }
 
-export {getmedian,getpercent};
+/*
+@input data为传过来的数据
+@param 是个数组,数组的元素分别是:[{start,end,step}]
+*/
+const convertdata = (inpudata,paramz)=>{
+  const m5data = [];
+  for(let pi = 0; pi < paramz.length ; pi++){
+      const param = paramz[pi];
+      for(let i=param.start; i<=param.end; i+=param.step){
+        const fs = _.filter(inpudata, (d) =>
+          d.name-0 >= i && d.name-0 < i+param.step
+        );
+        const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
+        m5data.push({
+          name: `${i}`,
+          value: `${tempNum}`
+        })
+    }
+  }
+  return m5data;
+}
+
+export {getmedian,getpercent,convertdata};

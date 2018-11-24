@@ -9,7 +9,7 @@ import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian} from '../../util/gettmputil';
+import {getmedian,convertdata} from '../../util/gettmputil';
 const _ = require('underscore');
 
 
@@ -691,19 +691,19 @@ const getOptionSelector = createSelector(
   (dxtemperature) => {
     let data = [];
     dxtemperature = _.sortBy(dxtemperature, (l)=> l.name-0)
-    const m5data = [];
-    for(let i=0; i<=150; i+=5){
-      const fs = _.filter(dxtemperature, (d) =>
-        d.name-0 >= i && d.name-0 < i+5
-      );
-      const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
-      m5data.push({
-        name: `${i}`,
-        value: `${tempNum}`
-        // value:100
-      })
-    }
-
+    // const m5data = [];
+    // for(let i=0; i<=150; i+=5){
+    //   const fs = _.filter(dxtemperature, (d) =>
+    //     d.name-0 >= i && d.name-0 < i+5
+    //   );
+    //   const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
+    //   m5data.push({
+    //     name: `${i}`,
+    //     value: `${tempNum}`
+    //     // value:100
+    //   })
+    // }
+    const m5data = convertdata(dxtemperature,[{start:0,end:25,step:5},{start:25,end:50,step:2},{start:50,end:150,step:5}]);
     const median = getmedian(dxtemperature);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
 

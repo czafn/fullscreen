@@ -10,7 +10,7 @@ import ecStat from 'echarts-stat';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian,getpercent} from '../../util/gettmputil';
+import {getmedian,getpercent,convertdata} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -460,27 +460,32 @@ const getOptionSelector = createSelector(
     let data = [];
     celltemperature = _.sortBy(celltemperature, (l)=> l.name-0)
 
-    const m1data = [];
-    for(let i=0; i<=30; i++){
-      const fs = _.filter(celltemperature, (d) =>
-        d.name-0 === i
-      );
-      const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
-      m1data.push({
-        name: i,
-        value: tempNum
-      })
-
-    }
-
+    // const m1data = [];
+    // for(let i=0; i<=30; i++){
+    //   const fs = _.filter(celltemperature, (d) =>
+    //     d.name-0 === i
+    //   );
+    //   const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
+    //   m1data.push({
+    //     name: i,
+    //     value: tempNum
+    //   })
+    //
+    // }
+    const start = celltemperature.length > 0?celltemperature[0].name:0;
+    const end = celltemperature.length > 0?celltemperature[celltemperature.length-1].name:0;
+    const step = 0.5;
+    const m1data = convertdata(celltemperature,[{start,end,step}])
+    debugger;
     const curveTemp = []
     lodashmap(m1data,(v)=>{
       curveTemp.push([lodashget(v,'name',0)-0,lodashget(v,'value',0)-0])
     });
     const  curve = ecStat.regression('polynomial', curveTemp,3)
     lodashmap(m1data,(v,i)=>{
+      const namev = parseFloat(lodashget(v,'name','0'));
       data.push({
-        name:`${lodashget(v,'name',0)}`,
+        name:`${namev.toFixed(1)}`,
         value:`${lodashget(v,'value',0)}`,
         curve:curve.points[i][1],
       });
