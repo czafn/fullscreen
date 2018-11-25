@@ -104,7 +104,7 @@ const getOptionSelector = createSelector(
         xAxis: [{
           name:'次',
           nameLocation:'end',
-          nameGap:8,
+          nameGap:18,
           nameTextStyle:{
             fontSize: 12,
             padding:[30, 0, 0, 0],

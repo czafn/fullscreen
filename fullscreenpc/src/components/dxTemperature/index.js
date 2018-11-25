@@ -890,7 +890,7 @@ const getOptionSelector = createSelector(
 
     option.xAxis[0].data = data.map(value => value['name']);
     option.series[0].data = data.map(value => value['value']-0);
-    option.series[0].markLine.data[0].xAxis = median;
+    option.series[0].markLine.data[0].xAxis = median*2;
     option.series[1].data = data.map(value => value['value']-0);
     return option;
   }
