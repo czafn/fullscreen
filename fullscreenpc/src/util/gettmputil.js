@@ -104,5 +104,21 @@ const convertdata = (inpudata,paramz)=>{
   }
   return m5data;
 }
+/*
+*将传过来的中位数，查找离X轴数据最近的一个数据项，并返回。
+@median  中位数
+@xAxisDate X轴数据
+*/
+const getmedianconvert = (median,xAxisDate) => {
+  for(let i=0, len = xAxisDate.length; i<len; i++){
+    if(Number(xAxisDate[i])<median && Number(xAxisDate[i+1])>median){
+      let left = Number(median) - Number(xAxisDate[i]);
+      let right = Number(xAxisDate[i+1]) - Number(median);
+      return left<right ? xAxisDate[i]:xAxisDate[i+1];
+    }
+  }
 
-export {getmedian,getpercent,convertdata};
+  return median.toString()
+}
+
+export {getmedian,getpercent,convertdata,getmedianconvert};

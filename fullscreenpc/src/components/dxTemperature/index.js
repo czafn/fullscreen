@@ -9,7 +9,7 @@ import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian,convertdata} from '../../util/gettmputil';
+import {getmedian,convertdata, getmedianconvert} from '../../util/gettmputil';
 const _ = require('underscore');
 
 
@@ -705,6 +705,7 @@ const getOptionSelector = createSelector(
     // }
     const m5data = convertdata(dxtemperature,[{start:0,end:25,step:5},{start:25,end:50,step:2},{start:50,end:150,step:5}]);
     const median = getmedian(dxtemperature);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
+    //中位数需要根据X轴的数据进行处理，处理成最近的X轴存在的值。
 
 
     const getOption = () => {
@@ -788,7 +789,28 @@ const getOptionSelector = createSelector(
           },
           z: 10
         },
-        series: [{
+        series: [ {
+          name: 'Simulate Shadow',
+          type: 'line',
+          data: [],
+          z: 2,
+          showSymbol: false,
+          animationDelay: 0,
+          animationEasing: 'linear',
+          animationDuration: 1200,
+          lineStyle: {
+            normal: {
+              color: 'transparent'
+            }
+          },
+          areaStyle: {
+            normal: {
+              color: '#08263a',
+              shadowBlur: 50,
+              shadowColor: '#000'
+            }
+          }
+        },{
           // name: 'back',
           type: 'bar',
           data: [],
@@ -847,27 +869,6 @@ const getOptionSelector = createSelector(
               }
             }]
           },
-        }, {
-          name: 'Simulate Shadow',
-          type: 'line',
-          data: [],
-          z: 2,
-          showSymbol: false,
-          animationDelay: 0,
-          animationEasing: 'linear',
-          animationDuration: 1200,
-          lineStyle: {
-            normal: {
-              color: 'transparent'
-            }
-          },
-          areaStyle: {
-            normal: {
-              color: '#08263a',
-              shadowBlur: 50,
-              shadowColor: '#000'
-            }
-          }
         }],
         animationEasing: 'elasticOut',
         animationEasingUpdate: 'elasticOut',
@@ -888,9 +889,10 @@ const getOptionSelector = createSelector(
     // const option = this.option;
     data = _.sortBy(m5data,(i) => i.name-0);
 
-    option.xAxis[0].data = data.map(value => value['name']);
+    let xAxisDate = data.map(value => value['name']);
+    option.xAxis[0].data = xAxisDate;
     option.series[0].data = data.map(value => value['value']-0);
-    option.series[0].markLine.data[0].xAxis = median*2;
+    option.series[1].markLine.data[0].xAxis = getmedianconvert(median,xAxisDate);
     option.series[1].data = data.map(value => value['value']-0);
     return option;
   }
