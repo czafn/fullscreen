@@ -9,7 +9,7 @@ import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian} from '../../util/gettmputil';
+import {getmedian,convertdata, getmedianconvert} from '../../util/gettmputil';
 
 const _ = require('underscore');
 
@@ -696,26 +696,9 @@ const getOptionSelector = createSelector(
   (dxtemperature) => {
     let data = [];
     dxtemperature = _.sortBy(dxtemperature, (l)=> l.name-0)
-    const m5data = [];
-    for(let i=0; i<=150; i+=5){
-      const fs = _.filter(dxtemperature, (d) =>
-        d.name-0 >= i && d.name-0 < i+5
-      );
-      const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
-      m5data.push({
-        name: `${i}`,
-        value: `${tempNum}`
-        // value:100
-      })
-    }
 
-    {
-      const median = m5data.length/2;
-      console.log(`median-->${median}`)
-    }
-
-    const median = getmedian(m5data); //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
-    console.log(`median-->${median}`)
+    const m5data = convertdata(dxtemperature,[{start:0,end:25,step:5},{start:25,end:50,step:2},{start:50,end:150,step:5}]);
+    const median = getmedian(dxtemperature);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
 
     const getOption = () => {
       return {
@@ -904,10 +887,10 @@ const getOptionSelector = createSelector(
 
     // const option = this.option;
     data = _.sortBy(m5data,(i) => i.name-0);
-
-    option.xAxis[0].data = data.map(value => value['name']);
+    let xAxisDate = data.map(value => value['name']);
+    option.xAxis[0].data = xAxisDate;
     option.series[0].data = data.map(value => value['value']-0);
-    option.series[0].markLine.data[0].xAxis = median;
+    option.series[0].markLine.data[0].xAxis = getmedianconvert(median,xAxisDate);;
     option.series[1].data = data.map(value => value['value']-0);
     return option;
   }

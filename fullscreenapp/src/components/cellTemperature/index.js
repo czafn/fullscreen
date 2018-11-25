@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
 import {getmedian2} from '../../util/gettmputil';
+import {getmedian,getpercent,convertdata} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -491,7 +492,8 @@ const getOptionSelector = createSelector(
     });
 
 
-    const {areaParam,median} = getmedian2(data);
+    const median = getmedian(celltemperature);
+    const areaParam = getpercent(data);
 
     console.log(`==data==`)
     console.log(`${JSON.stringify(data)}`)
