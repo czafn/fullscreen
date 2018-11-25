@@ -16,7 +16,7 @@ const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
     width: 95%;
-	height: 95%;
+	height: 95%; 
 	overflow: hidden;
   }
 `;
@@ -461,7 +461,8 @@ const getOptionSelector = createSelector(
     celltemperature = _.sortBy(celltemperature, (l)=> l.name-0)
 
     const m1data = [];
-    for(let i=0; i<=30; i++){
+    let max = celltemperature.length>0?_.max(celltemperature,(d)=>d.name).name:0;
+    for(let i=0; i<=max; i++){
       const fs = _.filter(celltemperature, (d) =>
         d.name-0 === i
       );
