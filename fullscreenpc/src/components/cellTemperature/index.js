@@ -10,13 +10,13 @@ import ecStat from 'echarts-stat';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
-import {getmedian,getpercent} from '../../util/gettmputil';
+import {getmedian,getpercent,convertdata} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
   .singleBarChart {
     width: 95%;
-	height: 95%; 
+	height: 95%;
 	overflow: hidden;
   }
 `;
@@ -461,8 +461,7 @@ const getOptionSelector = createSelector(
     celltemperature = _.sortBy(celltemperature, (l)=> l.name-0)
 
     const m1data = [];
-    let max = celltemperature.length>0?_.max(celltemperature,(d)=>d.name).name:0;
-    for(let i=0; i<=max; i++){
+    for(let i=0; i<=30; i++){
       const fs = _.filter(celltemperature, (d) =>
         d.name-0 === i
       );
@@ -480,8 +479,9 @@ const getOptionSelector = createSelector(
     });
     const  curve = ecStat.regression('polynomial', curveTemp,3)
     lodashmap(m1data,(v,i)=>{
+      const namev = parseFloat(lodashget(v,'name','0'));
       data.push({
-        name:`${lodashget(v,'name',0)}`,
+        name:`${namev.toFixed(1)}`,
         value:`${lodashget(v,'value',0)}`,
         curve:curve.points[i][1],
       });
