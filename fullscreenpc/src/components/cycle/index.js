@@ -9,7 +9,12 @@ import lodashmap from 'lodash.map';
 import ReactEcharts from 'echarts-for-react';
 import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
+import {convertdata} from '../../util/gettmputil';
+
+
 const _ = require('underscore');
+
+
 const Chart = styled.div`
   .singleBarChart {
     width: 95%;
@@ -321,13 +326,19 @@ const getOptionSelector = createSelector(
   cycleSelector,
   (cycle) => {
     let data = [];
-    lodashmap(cycle,(v)=>{
-      data.push({
-        name:`${lodashget(v,'name',0)}`,
-        value:`${lodashget(v,'value',0)}`,
-      });
-    });
-
+    // lodashmap(cycle,(v)=>{
+    //   data.push({
+    //     name:`${lodashget(v,'name',0)}`,
+    //     value:`${lodashget(v,'value',0)}`,
+    //   });
+    // });
+    // console.log(data);
+    console.log(cycle);
+    data = convertdata(cycle,[{start:0,end:5,step:0.1}]);
+    for(let i = 0 ;i < data.length ; i++){
+      data[i].name = parseFloat(data[i].name).toFixed(1);
+    }
+    console.log(data);
     const getOption = () => {
       return {
         backgroundColor:'rgba(10, 108, 163, 0.3)',

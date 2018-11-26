@@ -118,7 +118,7 @@ const getpercent  = (data,fpercent=0.9)=>{
 @input data为传过来的数据
 @param 是个数组,数组的元素分别是:[{start,end,step}]
 */
-const convertdata = (inpudata,paramz)=>{
+const convertdata = (inpudata,paramz,f)=>{
   const m5data = [];
   let result = {};
   for(let pi = 0; pi < paramz.length ; pi++){
@@ -135,13 +135,13 @@ const convertdata = (inpudata,paramz)=>{
         );
         // debugger;
         for(let j=0;j<fs.length;j++){
-          result[`${i+param.step}`] += fs[j].value;
-          // if(fs[j]-i < i+param.step - fs[j]){
-          //   result[`${i}`] += fs[j].value;
-          // }
-          // else{
-          //   result[`${i+param.step}`] += fs[j].value;
-          // }
+          // result[`${i+param.step}`] += fs[j].value;
+          if(fs[j].name === i){
+            result[`${i}`] += fs[j].value;
+          }
+          else{
+            result[`${i+param.step}`] += fs[j].value;
+          }
         }
     }
   }

@@ -9,6 +9,7 @@ import echarts from 'echarts/dist/echarts.common';
 import styled from 'styled-components';
 import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
+import {convertdata} from '../../util/gettmputil';
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -89,12 +90,18 @@ const getOptionSelector = createSelector(
   cyclecountSelector,
   (cyclecount) => {
     let data = [];
-    lodashmap(cyclecount,(v)=>{
-      data.push({
-        name:`${lodashget(v,'name',0)}`,
-        value:`${lodashget(v,'value',0)}`,
-      });
-    });
+    // lodashmap(cyclecount,(v)=>{
+    //   data.push({
+    //     name:`${lodashget(v,'name',0)}`,
+    //     value:`${lodashget(v,'value',0)}`,
+    //   });
+    // });
+    console.log(cyclecount);
+    data = convertdata(cyclecount,[{start:0,end:6.2,step:0.2}]);
+    for(let i = 0 ;i < data.length ; i++){
+      data[i].name = parseFloat(data[i].name).toFixed(1);
+    }
+    console.log(data);
 
     const getOption = () => {
       return {

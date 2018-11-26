@@ -12,7 +12,7 @@ import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
 import {getmedian2} from '../../util/gettmputil';
 import {getmedian,getpercent,convertdata} from '../../util/gettmputil';
-import {getmedianconvert} from "../../../../fullscreenpc/src/util/gettmputil";
+import {getmedianconvert} from "../../util/gettmputil";
 
 const _ = require('underscore');
 const Chart = styled.div`
