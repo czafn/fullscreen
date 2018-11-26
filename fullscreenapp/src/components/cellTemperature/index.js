@@ -12,6 +12,7 @@ import lodashget from 'lodash.get';
 import lodashmap from 'lodash.map';
 import {getmedian2} from '../../util/gettmputil';
 import {getmedian,getpercent,convertdata} from '../../util/gettmputil';
+import {getmedianconvert} from "../../../../fullscreenpc/src/util/gettmputil";
 
 const _ = require('underscore');
 const Chart = styled.div`
@@ -732,9 +733,10 @@ const getOptionSelector = createSelector(
       return;
     }
     data = _.sortBy(data,(i) => i.name-0);
-    option.xAxis[0].data = data.map(value => value['name']);
+    let xAxisDate = data.map(value => value['name']);
+    option.xAxis[0].data = xAxisDate;
     option.series[0].data = data.map(value => value['value']-0);
-    option.series[1].markLine.data[0].xAxis = median;
+    option.series[1].markLine.data[0].xAxis = getmedianconvert(median,xAxisDate);
     option.series[1].markArea.data[0] = [{
       name: '90%区间',
       xAxis: areaParam.start,
