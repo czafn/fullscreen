@@ -89,19 +89,41 @@ const getpercent  = (data,fpercent=0.9)=>{
 */
 const convertdata = (inpudata,paramz)=>{
   const m5data = [];
+  let result = {};
   for(let pi = 0; pi < paramz.length ; pi++){
       const param = paramz[pi];
-      for(let i=param.start; i<=param.end; i+=param.step){
+      for(let i=param.start; i<param.end; i+=param.step){
+        if(!result[`${i}`]){
+          result[`${i}`] = 0;
+        }
+        if(!result[`${i+param.step}`]){
+          result[`${i+param.step}`] = 0;
+        }
         const fs = _.filter(inpudata, (d) =>
           d.name-0 >= i && d.name-0 < i+param.step
         );
-        const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
-        m5data.push({
-          name: `${i}`,
-          value: `${tempNum}`
-        })
+        // debugger;
+        for(let j=0;j<fs.length;j++){
+          result[`${i+param.step}`] += fs[j].value;
+          // if(fs[j]-i < i+param.step - fs[j]){
+          //   result[`${i}`] += fs[j].value;
+          // }
+          // else{
+          //   result[`${i+param.step}`] += fs[j].value;
+          // }
+        }
     }
   }
+  // debugger;
+  lodashmap(result,(v,k)=>{
+    m5data.push({
+      name:k,
+      value:`${v}`
+    })
+  });
+  console.log(`源数据:${JSON.stringify(inpudata)}`)
+  console.log(`参数:${JSON.stringify(paramz)}`)
+  console.log(`转换后的数据:${JSON.stringify(m5data)}`)
   return m5data;
 }
 /*
