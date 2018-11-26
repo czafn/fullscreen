@@ -42,7 +42,7 @@ const getpercent  = (data,fpercent=0.9)=>{
     inputsz.push(sample.nv);
     mapindex[sample.nv] = i;
   }
-  if(totalfv === 0){
+  if(totalfv === 0 || convertdata.length === 0){
     return {
       start:0,
       end:0
@@ -55,18 +55,15 @@ const getpercent  = (data,fpercent=0.9)=>{
   let end = medianindex;
   let tmptotal = 0;
   let boundmax = totalfv*fpercent;
-  console.log(convertdata);
-  console.log(medianindex);
-  console.log(totalfv);
+
   let i=medianindex;
   let j=medianindex;
-  for(;i>=0 && j<convertdata.length;i--,j++){
-    console.log(`i:${i},j:${j}`)
+  for(;i >= 0 && j<convertdata.length;i--,j++){
+    // console.log(`i:${i},j:${j}`)
     if(!!convertdata[i] && convertdata[j]){
       let vstart = convertdata[i].value;
       let vend = convertdata[j].value;
       tmptotal += vstart;
-      // console.log(`tmptotal--->${tmptotal},i->${i},j->${j},boundmax->${boundmax}`);
       if(tmptotal >= boundmax){
         start = i;
         end = j;
@@ -79,16 +76,38 @@ const getpercent  = (data,fpercent=0.9)=>{
         break;
       }
     }
-    // else{
-    //   debugger;
-    // }
   }
 
+  if( i < 0 && j < convertdata.length){
+    while(j < convertdata.length){
+      let vend = convertdata[j].value;
+      tmptotal += vend;
+      if(tmptotal >= boundmax){
+        start = 0;
+        end = j;
+        break;
+      }
+      j++;
+    }
+  }
+
+  if( i > 0 && j >= convertdata.length){
+    while(i > 0){
+      let vstart = convertdata[i].value;
+      tmptotal += vstart;
+      if(tmptotal >= boundmax){
+        start = i;
+        end = convertdata.length;
+        break;
+      }
+      i--;
+    }
+  }
   console.log(start);
   console.log(end);
   const areaParam = {
-      start: convertdata[start].name,
-      end: convertdata[end].name
+      start: convertdata.length > start? convertdata[start].name : `${convertdata[0].name}`,
+      end: convertdata.length > end? convertdata[end].name: `${convertdata[convertdata.length-1].name}`,
   }
 
   // console.log(`start--->${start},end--->${end},median--->${median}`);
