@@ -465,19 +465,21 @@ const getOptionSelector = createSelector(
     let data = [];
     celltemperature = _.sortBy(celltemperature, (l)=> l.name-0)
 
-    const m1data = [];
-    for(let i=0; i<=30; i++){
-      const fs = _.filter(celltemperature, (d) =>
-        d.name-0 === i
-      );
-      const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
-      m1data.push({
-        name: i,
-        value: tempNum
-      })
+    // const m1data = [];
+    // for(let i=0,len = celltemperature.length-1; i<=len; i++){
+    //   const fs = _.filter(celltemperature, (d) =>
+    //     d.name-0 === i
+    //   );
+    //   const tempNum = _.reduce(fs, (memo, num) =>  memo + num.value, 0)-0
+    //   m1data.push({
+    //     name: i,
+    //     value: tempNum
+    //   })
+    //
+    // }
 
-    }
-
+    let start = celltemperature.length>0?celltemperature[0].name-0:0,end = celltemperature.length>0?celltemperature[celltemperature.length-1].name-0:0;
+    const m1data = convertdata(celltemperature,[{start:0,end:20,step:0.5}]);
     const curveTemp = []
     lodashmap(m1data,(v)=>{
       curveTemp.push([lodashget(v,'name',0)-0,lodashget(v,'value',0)-0])
@@ -620,7 +622,7 @@ const getOptionSelector = createSelector(
           // name: 'back',
           type: 'bar',
           data: [],
-          z: 0,
+          z: 1,
           itemStyle: {
             lable:{
               show:false,
@@ -650,19 +652,19 @@ const getOptionSelector = createSelector(
               normal: {
                 position:'end',
                 formatter: function(params) {
-                  return params.name
+                  return params.name+":"+params.value
                 }
               }
             },
             symbol:['',''],
             lineStyle: {
               normal: {
-                color: "rgb(255, 179, 1)",
+                color: "red",
                 type: 'solid',
                 width: 3,
               },
               emphasis: {
-                color: "#d9def7"
+                color: "#red"
               }
             },
             data: [{
