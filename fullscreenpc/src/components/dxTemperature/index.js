@@ -793,7 +793,7 @@ const getOptionSelector = createSelector(
           name: 'Simulate Shadow',
           type: 'line',
           data: [],
-          z: 2,
+          z: 0,
           showSymbol: false,
           animationDelay: 0,
           animationEasing: 'linear',
@@ -814,7 +814,7 @@ const getOptionSelector = createSelector(
           // name: 'back',
           type: 'bar',
           data: [],
-          z: 10,
+          z: 1,
           itemStyle: {
             lable:{
               show:false,
@@ -844,19 +844,19 @@ const getOptionSelector = createSelector(
               normal: {
                 position:'end',
                 formatter: function(params) {
-                  return params.name
+                  return params.name+":"+params.value
                 }
               }
             },
             symbol:['',''],
             lineStyle: {
               normal: {
-                color: "#f95c00",
+                color: "red",
                 type: 'solid',
                 width: 3,
               },
               emphasis: {
-                color: "#d9def7"
+                color: "red"
               }
             },
             data: [{
