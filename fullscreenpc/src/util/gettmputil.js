@@ -55,25 +55,37 @@ const getpercent  = (data,fpercent=0.9)=>{
   let end = medianindex;
   let tmptotal = 0;
   let boundmax = totalfv*fpercent;
-  for(let i=medianindex,j=medianindex;i>=0,j<convertdata.length;i--,j++){
-    let vstart = convertdata[i].value;
-    let vend = convertdata[j].value;
-    tmptotal += vstart;
-    // console.log(`tmptotal--->${tmptotal},i->${i},j->${j},boundmax->${boundmax}`);
-    if(tmptotal >= boundmax){
-      start = i;
-      end = j;
-      break;
+  console.log(convertdata);
+  console.log(medianindex);
+  console.log(totalfv);
+  let i=medianindex;
+  let j=medianindex;
+  for(;i>=0 && j<convertdata.length;i--,j++){
+    console.log(`i:${i},j:${j}`)
+    if(!!convertdata[i] && convertdata[j]){
+      let vstart = convertdata[i].value;
+      let vend = convertdata[j].value;
+      tmptotal += vstart;
+      // console.log(`tmptotal--->${tmptotal},i->${i},j->${j},boundmax->${boundmax}`);
+      if(tmptotal >= boundmax){
+        start = i;
+        end = j;
+        break;
+      }
+      tmptotal += vend;
+      if(tmptotal >= boundmax){
+        start = i;
+        end = j;
+        break;
+      }
     }
-    tmptotal += vend;
-    if(tmptotal >= boundmax){
-      start = i;
-      end = j;
-      break;
-    }
+    // else{
+    //   debugger;
+    // }
   }
 
-
+  console.log(start);
+  console.log(end);
   const areaParam = {
       start: convertdata[start].name,
       end: convertdata[end].name
@@ -121,9 +133,9 @@ const convertdata = (inpudata,paramz)=>{
       value:`${v}`
     })
   });
-  console.log(`源数据:${JSON.stringify(inpudata)}`)
-  console.log(`参数:${JSON.stringify(paramz)}`)
-  console.log(`转换后的数据:${JSON.stringify(m5data)}`)
+  // console.log(`源数据:${JSON.stringify(inpudata)}`)
+  // console.log(`参数:${JSON.stringify(paramz)}`)
+  // console.log(`转换后的数据:${JSON.stringify(m5data)}`)
   return m5data;
 }
 /*
