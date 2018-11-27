@@ -53,7 +53,7 @@ function* read(socket) {
     const channel = yield call(subscribe, socket);
     while (true) {
         let action = yield take(channel);
-
+        console.log(`接收到服务器发送命令:${JSON.stringify(action.type)}`)
         yield put(action);
     }
 }

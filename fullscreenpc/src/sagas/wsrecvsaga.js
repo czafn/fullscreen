@@ -103,6 +103,7 @@ export function* wsrecvsagaflow() {
 
               if(config.softmode === 'fullpc' || config.softmode === 'fullapp'){
                 if(!!task_querycatldata){
+                  console.log('cancel task_querycatldata')
                   yield cancel(task_querycatldata);
                 }
                 task_querycatldata = yield fork(querycatldata);
