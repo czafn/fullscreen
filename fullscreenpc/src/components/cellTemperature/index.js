@@ -726,7 +726,7 @@ const getOptionSelector = createSelector(
       yAxis: 'max'
     }]
     option.series[1].data = data.map(value => value['value']-0);
-    option.series[2].data = data.map(value => value['curve']-0);
+    // option.series[2].data = data.map(value => value['curve']-0);
     return option;
   }
 );

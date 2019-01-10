@@ -703,7 +703,7 @@ const getOptionSelector = createSelector(
     //     // value:100
     //   })
     // }
-    const m5data = convertdata(dxtemperature,[{start:0,end:25,step:5},{start:25,end:50,step:2},{start:50,end:150,step:5}]);
+    const m5data = convertdata(dxtemperature,[{start:-10,end:25,step:5},{start:25,end:50,step:2},{start:50,end:150,step:5}]);
     const median = getmedian(dxtemperature);//m5data.length/2; //需要后台传过来中位数的数据。 此处暂时模拟一个中位数。
     //中位数需要根据X轴的数据进行处理，处理成最近的X轴存在的值。
 

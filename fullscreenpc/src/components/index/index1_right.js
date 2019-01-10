@@ -74,7 +74,7 @@ class AppRoot extends React.Component {
                       <div className="title-center-box" style={{}}>
 
                           <div className="titleNumCol-center" style={{marginLeft: '0px'}}>
-                            <div className="title-center-title"><img src="index/top.png" alt=""></img>储能柜</div>
+                            <div className="title-center-title"><img src="index/top.png" alt=""></img>储能车</div>
                             <div className="title-center-content-border">
                               <div className="title-center-content">
                                 <span className="title-center-content-num">{rightIndex.energy}</span>

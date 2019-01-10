@@ -81,7 +81,7 @@ export function* catldata(){
 //获取地理位置信息，封装为promise
 export function* querycatldata(){//仅执行一次
   const delaytime = 60000;
-  yield call(delay,2000);
+  yield call(delay,4000);
   while(true){
       console.log(`start catl query....`);
       yield put(catl_request({}));
