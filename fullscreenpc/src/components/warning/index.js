@@ -5,6 +5,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import lodashmap from 'lodash.map';
 import styled from 'styled-components';
+import { Carousel } from 'antd';
+import 'antd/dist/antd.css';
 
 const Table = styled.table`
   width: 95%;
@@ -23,6 +25,10 @@ const Table = styled.table`
     font-size: 13px;
     text-align: left;
     padding: 0 15px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
   }
   tbody{
     tr:nth-child(even){background:rgba(14, 63, 93, 0.69);}
@@ -42,36 +48,102 @@ const Table = styled.table`
 
 `;
 
-
 class Page extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {currIdx: 0};
+    }
+
+    timeTicket = null;
+    updateData = null;
+
+    componentDidMount() {
+      this.timeTicket = setInterval(() => {
+        this.nextAlarm()
+      }, 300000);
+      this.updateData = setInterval(() => {
+        const { currIdx } = this.state;
+        let temp = currIdx + 16;
+        if(temp+8 >= this.props.listData){
+          this.setState({
+            currIdx: 0
+          });
+        } else {
+          this.setState({
+            currIdx: temp
+          });
+        }
+      }, 600000);
+
+    };
+    componentWillUnmount() {
+      if (this.timeTicket) {
+        clearInterval(this.timeTicket);
+      }
+      if (this.updateData) {
+        clearInterval(this.updateData);
+      }
+    };
+
+    nextAlarm(){
+      this.refs.ddd.next();
     }
 
     render() {
-        const {listData} = this.props;
+        const { listData } = this.props;
+        const { currIdx } = this.state;
+        let oneTable = listData.slice(currIdx, currIdx+8);
+        let towTable = listData.slice(currIdx+8, currIdx+16);
         return (
           <div >
-            <Table cellSpacing="0" cellPadding="0" >
-              <thead>
-                <tr>
-                  <th>编号</th>
-                  <th>预警类型</th>
-                  <th>更新时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  lodashmap(listData,(obj,index)=>{
-                    return (<tr key={index}>
-                    <td>{obj.DeviceId}</td>
-                    <td>{obj.type}</td>
-                    <td>{obj.update_time}</td>
-                  </tr>);
-                  })
-                }
-              </tbody>
-            </Table>
+            <Carousel ref='ddd' dots={false}>
+              <div>
+                <Table cellSpacing="0" cellPadding="0" >
+                  <thead>
+                  <tr>
+                    <th>编号</th>
+                    <th>预警类型</th>
+                    <th>更新时间</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                    lodashmap(oneTable,(obj,index)=>{
+                      return (<tr key={index}>
+                        <td>{obj.DeviceId}</td>
+                        <td>{obj.type}</td>
+                        <td>{obj.update_time}</td>
+                      </tr>);
+                    })
+                  }
+                  </tbody>
+                </Table>
+
+              </div>
+              <div>
+                <Table cellSpacing="0" cellPadding="0" >
+                  <thead>
+                  <tr>
+                    <th>编号</th>
+                    <th>预警类型</th>
+                    <th>更新时间</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                    lodashmap(towTable,(obj,index)=>{
+                      return (<tr key={index}>
+                        <td>{obj.DeviceId}</td>
+                        <td>{obj.type}</td>
+                        <td>{obj.update_time}</td>
+                      </tr>);
+                    })
+                  }
+                  </tbody>
+                </Table>
+              </div>
+            </Carousel>
+
           </div>
         );
     }

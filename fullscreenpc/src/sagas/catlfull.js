@@ -84,7 +84,7 @@ export function* querycatldata(){//仅执行一次
   yield call(delay,4000);
   while(true){
       console.log(`start catl query....`);
-      yield put(catl_request({maxcount:8}));
+      yield put(catl_request({maxcount:288}));
       //超时《--需要有超时未返回数据提示
       const { logout,catlresult,commonerr, timeout } = yield race({
           logout: take(`${logout_request}`),
