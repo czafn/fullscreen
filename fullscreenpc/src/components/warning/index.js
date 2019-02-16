@@ -64,7 +64,7 @@ class Page extends React.Component {
       this.updateData = setInterval(() => {
         const { currIdx } = this.state;
         let temp = currIdx + 16;
-        if(temp+8 >= this.props.listData){
+        if(temp+8 >= this.props.listData.length){
           this.setState({
             currIdx: 0
           });
