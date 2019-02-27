@@ -7,6 +7,7 @@ import lodashmap from 'lodash.map';
 import styled from 'styled-components';
 import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
+import moment from "moment"
 
 const Table = styled.table`
   width: 95%;
@@ -60,7 +61,7 @@ class Page extends React.Component {
     componentDidMount() {
       this.timeTicket = setInterval(() => {
         this.nextAlarm()
-      }, 300000);
+      }, 10000);
       this.updateData = setInterval(() => {
         const { currIdx } = this.state;
         let temp = currIdx + 16;
@@ -73,7 +74,7 @@ class Page extends React.Component {
             currIdx: temp
           });
         }
-      }, 600000);
+      }, 20000);
 
     };
     componentWillUnmount() {
@@ -112,7 +113,7 @@ class Page extends React.Component {
                       return (<tr key={index}>
                         <td>{obj.DeviceId}</td>
                         <td>{obj.type}</td>
-                        <td>{obj.update_time}</td>
+                        <td>{moment(obj.update_time).format("YYYY-MM-DD")}</td>
                       </tr>);
                     })
                   }
@@ -135,7 +136,7 @@ class Page extends React.Component {
                       return (<tr key={index}>
                         <td>{obj.DeviceId}</td>
                         <td>{obj.type}</td>
-                        <td>{obj.update_time}</td>
+                        <td>{moment(obj.update_time).format("YYYY-MM-DD")}</td>
                       </tr>);
                     })
                   }
