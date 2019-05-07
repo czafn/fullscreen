@@ -57,7 +57,7 @@
   },
   "scripts": {
     "buildcp": "react-scripts build && cp -r build/. /root/bms/deploy/dist/fullpc && rm -R build",
-    "buildcpr": "react-scripts build && scp -r build/. root@bmstest.i2u.top:/root/bms/deploy/dist/fullpc",
+    "buildcpr": "react-scripts build && scp -r build/* root@bmstest.i2u.top:/root/bms/deploy/dist/fullpc",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
