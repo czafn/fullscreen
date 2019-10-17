@@ -124,16 +124,16 @@ class AppRoot extends React.Component {
 
               <div className="right">
                   <div className="title-right">
-                      <div className="titleNumCol titleNumCol-right" style={{marginLeft:'45px'}}>
+                      <div className="titleNumCol titleNumCol-right" style={{marginLeft:'25px'}}>
                           <div className="title-center-title"><img src="index/top.png" alt=""></img>客车</div>
-                          <div className="title-center-content-border" style={{width: "190px"}}>
-                              <div className="title-center-content" style={{width: "180px"}}>
+                          <div className="title-center-content-border" style={{width: "210px"}}>
+                              <div className="title-center-content" style={{width: "200px"}}>
                                   <span className="title-center-content-num">{rightIndex.bus}</span>
                                   <span className="title-center-content-day">辆</span>
                               </div>
                           </div>
                       </div>
-                      <div className="titleNumCol" style={{marginLeft:'10px'}}>
+                      <div className="titleNumCol" style={{marginLeft:'0px'}}>
                           <div className="title-center-title"><img src="index/top.png" alt=""></img>乘用车</div>
                           <div className="title-center-content-border" style={{width: "190px"}}>
                               <div className="title-center-content" style={{width: "180px"}}>
@@ -142,10 +142,10 @@ class AppRoot extends React.Component {
                               </div>
                           </div>
                       </div>
-                      <div className="titleNumCol" style={{marginLeft:'10px'}}>
+                      <div className="titleNumCol" style={{marginLeft:'0px'}}>
                         <div className="title-center-title"><img src="index/top.png" alt=""></img>物流车</div>
-                        <div className="title-center-content-border" style={{width: "190px"}}>
-                          <div className="title-center-content" style={{width: "180px"}}>
+                        <div className="title-center-content-border" style={{width: "210px"}}>
+                          <div className="title-center-content" style={{width: "200px"}}>
                             <span className="title-center-content-num">{rightIndex.container}</span>
                             <span className="title-center-content-day">辆</span>
                           </div>
